@@ -1297,6 +1297,10 @@ h2 {
     overflow: hidden;
   }
 
+  body.quiz-screen-active .hero {
+    display: none;
+  }
+
   .panel {
     padding: 0.8rem;
   }
@@ -1473,8 +1477,7 @@ h2 {
       #grammarQuizView,
       #slangQuizView
     ) > .quiz-header {
-    display: flex;
-    flex-wrap: wrap;
+    display: contents;
   }
 
   :is(
@@ -1486,8 +1489,9 @@ h2 {
       #grammarQuizView,
       #slangQuizView
     ) .quiz-actions {
-    order: 2;
-    margin-top: 0.2rem;
+    order: 1;
+    margin-top: 0;
+    margin-bottom: 0.18rem;
     padding: 0;
     border: 0;
     border-radius: 0;
@@ -1512,8 +1516,7 @@ h2 {
       #grammarQuizView,
       #slangQuizView
     ) .quiz-title-block {
-    order: 1;
-    margin-bottom: 0.08rem;
+    display: none;
   }
 
   .module-title-block {
@@ -1541,10 +1544,23 @@ h2 {
       #conversionQuizView,
       #grammarQuizView,
       #slangQuizView
+    ) .rule-description {
+    order: 2;
+    margin-top: 0.3rem;
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
     ) .progress-wrap {
-    order: 3;
+    order: 4;
     flex: 0 0 auto;
-    margin-top: 0.5rem;
+    margin-top: 0.36rem;
   }
 
   :is(
@@ -1556,11 +1572,11 @@ h2 {
       #grammarQuizView,
       #slangQuizView
     ) .forms-list {
-    order: 4;
+    order: 5;
     flex: 1 1 auto;
     min-height: 0;
     max-height: none;
-    margin-top: 0.45rem;
+    margin-top: 0.32rem;
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
@@ -1575,9 +1591,9 @@ h2 {
       #grammarQuizView,
       #slangQuizView
     ) .quiz-entry {
-    order: 6;
+    order: 3;
     flex: 0 0 auto;
-    margin-top: 0.34rem;
+    margin-top: 0;
     position: static;
     padding: 0;
     border: 0;
