@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rapid Spanish | Training Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="authView" class="panel auth-panel" hidden>
+        <div class="panel-header">
+          <h2>Account Access</h2>
+          <p class="meta">Create an account or log in to continue.</p>
+        </div>
+        <div class="auth-grid">
+          <form id="loginForm" class="auth-card">
+            <h3>Log In</h3>
+            <label for="loginUsername">Username</label>
+            <input id="loginUsername" type="text" autocomplete="username" required />
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" type="password" autocomplete="current-password" required />
+            <button class="ghost-button auth-submit" type="submit">Log In</button>
+            <p id="loginFeedback" class="feedback" aria-live="polite"></p>
+          </form>
+
+          <form id="signupForm" class="auth-card">
+            <h3>Create Account</h3>
+            <label for="signupName">Name</label>
+            <input id="signupName" type="text" autocomplete="name" required />
+            <label for="signupUsername">Username</label>
+            <input id="signupUsername" type="text" autocomplete="username" required />
+            <label for="signupPassword">Password</label>
+            <input id="signupPassword" type="password" autocomplete="new-password" required />
+            <label for="signupPasswordConfirm">Confirm Password</label>
+            <input
+              id="signupPasswordConfirm"
+              type="password"
+              autocomplete="new-password"
+              required
+            />
+            <button class="ghost-button auth-submit" type="submit">Create Account</button>
+            <p id="signupFeedback" class="feedback" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <div id="appContent" hidden>
+      <header class="hero">
+        <div class="hero-top-row">
+          <p class="eyebrow">Rapid Spanish</p>
+          <div class="hero-controls">
+            <div class="hero-control-row">
+              <span id="currentUserLabel" class="user-chip" aria-live="polite"></span>
+              <label class="admin-mode-toggle" for="adminModeToggle">
+                <input id="adminModeToggle" type="checkbox" />
+                <span>Admin mode (unlock all)</span>
+              </label>
+              <button id="accountManageButton" class="ghost-button" type="button">
+                Account
+              </button>
+              <button id="logoutButton" class="ghost-button danger-button" type="button">
+                Log out
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section id="trainingHubView" class="hub-layout">
+        <div class="hub-main-stack">
+          <section class="panel progress-map-panel">
+            <div class="panel-header">
+              <h2>Progress Map</h2>
+              <p class="meta">Select a training node</p>
+            </div>
+            <div class="dashboard-progress">
+              <p id="trainingHubProgressText" class="meta"></p>
+              <div class="progress-track">
+                <div id="trainingHubProgressFill" class="progress-fill"></div>
+              </div>
+            </div>
+            <div id="progressMap" class="progress-map-grid"></div>
+          </section>
+          <section class="panel stories-panel">
+            <div class="panel-header">
+              <h2>Stories</h2>
+              <p id="storiesUnlockMeta" class="meta"></p>
+            </div>
+            <p class="meta">
+              Read short stories in Spanish. They unlock as your study progress increases.
+            </p>
+            <div id="storiesGrid" class="training-grid stories-grid"></div>
+          </section>
+          <section class="panel srs-test-panel">
+            <div class="panel-header">
+              <h2>Tests</h2>
+              <p class="meta">SRS practice</p>
+            </div>
+            <p id="srsHubMeta" class="meta">Loading SRS queue...</p>
+            <div class="srs-hub-stats">
+              <p id="srsDueNow" class="srs-pill">Due now: 0</p>
+              <p id="srsNewToday" class="srs-pill">New available: 0</p>
+            </div>
+            <div class="quiz-actions">
+              <button id="srsStartButton" class="ghost-button" type="button">
+                Start Review
+              </button>
+              <button id="srsManageButton" class="ghost-button" type="button">
+                Manage Decks
+              </button>
+            </div>
+          </section>
+        </div>
+        <aside class="hub-side-stack">
+          <section class="panel leaderboard-hub-panel">
+            <div class="panel-header">
+              <h2>Leaderboard</h2>
+              <p class="meta panel-status-pill">Live rankings</p>
+            </div>
+            <section class="leaderboard-section">
+              <h3>Global Progress</h3>
+              <p class="meta">Top users on this device</p>
+              <ol id="leaderboardHubGlobalList" class="leaderboard-list"></ol>
+            </section>
+            <section class="leaderboard-section">
+              <h3>Weekly Progress</h3>
+              <p class="meta">Last 7 days</p>
+              <ol id="leaderboardHubWeeklyList" class="leaderboard-list"></ol>
+            </section>
+          </section>
+
+          <section class="panel stats-hub-panel">
+            <div class="panel-header">
+              <h2>Stats</h2>
+              <p class="meta panel-status-pill">Your performance</p>
+            </div>
+            <section class="stats-summary-grid">
+              <article class="stats-kpi">
+                <p class="stats-kpi-label">Overall accuracy</p>
+                <p id="statsOverallAccuracy" class="stats-kpi-value">-</p>
+              </article>
+              <article class="stats-kpi">
+                <p class="stats-kpi-label">Weekly trend</p>
+                <p id="statsWeeklyTrend" class="stats-kpi-value">-</p>
+              </article>
+              <article class="stats-kpi">
+                <p class="stats-kpi-label">Mastery pace</p>
+                <p id="statsMasteryPace" class="stats-kpi-value">-</p>
+              </article>
+              <article class="stats-kpi">
+                <p class="stats-kpi-label">Hardest track</p>
+                <p id="statsHardestTrack" class="stats-kpi-value">-</p>
+              </article>
+            </section>
+
+            <section class="stats-block">
+              <h3>Accuracy by Track</h3>
+              <ul id="statsTrackList" class="stats-list"></ul>
+            </section>
+
+            <section class="stats-block">
+              <h3>Hardest Decks Right Now</h3>
+              <ol id="statsHardestDecksList" class="stats-list"></ol>
+            </section>
+          </section>
+
+          <section class="panel achievements-hub-panel">
+            <div class="panel-header">
+              <h2>Achievements</h2>
+              <p class="meta panel-status-pill">Streak + badges</p>
+            </div>
+            <section class="stats-summary-grid">
+              <article class="stats-kpi">
+                <p class="stats-kpi-label">Current streak</p>
+                <p id="streakCurrentValue" class="stats-kpi-value">-</p>
+              </article>
+              <article class="stats-kpi">
+                <p class="stats-kpi-label">Best streak</p>
+                <p id="streakBestValue" class="stats-kpi-value">-</p>
+              </article>
+              <article class="stats-kpi">
+                <p class="stats-kpi-label">Unlocked</p>
+                <p id="achievementsUnlockedValue" class="stats-kpi-value">-</p>
+              </article>
+              <article class="stats-kpi">
+                <p class="stats-kpi-label">Last active</p>
+                <p id="streakLastActiveValue" class="stats-kpi-value">-</p>
+              </article>
+            </section>
+            <section class="stats-block">
+              <h3>Achievement List</h3>
+              <ol id="achievementsList" class="stats-list achievements-list"></ol>
+            </section>
+          </section>
+        </aside>
+      </section>
+
+      <section id="dashboardView" class="panel" hidden>
+        <div class="panel-header">
+          <div class="stack-title">
+            <button id="backToTrainingButton" class="ghost-button" type="button">
+              ← Back to training
+            </button>
+            <h2>KOFI Verb Training</h2>
+          </div>
+          <label class="search-field" for="verbSearch">
+            <span>Filter verbs</span>
+            <input
+              id="verbSearch"
+              type="text"
+              placeholder="Type an infinitive..."
+              autocomplete="off"
+            />
+          </label>
+        </div>
+        <div class="dashboard-progress">
+          <p id="verbDashboardProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="verbDashboardProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+        <p id="verbCount" class="meta"></p>
+        <div id="verbGrid" class="verb-grid"></div>
+      </section>
+
+      <section id="nounsDashboardView" class="panel" hidden>
+        <div class="panel-header">
+          <div class="stack-title">
+            <button id="backToTrainingFromNounsButton" class="ghost-button" type="button">
+              ← Back to training
+            </button>
+            <h2>Top 500 Nouns</h2>
+          </div>
+          <div class="dashboard-controls">
+            <p id="nounsDeckCount" class="meta"></p>
+            <label class="mode-toggle" for="nounModeToggle">
+              <input id="nounModeToggle" type="checkbox" />
+              <span>Plural mode</span>
+            </label>
+          </div>
+        </div>
+        <div class="dashboard-progress">
+          <p id="nounsDashboardProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="nounsDashboardProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+        <div id="nounsDeckGrid" class="training-grid"></div>
+      </section>
+
+      <section id="beginnerDashboardView" class="panel" hidden>
+        <div class="panel-header">
+          <div class="stack-title">
+            <button
+              id="backToTrainingFromBeginnerButton"
+              class="ghost-button"
+              type="button"
+            >
+              ← Back to training
+            </button>
+            <h2>Beginner Phrases</h2>
+          </div>
+          <p id="beginnerDeckCount" class="meta"></p>
+        </div>
+        <div class="dashboard-progress">
+          <p id="beginnerDashboardProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="beginnerDashboardProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+        <div id="beginnerDeckGrid" class="training-grid"></div>
+      </section>
+
+      <section id="discourseDashboardView" class="panel" hidden>
+        <div class="panel-header">
+          <div class="stack-title">
+            <button
+              id="backToTrainingFromDiscourseButton"
+              class="ghost-button"
+              type="button"
+            >
+              ← Back to training
+            </button>
+            <h2>Discourse Chunks</h2>
+          </div>
+          <p id="discourseDeckCount" class="meta"></p>
+        </div>
+        <div class="dashboard-progress">
+          <p id="discourseDashboardProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="discourseDashboardProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+        <div id="discourseDeckGrid" class="training-grid"></div>
+      </section>
+
+      <section id="conversionDashboardView" class="panel" hidden>
+        <div class="panel-header">
+          <div class="stack-title">
+            <button
+              id="backToTrainingFromConversionButton"
+              class="ghost-button"
+              type="button"
+            >
+              ← Back to training
+            </button>
+            <h2>English -> Spanish Conversion</h2>
+          </div>
+          <p id="conversionDeckCount" class="meta"></p>
+        </div>
+        <div class="dashboard-progress">
+          <p id="conversionDashboardProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="conversionDashboardProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+        <div id="conversionDeckGrid" class="training-grid"></div>
+      </section>
+
+      <section id="grammarDashboardView" class="panel" hidden>
+        <div class="panel-header">
+          <div class="stack-title">
+            <button
+              id="backToTrainingFromGrammarButton"
+              class="ghost-button"
+              type="button"
+            >
+              ← Back to training
+            </button>
+            <h2>Grammar</h2>
+          </div>
+          <p id="grammarDeckCount" class="meta"></p>
+        </div>
+        <div class="dashboard-progress">
+          <p id="grammarDashboardProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="grammarDashboardProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+        <div id="grammarDeckGrid" class="training-grid"></div>
+      </section>
+
+      <section id="slangDashboardView" class="panel" hidden>
+        <div class="panel-header">
+          <div class="stack-title">
+            <button id="backToTrainingFromSlangButton" class="ghost-button" type="button">
+              ← Back to training
+            </button>
+            <h2>Slang</h2>
+          </div>
+          <p id="slangDeckCount" class="meta"></p>
+        </div>
+        <div class="dashboard-progress">
+          <p id="slangDashboardProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="slangDashboardProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+        <div id="slangDeckGrid" class="training-grid"></div>
+      </section>
+
+      <section id="leaderboardView" class="panel" hidden>
+        <div class="panel-header">
+          <div class="stack-title">
+            <button
+              id="backToTrainingFromLeaderboardButton"
+              class="ghost-button"
+              type="button"
+            >
+              ← Back to training
+            </button>
+            <h2>Leaderboard</h2>
+          </div>
+          <p class="meta">Global and weekly rankings.</p>
+        </div>
+        <div class="leaderboard-grid">
+          <section class="leaderboard-card">
+            <h3>Global Progress</h3>
+            <p class="meta">All users on this device</p>
+            <ol id="globalLeaderboardList" class="leaderboard-list"></ol>
+          </section>
+          <section class="leaderboard-card">
+            <h3>Weekly Progress</h3>
+            <p class="meta">Last 7 days</p>
+            <ol id="weeklyLeaderboardList" class="leaderboard-list"></ol>
+          </section>
+        </div>
+      </section>
+
+      <section id="accountView" class="panel" hidden>
+        <div class="panel-header">
+          <div class="stack-title">
+            <button id="accountBackButton" class="ghost-button" type="button">
+              ← Back to training
+            </button>
+            <h2>Account Management</h2>
+          </div>
+          <p id="accountUsernameMeta" class="meta"></p>
+        </div>
+
+        <div class="auth-grid">
+          <form id="profileForm" class="auth-card">
+            <h3>Profile</h3>
+            <label for="profileNameInput">Name</label>
+            <input id="profileNameInput" type="text" autocomplete="name" required />
+            <button class="ghost-button auth-submit" type="submit">Save Name</button>
+            <p id="profileFeedback" class="feedback" aria-live="polite"></p>
+          </form>
+
+          <form id="passwordForm" class="auth-card">
+            <h3>Change Password</h3>
+            <label for="currentPasswordInput">Current Password</label>
+            <input
+              id="currentPasswordInput"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
+            <label for="newPasswordInput">New Password</label>
+            <input id="newPasswordInput" type="password" autocomplete="new-password" required />
+            <label for="newPasswordConfirmInput">Confirm New Password</label>
+            <input
+              id="newPasswordConfirmInput"
+              type="password"
+              autocomplete="new-password"
+              required
+            />
+            <button class="ghost-button auth-submit" type="submit">Update Password</button>
+            <p id="passwordFeedback" class="feedback" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section id="moduleView" class="panel" hidden>
+        <div class="panel-header quiz-header">
+          <button id="moduleBackButton" class="ghost-button" type="button">
+            ← Back to training
+          </button>
+          <div class="module-title-block">
+            <h2 id="moduleTitle"></h2>
+            <p class="meta">Blank dashboard</p>
+          </div>
+        </div>
+        <div class="dashboard-progress">
+          <p id="moduleDashboardProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="moduleDashboardProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+        <div id="moduleBody" class="empty-dashboard"></div>
+      </section>
+
+      <section id="quizView" class="panel" hidden>
+        <div class="panel-header quiz-header">
+          <div class="quiz-actions">
+            <button id="backButton" class="ghost-button" type="button">
+              ← Back to verbs
+            </button>
+            <button id="giveUpButton" class="ghost-button danger-button" type="button">
+              Give up
+            </button>
+          </div>
+          <div class="quiz-title-block">
+            <h2 id="quizVerbTitle"></h2>
+            <p id="quizMeta" class="meta"></p>
+          </div>
+        </div>
+
+        <div class="quiz-entry">
+          <label for="answerInput">Type conjugation</label>
+          <input
+            id="answerInput"
+            type="text"
+            placeholder="Start typing..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <p id="feedback" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="progress-wrap" aria-live="polite">
+          <p id="progressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <ul id="formsList" class="forms-list"></ul>
+      </section>
+
+      <section id="nounsQuizView" class="panel" hidden>
+        <div class="panel-header quiz-header">
+          <div class="quiz-actions">
+            <button id="nounsBackButton" class="ghost-button" type="button">
+              ← Back to noun decks
+            </button>
+            <button id="nounsGiveUpButton" class="ghost-button danger-button" type="button">
+              Give up
+            </button>
+          </div>
+          <div class="quiz-title-block">
+            <h2 id="nounsQuizTitle"></h2>
+            <p id="nounsQuizMeta" class="meta"></p>
+          </div>
+        </div>
+
+        <div class="quiz-entry">
+          <label id="nounsAnswerLabel" for="nounsAnswerInput">
+            Type Spanish noun with article (singular)
+          </label>
+          <input
+            id="nounsAnswerInput"
+            type="text"
+            placeholder="Example: el libro"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <p id="nounsFeedback" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="progress-wrap" aria-live="polite">
+          <p id="nounsProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="nounsProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <ul id="nounsList" class="forms-list"></ul>
+      </section>
+
+      <section id="beginnerQuizView" class="panel" hidden>
+        <div class="panel-header quiz-header">
+          <div class="quiz-actions">
+            <button id="beginnerBackButton" class="ghost-button" type="button">
+              ← Back to beginner decks
+            </button>
+            <button
+              id="beginnerGiveUpButton"
+              class="ghost-button danger-button"
+              type="button"
+            >
+              Give up
+            </button>
+          </div>
+          <div class="quiz-title-block">
+            <h2 id="beginnerQuizTitle"></h2>
+            <p id="beginnerQuizMeta" class="meta"></p>
+          </div>
+        </div>
+
+        <div class="quiz-entry">
+          <label id="beginnerAnswerLabel" for="beginnerAnswerInput">
+            Type Spanish answer
+          </label>
+          <input
+            id="beginnerAnswerInput"
+            type="text"
+            placeholder="Press Enter to submit..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <p id="beginnerFeedback" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="progress-wrap" aria-live="polite">
+          <p id="beginnerProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="beginnerProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <ul id="beginnerList" class="forms-list"></ul>
+      </section>
+
+      <section id="discourseQuizView" class="panel" hidden>
+        <div class="panel-header quiz-header">
+          <div class="quiz-actions">
+            <button id="discourseBackButton" class="ghost-button" type="button">
+              ← Back to discourse decks
+            </button>
+            <button
+              id="discourseGiveUpButton"
+              class="ghost-button danger-button"
+              type="button"
+            >
+              Give up
+            </button>
+          </div>
+          <div class="quiz-title-block">
+            <h2 id="discourseQuizTitle"></h2>
+            <p id="discourseQuizMeta" class="meta"></p>
+          </div>
+        </div>
+
+        <div class="quiz-entry">
+          <label id="discourseAnswerLabel" for="discourseAnswerInput">
+            Type Spanish chunk
+          </label>
+          <input
+            id="discourseAnswerInput"
+            type="text"
+            placeholder="Press Enter to submit..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <p id="discourseFeedback" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="progress-wrap" aria-live="polite">
+          <p id="discourseProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="discourseProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <ul id="discourseList" class="forms-list"></ul>
+      </section>
+
+      <section id="conversionQuizView" class="panel" hidden>
+        <div class="panel-header quiz-header">
+          <div class="quiz-actions">
+            <button id="conversionBackButton" class="ghost-button" type="button">
+              ← Back to conversion decks
+            </button>
+            <button
+              id="conversionGiveUpButton"
+              class="ghost-button danger-button"
+              type="button"
+            >
+              Give up
+            </button>
+          </div>
+          <div class="quiz-title-block">
+            <h2 id="conversionQuizTitle"></h2>
+            <p id="conversionQuizMeta" class="meta"></p>
+          </div>
+        </div>
+
+        <p id="conversionRuleDescription" class="rule-description"></p>
+
+        <div class="quiz-entry">
+          <label id="conversionAnswerLabel" for="conversionAnswerInput">
+            Type Spanish conversion
+          </label>
+          <input
+            id="conversionAnswerInput"
+            type="text"
+            placeholder="Press Enter to submit..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <p id="conversionFeedback" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="progress-wrap" aria-live="polite">
+          <p id="conversionProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="conversionProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <ul id="conversionList" class="forms-list"></ul>
+      </section>
+
+      <section id="grammarQuizView" class="panel" hidden>
+        <div class="panel-header quiz-header">
+          <div class="quiz-actions">
+            <button id="grammarBackButton" class="ghost-button" type="button">
+              ← Back to grammar decks
+            </button>
+            <button id="grammarGiveUpButton" class="ghost-button danger-button" type="button">
+              Give up
+            </button>
+          </div>
+          <div class="quiz-title-block">
+            <h2 id="grammarQuizTitle"></h2>
+            <p id="grammarQuizMeta" class="meta"></p>
+          </div>
+        </div>
+
+        <p id="grammarRuleDescription" class="rule-description"></p>
+
+        <div class="quiz-entry">
+          <label id="grammarAnswerLabel" for="grammarAnswerInput">
+            Type Spanish answer
+          </label>
+          <input
+            id="grammarAnswerInput"
+            type="text"
+            placeholder="Press Enter to submit..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <p id="grammarFeedback" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="progress-wrap" aria-live="polite">
+          <p id="grammarProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="grammarProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <ul id="grammarList" class="forms-list"></ul>
+      </section>
+
+      <section id="slangQuizView" class="panel" hidden>
+        <div class="panel-header quiz-header">
+          <div class="quiz-actions">
+            <button id="slangBackButton" class="ghost-button" type="button">
+              ← Back to slang decks
+            </button>
+            <button id="slangGiveUpButton" class="ghost-button danger-button" type="button">
+              Give up
+            </button>
+          </div>
+          <div class="quiz-title-block">
+            <h2 id="slangQuizTitle"></h2>
+            <p id="slangQuizMeta" class="meta"></p>
+          </div>
+        </div>
+
+        <p id="slangRegionDescription" class="rule-description"></p>
+
+        <div class="quiz-entry">
+          <label id="slangAnswerLabel" for="slangAnswerInput">
+            Type regional Spanish slang
+          </label>
+          <input
+            id="slangAnswerInput"
+            type="text"
+            placeholder="Press Enter to submit..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <p id="slangFeedback" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="progress-wrap" aria-live="polite">
+          <p id="slangProgressText" class="meta"></p>
+          <div class="progress-track">
+            <div id="slangProgressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <ul id="slangList" class="forms-list"></ul>
+      </section>
+
+      <section id="storyView" class="panel" hidden>
+        <div class="panel-header quiz-header">
+          <button id="storyBackButton" class="ghost-button" type="button">
+            ← Back to stories
+          </button>
+          <div class="quiz-title-block">
+            <h2 id="storyTitle"></h2>
+            <p id="storyMeta" class="meta"></p>
+          </div>
+        </div>
+        <article id="storyBody" class="story-content"></article>
+      </section>
+
+      <section id="srsReviewView" class="panel" hidden>
+        <div class="panel-header quiz-header">
+          <div class="quiz-actions">
+            <button id="srsBackButton" class="ghost-button" type="button">
+              ← Back to training
+            </button>
+            <button id="srsManageFromReviewButton" class="ghost-button" type="button">
+              Manage Decks
+            </button>
+          </div>
+          <div class="quiz-title-block">
+            <h2>SRS Test</h2>
+            <p id="srsReviewMeta" class="meta"></p>
+          </div>
+        </div>
+
+        <p class="rule-description">
+          Type the Spanish answer, press Enter to check, then grade your recall quality.
+        </p>
+
+        <div class="srs-card-block">
+          <p id="srsDeckLabel" class="meta"></p>
+          <p id="srsPrompt" class="srs-prompt"></p>
+        </div>
+
+        <div class="quiz-entry">
+          <label for="srsAnswerInput">Type Spanish answer</label>
+          <input
+            id="srsAnswerInput"
+            type="text"
+            placeholder="Press Enter to submit..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <p id="srsFeedback" class="feedback" aria-live="polite"></p>
+        </div>
+
+        <p id="srsRevealAnswer" class="srs-reveal" hidden></p>
+
+        <div class="srs-grade-row">
+          <button id="srsGradeAgainButton" class="ghost-button danger-button" type="button" disabled>
+            Again
+          </button>
+          <button id="srsGradeHardButton" class="ghost-button" type="button" disabled>
+            Hard
+          </button>
+          <button id="srsGradeGoodButton" class="ghost-button" type="button" disabled>
+            Good
+          </button>
+          <button id="srsGradeEasyButton" class="ghost-button" type="button" disabled>
+            Easy
+          </button>
+        </div>
+
+        <p id="srsSessionSummary" class="meta"></p>
+      </section>
+
+      <section id="srsManageView" class="panel" hidden>
+        <div class="panel-header">
+          <div class="stack-title">
+            <button id="srsManageBackButton" class="ghost-button" type="button">
+              ← Back to training
+            </button>
+            <h2>SRS Deck Management</h2>
+          </div>
+          <div class="quiz-actions">
+            <button id="srsSelectUnlockedButton" class="ghost-button" type="button">
+              Select unlocked
+            </button>
+            <button id="srsClearSelectionButton" class="ghost-button danger-button" type="button">
+              Clear all
+            </button>
+          </div>
+        </div>
+        <p id="srsManageSummary" class="meta"></p>
+        <div id="srsManageDeckList" class="srs-manage-list"></div>
+      </section>
+
+      <section id="statusPanel" class="panel status" hidden></section>
+      </div>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

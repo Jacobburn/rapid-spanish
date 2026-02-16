@@ -1,0 +1,4040 @@
+{
+  "source": "https://knowspanish.com/index.html",
+  "generatedAt": "2026-02-15T05:09:09.500692+00:00",
+  "groupCount": 14,
+  "totalItems": 434,
+  "groups": [
+    {
+      "id": "rule-tion",
+      "title": "The \"TION\" Rule",
+      "description": "Rule: English words ending in ...tion generally become Spanish ...ción.",
+      "source": "https://knowspanish.com/the-TION-rule.html",
+      "count": 30,
+      "items": [
+        {
+          "hint": "administration",
+          "answer": "administración",
+          "answers": [
+            "administración"
+          ],
+          "imperfect": false,
+          "index": 1
+        },
+        {
+          "hint": "adulation",
+          "answer": "adulación",
+          "answers": [
+            "adulación"
+          ],
+          "imperfect": false,
+          "index": 2
+        },
+        {
+          "hint": "application",
+          "answer": "aplicación",
+          "answers": [
+            "aplicación"
+          ],
+          "imperfect": true,
+          "index": 3
+        },
+        {
+          "hint": "benediction",
+          "answer": "benedicción",
+          "answers": [
+            "benedicción"
+          ],
+          "imperfect": false,
+          "index": 4
+        },
+        {
+          "hint": "bifurcation",
+          "answer": "bifurcación",
+          "answers": [
+            "bifurcación"
+          ],
+          "imperfect": false,
+          "index": 5
+        },
+        {
+          "hint": "classification",
+          "answer": "clasificación",
+          "answers": [
+            "clasificación"
+          ],
+          "imperfect": true,
+          "index": 6
+        },
+        {
+          "hint": "conservation",
+          "answer": "conservación",
+          "answers": [
+            "conservación"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "corruption",
+          "answer": "corrupción",
+          "answers": [
+            "corrupción"
+          ],
+          "imperfect": false,
+          "index": 8
+        },
+        {
+          "hint": "distribution",
+          "answer": "distribución",
+          "answers": [
+            "distribución"
+          ],
+          "imperfect": false,
+          "index": 9
+        },
+        {
+          "hint": "embarcation",
+          "answer": "embarcación",
+          "answers": [
+            "embarcación"
+          ],
+          "imperfect": false,
+          "index": 10
+        },
+        {
+          "hint": "education",
+          "answer": "educación",
+          "answers": [
+            "educación"
+          ],
+          "imperfect": false,
+          "index": 11
+        },
+        {
+          "hint": "evacuation",
+          "answer": "evacuación",
+          "answers": [
+            "evacuación"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "fabrication",
+          "answer": "fabricación",
+          "answers": [
+            "fabricación"
+          ],
+          "imperfect": false,
+          "index": 13
+        },
+        {
+          "hint": "frustration",
+          "answer": "frustración",
+          "answers": [
+            "frustración"
+          ],
+          "imperfect": false,
+          "index": 14
+        },
+        {
+          "hint": "gravitation",
+          "answer": "gravitación",
+          "answers": [
+            "gravitación"
+          ],
+          "imperfect": false,
+          "index": 15
+        },
+        {
+          "hint": "hibernation",
+          "answer": "hibernación",
+          "answers": [
+            "hibernación"
+          ],
+          "imperfect": false,
+          "index": 16
+        },
+        {
+          "hint": "hospitalization",
+          "answer": "hospitalización",
+          "answers": [
+            "hospitalización"
+          ],
+          "imperfect": false,
+          "index": 17
+        },
+        {
+          "hint": "installation",
+          "answer": "instalación",
+          "answers": [
+            "instalación"
+          ],
+          "imperfect": true,
+          "index": 18
+        },
+        {
+          "hint": "instruction",
+          "answer": "instrucción",
+          "answers": [
+            "instrucción"
+          ],
+          "imperfect": false,
+          "index": 19
+        },
+        {
+          "hint": "justification",
+          "answer": "justificación",
+          "answers": [
+            "justificación"
+          ],
+          "imperfect": false,
+          "index": 20
+        },
+        {
+          "hint": "manipulation",
+          "answer": "manipulación",
+          "answers": [
+            "manipulación"
+          ],
+          "imperfect": false,
+          "index": 21
+        },
+        {
+          "hint": "nation",
+          "answer": "nación",
+          "answers": [
+            "nación"
+          ],
+          "imperfect": false,
+          "index": 22
+        },
+        {
+          "hint": "nutrition",
+          "answer": "nutrición",
+          "answers": [
+            "nutrición"
+          ],
+          "imperfect": false,
+          "index": 23
+        },
+        {
+          "hint": "occupation",
+          "answer": "ocupación",
+          "answers": [
+            "ocupación"
+          ],
+          "imperfect": true,
+          "index": 24
+        },
+        {
+          "hint": "personification",
+          "answer": "personificación",
+          "answers": [
+            "personificación"
+          ],
+          "imperfect": false,
+          "index": 25
+        },
+        {
+          "hint": "speculation",
+          "answer": "especulación",
+          "answers": [
+            "especulación"
+          ],
+          "imperfect": true,
+          "index": 26
+        },
+        {
+          "hint": "station",
+          "answer": "estación",
+          "answers": [
+            "estación"
+          ],
+          "imperfect": true,
+          "index": 27
+        },
+        {
+          "hint": "transition",
+          "answer": "transición",
+          "answers": [
+            "transición"
+          ],
+          "imperfect": false,
+          "index": 28
+        },
+        {
+          "hint": "translation",
+          "answer": "traducción",
+          "answers": [
+            "traducción"
+          ],
+          "imperfect": true,
+          "index": 29
+        },
+        {
+          "hint": "congratulation",
+          "answer": "felicitación",
+          "answers": [
+            "felicitación"
+          ],
+          "imperfect": true,
+          "index": 30
+        }
+      ]
+    },
+    {
+      "id": "rule-ate",
+      "title": "The \"ATE\" Rule",
+      "description": "Rule: English words ending in ...ate generally become Spanish infinitives ending ...ar.",
+      "source": "https://knowspanish.com/the-ATE-rule.html",
+      "count": 30,
+      "items": [
+        {
+          "hint": "articulate",
+          "answer": "articular",
+          "answers": [
+            "articular"
+          ],
+          "imperfect": false,
+          "index": 1
+        },
+        {
+          "hint": "ambulate",
+          "answer": "ambular",
+          "answers": [
+            "ambular"
+          ],
+          "imperfect": false,
+          "index": 2
+        },
+        {
+          "hint": "beneficiate",
+          "answer": "beneficiar",
+          "answers": [
+            "beneficiar"
+          ],
+          "imperfect": false,
+          "index": 3
+        },
+        {
+          "hint": "capitulate",
+          "answer": "capitular",
+          "answers": [
+            "capitular"
+          ],
+          "imperfect": false,
+          "index": 4
+        },
+        {
+          "hint": "congregate",
+          "answer": "congregar",
+          "answers": [
+            "congregar"
+          ],
+          "imperfect": false,
+          "index": 5
+        },
+        {
+          "hint": "conjugate",
+          "answer": "conjugar",
+          "answers": [
+            "conjugar"
+          ],
+          "imperfect": false,
+          "index": 6
+        },
+        {
+          "hint": "contemplate",
+          "answer": "contemplar",
+          "answers": [
+            "contemplar"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "delegate",
+          "answer": "delegar",
+          "answers": [
+            "delegar"
+          ],
+          "imperfect": false,
+          "index": 8
+        },
+        {
+          "hint": "donate",
+          "answer": "donar",
+          "answers": [
+            "donar"
+          ],
+          "imperfect": false,
+          "index": 9
+        },
+        {
+          "hint": "elevate",
+          "answer": "elevar",
+          "answers": [
+            "elevar"
+          ],
+          "imperfect": false,
+          "index": 10
+        },
+        {
+          "hint": "fabricate",
+          "answer": "fabricar",
+          "answers": [
+            "fabricar"
+          ],
+          "imperfect": false,
+          "index": 11
+        },
+        {
+          "hint": "fluctuate",
+          "answer": "fluctuar",
+          "answers": [
+            "fluctuar"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "formulate",
+          "answer": "formular",
+          "answers": [
+            "formular"
+          ],
+          "imperfect": false,
+          "index": 13
+        },
+        {
+          "hint": "germinate",
+          "answer": "germinar",
+          "answers": [
+            "germinar"
+          ],
+          "imperfect": false,
+          "index": 14
+        },
+        {
+          "hint": "graduate",
+          "answer": "graduar",
+          "answers": [
+            "graduar"
+          ],
+          "imperfect": false,
+          "index": 15
+        },
+        {
+          "hint": "hallucinate",
+          "answer": "alucinar",
+          "answers": [
+            "alucinar"
+          ],
+          "imperfect": true,
+          "index": 16
+        },
+        {
+          "hint": "illuminate",
+          "answer": "iluminar",
+          "answers": [
+            "iluminar"
+          ],
+          "imperfect": true,
+          "index": 17
+        },
+        {
+          "hint": "imitate",
+          "answer": "imitar",
+          "answers": [
+            "imitar"
+          ],
+          "imperfect": false,
+          "index": 18
+        },
+        {
+          "hint": "initiate",
+          "answer": "iniciar",
+          "answers": [
+            "iniciar"
+          ],
+          "imperfect": true,
+          "index": 19
+        },
+        {
+          "hint": "innovate",
+          "answer": "inovar",
+          "answers": [
+            "inovar"
+          ],
+          "imperfect": true,
+          "index": 20
+        },
+        {
+          "hint": "manipulate",
+          "answer": "manipular",
+          "answers": [
+            "manipular"
+          ],
+          "imperfect": false,
+          "index": 21
+        },
+        {
+          "hint": "participate",
+          "answer": "participar",
+          "answers": [
+            "participar"
+          ],
+          "imperfect": false,
+          "index": 22
+        },
+        {
+          "hint": "precipitate",
+          "answer": "precipitar",
+          "answers": [
+            "precipitar"
+          ],
+          "imperfect": false,
+          "index": 23
+        },
+        {
+          "hint": "quadruplicate",
+          "answer": "cuadruplicar",
+          "answers": [
+            "cuadruplicar"
+          ],
+          "imperfect": true,
+          "index": 24
+        },
+        {
+          "hint": "radiate",
+          "answer": "radiar",
+          "answers": [
+            "radiar"
+          ],
+          "imperfect": false,
+          "index": 25
+        },
+        {
+          "hint": "segregate",
+          "answer": "segregar",
+          "answers": [
+            "segregar"
+          ],
+          "imperfect": false,
+          "index": 26
+        },
+        {
+          "hint": "simulate",
+          "answer": "simular",
+          "answers": [
+            "simular"
+          ],
+          "imperfect": false,
+          "index": 27
+        },
+        {
+          "hint": "tolerate",
+          "answer": "tolerar",
+          "answers": [
+            "tolerar"
+          ],
+          "imperfect": false,
+          "index": 28
+        },
+        {
+          "hint": "validate",
+          "answer": "validar",
+          "answers": [
+            "validar"
+          ],
+          "imperfect": false,
+          "index": 29
+        },
+        {
+          "hint": "congratulate",
+          "answer": "felicitar",
+          "answers": [
+            "felicitar"
+          ],
+          "imperfect": true,
+          "index": 30
+        }
+      ]
+    },
+    {
+      "id": "rule-ize",
+      "title": "The \"IZE\" Rule",
+      "description": "Rule: English words ending in ...ize generally become Spanish ...izar.",
+      "source": "https://knowspanish.com/the-IZE-rule.html",
+      "count": 30,
+      "items": [
+        {
+          "hint": "amortize",
+          "answer": "amortizar",
+          "answers": [
+            "amortizar"
+          ],
+          "imperfect": false,
+          "index": 1
+        },
+        {
+          "hint": "analyze",
+          "answer": "analizar",
+          "answers": [
+            "analizar"
+          ],
+          "imperfect": true,
+          "index": 2
+        },
+        {
+          "hint": "botanize",
+          "answer": "botanizar",
+          "answers": [
+            "botanizar"
+          ],
+          "imperfect": false,
+          "index": 3
+        },
+        {
+          "hint": "brutalize",
+          "answer": "brutalizar",
+          "answers": [
+            "brutalizar"
+          ],
+          "imperfect": false,
+          "index": 4
+        },
+        {
+          "hint": "capitalize",
+          "answer": "capitalizar",
+          "answers": [
+            "capitalizar"
+          ],
+          "imperfect": false,
+          "index": 5
+        },
+        {
+          "hint": "catalyze",
+          "answer": "catalizar",
+          "answers": [
+            "catalizar"
+          ],
+          "imperfect": true,
+          "index": 6
+        },
+        {
+          "hint": "deodorize",
+          "answer": "deodorizar",
+          "answers": [
+            "deodorizar"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "editorialize",
+          "answer": "editorializar",
+          "answers": [
+            "editorializar"
+          ],
+          "imperfect": false,
+          "index": 8
+        },
+        {
+          "hint": "equalize",
+          "answer": "equalizar",
+          "answers": [
+            "equalizar"
+          ],
+          "imperfect": false,
+          "index": 9
+        },
+        {
+          "hint": "familiarize",
+          "answer": "familiarizar",
+          "answers": [
+            "familiarizar"
+          ],
+          "imperfect": false,
+          "index": 10
+        },
+        {
+          "hint": "federalize",
+          "answer": "federalizar",
+          "answers": [
+            "federalizar"
+          ],
+          "imperfect": false,
+          "index": 11
+        },
+        {
+          "hint": "galvanize",
+          "answer": "galvanizar",
+          "answers": [
+            "galvanizar"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "glamorize",
+          "answer": "glamorizar",
+          "answers": [
+            "glamorizar"
+          ],
+          "imperfect": false,
+          "index": 13
+        },
+        {
+          "hint": "habitualize",
+          "answer": "habitualizar",
+          "answers": [
+            "habitualizar"
+          ],
+          "imperfect": false,
+          "index": 14
+        },
+        {
+          "hint": "harmonize",
+          "answer": "armonizar",
+          "answers": [
+            "armonizar"
+          ],
+          "imperfect": true,
+          "index": 15
+        },
+        {
+          "hint": "individualize",
+          "answer": "individualizar",
+          "answers": [
+            "individualizar"
+          ],
+          "imperfect": false,
+          "index": 16
+        },
+        {
+          "hint": "industrialize",
+          "answer": "industrializar",
+          "answers": [
+            "industrializar"
+          ],
+          "imperfect": false,
+          "index": 17
+        },
+        {
+          "hint": "initialize",
+          "answer": "inicializar",
+          "answers": [
+            "inicializar"
+          ],
+          "imperfect": true,
+          "index": 18
+        },
+        {
+          "hint": "legalize",
+          "answer": "legalizar",
+          "answers": [
+            "legalizar"
+          ],
+          "imperfect": false,
+          "index": 19
+        },
+        {
+          "hint": "liberalize",
+          "answer": "liberalizar",
+          "answers": [
+            "liberalizar"
+          ],
+          "imperfect": false,
+          "index": 20
+        },
+        {
+          "hint": "materialize",
+          "answer": "materializar",
+          "answers": [
+            "materializar"
+          ],
+          "imperfect": false,
+          "index": 21
+        },
+        {
+          "hint": "modernize",
+          "answer": "modernizar",
+          "answers": [
+            "modernizar"
+          ],
+          "imperfect": false,
+          "index": 22
+        },
+        {
+          "hint": "neutralize",
+          "answer": "neutralizar",
+          "answers": [
+            "neutralizar"
+          ],
+          "imperfect": false,
+          "index": 23
+        },
+        {
+          "hint": "patronize",
+          "answer": "patronizar",
+          "answers": [
+            "patronizar"
+          ],
+          "imperfect": false,
+          "index": 24
+        },
+        {
+          "hint": "penalize",
+          "answer": "penalizar",
+          "answers": [
+            "penalizar"
+          ],
+          "imperfect": false,
+          "index": 25
+        },
+        {
+          "hint": "specialize",
+          "answer": "especializar",
+          "answers": [
+            "especializar"
+          ],
+          "imperfect": true,
+          "index": 26
+        },
+        {
+          "hint": "trivialize",
+          "answer": "trivializar",
+          "answers": [
+            "trivializar"
+          ],
+          "imperfect": false,
+          "index": 27
+        },
+        {
+          "hint": "vulcanize",
+          "answer": "vulcanizar",
+          "answers": [
+            "vulcanizar"
+          ],
+          "imperfect": false,
+          "index": 28
+        },
+        {
+          "hint": "realize",
+          "answer": "realizar",
+          "answers": [
+            "realizar"
+          ],
+          "imperfect": false,
+          "index": 29
+        },
+        {
+          "hint": "mobilize",
+          "answer": "mobilizar",
+          "answers": [
+            "mobilizar"
+          ],
+          "imperfect": false,
+          "index": 30
+        }
+      ]
+    },
+    {
+      "id": "rule-al",
+      "title": "The \"AL\" Rule",
+      "description": "Rule: English words ending in ...al often keep ...al in Spanish (with some spelling quirks).",
+      "source": "https://knowspanish.com/the-AL-rule.html",
+      "count": 36,
+      "items": [
+        {
+          "hint": "abdominal",
+          "answer": "abdominal",
+          "answers": [
+            "abdominal"
+          ],
+          "imperfect": false,
+          "index": 1
+        },
+        {
+          "hint": "aboriginal",
+          "answer": "aboriginal",
+          "answers": [
+            "aboriginal"
+          ],
+          "imperfect": false,
+          "index": 2
+        },
+        {
+          "hint": "alluvial",
+          "answer": "aluvial",
+          "answers": [
+            "aluvial"
+          ],
+          "imperfect": true,
+          "index": 3
+        },
+        {
+          "hint": "antisocial",
+          "answer": "antisocial",
+          "answers": [
+            "antisocial"
+          ],
+          "imperfect": false,
+          "index": 4
+        },
+        {
+          "hint": "arterial",
+          "answer": "arterial",
+          "answers": [
+            "arterial"
+          ],
+          "imperfect": false,
+          "index": 5
+        },
+        {
+          "hint": "bestial",
+          "answer": "bestial",
+          "answers": [
+            "bestial"
+          ],
+          "imperfect": false,
+          "index": 6
+        },
+        {
+          "hint": "bilateral",
+          "answer": "bilateral",
+          "answers": [
+            "bilateral"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "capital",
+          "answer": "capital",
+          "answers": [
+            "capital"
+          ],
+          "imperfect": false,
+          "index": 8
+        },
+        {
+          "hint": "celestial",
+          "answer": "celestial",
+          "answers": [
+            "celestial"
+          ],
+          "imperfect": false,
+          "index": 9
+        },
+        {
+          "hint": "commercial",
+          "answer": "comercial",
+          "answers": [
+            "comercial"
+          ],
+          "imperfect": true,
+          "index": 10
+        },
+        {
+          "hint": "communal",
+          "answer": "comunal",
+          "answers": [
+            "comunal"
+          ],
+          "imperfect": true,
+          "index": 11
+        },
+        {
+          "hint": "cordial",
+          "answer": "cordial",
+          "answers": [
+            "cordial"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "credential",
+          "answer": "credencial",
+          "answers": [
+            "credencial"
+          ],
+          "imperfect": true,
+          "index": 13
+        },
+        {
+          "hint": "crystal",
+          "answer": "cristal",
+          "answers": [
+            "cristal"
+          ],
+          "imperfect": true,
+          "index": 14
+        },
+        {
+          "hint": "cultural",
+          "answer": "cultural",
+          "answers": [
+            "cultural"
+          ],
+          "imperfect": false,
+          "index": 15
+        },
+        {
+          "hint": "decimal",
+          "answer": "decimal",
+          "answers": [
+            "decimal"
+          ],
+          "imperfect": false,
+          "index": 16
+        },
+        {
+          "hint": "digital",
+          "answer": "digital",
+          "answers": [
+            "digital"
+          ],
+          "imperfect": false,
+          "index": 17
+        },
+        {
+          "hint": "elemental",
+          "answer": "elemental",
+          "answers": [
+            "elemental"
+          ],
+          "imperfect": false,
+          "index": 18
+        },
+        {
+          "hint": "facial",
+          "answer": "facial",
+          "answers": [
+            "facial"
+          ],
+          "imperfect": false,
+          "index": 19
+        },
+        {
+          "hint": "federal",
+          "answer": "federal",
+          "answers": [
+            "federal"
+          ],
+          "imperfect": false,
+          "index": 20
+        },
+        {
+          "hint": "funeral",
+          "answer": "funeral",
+          "answers": [
+            "funeral"
+          ],
+          "imperfect": false,
+          "index": 21
+        },
+        {
+          "hint": "illegal",
+          "answer": "ilegal",
+          "answers": [
+            "ilegal"
+          ],
+          "imperfect": true,
+          "index": 22
+        },
+        {
+          "hint": "immoral",
+          "answer": "inmoral",
+          "answers": [
+            "inmoral"
+          ],
+          "imperfect": true,
+          "index": 23
+        },
+        {
+          "hint": "initial",
+          "answer": "inicial",
+          "answers": [
+            "inicial"
+          ],
+          "imperfect": true,
+          "index": 24
+        },
+        {
+          "hint": "international",
+          "answer": "internacional",
+          "answers": [
+            "internacional"
+          ],
+          "imperfect": true,
+          "index": 25
+        },
+        {
+          "hint": "lateral",
+          "answer": "lateral",
+          "answers": [
+            "lateral"
+          ],
+          "imperfect": false,
+          "index": 26
+        },
+        {
+          "hint": "martial",
+          "answer": "marcial",
+          "answers": [
+            "marcial"
+          ],
+          "imperfect": true,
+          "index": 27
+        },
+        {
+          "hint": "official",
+          "answer": "oficial",
+          "answers": [
+            "oficial"
+          ],
+          "imperfect": true,
+          "index": 28
+        },
+        {
+          "hint": "spatial",
+          "answer": "espacial",
+          "answers": [
+            "espacial"
+          ],
+          "imperfect": true,
+          "index": 29
+        },
+        {
+          "hint": "special",
+          "answer": "especial",
+          "answers": [
+            "especial"
+          ],
+          "imperfect": true,
+          "index": 30
+        },
+        {
+          "hint": "structural",
+          "answer": "estructural",
+          "answers": [
+            "estructural"
+          ],
+          "imperfect": true,
+          "index": 31
+        },
+        {
+          "hint": "thermal",
+          "answer": "termal",
+          "answers": [
+            "termal"
+          ],
+          "imperfect": true,
+          "index": 32
+        },
+        {
+          "hint": "tropical",
+          "answer": "tropical",
+          "answers": [
+            "tropical"
+          ],
+          "imperfect": false,
+          "index": 33
+        },
+        {
+          "hint": "universal",
+          "answer": "universal",
+          "answers": [
+            "universal"
+          ],
+          "imperfect": false,
+          "index": 34
+        },
+        {
+          "hint": "visual",
+          "answer": "visual",
+          "answers": [
+            "visual"
+          ],
+          "imperfect": false,
+          "index": 35
+        },
+        {
+          "hint": "continual",
+          "answer": "continuo",
+          "answers": [
+            "continuo"
+          ],
+          "imperfect": true,
+          "index": 36
+        }
+      ]
+    },
+    {
+      "id": "rule-ic",
+      "title": "The \"IC\" Rule",
+      "description": "Rule: English words ending in ...ic usually become Spanish ...ico.",
+      "source": "https://knowspanish.com/the-IC-rule.html",
+      "count": 30,
+      "items": [
+        {
+          "hint": "academic",
+          "answer": "académico",
+          "answers": [
+            "académico"
+          ],
+          "imperfect": false,
+          "index": 1
+        },
+        {
+          "hint": "acidic",
+          "answer": "acídico",
+          "answers": [
+            "acídico"
+          ],
+          "imperfect": false,
+          "index": 2
+        },
+        {
+          "hint": "allergic",
+          "answer": "alérgico",
+          "answers": [
+            "alérgico"
+          ],
+          "imperfect": true,
+          "index": 3
+        },
+        {
+          "hint": "aquatic",
+          "answer": "acuático",
+          "answers": [
+            "acuático"
+          ],
+          "imperfect": true,
+          "index": 4
+        },
+        {
+          "hint": "arctic",
+          "answer": "ártico",
+          "answers": [
+            "ártico"
+          ],
+          "imperfect": true,
+          "index": 5
+        },
+        {
+          "hint": "caloric",
+          "answer": "calórico",
+          "answers": [
+            "calórico"
+          ],
+          "imperfect": false,
+          "index": 6
+        },
+        {
+          "hint": "caustic",
+          "answer": "caústico",
+          "answers": [
+            "caústico"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "critic",
+          "answer": "crítico",
+          "answers": [
+            "crítico"
+          ],
+          "imperfect": false,
+          "index": 8
+        },
+        {
+          "hint": "eccentric",
+          "answer": "excéntrico",
+          "answers": [
+            "excéntrico"
+          ],
+          "imperfect": true,
+          "index": 9
+        },
+        {
+          "hint": "fanatic",
+          "answer": "fanático",
+          "answers": [
+            "fanático"
+          ],
+          "imperfect": false,
+          "index": 10
+        },
+        {
+          "hint": "fantastic",
+          "answer": "fantástico",
+          "answers": [
+            "fantástico"
+          ],
+          "imperfect": false,
+          "index": 11
+        },
+        {
+          "hint": "galactic",
+          "answer": "galáctico",
+          "answers": [
+            "galáctico"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "gastric",
+          "answer": "gástrico",
+          "answers": [
+            "gástrico"
+          ],
+          "imperfect": false,
+          "index": 13
+        },
+        {
+          "hint": "geographic",
+          "answer": "geográfico",
+          "answers": [
+            "geográfico"
+          ],
+          "imperfect": true,
+          "index": 14
+        },
+        {
+          "hint": "harmonic",
+          "answer": "armónico",
+          "answers": [
+            "armónico"
+          ],
+          "imperfect": true,
+          "index": 15
+        },
+        {
+          "hint": "intrinsic",
+          "answer": "intrínseco",
+          "answers": [
+            "intrínseco"
+          ],
+          "imperfect": true,
+          "index": 16
+        },
+        {
+          "hint": "kinetic",
+          "answer": "kinético",
+          "answers": [
+            "kinético"
+          ],
+          "imperfect": false,
+          "index": 17
+        },
+        {
+          "hint": "linguistic",
+          "answer": "lingüístico",
+          "answers": [
+            "lingüístico"
+          ],
+          "imperfect": false,
+          "index": 18
+        },
+        {
+          "hint": "magnetic",
+          "answer": "magnético",
+          "answers": [
+            "magnético"
+          ],
+          "imperfect": false,
+          "index": 19
+        },
+        {
+          "hint": "microscopic",
+          "answer": "microscópico",
+          "answers": [
+            "microscópico"
+          ],
+          "imperfect": false,
+          "index": 20
+        },
+        {
+          "hint": "nordic",
+          "answer": "nórdico",
+          "answers": [
+            "nórdico"
+          ],
+          "imperfect": false,
+          "index": 21
+        },
+        {
+          "hint": "organic",
+          "answer": "orgánico",
+          "answers": [
+            "orgánico"
+          ],
+          "imperfect": false,
+          "index": 22
+        },
+        {
+          "hint": "panic",
+          "answer": "pánico",
+          "answers": [
+            "pánico"
+          ],
+          "imperfect": false,
+          "index": 23
+        },
+        {
+          "hint": "plastic",
+          "answer": "plástico",
+          "answers": [
+            "plástico"
+          ],
+          "imperfect": false,
+          "index": 24
+        },
+        {
+          "hint": "quadratic",
+          "answer": "cuadrático",
+          "answers": [
+            "cuadrático"
+          ],
+          "imperfect": true,
+          "index": 25
+        },
+        {
+          "hint": "semantic",
+          "answer": "semántico",
+          "answers": [
+            "semántico"
+          ],
+          "imperfect": false,
+          "index": 26
+        },
+        {
+          "hint": "septic",
+          "answer": "séptico",
+          "answers": [
+            "séptico"
+          ],
+          "imperfect": false,
+          "index": 27
+        },
+        {
+          "hint": "telegraphic",
+          "answer": "telegráfico",
+          "answers": [
+            "telegráfico"
+          ],
+          "imperfect": true,
+          "index": 28
+        },
+        {
+          "hint": "toxic",
+          "answer": "tóxico",
+          "answers": [
+            "tóxico"
+          ],
+          "imperfect": false,
+          "index": 29
+        },
+        {
+          "hint": "volcanic",
+          "answer": "volcánico",
+          "answers": [
+            "volcánico"
+          ],
+          "imperfect": false,
+          "index": 30
+        }
+      ]
+    },
+    {
+      "id": "rule-ity",
+      "title": "The \"ITY\" Rule",
+      "description": "Rule: English words ending in ...ity often become Spanish ...idad.",
+      "source": "https://knowspanish.com/the-ITY-rule.html",
+      "count": 30,
+      "items": [
+        {
+          "hint": "ability",
+          "answer": "habilidad",
+          "answers": [
+            "habilidad"
+          ],
+          "imperfect": true,
+          "index": 1
+        },
+        {
+          "hint": "agility",
+          "answer": "agilidad",
+          "answers": [
+            "agilidad"
+          ],
+          "imperfect": false,
+          "index": 2
+        },
+        {
+          "hint": "amiability",
+          "answer": "amabilidad",
+          "answers": [
+            "amabilidad"
+          ],
+          "imperfect": true,
+          "index": 3
+        },
+        {
+          "hint": "capacity",
+          "answer": "capacidad",
+          "answers": [
+            "capacidad"
+          ],
+          "imperfect": false,
+          "index": 4
+        },
+        {
+          "hint": "compatibility",
+          "answer": "compatibilidad",
+          "answers": [
+            "compatibilidad"
+          ],
+          "imperfect": false,
+          "index": 5
+        },
+        {
+          "hint": "continuity",
+          "answer": "continuidad",
+          "answers": [
+            "continuidad"
+          ],
+          "imperfect": false,
+          "index": 6
+        },
+        {
+          "hint": "density",
+          "answer": "densidad",
+          "answers": [
+            "densidad"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "ductility",
+          "answer": "ductilidad",
+          "answers": [
+            "ductilidad"
+          ],
+          "imperfect": false,
+          "index": 8
+        },
+        {
+          "hint": "elasticity",
+          "answer": "elasticidad",
+          "answers": [
+            "elasticidad"
+          ],
+          "imperfect": false,
+          "index": 9
+        },
+        {
+          "hint": "electricity",
+          "answer": "electricidad",
+          "answers": [
+            "electricidad"
+          ],
+          "imperfect": false,
+          "index": 10
+        },
+        {
+          "hint": "finality",
+          "answer": "finalidad",
+          "answers": [
+            "finalidad"
+          ],
+          "imperfect": false,
+          "index": 11
+        },
+        {
+          "hint": "familiarity",
+          "answer": "familiaridad",
+          "answers": [
+            "familiaridad"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "generosity",
+          "answer": "generosidad",
+          "answers": [
+            "generosidad"
+          ],
+          "imperfect": false,
+          "index": 13
+        },
+        {
+          "hint": "humanity",
+          "answer": "humanidad",
+          "answers": [
+            "humanidad"
+          ],
+          "imperfect": false,
+          "index": 14
+        },
+        {
+          "hint": "identity",
+          "answer": "identidad",
+          "answers": [
+            "identidad"
+          ],
+          "imperfect": false,
+          "index": 15
+        },
+        {
+          "hint": "immobility",
+          "answer": "inmovilidad",
+          "answers": [
+            "inmovilidad"
+          ],
+          "imperfect": true,
+          "index": 16
+        },
+        {
+          "hint": "inactivity",
+          "answer": "inactividad",
+          "answers": [
+            "inactividad"
+          ],
+          "imperfect": false,
+          "index": 17
+        },
+        {
+          "hint": "instability",
+          "answer": "instabilidad",
+          "answers": [
+            "instabilidad"
+          ],
+          "imperfect": false,
+          "index": 18
+        },
+        {
+          "hint": "justifiability",
+          "answer": "justificabilidad",
+          "answers": [
+            "justificabilidad"
+          ],
+          "imperfect": true,
+          "index": 19
+        },
+        {
+          "hint": "liability",
+          "answer": "liabilidad",
+          "answers": [
+            "liabilidad"
+          ],
+          "imperfect": false,
+          "index": 20
+        },
+        {
+          "hint": "luminosity",
+          "answer": "luminosidad",
+          "answers": [
+            "luminosidad"
+          ],
+          "imperfect": false,
+          "index": 21
+        },
+        {
+          "hint": "mediocrity",
+          "answer": "mediocridad",
+          "answers": [
+            "mediocridad"
+          ],
+          "imperfect": false,
+          "index": 22
+        },
+        {
+          "hint": "neutrality",
+          "answer": "neutralidad",
+          "answers": [
+            "neutralidad"
+          ],
+          "imperfect": false,
+          "index": 23
+        },
+        {
+          "hint": "normality",
+          "answer": "normalidad",
+          "answers": [
+            "normalidad"
+          ],
+          "imperfect": false,
+          "index": 24
+        },
+        {
+          "hint": "parity",
+          "answer": "paridad",
+          "answers": [
+            "paridad"
+          ],
+          "imperfect": false,
+          "index": 25
+        },
+        {
+          "hint": "punctuality",
+          "answer": "puntualidad",
+          "answers": [
+            "puntualidad"
+          ],
+          "imperfect": true,
+          "index": 26
+        },
+        {
+          "hint": "tranquility",
+          "answer": "tranquilidad",
+          "answers": [
+            "tranquilidad"
+          ],
+          "imperfect": false,
+          "index": 27
+        },
+        {
+          "hint": "ubiquity",
+          "answer": "ubicuidad",
+          "answers": [
+            "ubicuidad"
+          ],
+          "imperfect": true,
+          "index": 28
+        },
+        {
+          "hint": "vanity",
+          "answer": "vanidad",
+          "answers": [
+            "vanidad"
+          ],
+          "imperfect": false,
+          "index": 29
+        },
+        {
+          "hint": "veracity",
+          "answer": "veracidad",
+          "answers": [
+            "veracidad"
+          ],
+          "imperfect": false,
+          "index": 30
+        }
+      ]
+    },
+    {
+      "id": "rule-ism",
+      "title": "The \"ISM / YSM\" Rule",
+      "description": "Rule: English words ending in ...ism or ...ysm usually become Spanish ...ismo.",
+      "source": "https://knowspanish.com/the-ISM-rule.html",
+      "count": 27,
+      "items": [
+        {
+          "hint": "abysm",
+          "answer": "abismo",
+          "answers": [
+            "abismo"
+          ],
+          "imperfect": false,
+          "index": 1
+        },
+        {
+          "hint": "anachronism",
+          "answer": "anacronismo",
+          "answers": [
+            "anacronismo"
+          ],
+          "imperfect": true,
+          "index": 2
+        },
+        {
+          "hint": "aneurysm",
+          "answer": "aneurisma",
+          "answers": [
+            "aneurisma"
+          ],
+          "imperfect": true,
+          "index": 3
+        },
+        {
+          "hint": "baptism",
+          "answer": "bautismo",
+          "answers": [
+            "bautismo"
+          ],
+          "imperfect": true,
+          "index": 4
+        },
+        {
+          "hint": "cannibalism",
+          "answer": "canibalismo",
+          "answers": [
+            "canibalismo"
+          ],
+          "imperfect": true,
+          "index": 5
+        },
+        {
+          "hint": "darwinism",
+          "answer": "darwinismo",
+          "answers": [
+            "darwinismo"
+          ],
+          "imperfect": false,
+          "index": 6
+        },
+        {
+          "hint": "dynamism",
+          "answer": "dinamismo",
+          "answers": [
+            "dinamismo"
+          ],
+          "imperfect": true,
+          "index": 7
+        },
+        {
+          "hint": "embolism",
+          "answer": "embolismo",
+          "answers": [
+            "embolismo"
+          ],
+          "imperfect": false,
+          "index": 8
+        },
+        {
+          "hint": "fanaticism",
+          "answer": "fanaticismo",
+          "answers": [
+            "fanaticismo"
+          ],
+          "imperfect": false,
+          "index": 9
+        },
+        {
+          "hint": "geotropism",
+          "answer": "geotropismo",
+          "answers": [
+            "geotropismo"
+          ],
+          "imperfect": false,
+          "index": 10
+        },
+        {
+          "hint": "imagism",
+          "answer": "imaginismo",
+          "answers": [
+            "imaginismo"
+          ],
+          "imperfect": true,
+          "index": 11
+        },
+        {
+          "hint": "imperialism",
+          "answer": "imperialismo",
+          "answers": [
+            "imperialismo"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "impressionism",
+          "answer": "impresionismo",
+          "answers": [
+            "impresionismo"
+          ],
+          "imperfect": true,
+          "index": 13
+        },
+        {
+          "hint": "individualism",
+          "answer": "individualismo",
+          "answers": [
+            "individualismo"
+          ],
+          "imperfect": false,
+          "index": 14
+        },
+        {
+          "hint": "materialism",
+          "answer": "materialismo",
+          "answers": [
+            "materialismo"
+          ],
+          "imperfect": false,
+          "index": 15
+        },
+        {
+          "hint": "mysticism",
+          "answer": "misticismo",
+          "answers": [
+            "misticismo"
+          ],
+          "imperfect": true,
+          "index": 16
+        },
+        {
+          "hint": "occultism",
+          "answer": "ocultismo",
+          "answers": [
+            "ocultismo"
+          ],
+          "imperfect": true,
+          "index": 17
+        },
+        {
+          "hint": "organism",
+          "answer": "organismo",
+          "answers": [
+            "organismo"
+          ],
+          "imperfect": false,
+          "index": 18
+        },
+        {
+          "hint": "opportunism",
+          "answer": "oportunismo",
+          "answers": [
+            "oportunismo"
+          ],
+          "imperfect": true,
+          "index": 19
+        },
+        {
+          "hint": "phototropism",
+          "answer": "fototropismo",
+          "answers": [
+            "fototropismo"
+          ],
+          "imperfect": true,
+          "index": 20
+        },
+        {
+          "hint": "quietism",
+          "answer": "quietismo",
+          "answers": [
+            "quietismo"
+          ],
+          "imperfect": false,
+          "index": 21
+        },
+        {
+          "hint": "rationalism",
+          "answer": "racionalismo",
+          "answers": [
+            "racionalismo"
+          ],
+          "imperfect": true,
+          "index": 22
+        },
+        {
+          "hint": "realism",
+          "answer": "realismo",
+          "answers": [
+            "realismo"
+          ],
+          "imperfect": false,
+          "index": 23
+        },
+        {
+          "hint": "socialism",
+          "answer": "socialismo",
+          "answers": [
+            "socialismo"
+          ],
+          "imperfect": false,
+          "index": 24
+        },
+        {
+          "hint": "universalism",
+          "answer": "universalismo",
+          "answers": [
+            "universalismo"
+          ],
+          "imperfect": false,
+          "index": 25
+        },
+        {
+          "hint": "volcanism",
+          "answer": "vulcanismo",
+          "answers": [
+            "vulcanismo"
+          ],
+          "imperfect": true,
+          "index": 26
+        },
+        {
+          "hint": "tourism",
+          "answer": "turismo",
+          "answers": [
+            "turismo"
+          ],
+          "imperfect": true,
+          "index": 27
+        }
+      ]
+    },
+    {
+      "id": "rule-sion",
+      "title": "The \"SION\" Rule",
+      "description": "Rule: English words ending in ...sion generally become Spanish ...sión.",
+      "source": "https://knowspanish.com/the-SION-rule.html",
+      "count": 18,
+      "items": [
+        {
+          "hint": "aspersion",
+          "answer": "aspersión",
+          "answers": [
+            "aspersión"
+          ],
+          "imperfect": false,
+          "index": 1
+        },
+        {
+          "hint": "compassion",
+          "answer": "compasión",
+          "answers": [
+            "compasión"
+          ],
+          "imperfect": true,
+          "index": 2
+        },
+        {
+          "hint": "comprehension",
+          "answer": "comprensión",
+          "answers": [
+            "comprensión"
+          ],
+          "imperfect": true,
+          "index": 3
+        },
+        {
+          "hint": "compulsion",
+          "answer": "compulsión",
+          "answers": [
+            "compulsión"
+          ],
+          "imperfect": false,
+          "index": 4
+        },
+        {
+          "hint": "conclusion",
+          "answer": "conclusión",
+          "answers": [
+            "conclusión"
+          ],
+          "imperfect": false,
+          "index": 5
+        },
+        {
+          "hint": "confusion",
+          "answer": "confusión",
+          "answers": [
+            "confusión"
+          ],
+          "imperfect": false,
+          "index": 6
+        },
+        {
+          "hint": "decision",
+          "answer": "decisión",
+          "answers": [
+            "decisión"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "defusion",
+          "answer": "defusión",
+          "answers": [
+            "defusión"
+          ],
+          "imperfect": false,
+          "index": 8
+        },
+        {
+          "hint": "fission",
+          "answer": "fisión",
+          "answers": [
+            "fisión"
+          ],
+          "imperfect": true,
+          "index": 9
+        },
+        {
+          "hint": "fusion",
+          "answer": "fusión",
+          "answers": [
+            "fusión"
+          ],
+          "imperfect": false,
+          "index": 10
+        },
+        {
+          "hint": "illusion",
+          "answer": "ilusión",
+          "answers": [
+            "ilusión"
+          ],
+          "imperfect": true,
+          "index": 11
+        },
+        {
+          "hint": "lesion",
+          "answer": "lesión",
+          "answers": [
+            "lesión"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "mission",
+          "answer": "misión",
+          "answers": [
+            "misión"
+          ],
+          "imperfect": true,
+          "index": 13
+        },
+        {
+          "hint": "passion",
+          "answer": "pasión",
+          "answers": [
+            "pasión"
+          ],
+          "imperfect": true,
+          "index": 14
+        },
+        {
+          "hint": "pension",
+          "answer": "pensión",
+          "answers": [
+            "pensión"
+          ],
+          "imperfect": false,
+          "index": 15
+        },
+        {
+          "hint": "seclusion",
+          "answer": "seclusión",
+          "answers": [
+            "seclusión"
+          ],
+          "imperfect": false,
+          "index": 16
+        },
+        {
+          "hint": "session",
+          "answer": "sesión",
+          "answers": [
+            "sesión"
+          ],
+          "imperfect": true,
+          "index": 17
+        },
+        {
+          "hint": "tension",
+          "answer": "tensión",
+          "answers": [
+            "tensión"
+          ],
+          "imperfect": false,
+          "index": 18
+        }
+      ]
+    },
+    {
+      "id": "rule-ous",
+      "title": "The \"OUS\" Rule",
+      "description": "Rule: English words ending in ...ous often become Spanish ...oso.",
+      "source": "https://knowspanish.com/the-OUS-rule.html",
+      "count": 30,
+      "items": [
+        {
+          "hint": "albuminous",
+          "answer": "albuminoso",
+          "answers": [
+            "albuminoso"
+          ],
+          "imperfect": false,
+          "index": 1
+        },
+        {
+          "hint": "amorous",
+          "answer": "amoroso",
+          "answers": [
+            "amoroso"
+          ],
+          "imperfect": false,
+          "index": 2
+        },
+        {
+          "hint": "auspicious",
+          "answer": "auspicioso",
+          "answers": [
+            "auspicioso"
+          ],
+          "imperfect": false,
+          "index": 3
+        },
+        {
+          "hint": "billious",
+          "answer": "bilioso",
+          "answers": [
+            "bilioso"
+          ],
+          "imperfect": true,
+          "index": 4
+        },
+        {
+          "hint": "bulbous",
+          "answer": "bulboso",
+          "answers": [
+            "bulboso"
+          ],
+          "imperfect": false,
+          "index": 5
+        },
+        {
+          "hint": "cadaverous",
+          "answer": "cadaveroso",
+          "answers": [
+            "cadaveroso"
+          ],
+          "imperfect": false,
+          "index": 6
+        },
+        {
+          "hint": "capacious",
+          "answer": "capacioso",
+          "answers": [
+            "capacioso"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "curious",
+          "answer": "curioso",
+          "answers": [
+            "curioso"
+          ],
+          "imperfect": false,
+          "index": 8
+        },
+        {
+          "hint": "delicious",
+          "answer": "delicioso",
+          "answers": [
+            "delicioso"
+          ],
+          "imperfect": false,
+          "index": 9
+        },
+        {
+          "hint": "fallacious",
+          "answer": "falacioso",
+          "answers": [
+            "falacioso"
+          ],
+          "imperfect": true,
+          "index": 10
+        },
+        {
+          "hint": "fastidious",
+          "answer": "fastidioso",
+          "answers": [
+            "fastidioso"
+          ],
+          "imperfect": false,
+          "index": 11
+        },
+        {
+          "hint": "fibrous",
+          "answer": "fibroso",
+          "answers": [
+            "fibroso"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "generous",
+          "answer": "generoso",
+          "answers": [
+            "generoso"
+          ],
+          "imperfect": false,
+          "index": 13
+        },
+        {
+          "hint": "glamorous",
+          "answer": "glamoroso",
+          "answers": [
+            "glamoroso"
+          ],
+          "imperfect": false,
+          "index": 14
+        },
+        {
+          "hint": "gracious",
+          "answer": "gracioso",
+          "answers": [
+            "gracioso"
+          ],
+          "imperfect": false,
+          "index": 15
+        },
+        {
+          "hint": "harmonious",
+          "answer": "armonioso",
+          "answers": [
+            "armonioso"
+          ],
+          "imperfect": true,
+          "index": 16
+        },
+        {
+          "hint": "laborious",
+          "answer": "laborioso",
+          "answers": [
+            "laborioso"
+          ],
+          "imperfect": false,
+          "index": 17
+        },
+        {
+          "hint": "luminous",
+          "answer": "luminoso",
+          "answers": [
+            "luminoso"
+          ],
+          "imperfect": false,
+          "index": 18
+        },
+        {
+          "hint": "monstrous",
+          "answer": "monstruoso",
+          "answers": [
+            "monstruoso"
+          ],
+          "imperfect": true,
+          "index": 19
+        },
+        {
+          "hint": "pompous",
+          "answer": "pomposo",
+          "answers": [
+            "pomposo"
+          ],
+          "imperfect": false,
+          "index": 20
+        },
+        {
+          "hint": "precious",
+          "answer": "precioso",
+          "answers": [
+            "precioso"
+          ],
+          "imperfect": false,
+          "index": 21
+        },
+        {
+          "hint": "religious",
+          "answer": "religioso",
+          "answers": [
+            "religioso"
+          ],
+          "imperfect": false,
+          "index": 22
+        },
+        {
+          "hint": "scandalous",
+          "answer": "escandaloso",
+          "answers": [
+            "escandaloso"
+          ],
+          "imperfect": true,
+          "index": 23
+        },
+        {
+          "hint": "spacious",
+          "answer": "espacioso",
+          "answers": [
+            "espacioso"
+          ],
+          "imperfect": true,
+          "index": 24
+        },
+        {
+          "hint": "sulphurous",
+          "answer": "sulfuroso",
+          "answers": [
+            "sulfuroso"
+          ],
+          "imperfect": true,
+          "index": 25
+        },
+        {
+          "hint": "vicious",
+          "answer": "vicioso",
+          "answers": [
+            "vicioso"
+          ],
+          "imperfect": false,
+          "index": 26
+        },
+        {
+          "hint": "virtuous",
+          "answer": "virtuoso",
+          "answers": [
+            "virtuoso"
+          ],
+          "imperfect": false,
+          "index": 27
+        },
+        {
+          "hint": "ambitious",
+          "answer": "ambicioso",
+          "answers": [
+            "ambicioso"
+          ],
+          "imperfect": true,
+          "index": 28
+        },
+        {
+          "hint": "ferocious",
+          "answer": "feroz",
+          "answers": [
+            "feroz"
+          ],
+          "imperfect": true,
+          "index": 29
+        },
+        {
+          "hint": "tenacious",
+          "answer": "tenaz",
+          "answers": [
+            "tenaz"
+          ],
+          "imperfect": true,
+          "index": 30
+        }
+      ]
+    },
+    {
+      "id": "rule-ent",
+      "title": "The \"ENT\" Rule",
+      "description": "Rule: English words ending in ...ent (except ...ment) often become Spanish ...ente.",
+      "source": "https://knowspanish.com/the-ENT-rule.html",
+      "count": 33,
+      "items": [
+        {
+          "hint": "affluent",
+          "answer": "afluente",
+          "answers": [
+            "afluente"
+          ],
+          "imperfect": true,
+          "index": 1
+        },
+        {
+          "hint": "apparent",
+          "answer": "aparente",
+          "answers": [
+            "aparente"
+          ],
+          "imperfect": true,
+          "index": 2
+        },
+        {
+          "hint": "astringent",
+          "answer": "astringente",
+          "answers": [
+            "astringente"
+          ],
+          "imperfect": false,
+          "index": 3
+        },
+        {
+          "hint": "client",
+          "answer": "cliente",
+          "answers": [
+            "cliente"
+          ],
+          "imperfect": false,
+          "index": 4
+        },
+        {
+          "hint": "coefficient",
+          "answer": "coeficiente",
+          "answers": [
+            "coeficiente"
+          ],
+          "imperfect": true,
+          "index": 5
+        },
+        {
+          "hint": "coincident",
+          "answer": "coincidente",
+          "answers": [
+            "coincidente"
+          ],
+          "imperfect": false,
+          "index": 6
+        },
+        {
+          "hint": "consistent",
+          "answer": "consistente",
+          "answers": [
+            "consistente"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "continent",
+          "answer": "continente",
+          "answers": [
+            "continente"
+          ],
+          "imperfect": false,
+          "index": 8
+        },
+        {
+          "hint": "detergent",
+          "answer": "detergente",
+          "answers": [
+            "detergente"
+          ],
+          "imperfect": false,
+          "index": 9
+        },
+        {
+          "hint": "different",
+          "answer": "diferente",
+          "answers": [
+            "diferente"
+          ],
+          "imperfect": true,
+          "index": 10
+        },
+        {
+          "hint": "efficient",
+          "answer": "eficiente",
+          "answers": [
+            "eficiente"
+          ],
+          "imperfect": true,
+          "index": 11
+        },
+        {
+          "hint": "eminent",
+          "answer": "eminente",
+          "answers": [
+            "eminente"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "equivalent",
+          "answer": "equivalente",
+          "answers": [
+            "equivalente"
+          ],
+          "imperfect": false,
+          "index": 13
+        },
+        {
+          "hint": "excellent",
+          "answer": "excelente",
+          "answers": [
+            "excelente"
+          ],
+          "imperfect": true,
+          "index": 14
+        },
+        {
+          "hint": "fluorescent",
+          "answer": "fluorescente",
+          "answers": [
+            "fluorescente"
+          ],
+          "imperfect": false,
+          "index": 15
+        },
+        {
+          "hint": "gradient",
+          "answer": "gradiente",
+          "answers": [
+            "gradiente"
+          ],
+          "imperfect": false,
+          "index": 16
+        },
+        {
+          "hint": "inconvenient",
+          "answer": "inconveniente",
+          "answers": [
+            "inconveniente"
+          ],
+          "imperfect": false,
+          "index": 17
+        },
+        {
+          "hint": "indifferent",
+          "answer": "indiferente",
+          "answers": [
+            "indiferente"
+          ],
+          "imperfect": true,
+          "index": 18
+        },
+        {
+          "hint": "innocent",
+          "answer": "inocente",
+          "answers": [
+            "inocente"
+          ],
+          "imperfect": true,
+          "index": 19
+        },
+        {
+          "hint": "intelligent",
+          "answer": "inteligente",
+          "answers": [
+            "inteligente"
+          ],
+          "imperfect": true,
+          "index": 20
+        },
+        {
+          "hint": "latent",
+          "answer": "latente",
+          "answers": [
+            "latente"
+          ],
+          "imperfect": false,
+          "index": 21
+        },
+        {
+          "hint": "malevolent",
+          "answer": "malevolente",
+          "answers": [
+            "malevolente"
+          ],
+          "imperfect": false,
+          "index": 22
+        },
+        {
+          "hint": "nutrient",
+          "answer": "nutriente",
+          "answers": [
+            "nutriente"
+          ],
+          "imperfect": false,
+          "index": 23
+        },
+        {
+          "hint": "obedient",
+          "answer": "obediente",
+          "answers": [
+            "obediente"
+          ],
+          "imperfect": false,
+          "index": 24
+        },
+        {
+          "hint": "patent",
+          "answer": "patente",
+          "answers": [
+            "patente"
+          ],
+          "imperfect": false,
+          "index": 25
+        },
+        {
+          "hint": "permanent",
+          "answer": "permanente",
+          "answers": [
+            "permanente"
+          ],
+          "imperfect": false,
+          "index": 26
+        },
+        {
+          "hint": "president",
+          "answer": "presidente",
+          "answers": [
+            "presidente"
+          ],
+          "imperfect": false,
+          "index": 27
+        },
+        {
+          "hint": "prudent",
+          "answer": "prudente",
+          "answers": [
+            "prudente"
+          ],
+          "imperfect": false,
+          "index": 28
+        },
+        {
+          "hint": "sufficient",
+          "answer": "suficiente",
+          "answers": [
+            "suficiente"
+          ],
+          "imperfect": true,
+          "index": 29
+        },
+        {
+          "hint": "transparent",
+          "answer": "transparente",
+          "answers": [
+            "transparente"
+          ],
+          "imperfect": false,
+          "index": 30
+        },
+        {
+          "hint": "urgent",
+          "answer": "urgente",
+          "answers": [
+            "urgente"
+          ],
+          "imperfect": false,
+          "index": 31
+        },
+        {
+          "hint": "vice-president",
+          "answer": "vicepresidente",
+          "answers": [
+            "vicepresidente"
+          ],
+          "imperfect": true,
+          "index": 32
+        },
+        {
+          "hint": "rent",
+          "answer": "renta",
+          "answers": [
+            "renta"
+          ],
+          "imperfect": true,
+          "index": 33
+        }
+      ]
+    },
+    {
+      "id": "rule-ally",
+      "title": "The \"ALLY\" Rule",
+      "description": "Rule: English words ending in ...ally generally become Spanish ...mente (and ...cally -> ...camente).",
+      "source": "https://knowspanish.com/the-ALLY-rule.html",
+      "count": 30,
+      "items": [
+        {
+          "hint": "artificially",
+          "answer": "artificialmente",
+          "answers": [
+            "artificialmente"
+          ],
+          "imperfect": false,
+          "index": 1
+        },
+        {
+          "hint": "anatomically",
+          "answer": "anatómicamente",
+          "answers": [
+            "anatómicamente"
+          ],
+          "imperfect": true,
+          "index": 2
+        },
+        {
+          "hint": "beneficially",
+          "answer": "beneficialmente",
+          "answers": [
+            "beneficialmente"
+          ],
+          "imperfect": false,
+          "index": 3
+        },
+        {
+          "hint": "bilaterally",
+          "answer": "bilateralmente",
+          "answers": [
+            "bilateralmente"
+          ],
+          "imperfect": false,
+          "index": 4
+        },
+        {
+          "hint": "casually",
+          "answer": "casualmente",
+          "answers": [
+            "casualmente"
+          ],
+          "imperfect": false,
+          "index": 5
+        },
+        {
+          "hint": "categorically",
+          "answer": "categóricamente",
+          "answers": [
+            "categóricamente"
+          ],
+          "imperfect": true,
+          "index": 6
+        },
+        {
+          "hint": "classically",
+          "answer": "clasicalmente",
+          "answers": [
+            "clasicalmente"
+          ],
+          "imperfect": true,
+          "index": 7
+        },
+        {
+          "hint": "democratically",
+          "answer": "democráticamente",
+          "answers": [
+            "democráticamente"
+          ],
+          "imperfect": true,
+          "index": 8
+        },
+        {
+          "hint": "economically",
+          "answer": "económicamente",
+          "answers": [
+            "económicamente"
+          ],
+          "imperfect": true,
+          "index": 9
+        },
+        {
+          "hint": "emotionally",
+          "answer": "emocionalmente",
+          "answers": [
+            "emocionalmente"
+          ],
+          "imperfect": true,
+          "index": 10
+        },
+        {
+          "hint": "especially",
+          "answer": "especialmente",
+          "answers": [
+            "especialmente"
+          ],
+          "imperfect": false,
+          "index": 11
+        },
+        {
+          "hint": "fanatically",
+          "answer": "fanáticamente",
+          "answers": [
+            "fanáticamente"
+          ],
+          "imperfect": true,
+          "index": 12
+        },
+        {
+          "hint": "genetically",
+          "answer": "genéticamente",
+          "answers": [
+            "genéticamente"
+          ],
+          "imperfect": true,
+          "index": 13
+        },
+        {
+          "hint": "generically",
+          "answer": "genéricamente",
+          "answers": [
+            "genéricamente"
+          ],
+          "imperfect": true,
+          "index": 14
+        },
+        {
+          "hint": "initially",
+          "answer": "inicialmente",
+          "answers": [
+            "inicialmente"
+          ],
+          "imperfect": true,
+          "index": 15
+        },
+        {
+          "hint": "ironically",
+          "answer": "irónicamente",
+          "answers": [
+            "irónicamente"
+          ],
+          "imperfect": true,
+          "index": 16
+        },
+        {
+          "hint": "laterally",
+          "answer": "lateralmente",
+          "answers": [
+            "lateralmente"
+          ],
+          "imperfect": false,
+          "index": 17
+        },
+        {
+          "hint": "logically",
+          "answer": "lógicamente",
+          "answers": [
+            "lógicamente"
+          ],
+          "imperfect": true,
+          "index": 18
+        },
+        {
+          "hint": "mechanically",
+          "answer": "mecánicamente",
+          "answers": [
+            "mecánicamente"
+          ],
+          "imperfect": true,
+          "index": 19
+        },
+        {
+          "hint": "methodically",
+          "answer": "metódicamente",
+          "answers": [
+            "metódicamente"
+          ],
+          "imperfect": true,
+          "index": 20
+        },
+        {
+          "hint": "numerically",
+          "answer": "numéricamente",
+          "answers": [
+            "numéricamente"
+          ],
+          "imperfect": true,
+          "index": 21
+        },
+        {
+          "hint": "officially",
+          "answer": "oficialmente",
+          "answers": [
+            "oficialmente"
+          ],
+          "imperfect": true,
+          "index": 22
+        },
+        {
+          "hint": "partially",
+          "answer": "parcialmente",
+          "answers": [
+            "parcialmente"
+          ],
+          "imperfect": true,
+          "index": 23
+        },
+        {
+          "hint": "peacefully",
+          "answer": "pacíficamente",
+          "answers": [
+            "pacíficamente"
+          ],
+          "imperfect": true,
+          "index": 24
+        },
+        {
+          "hint": "rationally",
+          "answer": "racionalmente",
+          "answers": [
+            "racionalmente"
+          ],
+          "imperfect": true,
+          "index": 25
+        },
+        {
+          "hint": "socially",
+          "answer": "socialmente",
+          "answers": [
+            "socialmente"
+          ],
+          "imperfect": false,
+          "index": 26
+        },
+        {
+          "hint": "specifically",
+          "answer": "específicamente",
+          "answers": [
+            "específicamente"
+          ],
+          "imperfect": true,
+          "index": 27
+        },
+        {
+          "hint": "totally",
+          "answer": "totalmente",
+          "answers": [
+            "totalmente"
+          ],
+          "imperfect": false,
+          "index": 28
+        },
+        {
+          "hint": "virtually",
+          "answer": "virtualmente",
+          "answers": [
+            "virtualmente"
+          ],
+          "imperfect": false,
+          "index": 29
+        },
+        {
+          "hint": "automatically",
+          "answer": "automáticamente",
+          "answers": [
+            "automáticamente"
+          ],
+          "imperfect": true,
+          "index": 30
+        }
+      ]
+    },
+    {
+      "id": "rule-ary-ory",
+      "title": "The \"ARY / ORY\" Rule",
+      "description": "Rule: English ...ary -> Spanish ...ario and English ...ory -> Spanish ...orio.",
+      "source": "https://knowspanish.com/the-ARY-ORY-rule.html",
+      "count": 30,
+      "items": [
+        {
+          "hint": "accusatory",
+          "answer": "acusatorio",
+          "answers": [
+            "acusatorio"
+          ],
+          "imperfect": true,
+          "index": 1
+        },
+        {
+          "hint": "adversary",
+          "answer": "adversario",
+          "answers": [
+            "adversario"
+          ],
+          "imperfect": false,
+          "index": 2
+        },
+        {
+          "hint": "ambulatory",
+          "answer": "ambulatorio",
+          "answers": [
+            "ambulatorio"
+          ],
+          "imperfect": false,
+          "index": 3
+        },
+        {
+          "hint": "anniversary",
+          "answer": "aniversario",
+          "answers": [
+            "aniversario"
+          ],
+          "imperfect": true,
+          "index": 4
+        },
+        {
+          "hint": "canary",
+          "answer": "canario",
+          "answers": [
+            "canario"
+          ],
+          "imperfect": false,
+          "index": 5
+        },
+        {
+          "hint": "category",
+          "answer": "categoría",
+          "answers": [
+            "categoría"
+          ],
+          "imperfect": true,
+          "index": 6
+        },
+        {
+          "hint": "conciliatory",
+          "answer": "conciliatorio",
+          "answers": [
+            "conciliatorio"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "conservatory",
+          "answer": "conservatorio",
+          "answers": [
+            "conservatorio"
+          ],
+          "imperfect": false,
+          "index": 8
+        },
+        {
+          "hint": "contrary",
+          "answer": "contrario",
+          "answers": [
+            "contrario"
+          ],
+          "imperfect": false,
+          "index": 9
+        },
+        {
+          "hint": "crematory",
+          "answer": "crematorio",
+          "answers": [
+            "crematorio"
+          ],
+          "imperfect": false,
+          "index": 10
+        },
+        {
+          "hint": "culinary",
+          "answer": "culinario",
+          "answers": [
+            "culinario"
+          ],
+          "imperfect": false,
+          "index": 11
+        },
+        {
+          "hint": "defamatory",
+          "answer": "difamatorio",
+          "answers": [
+            "difamatorio"
+          ],
+          "imperfect": true,
+          "index": 12
+        },
+        {
+          "hint": "directory",
+          "answer": "directorio",
+          "answers": [
+            "directorio"
+          ],
+          "imperfect": false,
+          "index": 13
+        },
+        {
+          "hint": "dormitory",
+          "answer": "dormitorio",
+          "answers": [
+            "dormitorio"
+          ],
+          "imperfect": false,
+          "index": 14
+        },
+        {
+          "hint": "elementary",
+          "answer": "elementario",
+          "answers": [
+            "elementario"
+          ],
+          "imperfect": false,
+          "index": 15
+        },
+        {
+          "hint": "factory",
+          "answer": "factoría",
+          "answers": [
+            "factoría"
+          ],
+          "imperfect": true,
+          "index": 16
+        },
+        {
+          "hint": "glory",
+          "answer": "gloria",
+          "answers": [
+            "gloria"
+          ],
+          "imperfect": true,
+          "index": 17
+        },
+        {
+          "hint": "history",
+          "answer": "historia",
+          "answers": [
+            "historia"
+          ],
+          "imperfect": true,
+          "index": 18
+        },
+        {
+          "hint": "illusory",
+          "answer": "ilusorio",
+          "answers": [
+            "ilusorio"
+          ],
+          "imperfect": true,
+          "index": 19
+        },
+        {
+          "hint": "inflammatory",
+          "answer": "inflamatorio",
+          "answers": [
+            "inflamatorio"
+          ],
+          "imperfect": true,
+          "index": 20
+        },
+        {
+          "hint": "laboratory",
+          "answer": "laboratorio",
+          "answers": [
+            "laboratorio"
+          ],
+          "imperfect": false,
+          "index": 21
+        },
+        {
+          "hint": "mandatory",
+          "answer": "mandatorio",
+          "answers": [
+            "mandatorio"
+          ],
+          "imperfect": false,
+          "index": 22
+        },
+        {
+          "hint": "observatory",
+          "answer": "observatorio",
+          "answers": [
+            "observatorio"
+          ],
+          "imperfect": false,
+          "index": 23
+        },
+        {
+          "hint": "offertory",
+          "answer": "ofertorio",
+          "answers": [
+            "ofertorio"
+          ],
+          "imperfect": true,
+          "index": 24
+        },
+        {
+          "hint": "ordinary",
+          "answer": "ordinario",
+          "answers": [
+            "ordinario"
+          ],
+          "imperfect": false,
+          "index": 25
+        },
+        {
+          "hint": "parliamentary",
+          "answer": "parlamentario",
+          "answers": [
+            "parlamentario"
+          ],
+          "imperfect": true,
+          "index": 26
+        },
+        {
+          "hint": "proprietary",
+          "answer": "propietario",
+          "answers": [
+            "propietario"
+          ],
+          "imperfect": true,
+          "index": 27
+        },
+        {
+          "hint": "pulmonary",
+          "answer": "pulmonario",
+          "answers": [
+            "pulmonario"
+          ],
+          "imperfect": false,
+          "index": 28
+        },
+        {
+          "hint": "accessory",
+          "answer": "accesorio",
+          "answers": [
+            "accesorio"
+          ],
+          "imperfect": true,
+          "index": 29
+        },
+        {
+          "hint": "penitenciary",
+          "answer": "penitenciaría",
+          "answers": [
+            "penitenciaría"
+          ],
+          "imperfect": true,
+          "index": 30
+        }
+      ]
+    },
+    {
+      "id": "rule-ble",
+      "title": "The \"BLE\" Rule",
+      "description": "Rule: English words ending in ...ble are often the same in Spanish (with common spelling quirks).",
+      "source": "https://knowspanish.com/the-BLE-rule.html",
+      "count": 30,
+      "items": [
+        {
+          "hint": "admissible",
+          "answer": "admisible",
+          "answers": [
+            "admisible"
+          ],
+          "imperfect": true,
+          "index": 1
+        },
+        {
+          "hint": "alienable",
+          "answer": "alienable",
+          "answers": [
+            "alienable"
+          ],
+          "imperfect": false,
+          "index": 2
+        },
+        {
+          "hint": "applicable",
+          "answer": "aplicable",
+          "answers": [
+            "aplicable"
+          ],
+          "imperfect": true,
+          "index": 3
+        },
+        {
+          "hint": "cable",
+          "answer": "cable",
+          "answers": [
+            "cable"
+          ],
+          "imperfect": false,
+          "index": 4
+        },
+        {
+          "hint": "calculable",
+          "answer": "calculable",
+          "answers": [
+            "calculable"
+          ],
+          "imperfect": false,
+          "index": 5
+        },
+        {
+          "hint": "comparable",
+          "answer": "comparable",
+          "answers": [
+            "comparable"
+          ],
+          "imperfect": false,
+          "index": 6
+        },
+        {
+          "hint": "compatible",
+          "answer": "compatible",
+          "answers": [
+            "compatible"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "comprehensible",
+          "answer": "comprensible",
+          "answers": [
+            "comprensible"
+          ],
+          "imperfect": true,
+          "index": 8
+        },
+        {
+          "hint": "corrigible",
+          "answer": "corregible",
+          "answers": [
+            "corregible"
+          ],
+          "imperfect": true,
+          "index": 9
+        },
+        {
+          "hint": "curable",
+          "answer": "curable",
+          "answers": [
+            "curable"
+          ],
+          "imperfect": false,
+          "index": 10
+        },
+        {
+          "hint": "destructible",
+          "answer": "destructible",
+          "answers": [
+            "destructible"
+          ],
+          "imperfect": false,
+          "index": 11
+        },
+        {
+          "hint": "divisible",
+          "answer": "divisible",
+          "answers": [
+            "divisible"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "durable",
+          "answer": "durable",
+          "answers": [
+            "durable"
+          ],
+          "imperfect": false,
+          "index": 13
+        },
+        {
+          "hint": "explicable",
+          "answer": "explicable",
+          "answers": [
+            "explicable"
+          ],
+          "imperfect": false,
+          "index": 14
+        },
+        {
+          "hint": "fallible",
+          "answer": "falible",
+          "answers": [
+            "falible"
+          ],
+          "imperfect": true,
+          "index": 15
+        },
+        {
+          "hint": "flammable",
+          "answer": "flamable",
+          "answers": [
+            "flamable"
+          ],
+          "imperfect": true,
+          "index": 16
+        },
+        {
+          "hint": "flexible",
+          "answer": "flexible",
+          "answers": [
+            "flexible"
+          ],
+          "imperfect": false,
+          "index": 17
+        },
+        {
+          "hint": "imitable",
+          "answer": "imitable",
+          "answers": [
+            "imitable"
+          ],
+          "imperfect": false,
+          "index": 18
+        },
+        {
+          "hint": "impossible",
+          "answer": "imposible",
+          "answers": [
+            "imposible"
+          ],
+          "imperfect": true,
+          "index": 19
+        },
+        {
+          "hint": "inflamable",
+          "answer": "inflamable",
+          "answers": [
+            "inflamable"
+          ],
+          "imperfect": false,
+          "index": 20
+        },
+        {
+          "hint": "indomitable",
+          "answer": "indomable",
+          "answers": [
+            "indomable"
+          ],
+          "imperfect": true,
+          "index": 21
+        },
+        {
+          "hint": "irresistible",
+          "answer": "irresistible",
+          "answers": [
+            "irresistible"
+          ],
+          "imperfect": false,
+          "index": 22
+        },
+        {
+          "hint": "malleable",
+          "answer": "maleable",
+          "answers": [
+            "maleable"
+          ],
+          "imperfect": true,
+          "index": 23
+        },
+        {
+          "hint": "memorable",
+          "answer": "memorable",
+          "answers": [
+            "memorable"
+          ],
+          "imperfect": false,
+          "index": 24
+        },
+        {
+          "hint": "moldable",
+          "answer": "moldeable",
+          "answers": [
+            "moldeable"
+          ],
+          "imperfect": true,
+          "index": 25
+        },
+        {
+          "hint": "objectionable",
+          "answer": "objetable",
+          "answers": [
+            "objetable"
+          ],
+          "imperfect": true,
+          "index": 26
+        },
+        {
+          "hint": "permissible",
+          "answer": "permisible",
+          "answers": [
+            "permisible"
+          ],
+          "imperfect": true,
+          "index": 27
+        },
+        {
+          "hint": "possible",
+          "answer": "posible",
+          "answers": [
+            "posible"
+          ],
+          "imperfect": true,
+          "index": 28
+        },
+        {
+          "hint": "supportable",
+          "answer": "soportable",
+          "answers": [
+            "soportable"
+          ],
+          "imperfect": true,
+          "index": 29
+        },
+        {
+          "hint": "traversable",
+          "answer": "transitable",
+          "answers": [
+            "transitable"
+          ],
+          "imperfect": true,
+          "index": 30
+        }
+      ]
+    },
+    {
+      "id": "rule-ive",
+      "title": "The \"IVE\" Rule",
+      "description": "Rule: English words ending in ...ive usually become Spanish ...ivo.",
+      "source": "https://knowspanish.com/the-IVE-rule.html",
+      "count": 50,
+      "items": [
+        {
+          "hint": "abortive",
+          "answer": "abortivo",
+          "answers": [
+            "abortivo"
+          ],
+          "imperfect": false,
+          "index": 1
+        },
+        {
+          "hint": "abrasive",
+          "answer": "abrasivo",
+          "answers": [
+            "abrasivo"
+          ],
+          "imperfect": false,
+          "index": 2
+        },
+        {
+          "hint": "abusive",
+          "answer": "abusivo",
+          "answers": [
+            "abusivo"
+          ],
+          "imperfect": false,
+          "index": 3
+        },
+        {
+          "hint": "active",
+          "answer": "activo",
+          "answers": [
+            "activo"
+          ],
+          "imperfect": false,
+          "index": 4
+        },
+        {
+          "hint": "adaptive",
+          "answer": "adaptivo",
+          "answers": [
+            "adaptivo"
+          ],
+          "imperfect": false,
+          "index": 5
+        },
+        {
+          "hint": "additive",
+          "answer": "aditivo",
+          "answers": [
+            "aditivo"
+          ],
+          "imperfect": true,
+          "index": 6
+        },
+        {
+          "hint": "adhesive",
+          "answer": "adhesivo",
+          "answers": [
+            "adhesivo"
+          ],
+          "imperfect": false,
+          "index": 7
+        },
+        {
+          "hint": "adjective",
+          "answer": "adjetivo",
+          "answers": [
+            "adjetivo"
+          ],
+          "imperfect": true,
+          "index": 8
+        },
+        {
+          "hint": "affirmative",
+          "answer": "afirmativo",
+          "answers": [
+            "afirmativo"
+          ],
+          "imperfect": true,
+          "index": 9
+        },
+        {
+          "hint": "aggressive",
+          "answer": "agresivo",
+          "answers": [
+            "agresivo"
+          ],
+          "imperfect": true,
+          "index": 10
+        },
+        {
+          "hint": "attractive",
+          "answer": "atractivo",
+          "answers": [
+            "atractivo"
+          ],
+          "imperfect": true,
+          "index": 11
+        },
+        {
+          "hint": "administrative",
+          "answer": "administrativo",
+          "answers": [
+            "administrativo"
+          ],
+          "imperfect": false,
+          "index": 12
+        },
+        {
+          "hint": "communicative",
+          "answer": "comunicativo",
+          "answers": [
+            "comunicativo"
+          ],
+          "imperfect": true,
+          "index": 13
+        },
+        {
+          "hint": "competitive",
+          "answer": "competitivo",
+          "answers": [
+            "competitivo"
+          ],
+          "imperfect": false,
+          "index": 14
+        },
+        {
+          "hint": "compulsive",
+          "answer": "compulsivo",
+          "answers": [
+            "compulsivo"
+          ],
+          "imperfect": false,
+          "index": 15
+        },
+        {
+          "hint": "descriptive",
+          "answer": "descriptivo",
+          "answers": [
+            "descriptivo"
+          ],
+          "imperfect": false,
+          "index": 16
+        },
+        {
+          "hint": "evasive",
+          "answer": "evasivo",
+          "answers": [
+            "evasivo"
+          ],
+          "imperfect": false,
+          "index": 17
+        },
+        {
+          "hint": "fixative",
+          "answer": "fijativo",
+          "answers": [
+            "fijativo"
+          ],
+          "imperfect": true,
+          "index": 18
+        },
+        {
+          "hint": "genitive",
+          "answer": "genitivo",
+          "answers": [
+            "genitivo"
+          ],
+          "imperfect": false,
+          "index": 19
+        },
+        {
+          "hint": "imaginative",
+          "answer": "imaginativo",
+          "answers": [
+            "imaginativo"
+          ],
+          "imperfect": false,
+          "index": 20
+        },
+        {
+          "hint": "imitative",
+          "answer": "imitativo",
+          "answers": [
+            "imitativo"
+          ],
+          "imperfect": false,
+          "index": 21
+        },
+        {
+          "hint": "inclusive",
+          "answer": "inclusivo",
+          "answers": [
+            "inclusivo"
+          ],
+          "imperfect": false,
+          "index": 22
+        },
+        {
+          "hint": "indicative",
+          "answer": "indicativo",
+          "answers": [
+            "indicativo"
+          ],
+          "imperfect": false,
+          "index": 23
+        },
+        {
+          "hint": "inductive",
+          "answer": "inductivo",
+          "answers": [
+            "inductivo"
+          ],
+          "imperfect": false,
+          "index": 24
+        },
+        {
+          "hint": "ineffective",
+          "answer": "inefectivo",
+          "answers": [
+            "inefectivo"
+          ],
+          "imperfect": true,
+          "index": 25
+        },
+        {
+          "hint": "infinitive",
+          "answer": "infinitivo",
+          "answers": [
+            "infinitivo"
+          ],
+          "imperfect": false,
+          "index": 26
+        },
+        {
+          "hint": "informative",
+          "answer": "informativo",
+          "answers": [
+            "informativo"
+          ],
+          "imperfect": false,
+          "index": 27
+        },
+        {
+          "hint": "intuitive",
+          "answer": "intuitivo",
+          "answers": [
+            "intuitivo"
+          ],
+          "imperfect": false,
+          "index": 28
+        },
+        {
+          "hint": "inventive",
+          "answer": "inventivo",
+          "answers": [
+            "inventivo"
+          ],
+          "imperfect": false,
+          "index": 29
+        },
+        {
+          "hint": "investigative",
+          "answer": "investigativo",
+          "answers": [
+            "investigativo"
+          ],
+          "imperfect": false,
+          "index": 30
+        },
+        {
+          "hint": "legislative",
+          "answer": "legislativo",
+          "answers": [
+            "legislativo"
+          ],
+          "imperfect": false,
+          "index": 31
+        },
+        {
+          "hint": "nominative",
+          "answer": "nominativo",
+          "answers": [
+            "nominativo"
+          ],
+          "imperfect": false,
+          "index": 32
+        },
+        {
+          "hint": "operative",
+          "answer": "operativo",
+          "answers": [
+            "operativo"
+          ],
+          "imperfect": false,
+          "index": 33
+        },
+        {
+          "hint": "positive",
+          "answer": "positivo",
+          "answers": [
+            "positivo"
+          ],
+          "imperfect": false,
+          "index": 34
+        },
+        {
+          "hint": "presumptive",
+          "answer": "presuntivo",
+          "answers": [
+            "presuntivo"
+          ],
+          "imperfect": true,
+          "index": 35
+        },
+        {
+          "hint": "preventive",
+          "answer": "preventivo",
+          "answers": [
+            "preventivo"
+          ],
+          "imperfect": false,
+          "index": 36
+        },
+        {
+          "hint": "productive",
+          "answer": "productivo",
+          "answers": [
+            "productivo"
+          ],
+          "imperfect": false,
+          "index": 37
+        },
+        {
+          "hint": "progressive",
+          "answer": "progresivo",
+          "answers": [
+            "progresivo"
+          ],
+          "imperfect": true,
+          "index": 38
+        },
+        {
+          "hint": "protective",
+          "answer": "protectivo",
+          "answers": [
+            "protectivo"
+          ],
+          "imperfect": false,
+          "index": 39
+        },
+        {
+          "hint": "punitive",
+          "answer": "punitivo",
+          "answers": [
+            "punitivo"
+          ],
+          "imperfect": false,
+          "index": 40
+        },
+        {
+          "hint": "repetitive",
+          "answer": "repetitivo",
+          "answers": [
+            "repetitivo"
+          ],
+          "imperfect": false,
+          "index": 41
+        },
+        {
+          "hint": "representative",
+          "answer": "representativo",
+          "answers": [
+            "representativo"
+          ],
+          "imperfect": false,
+          "index": 42
+        },
+        {
+          "hint": "reproductive",
+          "answer": "reproductivo",
+          "answers": [
+            "reproductivo"
+          ],
+          "imperfect": false,
+          "index": 43
+        },
+        {
+          "hint": "restrictive",
+          "answer": "restrictivo",
+          "answers": [
+            "restrictivo"
+          ],
+          "imperfect": false,
+          "index": 44
+        },
+        {
+          "hint": "retroactive",
+          "answer": "retroactivo",
+          "answers": [
+            "retroactivo"
+          ],
+          "imperfect": false,
+          "index": 45
+        },
+        {
+          "hint": "sedative",
+          "answer": "sedativo",
+          "answers": [
+            "sedativo"
+          ],
+          "imperfect": false,
+          "index": 46
+        },
+        {
+          "hint": "sensitive",
+          "answer": "sensitivo",
+          "answers": [
+            "sensitivo"
+          ],
+          "imperfect": false,
+          "index": 47
+        },
+        {
+          "hint": "speculative",
+          "answer": "especulativo",
+          "answers": [
+            "especulativo"
+          ],
+          "imperfect": true,
+          "index": 48
+        },
+        {
+          "hint": "stimulative",
+          "answer": "estimulativo",
+          "answers": [
+            "estimulativo"
+          ],
+          "imperfect": true,
+          "index": 49
+        },
+        {
+          "hint": "suggestive",
+          "answer": "sugestivo",
+          "answers": [
+            "sugestivo"
+          ],
+          "imperfect": true,
+          "index": 50
+        }
+      ]
+    }
+  ]
+}
