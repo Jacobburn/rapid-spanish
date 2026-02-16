@@ -1,16 +1,11 @@
-# Rapid Spanish - Training Dashboard
+# Rapid Spanish
 
-Dashboard + Sporcle-style quiz app with:
-- Local account system (create, log in/out, manage name/password)
-- Beginner phrases training (16 grouped decks)
-- Discourse chunks training (5 grouped decks)
-- English -> Spanish conversion training (14 rule decks)
-- Grammar training (18 deck MVP)
-- Slang training (7 regional decks)
-- Stories in Spanish (12 unlockable stories)
-- KOFI verb conjugation training
-- Top 2000 nouns training (40 decks of 50 nouns)
-- Leaderboards (global progress + weekly progress for local accounts)
+Spanish study web app with:
+- Progress map unlock system
+- KOFI verb training (core + additional tenses track)
+- Nouns split into Top 500 + 501-2000 tracks
+- Beginner phrases, discourse chunks, conversion, grammar, slang
+- Stories, SRS tests, achievements, streaks, leaderboard, stats
 
 ## Run locally
 
@@ -18,72 +13,65 @@ Dashboard + Sporcle-style quiz app with:
 python3 -m http.server 8000
 ```
 
-Then open: `http://localhost:8000`
+Open: `http://localhost:8000`
 
-Accounts and progress are stored in browser `localStorage` on the device.
+## Supabase migration setup
 
-## Data source
+The app now supports Supabase for:
+- Account auth (signup/login/password update)
+- Per-user state sync (best scores, attempts, activity, SRS, gamification)
+- Shared leaderboard data
 
-The app reads:
-- `data/kofi-verbs.json`
-- `data/top-2000-nouns.json`
-- `data/beginner-phrases.json`
-- `data/discourse-chunks.json`
-- `data/english-spanish-conversion.json`
-- `data/grammar-decks.json`
-- `data/slang.json`
-- `data/stories.json`
+### 1. Create Supabase project
 
-## Regenerate verb data from `.apkg`
+Create a project at [supabase.com](https://supabase.com/), then copy:
+- Project URL
+- Project `anon` key
 
-```bash
-python3 scripts/extract_kofi_verbs.py \
-  --apkg "/Users/jakeburn/Downloads/Ultimate_Spanish_Conjugation_Lisardos_KOFI_Method.apkg" \
-  --output data/kofi-verbs.json
+### 2. Apply DB schema
+
+Run `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/supabase/schema.sql` in the Supabase SQL editor.
+
+### 3. Auth settings
+
+In Supabase Auth settings:
+- Disable mandatory email confirmation for this username-based flow, or handle email verification separately.
+
+The app maps usernames to synthetic emails:
+- `username` -> `username@rapidspanish.local` (customizable)
+
+### 4. Configure frontend
+
+Edit `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/supabase-config.js`:
+
+```js
+window.RAPID_SPANISH_SUPABASE_CONFIG = {
+  url: "https://YOUR_PROJECT_ID.supabase.co",
+  anonKey: "YOUR_SUPABASE_ANON_KEY",
+  usernameDomain: "rapidspanish.local",
+};
 ```
 
-You can also generate from an extracted collection file:
+Template file:
+- `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/supabase-config.example.js`
 
-```bash
-python3 scripts/extract_kofi_verbs.py \
-  --collection data/anki/collection.anki21 \
-  --output data/kofi-verbs.json
-```
+If `url` or `anonKey` is blank, the app falls back to localStorage mode.
 
-## Regenerate Top 2000 nouns data
+## Data files
 
-From a local saved Frequency Lists HTML:
+- `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/data/kofi-verbs.json`
+- `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/data/top-2000-nouns.json`
+- `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/data/beginner-phrases.json`
+- `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/data/discourse-chunks.json`
+- `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/data/english-spanish-conversion.json`
+- `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/data/grammar-decks.json`
+- `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/data/slang.json`
+- `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/data/stories.json`
 
-```bash
-python3 scripts/extract_frequency_nouns.py \
-  --html-input /tmp/frequency_nouns_2000.html \
-  --output data/top-2000-nouns.json
-```
+## Data generation scripts
 
-Or fetch directly:
-
-```bash
-python3 scripts/extract_frequency_nouns.py \
-  --output data/top-2000-nouns.json
-```
-
-## Regenerate beginner phrases data
-
-```bash
-python3 scripts/generate_beginner_phrases.py
-```
-
-## Regenerate English -> Spanish conversion data
-
-```bash
-python3 scripts/generate_conversion_rules.py
-```
-
-## Regenerate grammar deck data
-
-```bash
-python3 scripts/generate_grammar_decks.py
-```
-
-`data/stories.json` is hand-curated.
-`data/slang.json` is hand-curated.
+- KOFI verbs: `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/scripts/extract_kofi_verbs.py`
+- Frequency nouns: `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/scripts/extract_frequency_nouns.py`
+- Beginner phrases: `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/scripts/generate_beginner_phrases.py`
+- Conversion rules: `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/scripts/generate_conversion_rules.py`
+- Grammar decks: `/Users/jakeburn/Documents/04  Projects/CODEX/Rapid Spanish/scripts/generate_grammar_decks.py`

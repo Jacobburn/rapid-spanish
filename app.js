@@ -14,6 +14,7 @@ const ACTIVITY_STORAGE_KEY = "rapid-spanish-activity-v1";
 const ATTEMPT_STATS_STORAGE_KEY = "rapid-spanish-attempt-stats-v1";
 const SRS_STORAGE_KEY = "rapid-spanish-srs-v1";
 const GAMIFICATION_STORAGE_KEY = "rapid-spanish-gamification-v1";
+const SUPABASE_SESSION_STORAGE_KEY = "rapid-spanish-supabase-session-v1";
 const ADMIN_MODE_USERNAME = "jake";
 const STORY_UNLOCK_THRESHOLDS = [2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 const QUIZ_TIMER_DURATION_MS = 5 * 60 * 1000;
@@ -25,6 +26,10 @@ const SRS_LEARNING_STEPS_MINUTES = [1, 10];
 const SRS_DEFAULT_EASE = 2.5;
 const SRS_MIN_EASE = 1.3;
 const SRS_MAX_EASE = 3.3;
+
+const SUPABASE_CONFIG = window.RAPID_SPANISH_SUPABASE_CONFIG || {};
+const SUPABASE_ENABLED = Boolean(SUPABASE_CONFIG.url && SUPABASE_CONFIG.anonKey);
+const SUPABASE_USERNAME_DOMAIN = SUPABASE_CONFIG.usernameDomain || "rapidspanish.local";
 
 const ACHIEVEMENT_DEFINITIONS = [
   {
@@ -490,6 +495,39 @@ const srsManageDeckList = document.getElementById("srsManageDeckList");
 const verbDashboardTitle = dashboardView?.querySelector(".panel-header h2");
 const nounsDashboardTitle = nounsDashboardView?.querySelector(".panel-header h2");
 
+function createEmptyBestScores() {
+  return {
+    verbs: {},
+    nouns: {},
+    beginner: {},
+    discourse: {},
+    conversion: {},
+    grammar: {},
+    slang: {},
+  };
+}
+
+function normalizeBestScores(rawScores) {
+  const safe = createEmptyBestScores();
+  if (!rawScores || typeof rawScores !== "object") {
+    return safe;
+  }
+
+  if (rawScores.verbs && rawScores.nouns) {
+    safe.verbs = rawScores.verbs || {};
+    safe.nouns = rawScores.nouns || {};
+    safe.beginner = rawScores.beginner || {};
+    safe.discourse = rawScores.discourse || {};
+    safe.conversion = rawScores.conversion || {};
+    safe.grammar = rawScores.grammar || {};
+    safe.slang = rawScores.slang || {};
+    return safe;
+  }
+
+  safe.verbs = rawScores;
+  return safe;
+}
+
 const state = {
   verbs: [],
   verbsAdditional: [],
@@ -504,15 +542,7 @@ const state = {
   nounMode: "singular",
   activeVerbTrack: "core",
   activeNounTrack: "core",
-  bestScores: {
-    verbs: {},
-    nouns: {},
-    beginner: {},
-    discourse: {},
-    conversion: {},
-    grammar: {},
-    slang: {},
-  },
+  bestScores: createEmptyBestScores(),
   currentVerb: null,
   foundIndexes: new Set(),
   answerLookup: new Map(),
@@ -558,6 +588,8 @@ const state = {
   attemptStats: null,
   gamificationData: null,
   srsData: null,
+  supabaseSession: null,
+  remoteLeaderboardRows: [],
   srsDeckCatalog: [],
   srsDeckMap: new Map(),
   srsCardMap: new Map(),
@@ -829,7 +861,437 @@ function getGamificationStorageKey() {
   return `${GAMIFICATION_STORAGE_KEY}::${state.currentUser.username}`;
 }
 
+let remoteStateSyncTimer = null;
+
+function hasSupabaseConfig() {
+  return SUPABASE_ENABLED;
+}
+
+function normalizeSupabaseUrl() {
+  const url = String(SUPABASE_CONFIG.url || "").trim().replace(/\/+$/, "");
+  return url;
+}
+
+function usernameToAuthEmail(username) {
+  const normalized = normalizeUsername(username);
+  const safeLocal = normalized.replace(/[^a-z0-9._-]/g, "");
+  return `${safeLocal}@${SUPABASE_USERNAME_DOMAIN}`;
+}
+
+function loadSupabaseSession() {
+  try {
+    const raw = localStorage.getItem(SUPABASE_SESSION_STORAGE_KEY);
+    if (!raw) {
+      return null;
+    }
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") {
+      return null;
+    }
+    if (!parsed.access_token || !parsed.refresh_token) {
+      return null;
+    }
+    return parsed;
+  } catch (error) {
+    console.error("Could not load Supabase session:", error);
+    return null;
+  }
+}
+
+function saveSupabaseSession(session) {
+  state.supabaseSession = session || null;
+  try {
+    if (!session) {
+      localStorage.removeItem(SUPABASE_SESSION_STORAGE_KEY);
+      return;
+    }
+    localStorage.setItem(SUPABASE_SESSION_STORAGE_KEY, JSON.stringify(session));
+  } catch (error) {
+    console.error("Could not save Supabase session:", error);
+  }
+}
+
+function clearSupabaseSession() {
+  saveSupabaseSession(null);
+}
+
+function getSupabaseHeaders({ auth = true, extra = {} } = {}) {
+  const headers = {
+    apikey: SUPABASE_CONFIG.anonKey,
+    ...extra,
+  };
+  if (auth && state.supabaseSession?.access_token) {
+    headers.Authorization = `Bearer ${state.supabaseSession.access_token}`;
+  }
+  return headers;
+}
+
+async function supabaseRequest(
+  path,
+  { method = "GET", auth = true, headers = {}, body, retryOnAuthError = true } = {},
+) {
+  const url = `${normalizeSupabaseUrl()}${path}`;
+  const requestHeaders = getSupabaseHeaders({ auth, extra: headers });
+  if (body !== undefined && !requestHeaders["Content-Type"]) {
+    requestHeaders["Content-Type"] = "application/json";
+  }
+
+  const response = await fetch(url, {
+    method,
+    headers: requestHeaders,
+    body: body === undefined ? undefined : JSON.stringify(body),
+  });
+
+  if (response.status === 401 && auth && retryOnAuthError && state.supabaseSession?.refresh_token) {
+    const refreshed = await refreshSupabaseSession();
+    if (refreshed?.access_token) {
+      return supabaseRequest(path, {
+        method,
+        auth,
+        headers,
+        body,
+        retryOnAuthError: false,
+      });
+    }
+  }
+
+  let payload = null;
+  const rawText = await response.text();
+  if (rawText) {
+    try {
+      payload = JSON.parse(rawText);
+    } catch (_error) {
+      payload = rawText;
+    }
+  }
+
+  if (!response.ok) {
+    const message =
+      payload?.error_description ||
+      payload?.msg ||
+      payload?.message ||
+      `Supabase request failed (${response.status})`;
+    throw new Error(message);
+  }
+
+  return payload;
+}
+
+async function refreshSupabaseSession() {
+  if (!state.supabaseSession?.refresh_token) {
+    return null;
+  }
+  const payload = await supabaseRequest("/auth/v1/token?grant_type=refresh_token", {
+    method: "POST",
+    auth: false,
+    body: {
+      refresh_token: state.supabaseSession.refresh_token,
+    },
+  });
+  if (!payload?.access_token) {
+    return null;
+  }
+  saveSupabaseSession(payload);
+  return payload;
+}
+
+async function fetchSupabaseUser() {
+  if (!state.supabaseSession?.access_token) {
+    return null;
+  }
+  try {
+    return await supabaseRequest("/auth/v1/user", { method: "GET", auth: true });
+  } catch (error) {
+    if (!/401|jwt|expired|invalid/i.test(String(error.message || ""))) {
+      throw error;
+    }
+    const refreshed = await refreshSupabaseSession();
+    if (!refreshed?.access_token) {
+      return null;
+    }
+    return await supabaseRequest("/auth/v1/user", { method: "GET", auth: true });
+  }
+}
+
+async function supabaseSignUp({ username, password, name }) {
+  const email = usernameToAuthEmail(username);
+  const payload = await supabaseRequest("/auth/v1/signup", {
+    method: "POST",
+    auth: false,
+    body: {
+      email,
+      password,
+      data: {
+        username: normalizeUsername(username),
+        display_name: name.trim(),
+      },
+    },
+  });
+  if (payload?.session?.access_token) {
+    saveSupabaseSession(payload.session);
+  }
+  return payload;
+}
+
+async function supabaseSignIn({ username, password }) {
+  const email = usernameToAuthEmail(username);
+  const payload = await supabaseRequest("/auth/v1/token?grant_type=password", {
+    method: "POST",
+    auth: false,
+    body: {
+      email,
+      password,
+    },
+  });
+  if (payload?.access_token) {
+    saveSupabaseSession(payload);
+  }
+  return payload;
+}
+
+async function supabaseSignOut() {
+  if (!state.supabaseSession?.access_token) {
+    clearSupabaseSession();
+    return;
+  }
+  try {
+    await supabaseRequest("/auth/v1/logout", { method: "POST", auth: true });
+  } catch (error) {
+    console.warn("Supabase sign-out warning:", error.message);
+  }
+  clearSupabaseSession();
+}
+
+async function supabaseUpdatePassword(nextPassword) {
+  await supabaseRequest("/auth/v1/user", {
+    method: "PUT",
+    auth: true,
+    body: {
+      password: nextPassword,
+    },
+  });
+}
+
+async function fetchProfilesMap() {
+  const rows = await supabaseRequest("/rest/v1/profiles?select=user_id,username,display_name", {
+    method: "GET",
+    auth: true,
+  });
+  const users = {};
+  (Array.isArray(rows) ? rows : []).forEach((row) => {
+    const username = normalizeUsername(row.username || "");
+    if (!username) {
+      return;
+    }
+    users[username] = {
+      username,
+      name: row.display_name || username,
+      user_id: row.user_id || "",
+    };
+  });
+  return users;
+}
+
+async function fetchProfileByUserId(userId) {
+  const rows = await supabaseRequest(
+    `/rest/v1/profiles?user_id=eq.${encodeURIComponent(userId)}&select=user_id,username,display_name&limit=1`,
+    {
+      method: "GET",
+      auth: true,
+    },
+  );
+  return Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+}
+
+async function upsertProfile({ userId, username, name }) {
+  const normalized = normalizeUsername(username);
+  await supabaseRequest("/rest/v1/profiles", {
+    method: "POST",
+    auth: true,
+    headers: {
+      Prefer: "resolution=merge-duplicates,return=representation",
+    },
+    body: [
+      {
+        user_id: userId,
+        username: normalized,
+        display_name: name.trim(),
+      },
+    ],
+  });
+}
+
+async function fetchRemoteUserState(userId) {
+  const rows = await supabaseRequest(
+    `/rest/v1/user_state?user_id=eq.${encodeURIComponent(
+      userId,
+    )}&select=user_id,best_scores,attempt_stats,activity_entries,srs_state,gamification_state&limit=1`,
+    {
+      method: "GET",
+      auth: true,
+    },
+  );
+  return Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+}
+
+async function upsertRemoteUserState(userId) {
+  if (!state.currentUser?.username) {
+    return;
+  }
+  const username = normalizeUsername(state.currentUser.username);
+  const profileName = state.currentUser.name || username;
+  const userEntries = Array.isArray(state.activityMap[username]) ? state.activityMap[username] : [];
+  const payload = {
+    user_id: userId,
+    best_scores: normalizeBestScores(state.bestScores),
+    attempt_stats: normalizeAttemptStats(state.attemptStats),
+    activity_entries: normalizeActivityEntries(userEntries),
+    srs_state: normalizeSrsData(state.srsData),
+    gamification_state: normalizeGamificationData(state.gamificationData),
+  };
+
+  await supabaseRequest("/rest/v1/user_state", {
+    method: "POST",
+    auth: true,
+    headers: {
+      Prefer: "resolution=merge-duplicates,return=minimal",
+    },
+    body: [payload],
+  });
+
+  const progress = getOverallStudyProgress();
+  const weeklyPoints = getWeeklyProgressPoints(username);
+  await supabaseRequest("/rest/v1/leaderboard_public", {
+    method: "POST",
+    auth: true,
+    headers: {
+      Prefer: "resolution=merge-duplicates,return=minimal",
+    },
+    body: [
+      {
+        user_id: userId,
+        username,
+        display_name: profileName,
+        progress_current: progress.current,
+        progress_total: progress.total,
+        progress_percent: progress.percent,
+        weekly_points: weeklyPoints,
+      },
+    ],
+  });
+}
+
+async function fetchRemoteLeaderboardRows() {
+  const rows = await supabaseRequest(
+    "/rest/v1/leaderboard_public?select=username,display_name,progress_current,progress_total,progress_percent,weekly_points",
+    {
+      method: "GET",
+      auth: true,
+    },
+  );
+  state.remoteLeaderboardRows = Array.isArray(rows) ? rows : [];
+}
+
+function getUsernameFromSupabaseUser(authUser) {
+  const fromMetadata = normalizeUsername(authUser?.user_metadata?.username || "");
+  if (fromMetadata) {
+    return fromMetadata;
+  }
+  const email = String(authUser?.email || "");
+  const [localPart] = email.split("@");
+  return normalizeUsername(localPart || "");
+}
+
+function normalizeActivityEntries(entries) {
+  if (!Array.isArray(entries)) {
+    return [];
+  }
+  return entries
+    .map((entry) => ({
+      ts: Number(entry.ts),
+      delta: Number(entry.delta),
+      bucket: String(entry.bucket || ""),
+      key: String(entry.key || ""),
+    }))
+    .filter((entry) => Number.isFinite(entry.ts) && Number.isFinite(entry.delta))
+    .slice(-1200);
+}
+
+function applyRemoteUserState(row, username) {
+  const normalized = normalizeUsername(username);
+  state.bestScores = normalizeBestScores(row?.best_scores);
+  state.attemptStats = normalizeAttemptStats(row?.attempt_stats);
+  state.srsData = normalizeSrsData(row?.srs_state);
+  state.gamificationData = normalizeGamificationData(row?.gamification_state);
+  if (!state.activityMap || typeof state.activityMap !== "object") {
+    state.activityMap = {};
+  }
+  state.activityMap[normalized] = normalizeActivityEntries(row?.activity_entries);
+}
+
+async function resolveSupabaseIdentity() {
+  const authUser = await fetchSupabaseUser();
+  if (!authUser?.id) {
+    return null;
+  }
+
+  const profile = await fetchProfileByUserId(authUser.id);
+  const username = normalizeUsername(profile?.username || getUsernameFromSupabaseUser(authUser));
+  if (!username) {
+    throw new Error("Could not resolve username from your Supabase account.");
+  }
+
+  const profileName = String(profile?.display_name || "").trim();
+  const metadataName = String(authUser?.user_metadata?.display_name || "").trim();
+  const name = profileName || metadataName || username;
+
+  if (
+    !profile ||
+    normalizeUsername(profile.username || "") !== username ||
+    String(profile.display_name || "").trim() !== name
+  ) {
+    await upsertProfile({
+      userId: authUser.id,
+      username,
+      name,
+    });
+  }
+
+  return {
+    user_id: authUser.id,
+    username,
+    name,
+  };
+}
+
+function scheduleRemoteStateSync() {
+  if (!hasSupabaseConfig() || !state.currentUser?.user_id || !state.dataLoaded) {
+    return;
+  }
+  if (remoteStateSyncTimer) {
+    clearTimeout(remoteStateSyncTimer);
+  }
+  remoteStateSyncTimer = setTimeout(async () => {
+    remoteStateSyncTimer = null;
+    const userId = state.currentUser?.user_id;
+    if (!userId) {
+      return;
+    }
+    try {
+      await upsertRemoteUserState(userId);
+      await fetchRemoteLeaderboardRows();
+      renderLeaderboardHubTile();
+      renderLeaderboards();
+    } catch (error) {
+      console.error("Remote sync failed:", error);
+    }
+  }, 220);
+}
+
 function loadUsers() {
+  if (hasSupabaseConfig()) {
+    return {};
+  }
   try {
     const raw = localStorage.getItem(USERS_STORAGE_KEY);
     if (!raw) {
@@ -844,6 +1306,9 @@ function loadUsers() {
 }
 
 function saveUsers(users) {
+  if (hasSupabaseConfig()) {
+    return;
+  }
   try {
     localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
   } catch (error) {
@@ -852,6 +1317,9 @@ function saveUsers(users) {
 }
 
 function loadActivityMap() {
+  if (hasSupabaseConfig()) {
+    return {};
+  }
   try {
     const raw = localStorage.getItem(ACTIVITY_STORAGE_KEY);
     if (!raw) {
@@ -866,6 +1334,9 @@ function loadActivityMap() {
 }
 
 function saveActivityMap(activityMap) {
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    scheduleRemoteStateSync();
+  }
   try {
     localStorage.setItem(ACTIVITY_STORAGE_KEY, JSON.stringify(activityMap));
   } catch (error) {
@@ -874,6 +1345,9 @@ function saveActivityMap(activityMap) {
 }
 
 function loadAttemptStats() {
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    return normalizeAttemptStats(state.attemptStats);
+  }
   try {
     const raw = localStorage.getItem(getAttemptStatsStorageKey());
     if (!raw) {
@@ -887,6 +1361,9 @@ function loadAttemptStats() {
 }
 
 function saveAttemptStats() {
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    scheduleRemoteStateSync();
+  }
   try {
     localStorage.setItem(
       getAttemptStatsStorageKey(),
@@ -898,6 +1375,9 @@ function saveAttemptStats() {
 }
 
 function loadSrsData() {
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    return normalizeSrsData(state.srsData);
+  }
   try {
     const raw = localStorage.getItem(getSrsStorageKey());
     if (!raw) {
@@ -911,6 +1391,9 @@ function loadSrsData() {
 }
 
 function saveSrsData() {
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    scheduleRemoteStateSync();
+  }
   try {
     localStorage.setItem(getSrsStorageKey(), JSON.stringify(normalizeSrsData(state.srsData)));
   } catch (error) {
@@ -919,6 +1402,9 @@ function saveSrsData() {
 }
 
 function loadGamificationData() {
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    return normalizeGamificationData(state.gamificationData);
+  }
   try {
     const raw = localStorage.getItem(getGamificationStorageKey());
     if (!raw) {
@@ -932,6 +1418,9 @@ function loadGamificationData() {
 }
 
 function saveGamificationData() {
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    scheduleRemoteStateSync();
+  }
   try {
     localStorage.setItem(
       getGamificationStorageKey(),
@@ -1151,17 +1640,78 @@ function showAppShell() {
   refreshAdminModeAccess();
 }
 
-async function setCurrentUser(username) {
-  const normalized = normalizeUsername(username);
-  state.currentUser = state.users[normalized] || null;
+function normalizeCurrentUserRecord(userOrUsername) {
+  if (typeof userOrUsername === "string") {
+    const username = normalizeUsername(userOrUsername);
+    if (!username) {
+      return null;
+    }
+    const existing = state.users[username];
+    if (existing) {
+      return {
+        username,
+        name: existing.name || username,
+        user_id: existing.user_id || "",
+      };
+    }
+    return {
+      username,
+      name: username,
+      user_id: "",
+    };
+  }
+
+  if (!userOrUsername || typeof userOrUsername !== "object") {
+    return null;
+  }
+
+  const username = normalizeUsername(userOrUsername.username || "");
+  if (!username) {
+    return null;
+  }
+
+  return {
+    username,
+    name: String(userOrUsername.name || userOrUsername.display_name || username).trim() || username,
+    user_id: String(userOrUsername.user_id || userOrUsername.userId || "").trim(),
+  };
+}
+
+async function setCurrentUser(userOrUsername) {
+  const normalizedRecord = normalizeCurrentUserRecord(userOrUsername);
+  state.currentUser = normalizedRecord;
   if (state.currentUser) {
-    saveSessionUsername(normalized);
+    state.users[state.currentUser.username] = {
+      username: state.currentUser.username,
+      name: state.currentUser.name || state.currentUser.username,
+      user_id: state.currentUser.user_id || "",
+    };
+    saveSessionUsername(state.currentUser.username);
   } else {
     clearSessionUsername();
   }
-  state.attemptStats = loadAttemptStats();
-  state.gamificationData = loadGamificationData();
-  state.srsData = loadSrsData();
+
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    let remoteState = null;
+    try {
+      remoteState = await fetchRemoteUserState(state.currentUser.user_id);
+    } catch (error) {
+      console.error("Could not load remote user state:", error);
+    }
+    applyRemoteUserState(remoteState, state.currentUser.username);
+    try {
+      await fetchRemoteLeaderboardRows();
+    } catch (error) {
+      console.error("Could not load remote leaderboard rows:", error);
+      state.remoteLeaderboardRows = [];
+    }
+  } else {
+    state.bestScores = loadBestScores();
+    state.attemptStats = loadAttemptStats();
+    state.gamificationData = loadGamificationData();
+    state.srsData = loadSrsData();
+  }
+
   refreshStreakStatusForToday();
   if (state.dataLoaded) {
     syncSrsDataToCatalog();
@@ -1417,60 +1967,26 @@ function setProgressBar(textEl, fillEl, label, current, total) {
 }
 
 function loadBestScores() {
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    return normalizeBestScores(state.bestScores);
+  }
   try {
     const raw = localStorage.getItem(getBestScoresStorageKey());
     if (!raw) {
-      return {
-        verbs: {},
-        nouns: {},
-        beginner: {},
-        discourse: {},
-        conversion: {},
-        grammar: {},
-        slang: {},
-      };
+      return createEmptyBestScores();
     }
-
-    const parsed = JSON.parse(raw);
-    if (parsed && parsed.verbs && parsed.nouns) {
-      return {
-        verbs: parsed.verbs,
-        nouns: parsed.nouns,
-        beginner: parsed.beginner || {},
-        discourse: parsed.discourse || {},
-        conversion: parsed.conversion || {},
-        grammar: parsed.grammar || {},
-        slang: parsed.slang || {},
-      };
-    }
-
-    if (parsed && typeof parsed === "object") {
-      return {
-        verbs: parsed,
-        nouns: {},
-        beginner: {},
-        discourse: {},
-        conversion: {},
-        grammar: {},
-        slang: {},
-      };
-    }
+    return normalizeBestScores(JSON.parse(raw));
   } catch (error) {
     console.error("Could not load best scores:", error);
   }
 
-  return {
-    verbs: {},
-    nouns: {},
-    beginner: {},
-    discourse: {},
-    conversion: {},
-    grammar: {},
-    slang: {},
-  };
+  return createEmptyBestScores();
 }
 
 function saveBestScores() {
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    scheduleRemoteStateSync();
+  }
   try {
     localStorage.setItem(getBestScoresStorageKey(), JSON.stringify(state.bestScores));
   } catch (error) {
@@ -1497,40 +2013,18 @@ function getScoreFromStore(scoreStore, bucket, key, total) {
 }
 
 function loadBestScoresForUser(username) {
+  if (hasSupabaseConfig()) {
+    return createEmptyBestScores();
+  }
   try {
     const raw = localStorage.getItem(`${BEST_SCORES_STORAGE_KEY}::${username}`);
     if (!raw) {
-      return {
-        verbs: {},
-        nouns: {},
-        beginner: {},
-        discourse: {},
-        conversion: {},
-        grammar: {},
-        slang: {},
-      };
+      return createEmptyBestScores();
     }
-    const parsed = JSON.parse(raw);
-    return {
-      verbs: parsed.verbs || {},
-      nouns: parsed.nouns || {},
-      beginner: parsed.beginner || {},
-      discourse: parsed.discourse || {},
-      conversion: parsed.conversion || {},
-      grammar: parsed.grammar || {},
-      slang: parsed.slang || {},
-    };
+    return normalizeBestScores(JSON.parse(raw));
   } catch (error) {
     console.error("Could not load user best scores:", error);
-    return {
-      verbs: {},
-      nouns: {},
-      beginner: {},
-      discourse: {},
-      conversion: {},
-      grammar: {},
-      slang: {},
-    };
+    return createEmptyBestScores();
   }
 }
 
@@ -1683,6 +2177,63 @@ function renderLeaderboardList(targetList, rows, formatter) {
 }
 
 function buildLeaderboardRows() {
+  if (hasSupabaseConfig()) {
+    const rowsMap = new Map();
+    (Array.isArray(state.remoteLeaderboardRows) ? state.remoteLeaderboardRows : []).forEach((row) => {
+      const username = normalizeUsername(row?.username || "");
+      if (!username) {
+        return;
+      }
+      const total = Math.max(0, Number(row.progress_total) || 0);
+      const current = Math.max(0, Math.min(total, Number(row.progress_current) || 0));
+      const percentFromRow = Number(row.progress_percent);
+      const percent = Number.isFinite(percentFromRow)
+        ? Math.max(0, percentFromRow)
+        : total === 0
+          ? 0
+          : (current / total) * 100;
+      rowsMap.set(username, {
+        username,
+        name: String(row.display_name || "").trim() || username,
+        current,
+        total,
+        percent,
+        weeklyPoints: Math.max(0, Number(row.weekly_points) || 0),
+      });
+    });
+
+    if (state.currentUser?.username) {
+      const username = state.currentUser.username;
+      const progress = getOverallStudyProgress();
+      rowsMap.set(username, {
+        username,
+        name: state.currentUser.name || username,
+        current: progress.current,
+        total: progress.total,
+        percent: progress.percent,
+        weeklyPoints: getWeeklyProgressPoints(username),
+      });
+    }
+
+    const rows = Array.from(rowsMap.values());
+    const globalRows = [...rows]
+      .sort(
+        (a, b) => b.percent - a.percent || b.current - a.current || a.username.localeCompare(b.username),
+      )
+      .slice(0, 10);
+
+    const weeklyRows = [...rows]
+      .sort(
+        (a, b) =>
+          b.weeklyPoints - a.weeklyPoints ||
+          b.percent - a.percent ||
+          a.username.localeCompare(b.username),
+      )
+      .slice(0, 10);
+
+    return { globalRows, weeklyRows };
+  }
+
   const usernames = Object.keys(state.users);
   const rows = usernames.map((username) => {
     const scoreStore =
@@ -6022,6 +6573,10 @@ function isValidPassword(password) {
   return password.length >= 6;
 }
 
+function isValidUsernameForSupabase(username) {
+  return /^[a-z0-9._-]+$/.test(username);
+}
+
 function setLoggedInState() {
   showAppShell();
   clearAuthFeedback();
@@ -6038,6 +6593,29 @@ async function handleLogin(username, password) {
   if (!password) {
     throw new Error("Enter a password.");
   }
+  if (hasSupabaseConfig() && !isValidUsernameForSupabase(normalized)) {
+    throw new Error("Username can only include letters, numbers, dots, underscores, and hyphens.");
+  }
+
+  if (hasSupabaseConfig()) {
+    await supabaseSignIn({ username: normalized, password });
+    const identity = await resolveSupabaseIdentity();
+    if (!identity) {
+      throw new Error("Unable to load your account.");
+    }
+    await setCurrentUser(identity);
+    setLoggedInState();
+    try {
+      await ensureDataLoaded();
+      scheduleRemoteStateSync();
+    } catch (error) {
+      await logoutCurrentUser();
+      throw error;
+    }
+    refreshProgressViews();
+    openTrainingHub();
+    return;
+  }
 
   const userRecord = state.users[normalized];
   if (!userRecord) {
@@ -6049,15 +6627,14 @@ async function handleLogin(username, password) {
     throw new Error("Incorrect password.");
   }
 
-  await setCurrentUser(normalized);
+  await setCurrentUser(userRecord);
   setLoggedInState();
   try {
     await ensureDataLoaded();
   } catch (error) {
-    logoutCurrentUser();
+    await logoutCurrentUser();
     throw error;
   }
-  state.bestScores = loadBestScores();
   refreshProgressViews();
   openTrainingHub();
 }
@@ -6072,10 +6649,13 @@ async function handleSignup(name, username, password, confirmPassword) {
   if (!normalized) {
     throw new Error("Choose a username.");
   }
+  if (hasSupabaseConfig() && !isValidUsernameForSupabase(normalized)) {
+    throw new Error("Username can only include letters, numbers, dots, underscores, and hyphens.");
+  }
   if (normalized.length < 3) {
     throw new Error("Username must be at least 3 characters.");
   }
-  if (state.users[normalized]) {
+  if (!hasSupabaseConfig() && state.users[normalized]) {
     throw new Error("That username is already taken.");
   }
   if (!isValidPassword(password)) {
@@ -6083,6 +6663,52 @@ async function handleSignup(name, username, password, confirmPassword) {
   }
   if (password !== confirmPassword) {
     throw new Error("Passwords do not match.");
+  }
+
+  if (hasSupabaseConfig()) {
+    try {
+      await supabaseSignUp({
+        username: normalized,
+        password,
+        name: trimmedName,
+      });
+    } catch (error) {
+      const text = String(error.message || "");
+      if (/already registered|already exists|duplicate|unique/i.test(text)) {
+        throw new Error("That username is already taken.");
+      }
+      throw error;
+    }
+
+    if (!state.supabaseSession?.access_token) {
+      await supabaseSignIn({ username: normalized, password });
+    }
+
+    const identity = await resolveSupabaseIdentity();
+    if (!identity) {
+      throw new Error("Unable to load your new account.");
+    }
+    if (identity.name !== trimmedName) {
+      identity.name = trimmedName;
+      await upsertProfile({
+        userId: identity.user_id,
+        username: identity.username,
+        name: identity.name,
+      });
+    }
+
+    await setCurrentUser(identity);
+    setLoggedInState();
+    try {
+      await ensureDataLoaded();
+      scheduleRemoteStateSync();
+    } catch (error) {
+      await logoutCurrentUser();
+      throw error;
+    }
+    refreshProgressViews();
+    openTrainingHub();
+    return;
   }
 
   const salt = generateSalt();
@@ -6096,15 +6722,14 @@ async function handleSignup(name, username, password, confirmPassword) {
   };
   saveUsers(state.users);
 
-  await setCurrentUser(normalized);
+  await setCurrentUser(state.users[normalized]);
   setLoggedInState();
   try {
     await ensureDataLoaded();
   } catch (error) {
-    logoutCurrentUser();
+    await logoutCurrentUser();
     throw error;
   }
-  state.bestScores = loadBestScores();
   refreshProgressViews();
   openTrainingHub();
 }
@@ -6119,6 +6744,24 @@ async function handleProfileNameUpdate(nextName) {
   }
 
   const username = state.currentUser.username;
+  if (hasSupabaseConfig() && state.currentUser.user_id) {
+    await upsertProfile({
+      userId: state.currentUser.user_id,
+      username,
+      name: trimmed,
+    });
+    state.currentUser.name = trimmed;
+    state.users[username] = {
+      ...(state.users[username] || {}),
+      username,
+      name: trimmed,
+      user_id: state.currentUser.user_id,
+    };
+    scheduleRemoteStateSync();
+    refreshCurrentUserLabel();
+    return;
+  }
+
   state.users[username] = {
     ...state.users[username],
     name: trimmed,
@@ -6141,6 +6784,23 @@ async function handlePasswordUpdate(currentPassword, nextPassword, confirmPasswo
     throw new Error("New passwords do not match.");
   }
 
+  if (hasSupabaseConfig()) {
+    try {
+      await supabaseRequest("/auth/v1/token?grant_type=password", {
+        method: "POST",
+        auth: false,
+        body: {
+          email: usernameToAuthEmail(state.currentUser.username),
+          password: currentPassword,
+        },
+      });
+    } catch (_error) {
+      throw new Error("Current password is incorrect.");
+    }
+    await supabaseUpdatePassword(nextPassword);
+    return;
+  }
+
   const username = state.currentUser.username;
   const userRecord = state.users[username];
   const validCurrent = await verifyPassword(userRecord, currentPassword);
@@ -6159,9 +6819,20 @@ async function handlePasswordUpdate(currentPassword, nextPassword, confirmPasswo
   saveUsers(state.users);
 }
 
-function logoutCurrentUser() {
+async function logoutCurrentUser() {
+  if (hasSupabaseConfig()) {
+    await supabaseSignOut();
+  }
+  if (remoteStateSyncTimer) {
+    clearTimeout(remoteStateSyncTimer);
+    remoteStateSyncTimer = null;
+  }
   clearSessionUsername();
   state.currentUser = null;
+  state.bestScores = createEmptyBestScores();
+  state.activityMap = {};
+  state.attemptStats = createEmptyAttemptStats();
+  state.remoteLeaderboardRows = [];
   state.srsQueue = [];
   state.srsCurrentCard = null;
   state.srsCurrentSubmitted = false;
@@ -6170,7 +6841,9 @@ function logoutCurrentUser() {
   state.srsSessionCorrect = 0;
   state.gamificationData = createEmptyGamificationData();
   state.srsData = createEmptySrsData();
+  state.adminMode = false;
   refreshCurrentUserLabel();
+  refreshAdminModeAccess();
   showAuthScreen();
   clearAuthForms();
 }
@@ -6252,9 +6925,11 @@ async function loadData() {
     state.grammarGroups = buildGrammarGroups(grammar);
     state.slangGroups = buildSlangGroups(slang);
     state.stories = buildStories(stories);
-    state.bestScores = loadBestScores();
-    state.srsData = loadSrsData();
-    state.gamificationData = loadGamificationData();
+    if (!(hasSupabaseConfig() && state.currentUser?.user_id)) {
+      state.bestScores = loadBestScores();
+      state.srsData = loadSrsData();
+      state.gamificationData = loadGamificationData();
+    }
     rebuildSrsCatalog();
     evaluateAchievementsAndSync({ source: "init", save: true });
 
@@ -6363,8 +7038,8 @@ accountBackButton.addEventListener("click", () => {
   openTrainingHub();
 });
 
-logoutButton.addEventListener("click", () => {
-  logoutCurrentUser();
+logoutButton.addEventListener("click", async () => {
+  await logoutCurrentUser();
 });
 
 backToTrainingButton.addEventListener("click", () => {
@@ -6770,13 +7445,40 @@ async function bootstrap() {
   updateDashboardProgressBars();
   renderTrainingGrid();
 
+  if (hasSupabaseConfig()) {
+    state.supabaseSession = loadSupabaseSession();
+    if (state.supabaseSession?.access_token) {
+      try {
+        const identity = await resolveSupabaseIdentity();
+        if (!identity) {
+          throw new Error("No active Supabase session.");
+        }
+        await setCurrentUser(identity);
+        showAppShell();
+        await ensureDataLoaded();
+        scheduleRemoteStateSync();
+        refreshProgressViews();
+        openTrainingHub();
+        return;
+      } catch (error) {
+        console.error(error);
+        await logoutCurrentUser();
+      }
+    } else {
+      clearSupabaseSession();
+    }
+
+    showAuthScreen();
+    loginUsername.focus();
+    return;
+  }
+
   const sessionUsername = loadSessionUsername();
   if (sessionUsername && state.users[sessionUsername]) {
     await setCurrentUser(sessionUsername);
     showAppShell();
     try {
       await ensureDataLoaded();
-      state.bestScores = loadBestScores();
       refreshProgressViews();
       openTrainingHub();
     } catch (error) {
