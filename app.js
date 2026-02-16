@@ -1627,6 +1627,7 @@ function clearAuthForms() {
 
 function showAuthScreen() {
   stopQuizTimer();
+  document.body.classList.remove("quiz-screen-active");
   authView.hidden = false;
   appContent.hidden = true;
   clearStatus();
@@ -1788,6 +1789,7 @@ function showView(activeView) {
     activeView === conversionQuizView ||
     activeView === grammarQuizView ||
     activeView === slangQuizView;
+  document.body.classList.toggle("quiz-screen-active", isQuizScreen);
   if (!isQuizScreen) {
     stopQuizTimer();
   }

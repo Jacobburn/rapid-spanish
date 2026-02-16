@@ -1271,17 +1271,77 @@ h2 {
 }
 
 @media (max-width: 760px) {
+  body {
+    padding: 0.7rem;
+  }
+
+  .hero {
+    padding: 0.58rem 0.68rem;
+  }
+
+  body.quiz-screen-active {
+    overflow: hidden;
+  }
+
+  body.quiz-screen-active .app-shell {
+    height: calc(100dvh - 1.4rem);
+    overflow: hidden;
+  }
+
+  body.quiz-screen-active #appContent {
+    height: 100%;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 0.65rem;
+    overflow: hidden;
+  }
+
+  .panel {
+    padding: 0.8rem;
+  }
+
   .hero-top-row {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
   }
 
   .hero-controls {
-    justify-items: start;
-    width: 100%;
+    justify-items: end;
+    width: auto;
+    min-width: 0;
   }
 
   .hero-control-row {
-    justify-content: start;
+    justify-content: end;
+    flex-wrap: nowrap;
+    gap: 0.32rem;
+    min-width: 0;
+  }
+
+  .eyebrow {
+    font-size: 1.02rem;
+    letter-spacing: 0.065em;
+    white-space: nowrap;
+  }
+
+  .user-chip {
+    padding: 0.3rem 0.56rem;
+    font-size: 0.76rem;
+    max-width: 9.9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .user-chip::before {
+    width: 0.43rem;
+    height: 0.43rem;
+  }
+
+  .hero-control-row .ghost-button {
+    min-height: 2.08rem;
+    padding: 0.3rem 0.62rem;
+    font-size: 0.79rem;
   }
 
   .hub-layout {
@@ -1302,10 +1362,148 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView,
+      #srsReviewView
+    ) {
+    min-height: calc(100vh - 1.4rem);
+    min-height: calc(100dvh - 1.4rem);
+    display: flex;
+    flex-direction: column;
+  }
+
+  body.quiz-screen-active
+    :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ) {
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView,
+      #srsReviewView
+    ) .panel-header,
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView,
+      #srsReviewView
+    ) .rule-description,
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView,
+      #srsReviewView
+    ) .srs-card-block,
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView,
+      #srsReviewView
+    ) .srs-reveal,
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView,
+      #srsReviewView
+    ) .srs-grade-row {
+    flex: 0 0 auto;
+  }
+
+  .quiz-header {
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .quiz-header .quiz-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .quiz-header .quiz-actions .ghost-button {
+    flex: 1 1 auto;
+    min-height: 2.7rem;
+    text-align: center;
+    padding: 0.45rem 0.7rem;
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ) > .quiz-header {
+    display: contents;
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ) .quiz-actions {
+    order: 5;
+    margin-top: 0.55rem;
+  }
+
   .quiz-title-block {
     justify-self: start;
     text-align: left;
     width: 100%;
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ) .quiz-title-block {
+    order: 1;
   }
 
   .module-title-block {
@@ -1314,17 +1512,218 @@ h2 {
     width: 100%;
   }
 
+  .quiz-entry input {
+    width: 100%;
+    min-height: 2.9rem;
+    font-size: 1rem;
+    padding: 0.72rem 0.82rem;
+  }
+
+  .quiz-entry label {
+    font-size: 0.84rem;
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ) .progress-wrap {
+    order: 3;
+    flex: 0 0 auto;
+    margin-top: 0.5rem;
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ) .forms-list {
+    order: 4;
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: none;
+    margin-top: 0.45rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ) .quiz-entry {
+    order: 6;
+    flex: 0 0 auto;
+    margin-top: 0.7rem;
+  }
+
   .dashboard-controls {
     justify-items: start;
     width: 100%;
   }
 
   .form-row {
-    grid-template-columns: 1fr;
-    gap: 0.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.16rem 0.46rem;
+    padding: 0.42rem 0.5rem;
   }
 
-  .forms-list {
-    max-height: 56vh;
+  .form-label {
+    flex: 1 1 54%;
+    min-width: 0;
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .form-answer {
+    margin-left: auto;
+    flex: 0 1 44%;
+    max-width: 100%;
+    min-height: 1.02rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-align: right;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .srs-grade-row .ghost-button {
+    flex: 1 1 calc(50% - 0.24rem);
+    min-height: 2.65rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .ghost-button {
+    min-height: 2.6rem;
+    font-size: 0.88rem;
+  }
+
+  .hero {
+    padding: 0.5rem 0.56rem;
+  }
+
+  .hero-top-row {
+    gap: 0.36rem;
+  }
+
+  .eyebrow {
+    font-size: 0.88rem;
+    letter-spacing: 0.05em;
+  }
+
+  .user-chip {
+    max-width: 8.5rem;
+    padding: 0.25rem 0.46rem;
+    font-size: 0.7rem;
+  }
+
+  .hero-control-row .ghost-button {
+    min-height: 1.92rem;
+    padding: 0.23rem 0.48rem;
+    font-size: 0.74rem;
+  }
+
+  .admin-mode-toggle {
+    padding: 0.22rem 0.42rem;
+    font-size: 0.66rem;
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ) .quiz-actions {
+    gap: 0.4rem;
+    position: sticky;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 5.2rem);
+    z-index: 7;
+    padding: 0.4rem;
+    border: 1px solid #e4d6be;
+    border-radius: 12px;
+    background: #fffaf2;
+    box-shadow: 0 6px 15px rgba(89, 66, 25, 0.1);
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ) .quiz-actions .ghost-button {
+    flex-basis: 100%;
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ) .quiz-entry {
+    position: sticky;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 0.3rem);
+    z-index: 6;
+    margin-top: 0.65rem;
+    padding: 0.62rem;
+    border: 1px solid #e4d6be;
+    border-radius: 12px;
+    background: #fffaf2;
+    box-shadow: 0 6px 15px rgba(89, 66, 25, 0.1);
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ):focus-within .quiz-title-block .meta {
+    display: none;
+  }
+
+  :is(
+      #quizView,
+      #nounsQuizView,
+      #beginnerQuizView,
+      #discourseQuizView,
+      #conversionQuizView,
+      #grammarQuizView,
+      #slangQuizView
+    ) .forms-list {
+    margin-bottom: 0;
+    padding-bottom: 7.9rem;
+  }
+
+  .rule-description {
+    margin-top: 0.75rem;
+    padding: 0.55rem 0.62rem;
+    font-size: 0.84rem;
   }
 }
