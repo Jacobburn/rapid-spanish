@@ -1473,7 +1473,8 @@ h2 {
       #grammarQuizView,
       #slangQuizView
     ) > .quiz-header {
-    display: contents;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   :is(
@@ -1485,8 +1486,8 @@ h2 {
       #grammarQuizView,
       #slangQuizView
     ) .quiz-actions {
-    order: 5;
-    margin-top: 0.38rem;
+    order: 2;
+    margin-top: 0.2rem;
     padding: 0;
     border: 0;
     border-radius: 0;
@@ -1512,6 +1513,7 @@ h2 {
       #slangQuizView
     ) .quiz-title-block {
     order: 1;
+    margin-bottom: 0.08rem;
   }
 
   .module-title-block {
