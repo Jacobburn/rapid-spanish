@@ -26,6 +26,9 @@ const SRS_LEARNING_STEPS_MINUTES = [1, 10];
 const SRS_DEFAULT_EASE = 2.5;
 const SRS_MIN_EASE = 1.3;
 const SRS_MAX_EASE = 3.3;
+const ATTEMPT_SESSION_BREAK_MS = 10 * 60 * 1000;
+const MIN_ATTEMPT_ACTIVITY_MS = 4 * 1000;
+const MAX_ATTEMPT_ACTIVITY_MS = 2 * 60 * 1000;
 
 const SUPABASE_CONFIG = window.RAPID_SPANISH_SUPABASE_CONFIG || {};
 const SUPABASE_ENABLED = Boolean(SUPABASE_CONFIG.url && SUPABASE_CONFIG.anonKey);
@@ -264,6 +267,8 @@ const srsManageButton = document.getElementById("srsManageButton");
 const leaderboardHubGlobalList = document.getElementById("leaderboardHubGlobalList");
 const leaderboardHubWeeklyList = document.getElementById("leaderboardHubWeeklyList");
 const statsOverallAccuracy = document.getElementById("statsOverallAccuracy");
+const statsMinutesStudied = document.getElementById("statsMinutesStudied");
+const statsWordsPerMinute = document.getElementById("statsWordsPerMinute");
 const statsWeeklyTrend = document.getElementById("statsWeeklyTrend");
 const statsMasteryPace = document.getElementById("statsMasteryPace");
 const statsHardestTrack = document.getElementById("statsHardestTrack");
@@ -620,15 +625,25 @@ function normalizeUsername(value) {
   return value.trim().toLowerCase();
 }
 
+function countWords(value) {
+  return String(value || "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
+
 function createEmptyAttemptStats() {
   const byTrack = {};
   STATS_TRACKS.forEach((track) => {
     byTrack[track.id] = { attempts: 0, correct: 0 };
   });
   return {
-    totals: { attempts: 0, correct: 0 },
+    totals: { attempts: 0, correct: 0, words: 0, activeMs: 0 },
     byTrack,
     history: [],
+    meta: {
+      lastAttemptTs: 0,
+    },
   };
 }
 
@@ -640,6 +655,8 @@ function normalizeAttemptStats(rawStats) {
 
   safeStats.totals.attempts = Math.max(0, Number(rawStats?.totals?.attempts) || 0);
   safeStats.totals.correct = Math.max(0, Number(rawStats?.totals?.correct) || 0);
+  safeStats.totals.words = Math.max(0, Number(rawStats?.totals?.words) || 0);
+  safeStats.totals.activeMs = Math.max(0, Number(rawStats?.totals?.activeMs) || 0);
 
   STATS_TRACKS.forEach((track) => {
     const source = rawStats?.byTrack?.[track.id] || {};
@@ -655,6 +672,8 @@ function normalizeAttemptStats(rawStats) {
           ts: Number(entry.ts),
           track: String(entry.track || ""),
           correct: Boolean(entry.correct),
+          words: Math.max(0, Number(entry.words) || 0),
+          activeMs: Math.max(0, Number(entry.activeMs) || 0),
         }))
         .filter(
           (entry) =>
@@ -663,6 +682,8 @@ function normalizeAttemptStats(rawStats) {
         )
         .slice(-6000)
     : [];
+
+  safeStats.meta.lastAttemptTs = Math.max(0, Number(rawStats?.meta?.lastAttemptTs) || 0);
 
   return safeStats;
 }
@@ -1510,7 +1531,7 @@ function markStoryRead(storyId) {
   }
 }
 
-function recordAttemptStat(trackId, wasCorrect) {
+function recordAttemptStat(trackId, wasCorrect, answerText = "") {
   if (!state.currentUser?.username) {
     return;
   }
@@ -1520,10 +1541,22 @@ function recordAttemptStat(trackId, wasCorrect) {
 
   const stats = normalizeAttemptStats(state.attemptStats);
   const timestamp = Date.now();
+  const words = countWords(answerText);
+  const lastAttemptTs = Number(stats.meta?.lastAttemptTs) || 0;
+  let activeIncrementMs = MIN_ATTEMPT_ACTIVITY_MS;
+  if (lastAttemptTs > 0) {
+    const gap = timestamp - lastAttemptTs;
+    if (Number.isFinite(gap) && gap > 0 && gap <= ATTEMPT_SESSION_BREAK_MS) {
+      activeIncrementMs = Math.max(MIN_ATTEMPT_ACTIVITY_MS, Math.min(gap, MAX_ATTEMPT_ACTIVITY_MS));
+    }
+  }
+
   stats.totals.attempts += 1;
   if (wasCorrect) {
     stats.totals.correct += 1;
   }
+  stats.totals.words += words;
+  stats.totals.activeMs += activeIncrementMs;
 
   const byTrack = stats.byTrack[trackId] || { attempts: 0, correct: 0 };
   byTrack.attempts += 1;
@@ -1536,7 +1569,10 @@ function recordAttemptStat(trackId, wasCorrect) {
     ts: timestamp,
     track: trackId,
     correct: Boolean(wasCorrect),
+    words,
+    activeMs: activeIncrementMs,
   });
+  stats.meta.lastAttemptTs = timestamp;
 
   const ninetyDaysAgo = timestamp - 90 * 24 * 60 * 60 * 1000;
   stats.history = stats.history
@@ -2480,6 +2516,8 @@ function buildHardestDeckRows(limit = 3) {
 function renderStatsHubTile() {
   if (
     !statsOverallAccuracy ||
+    !statsMinutesStudied ||
+    !statsWordsPerMinute ||
     !statsWeeklyTrend ||
     !statsMasteryPace ||
     !statsHardestTrack ||
@@ -2491,6 +2529,8 @@ function renderStatsHubTile() {
 
   if (!state.dataLoaded) {
     statsOverallAccuracy.textContent = "Loading...";
+    statsMinutesStudied.textContent = "Loading...";
+    statsWordsPerMinute.textContent = "Loading...";
     statsWeeklyTrend.textContent = "Loading...";
     statsMasteryPace.textContent = "Loading...";
     statsHardestTrack.textContent = "Loading...";
@@ -2504,9 +2544,16 @@ function renderStatsHubTile() {
 
   const totalAttempts = stats.totals.attempts;
   const totalCorrect = stats.totals.correct;
+  const totalWords = Math.max(0, Number(stats.totals.words) || 0);
+  const totalActiveMs = Math.max(0, Number(stats.totals.activeMs) || 0);
+  const totalMinutes = totalActiveMs / (60 * 1000);
   const overallPercent = totalAttempts > 0 ? calculatePercent(totalCorrect, totalAttempts) : 0;
   statsOverallAccuracy.textContent =
     totalAttempts > 0 ? `${overallPercent}% (${totalCorrect}/${totalAttempts})` : "No attempts yet";
+  statsMinutesStudied.textContent =
+    totalAttempts > 0 ? `${totalMinutes.toFixed(1)} min` : "No attempts yet";
+  statsWordsPerMinute.textContent =
+    totalWords > 0 && totalMinutes > 0 ? `${(totalWords / totalMinutes).toFixed(1)} wpm` : "No data yet";
 
   const trend = getWeeklyProgressTrend(state.currentUser?.username || "");
   if (trend.thisWeekPoints === 0 && trend.lastWeekPoints === 0) {
@@ -4862,7 +4909,7 @@ function attemptVerbAnswer(rawValue, strict = false) {
     if (strict) {
       feedback.className = "feedback bad";
       feedback.textContent = "Not a match yet.";
-      recordAttemptStat(statsTrack, false);
+      recordAttemptStat(statsTrack, false, rawValue);
     }
     return;
   }
@@ -4874,7 +4921,7 @@ function attemptVerbAnswer(rawValue, strict = false) {
     answerInput.value = "";
     updateVerbProgress();
     if (strict) {
-      recordAttemptStat(statsTrack, true);
+      recordAttemptStat(statsTrack, true, rawValue);
     }
   }
 }
@@ -5191,7 +5238,7 @@ function attemptNounAnswer(rawValue, strict = false) {
     if (strict) {
       nounsFeedback.className = "feedback bad";
       nounsFeedback.textContent = "Not a match yet.";
-      recordAttemptStat(statsTrack, false);
+      recordAttemptStat(statsTrack, false, rawValue);
     }
     return;
   }
@@ -5203,7 +5250,7 @@ function attemptNounAnswer(rawValue, strict = false) {
     nounsAnswerInput.value = "";
     updateNounProgress();
     if (strict) {
-      recordAttemptStat(statsTrack, true);
+      recordAttemptStat(statsTrack, true, rawValue);
     }
   }
 }
@@ -5442,7 +5489,7 @@ function attemptBeginnerAnswer(rawValue, strict = false) {
     if (strict) {
       beginnerFeedback.className = "feedback bad";
       beginnerFeedback.textContent = "Not a match yet.";
-      recordAttemptStat("beginner", false);
+      recordAttemptStat("beginner", false, rawValue);
     }
     return;
   }
@@ -5454,7 +5501,7 @@ function attemptBeginnerAnswer(rawValue, strict = false) {
     beginnerAnswerInput.value = "";
     updateBeginnerProgress();
     if (strict) {
-      recordAttemptStat("beginner", true);
+      recordAttemptStat("beginner", true, rawValue);
     }
   }
 }
@@ -5710,7 +5757,7 @@ function attemptDiscourseAnswer(rawValue, strict = false) {
     if (strict) {
       discourseFeedback.className = "feedback bad";
       discourseFeedback.textContent = "Not a match yet.";
-      recordAttemptStat("discourse", false);
+      recordAttemptStat("discourse", false, rawValue);
     }
     return;
   }
@@ -5722,7 +5769,7 @@ function attemptDiscourseAnswer(rawValue, strict = false) {
     discourseAnswerInput.value = "";
     updateDiscourseProgress();
     if (strict) {
-      recordAttemptStat("discourse", true);
+      recordAttemptStat("discourse", true, rawValue);
     }
   }
 }
@@ -5965,7 +6012,7 @@ function attemptConversionAnswer(rawValue, strict = false) {
     if (strict) {
       conversionFeedback.className = "feedback bad";
       conversionFeedback.textContent = "Not a match yet.";
-      recordAttemptStat("conversion", false);
+      recordAttemptStat("conversion", false, rawValue);
     }
     return;
   }
@@ -5977,7 +6024,7 @@ function attemptConversionAnswer(rawValue, strict = false) {
     conversionAnswerInput.value = "";
     updateConversionProgress();
     if (strict) {
-      recordAttemptStat("conversion", true);
+      recordAttemptStat("conversion", true, rawValue);
     }
   }
 }
@@ -6220,7 +6267,7 @@ function attemptGrammarAnswer(rawValue, strict = false) {
     if (strict) {
       grammarFeedback.className = "feedback bad";
       grammarFeedback.textContent = "Not a match yet.";
-      recordAttemptStat("grammar", false);
+      recordAttemptStat("grammar", false, rawValue);
     }
     return;
   }
@@ -6232,7 +6279,7 @@ function attemptGrammarAnswer(rawValue, strict = false) {
     grammarAnswerInput.value = "";
     updateGrammarProgress();
     if (strict) {
-      recordAttemptStat("grammar", true);
+      recordAttemptStat("grammar", true, rawValue);
     }
   }
 }
@@ -6471,7 +6518,7 @@ function attemptSlangAnswer(rawValue, strict = false) {
     if (strict) {
       slangFeedback.className = "feedback bad";
       slangFeedback.textContent = "Not a match yet.";
-      recordAttemptStat("slang", false);
+      recordAttemptStat("slang", false, rawValue);
     }
     return;
   }
@@ -6483,7 +6530,7 @@ function attemptSlangAnswer(rawValue, strict = false) {
     slangAnswerInput.value = "";
     updateSlangProgress();
     if (strict) {
-      recordAttemptStat("slang", true);
+      recordAttemptStat("slang", true, rawValue);
     }
   }
 }
