@@ -2705,7 +2705,7 @@
       "id": "numbers-0-49",
       "title": "Numbers 0-49",
       "description": "Imported from Beginner Phrases.xlsx. Italic rows are in-quiz subheadings.",
-      "count": 60,
+      "count": 50,
       "items": [
         {
           "hint": "0 (zero)",
@@ -3106,86 +3106,6 @@
             "cuarenta y nueve"
           ],
           "index": 50
-        },
-        {
-          "hint": "50 (fifty)",
-          "answer": "cincuenta",
-          "answers": [
-            "cincuenta"
-          ],
-          "index": 51
-        },
-        {
-          "hint": "51 (fifty-one)",
-          "answer": "cincuenta y uno",
-          "answers": [
-            "cincuenta y uno"
-          ],
-          "index": 52
-        },
-        {
-          "hint": "52 (fifty-two)",
-          "answer": "cincuenta y dos",
-          "answers": [
-            "cincuenta y dos"
-          ],
-          "index": 53
-        },
-        {
-          "hint": "53 (fifty-three)",
-          "answer": "cincuenta y tres",
-          "answers": [
-            "cincuenta y tres"
-          ],
-          "index": 54
-        },
-        {
-          "hint": "54 (fifty-four)",
-          "answer": "cincuenta y cuatro",
-          "answers": [
-            "cincuenta y cuatro"
-          ],
-          "index": 55
-        },
-        {
-          "hint": "55 (fifty-five)",
-          "answer": "cincuenta y cinco",
-          "answers": [
-            "cincuenta y cinco"
-          ],
-          "index": 56
-        },
-        {
-          "hint": "56 (fifty-six)",
-          "answer": "cincuenta y seis",
-          "answers": [
-            "cincuenta y seis"
-          ],
-          "index": 57
-        },
-        {
-          "hint": "57 (fifty-seven)",
-          "answer": "cincuenta y siete",
-          "answers": [
-            "cincuenta y siete"
-          ],
-          "index": 58
-        },
-        {
-          "hint": "58 (fifty-eight)",
-          "answer": "cincuenta y ocho",
-          "answers": [
-            "cincuenta y ocho"
-          ],
-          "index": 59
-        },
-        {
-          "hint": "59 (fifty-nine)",
-          "answer": "cincuenta y nueve",
-          "answers": [
-            "cincuenta y nueve"
-          ],
-          "index": 60
         }
       ]
     },
@@ -3193,15 +3113,95 @@
       "id": "numbers-50-100",
       "title": "Numbers 50-100",
       "description": "Imported from Beginner Phrases.xlsx. Italic rows are in-quiz subheadings.",
-      "count": 41,
+      "count": 51,
       "items": [
+        {
+          "hint": "50 (fifty)",
+          "answer": "cincuenta",
+          "answers": [
+            "cincuenta"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "51 (fifty-one)",
+          "answer": "cincuenta y uno",
+          "answers": [
+            "cincuenta y uno"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "52 (fifty-two)",
+          "answer": "cincuenta y dos",
+          "answers": [
+            "cincuenta y dos"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "53 (fifty-three)",
+          "answer": "cincuenta y tres",
+          "answers": [
+            "cincuenta y tres"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "54 (fifty-four)",
+          "answer": "cincuenta y cuatro",
+          "answers": [
+            "cincuenta y cuatro"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "55 (fifty-five)",
+          "answer": "cincuenta y cinco",
+          "answers": [
+            "cincuenta y cinco"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "56 (fifty-six)",
+          "answer": "cincuenta y seis",
+          "answers": [
+            "cincuenta y seis"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "57 (fifty-seven)",
+          "answer": "cincuenta y siete",
+          "answers": [
+            "cincuenta y siete"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "58 (fifty-eight)",
+          "answer": "cincuenta y ocho",
+          "answers": [
+            "cincuenta y ocho"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "59 (fifty-nine)",
+          "answer": "cincuenta y nueve",
+          "answers": [
+            "cincuenta y nueve"
+          ],
+          "index": 10
+        },
         {
           "hint": "60 (sixty)",
           "answer": "sesenta",
           "answers": [
             "sesenta"
           ],
-          "index": 1
+          "index": 11
         },
         {
           "hint": "61 (sixty-one)",
@@ -3209,7 +3209,7 @@
           "answers": [
             "sesenta y uno"
           ],
-          "index": 2
+          "index": 12
         },
         {
           "hint": "62 (sixty-two)",
@@ -3217,7 +3217,7 @@
           "answers": [
             "sesenta y dos"
           ],
-          "index": 3
+          "index": 13
         },
         {
           "hint": "63 (sixty-three)",
@@ -3225,7 +3225,7 @@
           "answers": [
             "sesenta y tres"
           ],
-          "index": 4
+          "index": 14
         },
         {
           "hint": "64 (sixty-four)",
@@ -3233,7 +3233,7 @@
           "answers": [
             "sesenta y cuatro"
           ],
-          "index": 5
+          "index": 15
         },
         {
           "hint": "65 (sixty-five)",
@@ -3241,7 +3241,7 @@
           "answers": [
             "sesenta y cinco"
           ],
-          "index": 6
+          "index": 16
         },
         {
           "hint": "66 (sixty-six)",
@@ -3249,7 +3249,7 @@
           "answers": [
             "sesenta y seis"
           ],
-          "index": 7
+          "index": 17
         },
         {
           "hint": "67 (sixty-seven)",
@@ -3257,7 +3257,7 @@
           "answers": [
             "sesenta y siete"
           ],
-          "index": 8
+          "index": 18
         },
         {
           "hint": "68 (sixty-eight)",
@@ -3265,7 +3265,7 @@
           "answers": [
             "sesenta y ocho"
           ],
-          "index": 9
+          "index": 19
         },
         {
           "hint": "69 (sixty-nine)",
@@ -3273,7 +3273,7 @@
           "answers": [
             "sesenta y nueve"
           ],
-          "index": 10
+          "index": 20
         },
         {
           "hint": "70 (seventy)",
@@ -3281,7 +3281,7 @@
           "answers": [
             "setenta"
           ],
-          "index": 11
+          "index": 21
         },
         {
           "hint": "71 (seventy-one)",
@@ -3289,7 +3289,7 @@
           "answers": [
             "setenta y uno"
           ],
-          "index": 12
+          "index": 22
         },
         {
           "hint": "72 (seventy-two)",
@@ -3297,7 +3297,7 @@
           "answers": [
             "setenta y dos"
           ],
-          "index": 13
+          "index": 23
         },
         {
           "hint": "73 (seventy-three)",
@@ -3305,7 +3305,7 @@
           "answers": [
             "setenta y tres"
           ],
-          "index": 14
+          "index": 24
         },
         {
           "hint": "74 (seventy-four)",
@@ -3313,7 +3313,7 @@
           "answers": [
             "setenta y cuatro"
           ],
-          "index": 15
+          "index": 25
         },
         {
           "hint": "75 (seventy-five)",
@@ -3321,7 +3321,7 @@
           "answers": [
             "setenta y cinco"
           ],
-          "index": 16
+          "index": 26
         },
         {
           "hint": "76 (seventy-six)",
@@ -3329,7 +3329,7 @@
           "answers": [
             "setenta y seis"
           ],
-          "index": 17
+          "index": 27
         },
         {
           "hint": "77 (seventy-seven)",
@@ -3337,7 +3337,7 @@
           "answers": [
             "setenta y siete"
           ],
-          "index": 18
+          "index": 28
         },
         {
           "hint": "78 (seventy-eight)",
@@ -3345,7 +3345,7 @@
           "answers": [
             "setenta y ocho"
           ],
-          "index": 19
+          "index": 29
         },
         {
           "hint": "79 (seventy-nine)",
@@ -3353,7 +3353,7 @@
           "answers": [
             "setenta y nueve"
           ],
-          "index": 20
+          "index": 30
         },
         {
           "hint": "80 (eighty)",
@@ -3361,7 +3361,7 @@
           "answers": [
             "ochenta"
           ],
-          "index": 21
+          "index": 31
         },
         {
           "hint": "81 (eighty-one)",
@@ -3369,7 +3369,7 @@
           "answers": [
             "ochenta y uno"
           ],
-          "index": 22
+          "index": 32
         },
         {
           "hint": "82 (eighty-two)",
@@ -3377,7 +3377,7 @@
           "answers": [
             "ochenta y dos"
           ],
-          "index": 23
+          "index": 33
         },
         {
           "hint": "83 (eighty-three)",
@@ -3385,7 +3385,7 @@
           "answers": [
             "ochenta y tres"
           ],
-          "index": 24
+          "index": 34
         },
         {
           "hint": "84 (eighty-four)",
@@ -3393,7 +3393,7 @@
           "answers": [
             "ochenta y cuatro"
           ],
-          "index": 25
+          "index": 35
         },
         {
           "hint": "85 (eighty-five)",
@@ -3401,7 +3401,7 @@
           "answers": [
             "ochenta y cinco"
           ],
-          "index": 26
+          "index": 36
         },
         {
           "hint": "86 (eighty-six)",
@@ -3409,7 +3409,7 @@
           "answers": [
             "ochenta y seis"
           ],
-          "index": 27
+          "index": 37
         },
         {
           "hint": "87 (eighty-seven)",
@@ -3417,7 +3417,7 @@
           "answers": [
             "ochenta y siete"
           ],
-          "index": 28
+          "index": 38
         },
         {
           "hint": "88 (eighty-eight)",
@@ -3425,7 +3425,7 @@
           "answers": [
             "ochenta y ocho"
           ],
-          "index": 29
+          "index": 39
         },
         {
           "hint": "89 (eighty-nine)",
@@ -3433,7 +3433,7 @@
           "answers": [
             "ochenta y nueve"
           ],
-          "index": 30
+          "index": 40
         },
         {
           "hint": "90 (ninety)",
@@ -3441,7 +3441,7 @@
           "answers": [
             "noventa"
           ],
-          "index": 31
+          "index": 41
         },
         {
           "hint": "91 (ninety-one)",
@@ -3449,7 +3449,7 @@
           "answers": [
             "noventa y uno"
           ],
-          "index": 32
+          "index": 42
         },
         {
           "hint": "92 (ninety-two)",
@@ -3457,7 +3457,7 @@
           "answers": [
             "noventa y dos"
           ],
-          "index": 33
+          "index": 43
         },
         {
           "hint": "93 (ninety-three)",
@@ -3465,7 +3465,7 @@
           "answers": [
             "noventa y tres"
           ],
-          "index": 34
+          "index": 44
         },
         {
           "hint": "94 (ninety-four)",
@@ -3473,7 +3473,7 @@
           "answers": [
             "noventa y cuatro"
           ],
-          "index": 35
+          "index": 45
         },
         {
           "hint": "95 (ninety-five)",
@@ -3481,7 +3481,7 @@
           "answers": [
             "noventa y cinco"
           ],
-          "index": 36
+          "index": 46
         },
         {
           "hint": "96 (ninety-six)",
@@ -3489,7 +3489,7 @@
           "answers": [
             "noventa y seis"
           ],
-          "index": 37
+          "index": 47
         },
         {
           "hint": "97 (ninety-seven)",
@@ -3497,7 +3497,7 @@
           "answers": [
             "noventa y siete"
           ],
-          "index": 38
+          "index": 48
         },
         {
           "hint": "98 (ninety-eight)",
@@ -3505,7 +3505,7 @@
           "answers": [
             "noventa y ocho"
           ],
-          "index": 39
+          "index": 49
         },
         {
           "hint": "99 (ninety-nine)",
@@ -3513,7 +3513,7 @@
           "answers": [
             "noventa y nueve"
           ],
-          "index": 40
+          "index": 50
         },
         {
           "hint": "100 (one hundred)",
@@ -3521,7 +3521,7 @@
           "answers": [
             "cien"
           ],
-          "index": 41
+          "index": 51
         }
       ]
     },
