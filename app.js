@@ -5350,9 +5350,101 @@ function filterAndRenderVerbs() {
   renderVerbGrid(filtered);
 }
 
+const VERB_CORE_SECTION_LABELS = {
+  general: "General",
+  presente: "presente",
+  imperfecto: "imperfecto",
+  indefinido: "indefinido",
+  futuro: "futuro",
+  condicional: "condicional",
+};
+const VERB_ADDITIONAL_SECTION_LABELS = {
+  infinitivo: "infinitivo",
+  "subjuntivo-presente": "subjuntivo presente",
+  "subjuntivo-pasado": "subjuntivo pasado",
+  "imperativo-positivo": "imperativo positivo",
+  "subjuntivo-futuro": "subjuntivo futuro",
+};
+
+function getVerbCoreSectionKey(form) {
+  const tenseTag = normalize(form?.tenseTag || "");
+  if (
+    tenseTag === "infinitivo" ||
+    tenseTag === "infinito" ||
+    tenseTag === "infinitive" ||
+    tenseTag === "gerundio" ||
+    tenseTag === "participio" ||
+    tenseTag === "participio_passato" ||
+    tenseTag === "participio_presente"
+  ) {
+    return "general";
+  }
+  if (tenseTag === "presente") {
+    return "presente";
+  }
+  if (tenseTag === "imperfecto" || tenseTag === "imperfetto") {
+    return "imperfecto";
+  }
+  if (tenseTag === "indefinido" || tenseTag === "passato_remoto") {
+    return "indefinido";
+  }
+  if (tenseTag === "futuro") {
+    return "futuro";
+  }
+  if (tenseTag === "condicional" || tenseTag === "condizionale") {
+    return "condicional";
+  }
+  return "";
+}
+
+function getVerbAdditionalSectionKey(form) {
+  const tenseTag = normalize(form?.tenseTag || "");
+  if (tenseTag === "infinitivo" || tenseTag === "infinito" || tenseTag === "infinitive") {
+    return "infinitivo";
+  }
+  if (tenseTag === "subjuntivopresente" || tenseTag === "subjuntivo presente") {
+    return "subjuntivo-presente";
+  }
+  if (tenseTag === "subjuntivopasado" || tenseTag === "subjuntivo pasado") {
+    return "subjuntivo-pasado";
+  }
+  if (tenseTag === "imperativo") {
+    return "imperativo-positivo";
+  }
+  if (tenseTag === "subjuntivofuturo" || tenseTag === "subjuntivo futuro") {
+    return "subjuntivo-futuro";
+  }
+  return "";
+}
+
 function renderVerbForms(forms) {
   formsList.innerHTML = "";
+  const showVerbSections =
+    getCurrentLanguage() === "es" &&
+    (state.activeVerbTrack === "core" || state.activeVerbTrack === "additional");
+  const sectionLabels =
+    state.activeVerbTrack === "additional"
+      ? VERB_ADDITIONAL_SECTION_LABELS
+      : VERB_CORE_SECTION_LABELS;
+  const sectionKeyForForm =
+    state.activeVerbTrack === "additional"
+      ? getVerbAdditionalSectionKey
+      : getVerbCoreSectionKey;
+  let previousSection = "";
   forms.forEach((form, index) => {
+    if (showVerbSections) {
+      const sectionKey = sectionKeyForForm(form);
+      if (sectionKey && sectionKey !== previousSection) {
+        const headingRow = document.createElement("li");
+        headingRow.className = "form-row form-subheading";
+        headingRow.innerHTML = `
+          <span class="form-subheading-label">${sectionLabels[sectionKey]}</span>
+        `;
+        formsList.appendChild(headingRow);
+      }
+      previousSection = sectionKey || previousSection;
+    }
+
     const row = document.createElement("li");
     row.className = "form-row";
     row.dataset.index = index.toString();
