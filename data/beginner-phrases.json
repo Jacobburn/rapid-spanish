@@ -2,7 +2,8 @@
   "sourceNotes": [
     "Imported from /Users/jakeburn/Desktop/Beginner Phrases.xlsx",
     "Each spreadsheet column maps to one quiz deck.",
-    "Italic cells are emitted as in-quiz subheadings via kind=subheading."
+    "Italic cells are emitted as in-quiz subheadings via kind=subheading.",
+    "Clues mapped to English using legacy beginner-pack mappings plus supplemental translations."
   ],
   "generatedAt": "2026-02-22T10:37:38.849834+00:00",
   "groupCount": 16,
@@ -20,7 +21,7 @@
           "index": 1
         },
         {
-          "hint": "sí",
+          "hint": "yes",
           "answer": "sí",
           "answers": [
             "sí"
@@ -36,7 +37,7 @@
           "index": 3
         },
         {
-          "hint": "también",
+          "hint": "also",
           "answer": "también",
           "answers": [
             "también"
@@ -44,7 +45,7 @@
           "index": 4
         },
         {
-          "hint": "tampoco",
+          "hint": "neither / not either",
           "answer": "tampoco",
           "answers": [
             "tampoco"
@@ -57,7 +58,7 @@
           "index": 6
         },
         {
-          "hint": "cómo",
+          "hint": "how?",
           "answer": "cómo",
           "answers": [
             "cómo"
@@ -65,7 +66,7 @@
           "index": 7
         },
         {
-          "hint": "cuándo",
+          "hint": "when?",
           "answer": "cuándo",
           "answers": [
             "cuándo"
@@ -73,7 +74,7 @@
           "index": 8
         },
         {
-          "hint": "dónde",
+          "hint": "where?",
           "answer": "dónde",
           "answers": [
             "dónde"
@@ -81,7 +82,7 @@
           "index": 9
         },
         {
-          "hint": "adónde",
+          "hint": "to where?",
           "answer": "adónde",
           "answers": [
             "adónde"
@@ -89,7 +90,7 @@
           "index": 10
         },
         {
-          "hint": "por qué",
+          "hint": "why?",
           "answer": "por qué",
           "answers": [
             "por qué"
@@ -97,7 +98,7 @@
           "index": 11
         },
         {
-          "hint": "cuán",
+          "hint": "how (as in \"how ...!\")",
           "answer": "cuán",
           "answers": [
             "cuán"
@@ -110,7 +111,7 @@
           "index": 13
         },
         {
-          "hint": "como",
+          "hint": "how?",
           "answer": "como",
           "answers": [
             "como"
@@ -118,7 +119,7 @@
           "index": 14
         },
         {
-          "hint": "cuando",
+          "hint": "when?",
           "answer": "cuando",
           "answers": [
             "cuando"
@@ -126,7 +127,7 @@
           "index": 15
         },
         {
-          "hint": "donde",
+          "hint": "where?",
           "answer": "donde",
           "answers": [
             "donde"
@@ -134,7 +135,7 @@
           "index": 16
         },
         {
-          "hint": "adonde",
+          "hint": "to where?",
           "answer": "adonde",
           "answers": [
             "adonde"
@@ -147,7 +148,7 @@
           "index": 18
         },
         {
-          "hint": "gracias",
+          "hint": "thanks",
           "answer": "gracias",
           "answers": [
             "gracias"
@@ -155,7 +156,7 @@
           "index": 19
         },
         {
-          "hint": "muchas gracias",
+          "hint": "thank you very much",
           "answer": "muchas gracias",
           "answers": [
             "muchas gracias"
@@ -163,7 +164,7 @@
           "index": 20
         },
         {
-          "hint": "de nada",
+          "hint": "you're welcome",
           "answer": "de nada",
           "answers": [
             "de nada"
@@ -171,7 +172,7 @@
           "index": 21
         },
         {
-          "hint": "perdón",
+          "hint": "sorry / pardon",
           "answer": "perdón",
           "answers": [
             "perdón"
@@ -179,7 +180,7 @@
           "index": 22
         },
         {
-          "hint": "perdona",
+          "hint": "sorry / pardon me (informal)",
           "answer": "perdona",
           "answers": [
             "perdona"
@@ -187,7 +188,7 @@
           "index": 23
         },
         {
-          "hint": "disculpa",
+          "hint": "excuse me (informal apology)",
           "answer": "disculpa",
           "answers": [
             "disculpa"
@@ -195,7 +196,7 @@
           "index": 24
         },
         {
-          "hint": "disculpe",
+          "hint": "excuse me (formal apology)",
           "answer": "disculpe",
           "answers": [
             "disculpe"
@@ -203,7 +204,7 @@
           "index": 25
         },
         {
-          "hint": "lo siento",
+          "hint": "I'm sorry",
           "answer": "lo siento",
           "answers": [
             "lo siento"
@@ -211,7 +212,7 @@
           "index": 26
         },
         {
-          "hint": "con permiso",
+          "hint": "excuse me (with permission)",
           "answer": "con permiso",
           "answers": [
             "con permiso"
@@ -219,7 +220,7 @@
           "index": 27
         },
         {
-          "hint": "permiso",
+          "hint": "excuse me (passing by)",
           "answer": "permiso",
           "answers": [
             "permiso"
@@ -227,7 +228,7 @@
           "index": 28
         },
         {
-          "hint": "buen provecho",
+          "hint": "enjoy your meal",
           "answer": "buen provecho",
           "answers": [
             "buen provecho"
@@ -235,7 +236,7 @@
           "index": 29
         },
         {
-          "hint": "salud",
+          "hint": "bless you / cheers",
           "answer": "salud",
           "answers": [
             "salud"
@@ -248,7 +249,7 @@
           "index": 31
         },
         {
-          "hint": "vale",
+          "hint": "okay / all right",
           "answer": "vale",
           "answers": [
             "vale"
@@ -256,7 +257,7 @@
           "index": 32
         },
         {
-          "hint": "claro",
+          "hint": "of course",
           "answer": "claro",
           "answers": [
             "claro"
@@ -264,7 +265,7 @@
           "index": 33
         },
         {
-          "hint": "o sea",
+          "hint": "that is / I mean",
           "answer": "o sea",
           "answers": [
             "o sea"
@@ -272,7 +273,7 @@
           "index": 34
         },
         {
-          "hint": "en fin",
+          "hint": "anyway / in the end",
           "answer": "en fin",
           "answers": [
             "en fin"
@@ -280,7 +281,7 @@
           "index": 35
         },
         {
-          "hint": "a ver",
+          "hint": "let's see",
           "answer": "a ver",
           "answers": [
             "a ver"
@@ -288,7 +289,7 @@
           "index": 36
         },
         {
-          "hint": "mira",
+          "hint": "look",
           "answer": "mira",
           "answers": [
             "mira"
@@ -309,7 +310,7 @@
           "index": 1
         },
         {
-          "hint": "ahora",
+          "hint": "now",
           "answer": "ahora",
           "answers": [
             "ahora"
@@ -317,7 +318,7 @@
           "index": 2
         },
         {
-          "hint": "hoy",
+          "hint": "today",
           "answer": "hoy",
           "answers": [
             "hoy"
@@ -325,7 +326,7 @@
           "index": 3
         },
         {
-          "hint": "ayer",
+          "hint": "yesterday",
           "answer": "ayer",
           "answers": [
             "ayer"
@@ -333,7 +334,7 @@
           "index": 4
         },
         {
-          "hint": "mañana",
+          "hint": "tomorrow",
           "answer": "mañana",
           "answers": [
             "mañana"
@@ -341,7 +342,7 @@
           "index": 5
         },
         {
-          "hint": "antes",
+          "hint": "before",
           "answer": "antes",
           "answers": [
             "antes"
@@ -349,7 +350,7 @@
           "index": 6
         },
         {
-          "hint": "después",
+          "hint": "after",
           "answer": "después",
           "answers": [
             "después"
@@ -357,7 +358,7 @@
           "index": 7
         },
         {
-          "hint": "ya",
+          "hint": "already",
           "answer": "ya",
           "answers": [
             "ya"
@@ -365,7 +366,7 @@
           "index": 8
         },
         {
-          "hint": "todavía",
+          "hint": "still / yet",
           "answer": "todavía",
           "answers": [
             "todavía"
@@ -373,7 +374,7 @@
           "index": 9
         },
         {
-          "hint": "aún",
+          "hint": "still / yet",
           "answer": "aún",
           "answers": [
             "aún"
@@ -381,7 +382,7 @@
           "index": 10
         },
         {
-          "hint": "luego",
+          "hint": "then / afterwards",
           "answer": "luego",
           "answers": [
             "luego"
@@ -389,7 +390,7 @@
           "index": 11
         },
         {
-          "hint": "entonces",
+          "hint": "then",
           "answer": "entonces",
           "answers": [
             "entonces"
@@ -397,7 +398,7 @@
           "index": 12
         },
         {
-          "hint": "siempre",
+          "hint": "always",
           "answer": "siempre",
           "answers": [
             "siempre"
@@ -405,7 +406,7 @@
           "index": 13
         },
         {
-          "hint": "nunca",
+          "hint": "never",
           "answer": "nunca",
           "answers": [
             "nunca"
@@ -413,7 +414,7 @@
           "index": 14
         },
         {
-          "hint": "jamás",
+          "hint": "never ever",
           "answer": "jamás",
           "answers": [
             "jamás"
@@ -421,7 +422,7 @@
           "index": 15
         },
         {
-          "hint": "pronto",
+          "hint": "soon",
           "answer": "pronto",
           "answers": [
             "pronto"
@@ -429,7 +430,7 @@
           "index": 16
         },
         {
-          "hint": "tarde",
+          "hint": "late",
           "answer": "tarde",
           "answers": [
             "tarde"
@@ -442,7 +443,7 @@
           "index": 18
         },
         {
-          "hint": "arriba",
+          "hint": "up / upstairs",
           "answer": "arriba",
           "answers": [
             "arriba"
@@ -450,7 +451,7 @@
           "index": 19
         },
         {
-          "hint": "abajo",
+          "hint": "down / downstairs",
           "answer": "abajo",
           "answers": [
             "abajo"
@@ -458,7 +459,7 @@
           "index": 20
         },
         {
-          "hint": "encima",
+          "hint": "on top / above",
           "answer": "encima",
           "answers": [
             "encima"
@@ -466,7 +467,7 @@
           "index": 21
         },
         {
-          "hint": "debajo",
+          "hint": "under / below",
           "answer": "debajo",
           "answers": [
             "debajo"
@@ -474,7 +475,7 @@
           "index": 22
         },
         {
-          "hint": "delante",
+          "hint": "in front",
           "answer": "delante",
           "answers": [
             "delante"
@@ -482,7 +483,7 @@
           "index": 23
         },
         {
-          "hint": "detrás",
+          "hint": "behind",
           "answer": "detrás",
           "answers": [
             "detrás"
@@ -490,7 +491,7 @@
           "index": 24
         },
         {
-          "hint": "dentro",
+          "hint": "inside",
           "answer": "dentro",
           "answers": [
             "dentro"
@@ -498,7 +499,7 @@
           "index": 25
         },
         {
-          "hint": "fuera",
+          "hint": "outside",
           "answer": "fuera",
           "answers": [
             "fuera"
@@ -506,7 +507,7 @@
           "index": 26
         },
         {
-          "hint": "cerca",
+          "hint": "near / close",
           "answer": "cerca",
           "answers": [
             "cerca"
@@ -514,7 +515,7 @@
           "index": 27
         },
         {
-          "hint": "lejos",
+          "hint": "far",
           "answer": "lejos",
           "answers": [
             "lejos"
@@ -527,7 +528,7 @@
           "index": 29
         },
         {
-          "hint": "a veces",
+          "hint": "sometimes",
           "answer": "a veces",
           "answers": [
             "a veces"
@@ -535,7 +536,7 @@
           "index": 30
         },
         {
-          "hint": "tal vez",
+          "hint": "maybe / perhaps",
           "answer": "tal vez",
           "answers": [
             "tal vez"
@@ -543,7 +544,7 @@
           "index": 31
         },
         {
-          "hint": "de nuevo",
+          "hint": "again",
           "answer": "de nuevo",
           "answers": [
             "de nuevo"
@@ -551,7 +552,7 @@
           "index": 32
         },
         {
-          "hint": "en seguida",
+          "hint": "right away",
           "answer": "en seguida",
           "answers": [
             "en seguida"
@@ -559,7 +560,7 @@
           "index": 33
         },
         {
-          "hint": "al menos",
+          "hint": "at least",
           "answer": "al menos",
           "answers": [
             "al menos"
@@ -567,7 +568,7 @@
           "index": 34
         },
         {
-          "hint": "por lo menos",
+          "hint": "at least",
           "answer": "por lo menos",
           "answers": [
             "por lo menos"
@@ -575,7 +576,7 @@
           "index": 35
         },
         {
-          "hint": "sin embargo",
+          "hint": "however",
           "answer": "sin embargo",
           "answers": [
             "sin embargo"
@@ -583,7 +584,7 @@
           "index": 36
         },
         {
-          "hint": "de repente",
+          "hint": "suddenly",
           "answer": "de repente",
           "answers": [
             "de repente"
@@ -604,7 +605,7 @@
           "index": 1
         },
         {
-          "hint": "muy",
+          "hint": "very",
           "answer": "muy",
           "answers": [
             "muy"
@@ -612,7 +613,7 @@
           "index": 2
         },
         {
-          "hint": "tan",
+          "hint": "so (as in so much)",
           "answer": "tan",
           "answers": [
             "tan"
@@ -620,7 +621,7 @@
           "index": 3
         },
         {
-          "hint": "tanto",
+          "hint": "so much / so many (masculine singular)",
           "answer": "tanto",
           "answers": [
             "tanto"
@@ -628,7 +629,7 @@
           "index": 4
         },
         {
-          "hint": "más",
+          "hint": "more",
           "answer": "más",
           "answers": [
             "más"
@@ -636,7 +637,7 @@
           "index": 5
         },
         {
-          "hint": "menos",
+          "hint": "less",
           "answer": "menos",
           "answers": [
             "menos"
@@ -644,7 +645,7 @@
           "index": 6
         },
         {
-          "hint": "casi",
+          "hint": "almost",
           "answer": "casi",
           "answers": [
             "casi"
@@ -652,7 +653,7 @@
           "index": 7
         },
         {
-          "hint": "apenas",
+          "hint": "as soon as / hardly when",
           "answer": "apenas",
           "answers": [
             "apenas"
@@ -660,7 +661,7 @@
           "index": 8
         },
         {
-          "hint": "bastante",
+          "hint": "enough / quite a lot (singular)",
           "answer": "bastante",
           "answers": [
             "bastante"
@@ -668,7 +669,7 @@
           "index": 9
         },
         {
-          "hint": "demasiado",
+          "hint": "too much / too many (masculine singular)",
           "answer": "demasiado",
           "answers": [
             "demasiado"
@@ -676,7 +677,7 @@
           "index": 10
         },
         {
-          "hint": "poco",
+          "hint": "little / few (masculine singular)",
           "answer": "poco",
           "answers": [
             "poco"
@@ -689,7 +690,7 @@
           "index": 12
         },
         {
-          "hint": "aquí",
+          "hint": "here",
           "answer": "aquí",
           "answers": [
             "aquí"
@@ -697,7 +698,7 @@
           "index": 13
         },
         {
-          "hint": "acá",
+          "hint": "here (nearby)",
           "answer": "acá",
           "answers": [
             "acá"
@@ -705,7 +706,7 @@
           "index": 14
         },
         {
-          "hint": "ahí",
+          "hint": "there (near you)",
           "answer": "ahí",
           "answers": [
             "ahí"
@@ -713,7 +714,7 @@
           "index": 15
         },
         {
-          "hint": "allí",
+          "hint": "there",
           "answer": "allí",
           "answers": [
             "allí"
@@ -721,7 +722,7 @@
           "index": 16
         },
         {
-          "hint": "allá",
+          "hint": "over there",
           "answer": "allá",
           "answers": [
             "allá"
@@ -734,7 +735,7 @@
           "index": 18
         },
         {
-          "hint": "así",
+          "hint": "like this / so",
           "answer": "así",
           "answers": [
             "así"
@@ -742,7 +743,7 @@
           "index": 19
         },
         {
-          "hint": "bien",
+          "hint": "well",
           "answer": "bien",
           "answers": [
             "bien"
@@ -750,7 +751,7 @@
           "index": 20
         },
         {
-          "hint": "mal",
+          "hint": "badly",
           "answer": "mal",
           "answers": [
             "mal"
@@ -763,7 +764,7 @@
           "index": 22
         },
         {
-          "hint": "solo",
+          "hint": "only / just",
           "answer": "solo",
           "answers": [
             "solo"
@@ -771,7 +772,7 @@
           "index": 23
         },
         {
-          "hint": "incluso",
+          "hint": "including / even",
           "answer": "incluso",
           "answers": [
             "incluso"
@@ -779,7 +780,7 @@
           "index": 24
         },
         {
-          "hint": "además",
+          "hint": "besides / furthermore",
           "answer": "además",
           "answers": [
             "además"
@@ -792,7 +793,7 @@
           "index": 26
         },
         {
-          "hint": "quizá",
+          "hint": "maybe",
           "answer": "quizá",
           "answers": [
             "quizá"
@@ -800,7 +801,7 @@
           "index": 27
         },
         {
-          "hint": "quizás",
+          "hint": "perhaps",
           "answer": "quizás",
           "answers": [
             "quizás"
@@ -813,7 +814,7 @@
           "index": 29
         },
         {
-          "hint": "de acuerdo",
+          "hint": "agreed",
           "answer": "de acuerdo",
           "answers": [
             "de acuerdo"
@@ -821,7 +822,7 @@
           "index": 30
         },
         {
-          "hint": "está bien",
+          "hint": "it is fine",
           "answer": "está bien",
           "answers": [
             "está bien"
@@ -829,7 +830,7 @@
           "index": 31
         },
         {
-          "hint": "entiendo",
+          "hint": "I understand",
           "answer": "entiendo",
           "answers": [
             "entiendo"
@@ -837,7 +838,7 @@
           "index": 32
         },
         {
-          "hint": "ya veo",
+          "hint": "I see",
           "answer": "ya veo",
           "answers": [
             "ya veo"
@@ -845,7 +846,7 @@
           "index": 33
         },
         {
-          "hint": "perfecto",
+          "hint": "perfect",
           "answer": "perfecto",
           "answers": [
             "perfecto"
@@ -858,7 +859,7 @@
           "index": 35
         },
         {
-          "hint": "ay",
+          "hint": "ouch!",
           "answer": "ay",
           "answers": [
             "ay"
@@ -866,7 +867,7 @@
           "index": 36
         },
         {
-          "hint": "uf",
+          "hint": "ugh!",
           "answer": "uf",
           "answers": [
             "uf"
@@ -874,7 +875,7 @@
           "index": 37
         },
         {
-          "hint": "eh",
+          "hint": "hey! / huh?",
           "answer": "eh",
           "answers": [
             "eh"
@@ -882,7 +883,7 @@
           "index": 38
         },
         {
-          "hint": "oye",
+          "hint": "hey / listen",
           "answer": "oye",
           "answers": [
             "oye"
@@ -890,7 +891,7 @@
           "index": 39
         },
         {
-          "hint": "vaya",
+          "hint": "wow / well then!",
           "answer": "vaya",
           "answers": [
             "vaya"
@@ -898,7 +899,7 @@
           "index": 40
         },
         {
-          "hint": "anda",
+          "hint": "come on!",
           "answer": "anda",
           "answers": [
             "anda"
@@ -906,7 +907,7 @@
           "index": 41
         },
         {
-          "hint": "hala",
+          "hint": "come on! / wow!",
           "answer": "hala",
           "answers": [
             "hala"
@@ -914,7 +915,7 @@
           "index": 42
         },
         {
-          "hint": "bah",
+          "hint": "bah!",
           "answer": "bah",
           "answers": [
             "bah"
@@ -922,7 +923,7 @@
           "index": 43
         },
         {
-          "hint": "caray",
+          "hint": "wow / gosh",
           "answer": "caray",
           "answers": [
             "caray"
@@ -938,7 +939,7 @@
       "count": 23,
       "items": [
         {
-          "hint": "a",
+          "hint": "to / at",
           "answer": "a",
           "answers": [
             "a"
@@ -946,7 +947,7 @@
           "index": 1
         },
         {
-          "hint": "ante",
+          "hint": "before / in the presence of",
           "answer": "ante",
           "answers": [
             "ante"
@@ -954,7 +955,7 @@
           "index": 2
         },
         {
-          "hint": "bajo",
+          "hint": "under",
           "answer": "bajo",
           "answers": [
             "bajo"
@@ -962,7 +963,7 @@
           "index": 3
         },
         {
-          "hint": "cabe",
+          "hint": "next to (archaic/literary)",
           "answer": "cabe",
           "answers": [
             "cabe"
@@ -970,7 +971,7 @@
           "index": 4
         },
         {
-          "hint": "con",
+          "hint": "with",
           "answer": "con",
           "answers": [
             "con"
@@ -978,7 +979,7 @@
           "index": 5
         },
         {
-          "hint": "contra",
+          "hint": "against",
           "answer": "contra",
           "answers": [
             "contra"
@@ -986,7 +987,7 @@
           "index": 6
         },
         {
-          "hint": "de",
+          "hint": "of / from",
           "answer": "de",
           "answers": [
             "de"
@@ -994,7 +995,7 @@
           "index": 7
         },
         {
-          "hint": "desde",
+          "hint": "from / since",
           "answer": "desde",
           "answers": [
             "desde"
@@ -1002,7 +1003,7 @@
           "index": 8
         },
         {
-          "hint": "durante",
+          "hint": "during",
           "answer": "durante",
           "answers": [
             "durante"
@@ -1010,7 +1011,7 @@
           "index": 9
         },
         {
-          "hint": "en",
+          "hint": "in / on",
           "answer": "en",
           "answers": [
             "en"
@@ -1018,7 +1019,7 @@
           "index": 10
         },
         {
-          "hint": "entre",
+          "hint": "between / among",
           "answer": "entre",
           "answers": [
             "entre"
@@ -1026,7 +1027,7 @@
           "index": 11
         },
         {
-          "hint": "hacia",
+          "hint": "toward",
           "answer": "hacia",
           "answers": [
             "hacia"
@@ -1034,7 +1035,7 @@
           "index": 12
         },
         {
-          "hint": "hasta",
+          "hint": "until / up to",
           "answer": "hasta",
           "answers": [
             "hasta"
@@ -1042,7 +1043,7 @@
           "index": 13
         },
         {
-          "hint": "mediante",
+          "hint": "by means of",
           "answer": "mediante",
           "answers": [
             "mediante"
@@ -1050,7 +1051,7 @@
           "index": 14
         },
         {
-          "hint": "para",
+          "hint": "for / in order to",
           "answer": "para",
           "answers": [
             "para"
@@ -1058,7 +1059,7 @@
           "index": 15
         },
         {
-          "hint": "por",
+          "hint": "for / through / by",
           "answer": "por",
           "answers": [
             "por"
@@ -1066,7 +1067,7 @@
           "index": 16
         },
         {
-          "hint": "según",
+          "hint": "according to",
           "answer": "según",
           "answers": [
             "según"
@@ -1074,7 +1075,7 @@
           "index": 17
         },
         {
-          "hint": "sin",
+          "hint": "without",
           "answer": "sin",
           "answers": [
             "sin"
@@ -1082,7 +1083,7 @@
           "index": 18
         },
         {
-          "hint": "so",
+          "hint": "under (archaic)",
           "answer": "so",
           "answers": [
             "so"
@@ -1090,7 +1091,7 @@
           "index": 19
         },
         {
-          "hint": "sobre",
+          "hint": "on / about",
           "answer": "sobre",
           "answers": [
             "sobre"
@@ -1098,7 +1099,7 @@
           "index": 20
         },
         {
-          "hint": "tras",
+          "hint": "after / behind",
           "answer": "tras",
           "answers": [
             "tras"
@@ -1106,7 +1107,7 @@
           "index": 21
         },
         {
-          "hint": "versus",
+          "hint": "versus / against",
           "answer": "versus",
           "answers": [
             "versus"
@@ -1114,7 +1115,7 @@
           "index": 22
         },
         {
-          "hint": "vía",
+          "hint": "via / by way of",
           "answer": "vía",
           "answers": [
             "vía"
@@ -1135,7 +1136,7 @@
           "index": 1
         },
         {
-          "hint": "y",
+          "hint": "and",
           "answer": "y",
           "answers": [
             "y"
@@ -1143,7 +1144,7 @@
           "index": 2
         },
         {
-          "hint": "e",
+          "hint": "and (before i/hi)",
           "answer": "e",
           "answers": [
             "e"
@@ -1151,7 +1152,7 @@
           "index": 3
         },
         {
-          "hint": "ni",
+          "hint": "neither / nor",
           "answer": "ni",
           "answers": [
             "ni"
@@ -1159,7 +1160,7 @@
           "index": 4
         },
         {
-          "hint": "o",
+          "hint": "or",
           "answer": "o",
           "answers": [
             "o"
@@ -1167,7 +1168,7 @@
           "index": 5
         },
         {
-          "hint": "u",
+          "hint": "or (before o/ho)",
           "answer": "u",
           "answers": [
             "u"
@@ -1175,7 +1176,7 @@
           "index": 6
         },
         {
-          "hint": "pero",
+          "hint": "but",
           "answer": "pero",
           "answers": [
             "pero"
@@ -1183,7 +1184,7 @@
           "index": 7
         },
         {
-          "hint": "sino",
+          "hint": "but rather",
           "answer": "sino",
           "answers": [
             "sino"
@@ -1191,7 +1192,7 @@
           "index": 8
         },
         {
-          "hint": "mas",
+          "hint": "more",
           "answer": "mas",
           "answers": [
             "mas"
@@ -1204,7 +1205,7 @@
           "index": 10
         },
         {
-          "hint": "que",
+          "hint": "what?",
           "answer": "que",
           "answers": [
             "que"
@@ -1212,7 +1213,7 @@
           "index": 11
         },
         {
-          "hint": "si",
+          "hint": "yes",
           "answer": "si",
           "answers": [
             "si"
@@ -1220,7 +1221,7 @@
           "index": 12
         },
         {
-          "hint": "porque",
+          "hint": "because",
           "answer": "porque",
           "answers": [
             "porque"
@@ -1228,7 +1229,7 @@
           "index": 13
         },
         {
-          "hint": "aunque",
+          "hint": "although",
           "answer": "aunque",
           "answers": [
             "aunque"
@@ -1236,7 +1237,7 @@
           "index": 14
         },
         {
-          "hint": "como",
+          "hint": "how?",
           "answer": "como",
           "answers": [
             "como"
@@ -1244,7 +1245,7 @@
           "index": 15
         },
         {
-          "hint": "luego",
+          "hint": "then / afterwards",
           "answer": "luego",
           "answers": [
             "luego"
@@ -1252,7 +1253,7 @@
           "index": 16
         },
         {
-          "hint": "conque",
+          "hint": "so / therefore",
           "answer": "conque",
           "answers": [
             "conque"
@@ -1260,7 +1261,7 @@
           "index": 17
         },
         {
-          "hint": "salvo",
+          "hint": "except / save",
           "answer": "salvo",
           "answers": [
             "salvo"
@@ -1268,7 +1269,7 @@
           "index": 18
         },
         {
-          "hint": "pues",
+          "hint": "since / because",
           "answer": "pues",
           "answers": [
             "pues"
@@ -1276,7 +1277,7 @@
           "index": 19
         },
         {
-          "hint": "mientras",
+          "hint": "while",
           "answer": "mientras",
           "answers": [
             "mientras"
@@ -1284,7 +1285,7 @@
           "index": 20
         },
         {
-          "hint": "siquiera",
+          "hint": "even / at least",
           "answer": "siquiera",
           "answers": [
             "siquiera"
@@ -1292,7 +1293,7 @@
           "index": 21
         },
         {
-          "hint": "excepto",
+          "hint": "except / excluding",
           "answer": "excepto",
           "answers": [
             "excepto"
@@ -1300,7 +1301,7 @@
           "index": 22
         },
         {
-          "hint": "menos",
+          "hint": "less",
           "answer": "menos",
           "answers": [
             "menos"
@@ -1313,7 +1314,7 @@
           "index": 24
         },
         {
-          "hint": "ya que",
+          "hint": "since",
           "answer": "ya que",
           "answers": [
             "ya que"
@@ -1321,7 +1322,7 @@
           "index": 25
         },
         {
-          "hint": "puesto que",
+          "hint": "since / given that",
           "answer": "puesto que",
           "answers": [
             "puesto que"
@@ -1329,7 +1330,7 @@
           "index": 26
         },
         {
-          "hint": "para que",
+          "hint": "what for?",
           "answer": "para que",
           "answers": [
             "para que"
@@ -1337,7 +1338,7 @@
           "index": 27
         },
         {
-          "hint": "antes de que",
+          "hint": "before",
           "answer": "antes de que",
           "answers": [
             "antes de que"
@@ -1345,7 +1346,7 @@
           "index": 28
         },
         {
-          "hint": "después de que",
+          "hint": "after",
           "answer": "después de que",
           "answers": [
             "después de que"
@@ -1353,7 +1354,7 @@
           "index": 29
         },
         {
-          "hint": "a fin de que",
+          "hint": "so that",
           "answer": "a fin de que",
           "answers": [
             "a fin de que"
@@ -1361,7 +1362,7 @@
           "index": 30
         },
         {
-          "hint": "con tal que",
+          "hint": "provided that",
           "answer": "con tal que",
           "answers": [
             "con tal que"
@@ -1369,7 +1370,7 @@
           "index": 31
         },
         {
-          "hint": "en cuanto",
+          "hint": "as soon as / as",
           "answer": "en cuanto",
           "answers": [
             "en cuanto"
@@ -1377,7 +1378,7 @@
           "index": 32
         },
         {
-          "hint": "tan pronto como",
+          "hint": "as soon as",
           "answer": "tan pronto como",
           "answers": [
             "tan pronto como"
@@ -1398,7 +1399,7 @@
           "index": 1
         },
         {
-          "hint": "el",
+          "hint": "the (masculine singular)",
           "answer": "el",
           "answers": [
             "el"
@@ -1406,7 +1407,7 @@
           "index": 2
         },
         {
-          "hint": "la",
+          "hint": "the (feminine singular)",
           "answer": "la",
           "answers": [
             "la"
@@ -1414,7 +1415,7 @@
           "index": 3
         },
         {
-          "hint": "los",
+          "hint": "the (masculine plural)",
           "answer": "los",
           "answers": [
             "los"
@@ -1422,7 +1423,7 @@
           "index": 4
         },
         {
-          "hint": "las",
+          "hint": "the (feminine plural)",
           "answer": "las",
           "answers": [
             "las"
@@ -1430,7 +1431,7 @@
           "index": 5
         },
         {
-          "hint": "lo",
+          "hint": "the (neuter)",
           "answer": "lo",
           "answers": [
             "lo"
@@ -1438,7 +1439,7 @@
           "index": 6
         },
         {
-          "hint": "un",
+          "hint": "a / an (masculine singular)",
           "answer": "un",
           "answers": [
             "un"
@@ -1446,7 +1447,7 @@
           "index": 7
         },
         {
-          "hint": "una",
+          "hint": "a / an (feminine singular)",
           "answer": "una",
           "answers": [
             "una"
@@ -1454,7 +1455,7 @@
           "index": 8
         },
         {
-          "hint": "unos",
+          "hint": "some (masculine plural)",
           "answer": "unos",
           "answers": [
             "unos"
@@ -1462,7 +1463,7 @@
           "index": 9
         },
         {
-          "hint": "unas",
+          "hint": "some (feminine plural)",
           "answer": "unas",
           "answers": [
             "unas"
@@ -1470,7 +1471,7 @@
           "index": 10
         },
         {
-          "hint": "al",
+          "hint": "to the / at the (a + el contraction)",
           "answer": "al",
           "answers": [
             "al"
@@ -1478,7 +1479,7 @@
           "index": 11
         },
         {
-          "hint": "del",
+          "hint": "of the / from the (de + el contraction)",
           "answer": "del",
           "answers": [
             "del"
@@ -1491,7 +1492,7 @@
           "index": 13
         },
         {
-          "hint": "este",
+          "hint": "this (masculine singular)",
           "answer": "este",
           "answers": [
             "este"
@@ -1499,7 +1500,7 @@
           "index": 14
         },
         {
-          "hint": "esta",
+          "hint": "this (feminine singular)",
           "answer": "esta",
           "answers": [
             "esta"
@@ -1507,7 +1508,7 @@
           "index": 15
         },
         {
-          "hint": "estos",
+          "hint": "these (masculine plural)",
           "answer": "estos",
           "answers": [
             "estos"
@@ -1515,7 +1516,7 @@
           "index": 16
         },
         {
-          "hint": "estas",
+          "hint": "these (feminine plural)",
           "answer": "estas",
           "answers": [
             "estas"
@@ -1523,7 +1524,7 @@
           "index": 17
         },
         {
-          "hint": "ese",
+          "hint": "that (masculine singular)",
           "answer": "ese",
           "answers": [
             "ese"
@@ -1531,7 +1532,7 @@
           "index": 18
         },
         {
-          "hint": "esa",
+          "hint": "that (feminine singular)",
           "answer": "esa",
           "answers": [
             "esa"
@@ -1539,7 +1540,7 @@
           "index": 19
         },
         {
-          "hint": "esos",
+          "hint": "those (masculine plural)",
           "answer": "esos",
           "answers": [
             "esos"
@@ -1547,7 +1548,7 @@
           "index": 20
         },
         {
-          "hint": "esas",
+          "hint": "those (feminine plural)",
           "answer": "esas",
           "answers": [
             "esas"
@@ -1555,7 +1556,7 @@
           "index": 21
         },
         {
-          "hint": "aquel",
+          "hint": "that over there (masculine singular)",
           "answer": "aquel",
           "answers": [
             "aquel"
@@ -1563,7 +1564,7 @@
           "index": 22
         },
         {
-          "hint": "aquella",
+          "hint": "that over there (feminine singular)",
           "answer": "aquella",
           "answers": [
             "aquella"
@@ -1571,7 +1572,7 @@
           "index": 23
         },
         {
-          "hint": "aquellos",
+          "hint": "those over there (masculine plural)",
           "answer": "aquellos",
           "answers": [
             "aquellos"
@@ -1579,7 +1580,7 @@
           "index": 24
         },
         {
-          "hint": "aquellas",
+          "hint": "those over there (feminine plural)",
           "answer": "aquellas",
           "answers": [
             "aquellas"
@@ -1592,7 +1593,7 @@
           "index": 26
         },
         {
-          "hint": "mi",
+          "hint": "me (after preposition)",
           "answer": "mi",
           "answers": [
             "mi"
@@ -1600,7 +1601,7 @@
           "index": 27
         },
         {
-          "hint": "mis",
+          "hint": "my (plural possessed)",
           "answer": "mis",
           "answers": [
             "mis"
@@ -1608,7 +1609,7 @@
           "index": 28
         },
         {
-          "hint": "tu",
+          "hint": "you (informal singular)",
           "answer": "tu",
           "answers": [
             "tu"
@@ -1616,7 +1617,7 @@
           "index": 29
         },
         {
-          "hint": "tus",
+          "hint": "your (informal singular, plural possessed)",
           "answer": "tus",
           "answers": [
             "tus"
@@ -1624,7 +1625,7 @@
           "index": 30
         },
         {
-          "hint": "su",
+          "hint": "his/her/your/their",
           "answer": "su",
           "answers": [
             "su"
@@ -1632,7 +1633,7 @@
           "index": 31
         },
         {
-          "hint": "sus",
+          "hint": "his/her/your/their (plural possessed)",
           "answer": "sus",
           "answers": [
             "sus"
@@ -1640,7 +1641,7 @@
           "index": 32
         },
         {
-          "hint": "nuestro",
+          "hint": "our (masculine singular)",
           "answer": "nuestro",
           "answers": [
             "nuestro"
@@ -1648,7 +1649,7 @@
           "index": 33
         },
         {
-          "hint": "nuestra",
+          "hint": "our (feminine singular)",
           "answer": "nuestra",
           "answers": [
             "nuestra"
@@ -1656,7 +1657,7 @@
           "index": 34
         },
         {
-          "hint": "nuestros",
+          "hint": "our (masculine plural)",
           "answer": "nuestros",
           "answers": [
             "nuestros"
@@ -1664,7 +1665,7 @@
           "index": 35
         },
         {
-          "hint": "nuestras",
+          "hint": "our (feminine plural)",
           "answer": "nuestras",
           "answers": [
             "nuestras"
@@ -1672,7 +1673,7 @@
           "index": 36
         },
         {
-          "hint": "vuestro",
+          "hint": "your all (Spain, masculine singular)",
           "answer": "vuestro",
           "answers": [
             "vuestro"
@@ -1680,7 +1681,7 @@
           "index": 37
         },
         {
-          "hint": "vuestra",
+          "hint": "your all (Spain, feminine singular)",
           "answer": "vuestra",
           "answers": [
             "vuestra"
@@ -1688,7 +1689,7 @@
           "index": 38
         },
         {
-          "hint": "vuestros",
+          "hint": "your all (Spain, masculine plural)",
           "answer": "vuestros",
           "answers": [
             "vuestros"
@@ -1696,7 +1697,7 @@
           "index": 39
         },
         {
-          "hint": "vuestras",
+          "hint": "your all (Spain, feminine plural)",
           "answer": "vuestras",
           "answers": [
             "vuestras"
@@ -1704,7 +1705,7 @@
           "index": 40
         },
         {
-          "hint": "mío",
+          "hint": "mine (masculine singular)",
           "answer": "mío",
           "answers": [
             "mío"
@@ -1712,7 +1713,7 @@
           "index": 41
         },
         {
-          "hint": "mía",
+          "hint": "mine (feminine singular)",
           "answer": "mía",
           "answers": [
             "mía"
@@ -1720,7 +1721,7 @@
           "index": 42
         },
         {
-          "hint": "míos",
+          "hint": "mine (masculine plural)",
           "answer": "míos",
           "answers": [
             "míos"
@@ -1728,7 +1729,7 @@
           "index": 43
         },
         {
-          "hint": "mías",
+          "hint": "mine (feminine plural)",
           "answer": "mías",
           "answers": [
             "mías"
@@ -1736,7 +1737,7 @@
           "index": 44
         },
         {
-          "hint": "tuyo",
+          "hint": "yours (informal, masculine singular)",
           "answer": "tuyo",
           "answers": [
             "tuyo"
@@ -1744,7 +1745,7 @@
           "index": 45
         },
         {
-          "hint": "tuya",
+          "hint": "yours (informal, feminine singular)",
           "answer": "tuya",
           "answers": [
             "tuya"
@@ -1752,7 +1753,7 @@
           "index": 46
         },
         {
-          "hint": "tuyos",
+          "hint": "yours (informal, masculine plural)",
           "answer": "tuyos",
           "answers": [
             "tuyos"
@@ -1760,7 +1761,7 @@
           "index": 47
         },
         {
-          "hint": "tuyas",
+          "hint": "yours (informal, feminine plural)",
           "answer": "tuyas",
           "answers": [
             "tuyas"
@@ -1768,7 +1769,7 @@
           "index": 48
         },
         {
-          "hint": "suyo",
+          "hint": "his/hers/yours/theirs (masculine singular)",
           "answer": "suyo",
           "answers": [
             "suyo"
@@ -1776,7 +1777,7 @@
           "index": 49
         },
         {
-          "hint": "suya",
+          "hint": "his/hers/yours/theirs (feminine singular)",
           "answer": "suya",
           "answers": [
             "suya"
@@ -1784,7 +1785,7 @@
           "index": 50
         },
         {
-          "hint": "suyos",
+          "hint": "his/hers/yours/theirs (masculine plural)",
           "answer": "suyos",
           "answers": [
             "suyos"
@@ -1792,7 +1793,7 @@
           "index": 51
         },
         {
-          "hint": "suyas",
+          "hint": "his/hers/yours/theirs (feminine plural)",
           "answer": "suyas",
           "answers": [
             "suyas"
@@ -1813,7 +1814,7 @@
           "index": 1
         },
         {
-          "hint": "todo",
+          "hint": "all / every (masculine singular)",
           "answer": "todo",
           "answers": [
             "todo"
@@ -1821,7 +1822,7 @@
           "index": 2
         },
         {
-          "hint": "toda",
+          "hint": "all / every (feminine singular)",
           "answer": "toda",
           "answers": [
             "toda"
@@ -1829,7 +1830,7 @@
           "index": 3
         },
         {
-          "hint": "todos",
+          "hint": "all (masculine plural)",
           "answer": "todos",
           "answers": [
             "todos"
@@ -1837,7 +1838,7 @@
           "index": 4
         },
         {
-          "hint": "todas",
+          "hint": "all (feminine plural)",
           "answer": "todas",
           "answers": [
             "todas"
@@ -1845,7 +1846,7 @@
           "index": 5
         },
         {
-          "hint": "ambos",
+          "hint": "both (masculine/mixed)",
           "answer": "ambos",
           "answers": [
             "ambos"
@@ -1853,7 +1854,7 @@
           "index": 6
         },
         {
-          "hint": "ambas",
+          "hint": "both (feminine)",
           "answer": "ambas",
           "answers": [
             "ambas"
@@ -1861,7 +1862,7 @@
           "index": 7
         },
         {
-          "hint": "cada",
+          "hint": "each",
           "answer": "cada",
           "answers": [
             "cada"
@@ -1869,7 +1870,7 @@
           "index": 8
         },
         {
-          "hint": "sendos",
+          "hint": "one each (masculine plural)",
           "answer": "sendos",
           "answers": [
             "sendos"
@@ -1877,7 +1878,7 @@
           "index": 9
         },
         {
-          "hint": "sendas",
+          "hint": "one each (feminine plural)",
           "answer": "sendas",
           "answers": [
             "sendas"
@@ -1885,7 +1886,7 @@
           "index": 10
         },
         {
-          "hint": "algún",
+          "hint": "some / any (apocopated masculine)",
           "answer": "algún",
           "answers": [
             "algún"
@@ -1893,7 +1894,7 @@
           "index": 11
         },
         {
-          "hint": "alguna",
+          "hint": "some / any (feminine singular)",
           "answer": "alguna",
           "answers": [
             "alguna"
@@ -1901,7 +1902,7 @@
           "index": 12
         },
         {
-          "hint": "algunos",
+          "hint": "some / any (masculine plural)",
           "answer": "algunos",
           "answers": [
             "algunos"
@@ -1909,7 +1910,7 @@
           "index": 13
         },
         {
-          "hint": "algunas",
+          "hint": "some / any (feminine plural)",
           "answer": "algunas",
           "answers": [
             "algunas"
@@ -1917,7 +1918,7 @@
           "index": 14
         },
         {
-          "hint": "ningún",
+          "hint": "none / not any (apocopated masculine)",
           "answer": "ningún",
           "answers": [
             "ningún"
@@ -1925,7 +1926,7 @@
           "index": 15
         },
         {
-          "hint": "ninguna",
+          "hint": "none / not any (feminine singular)",
           "answer": "ninguna",
           "answers": [
             "ninguna"
@@ -1933,7 +1934,7 @@
           "index": 16
         },
         {
-          "hint": "ningunos",
+          "hint": "none (masculine plural)",
           "answer": "ningunos",
           "answers": [
             "ningunos"
@@ -1941,7 +1942,7 @@
           "index": 17
         },
         {
-          "hint": "ningunas",
+          "hint": "none (feminine plural)",
           "answer": "ningunas",
           "answers": [
             "ningunas"
@@ -1949,7 +1950,7 @@
           "index": 18
         },
         {
-          "hint": "mucho",
+          "hint": "much / many (masculine singular)",
           "answer": "mucho",
           "answers": [
             "mucho"
@@ -1957,7 +1958,7 @@
           "index": 19
         },
         {
-          "hint": "mucha",
+          "hint": "much / many (feminine singular)",
           "answer": "mucha",
           "answers": [
             "mucha"
@@ -1965,7 +1966,7 @@
           "index": 20
         },
         {
-          "hint": "muchos",
+          "hint": "many (masculine plural)",
           "answer": "muchos",
           "answers": [
             "muchos"
@@ -1973,7 +1974,7 @@
           "index": 21
         },
         {
-          "hint": "muchas",
+          "hint": "many (feminine plural)",
           "answer": "muchas",
           "answers": [
             "muchas"
@@ -1981,7 +1982,7 @@
           "index": 22
         },
         {
-          "hint": "poco",
+          "hint": "little / few (masculine singular)",
           "answer": "poco",
           "answers": [
             "poco"
@@ -1989,7 +1990,7 @@
           "index": 23
         },
         {
-          "hint": "poca",
+          "hint": "little / few (feminine singular)",
           "answer": "poca",
           "answers": [
             "poca"
@@ -1997,7 +1998,7 @@
           "index": 24
         },
         {
-          "hint": "pocos",
+          "hint": "few (masculine plural)",
           "answer": "pocos",
           "answers": [
             "pocos"
@@ -2005,7 +2006,7 @@
           "index": 25
         },
         {
-          "hint": "pocas",
+          "hint": "few (feminine plural)",
           "answer": "pocas",
           "answers": [
             "pocas"
@@ -2013,7 +2014,7 @@
           "index": 26
         },
         {
-          "hint": "bastante",
+          "hint": "enough / quite a lot (singular)",
           "answer": "bastante",
           "answers": [
             "bastante"
@@ -2021,7 +2022,7 @@
           "index": 27
         },
         {
-          "hint": "bastantes",
+          "hint": "enough / quite a lot (plural)",
           "answer": "bastantes",
           "answers": [
             "bastantes"
@@ -2029,7 +2030,7 @@
           "index": 28
         },
         {
-          "hint": "demasiado",
+          "hint": "too much / too many (masculine singular)",
           "answer": "demasiado",
           "answers": [
             "demasiado"
@@ -2037,7 +2038,7 @@
           "index": 29
         },
         {
-          "hint": "demasiada",
+          "hint": "too much / too many (feminine singular)",
           "answer": "demasiada",
           "answers": [
             "demasiada"
@@ -2045,7 +2046,7 @@
           "index": 30
         },
         {
-          "hint": "demasiados",
+          "hint": "too many (masculine plural)",
           "answer": "demasiados",
           "answers": [
             "demasiados"
@@ -2053,7 +2054,7 @@
           "index": 31
         },
         {
-          "hint": "demasiadas",
+          "hint": "too many (feminine plural)",
           "answer": "demasiadas",
           "answers": [
             "demasiadas"
@@ -2061,7 +2062,7 @@
           "index": 32
         },
         {
-          "hint": "más",
+          "hint": "more",
           "answer": "más",
           "answers": [
             "más"
@@ -2069,7 +2070,7 @@
           "index": 33
         },
         {
-          "hint": "menos",
+          "hint": "less",
           "answer": "menos",
           "answers": [
             "menos"
@@ -2077,7 +2078,7 @@
           "index": 34
         },
         {
-          "hint": "tanto",
+          "hint": "so much / so many (masculine singular)",
           "answer": "tanto",
           "answers": [
             "tanto"
@@ -2085,7 +2086,7 @@
           "index": 35
         },
         {
-          "hint": "tanta",
+          "hint": "so much / so many (feminine singular)",
           "answer": "tanta",
           "answers": [
             "tanta"
@@ -2093,7 +2094,7 @@
           "index": 36
         },
         {
-          "hint": "tantos",
+          "hint": "so many (masculine plural)",
           "answer": "tantos",
           "answers": [
             "tantos"
@@ -2101,7 +2102,7 @@
           "index": 37
         },
         {
-          "hint": "tantas",
+          "hint": "so many (feminine plural)",
           "answer": "tantas",
           "answers": [
             "tantas"
@@ -2109,7 +2110,7 @@
           "index": 38
         },
         {
-          "hint": "cualquier",
+          "hint": "any (before noun)",
           "answer": "cualquier",
           "answers": [
             "cualquier"
@@ -2117,7 +2118,7 @@
           "index": 39
         },
         {
-          "hint": "cualesquiera",
+          "hint": "any (plural)",
           "answer": "cualesquiera",
           "answers": [
             "cualesquiera"
@@ -2125,7 +2126,7 @@
           "index": 40
         },
         {
-          "hint": "vario",
+          "hint": "various (masculine)",
           "answer": "vario",
           "answers": [
             "vario"
@@ -2133,7 +2134,7 @@
           "index": 41
         },
         {
-          "hint": "varia",
+          "hint": "various (feminine)",
           "answer": "varia",
           "answers": [
             "varia"
@@ -2141,7 +2142,7 @@
           "index": 42
         },
         {
-          "hint": "varios",
+          "hint": "several (masculine)",
           "answer": "varios",
           "answers": [
             "varios"
@@ -2149,7 +2150,7 @@
           "index": 43
         },
         {
-          "hint": "varias",
+          "hint": "several (feminine)",
           "answer": "varias",
           "answers": [
             "varias"
@@ -2170,7 +2171,7 @@
           "index": 1
         },
         {
-          "hint": "yo",
+          "hint": "I",
           "answer": "yo",
           "answers": [
             "yo"
@@ -2178,7 +2179,7 @@
           "index": 2
         },
         {
-          "hint": "tú",
+          "hint": "you (informal singular)",
           "answer": "tú",
           "answers": [
             "tú"
@@ -2186,7 +2187,7 @@
           "index": 3
         },
         {
-          "hint": "vos",
+          "hint": "you (voseo singular)",
           "answer": "vos",
           "answers": [
             "vos"
@@ -2194,7 +2195,7 @@
           "index": 4
         },
         {
-          "hint": "él",
+          "hint": "the (masculine singular)",
           "answer": "él",
           "answers": [
             "él"
@@ -2202,7 +2203,7 @@
           "index": 5
         },
         {
-          "hint": "ella",
+          "hint": "she",
           "answer": "ella",
           "answers": [
             "ella"
@@ -2210,7 +2211,7 @@
           "index": 6
         },
         {
-          "hint": "ello",
+          "hint": "it (neuter pronoun)",
           "answer": "ello",
           "answers": [
             "ello"
@@ -2218,7 +2219,7 @@
           "index": 7
         },
         {
-          "hint": "usted",
+          "hint": "you (formal singular)",
           "answer": "usted",
           "answers": [
             "usted"
@@ -2226,7 +2227,7 @@
           "index": 8
         },
         {
-          "hint": "nosotros",
+          "hint": "we (masculine/mixed)",
           "answer": "nosotros",
           "answers": [
             "nosotros"
@@ -2234,7 +2235,7 @@
           "index": 9
         },
         {
-          "hint": "nosotras",
+          "hint": "we (feminine)",
           "answer": "nosotras",
           "answers": [
             "nosotras"
@@ -2242,7 +2243,7 @@
           "index": 10
         },
         {
-          "hint": "vosotros",
+          "hint": "you all (informal Spain, masculine/mixed)",
           "answer": "vosotros",
           "answers": [
             "vosotros"
@@ -2250,7 +2251,7 @@
           "index": 11
         },
         {
-          "hint": "vosotras",
+          "hint": "you all (informal Spain, feminine)",
           "answer": "vosotras",
           "answers": [
             "vosotras"
@@ -2258,7 +2259,7 @@
           "index": 12
         },
         {
-          "hint": "ellos",
+          "hint": "they (masculine/mixed)",
           "answer": "ellos",
           "answers": [
             "ellos"
@@ -2266,7 +2267,7 @@
           "index": 13
         },
         {
-          "hint": "ellas",
+          "hint": "they (feminine)",
           "answer": "ellas",
           "answers": [
             "ellas"
@@ -2274,7 +2275,7 @@
           "index": 14
         },
         {
-          "hint": "ustedes",
+          "hint": "you all (formal/plural)",
           "answer": "ustedes",
           "answers": [
             "ustedes"
@@ -2295,7 +2296,7 @@
           "index": 17
         },
         {
-          "hint": "te",
+          "hint": "you (object, informal)",
           "answer": "te",
           "answers": [
             "te"
@@ -2303,7 +2304,7 @@
           "index": 18
         },
         {
-          "hint": "lo",
+          "hint": "the (neuter)",
           "answer": "lo",
           "answers": [
             "lo"
@@ -2311,7 +2312,7 @@
           "index": 19
         },
         {
-          "hint": "la",
+          "hint": "the (feminine singular)",
           "answer": "la",
           "answers": [
             "la"
@@ -2319,7 +2320,7 @@
           "index": 20
         },
         {
-          "hint": "le",
+          "hint": "him/her/to him/to her (indirect object)",
           "answer": "le",
           "answers": [
             "le"
@@ -2327,7 +2328,7 @@
           "index": 21
         },
         {
-          "hint": "se",
+          "hint": "himself/herself/itself (clitic)",
           "answer": "se",
           "answers": [
             "se"
@@ -2335,7 +2336,7 @@
           "index": 22
         },
         {
-          "hint": "nos",
+          "hint": "us (object)",
           "answer": "nos",
           "answers": [
             "nos"
@@ -2343,7 +2344,7 @@
           "index": 23
         },
         {
-          "hint": "os",
+          "hint": "you all (object, informal Spain)",
           "answer": "os",
           "answers": [
             "os"
@@ -2351,7 +2352,7 @@
           "index": 24
         },
         {
-          "hint": "los",
+          "hint": "the (masculine plural)",
           "answer": "los",
           "answers": [
             "los"
@@ -2359,7 +2360,7 @@
           "index": 25
         },
         {
-          "hint": "las",
+          "hint": "the (feminine plural)",
           "answer": "las",
           "answers": [
             "las"
@@ -2367,7 +2368,7 @@
           "index": 26
         },
         {
-          "hint": "les",
+          "hint": "to them / to you all (indirect object)",
           "answer": "les",
           "answers": [
             "les"
@@ -2380,7 +2381,7 @@
           "index": 28
         },
         {
-          "hint": "mí",
+          "hint": "me (after preposition)",
           "answer": "mí",
           "answers": [
             "mí"
@@ -2388,7 +2389,7 @@
           "index": 29
         },
         {
-          "hint": "ti",
+          "hint": "you (after preposition)",
           "answer": "ti",
           "answers": [
             "ti"
@@ -2396,7 +2397,7 @@
           "index": 30
         },
         {
-          "hint": "sí",
+          "hint": "yes",
           "answer": "sí",
           "answers": [
             "sí"
@@ -2417,7 +2418,7 @@
           "index": 1
         },
         {
-          "hint": "conmigo",
+          "hint": "with me",
           "answer": "conmigo",
           "answers": [
             "conmigo"
@@ -2425,7 +2426,7 @@
           "index": 2
         },
         {
-          "hint": "contigo",
+          "hint": "with you",
           "answer": "contigo",
           "answers": [
             "contigo"
@@ -2433,7 +2434,7 @@
           "index": 3
         },
         {
-          "hint": "consigo",
+          "hint": "with himself/herself/itself",
           "answer": "consigo",
           "answers": [
             "consigo"
@@ -2446,7 +2447,7 @@
           "index": 5
         },
         {
-          "hint": "esto",
+          "hint": "this thing",
           "answer": "esto",
           "answers": [
             "esto"
@@ -2454,7 +2455,7 @@
           "index": 6
         },
         {
-          "hint": "eso",
+          "hint": "that thing",
           "answer": "eso",
           "answers": [
             "eso"
@@ -2462,7 +2463,7 @@
           "index": 7
         },
         {
-          "hint": "aquello",
+          "hint": "that thing over there",
           "answer": "aquello",
           "answers": [
             "aquello"
@@ -2475,7 +2476,7 @@
           "index": 9
         },
         {
-          "hint": "qué",
+          "hint": "what?",
           "answer": "qué",
           "answers": [
             "qué"
@@ -2483,7 +2484,7 @@
           "index": 10
         },
         {
-          "hint": "quién",
+          "hint": "who?",
           "answer": "quién",
           "answers": [
             "quién"
@@ -2491,7 +2492,7 @@
           "index": 11
         },
         {
-          "hint": "quiénes",
+          "hint": "who? (plural)",
           "answer": "quiénes",
           "answers": [
             "quiénes"
@@ -2499,7 +2500,7 @@
           "index": 12
         },
         {
-          "hint": "cuál",
+          "hint": "which?",
           "answer": "cuál",
           "answers": [
             "cuál"
@@ -2507,7 +2508,7 @@
           "index": 13
         },
         {
-          "hint": "cuáles",
+          "hint": "which ones?",
           "answer": "cuáles",
           "answers": [
             "cuáles"
@@ -2515,7 +2516,7 @@
           "index": 14
         },
         {
-          "hint": "cuánto",
+          "hint": "how much?",
           "answer": "cuánto",
           "answers": [
             "cuánto"
@@ -2523,7 +2524,7 @@
           "index": 15
         },
         {
-          "hint": "cuánta",
+          "hint": "how much? (feminine)",
           "answer": "cuánta",
           "answers": [
             "cuánta"
@@ -2531,7 +2532,7 @@
           "index": 16
         },
         {
-          "hint": "cuántos",
+          "hint": "how many? (masculine)",
           "answer": "cuántos",
           "answers": [
             "cuántos"
@@ -2539,7 +2540,7 @@
           "index": 17
         },
         {
-          "hint": "cuántas",
+          "hint": "how many? (feminine)",
           "answer": "cuántas",
           "answers": [
             "cuántas"
@@ -2552,7 +2553,7 @@
           "index": 19
         },
         {
-          "hint": "que",
+          "hint": "what?",
           "answer": "que",
           "answers": [
             "que"
@@ -2560,7 +2561,7 @@
           "index": 20
         },
         {
-          "hint": "quien",
+          "hint": "who?",
           "answer": "quien",
           "answers": [
             "quien"
@@ -2568,7 +2569,7 @@
           "index": 21
         },
         {
-          "hint": "quienes",
+          "hint": "who? (plural)",
           "answer": "quienes",
           "answers": [
             "quienes"
@@ -2576,7 +2577,7 @@
           "index": 22
         },
         {
-          "hint": "cual",
+          "hint": "which?",
           "answer": "cual",
           "answers": [
             "cual"
@@ -2584,7 +2585,7 @@
           "index": 23
         },
         {
-          "hint": "cuales",
+          "hint": "which ones?",
           "answer": "cuales",
           "answers": [
             "cuales"
@@ -2592,7 +2593,7 @@
           "index": 24
         },
         {
-          "hint": "cuyo",
+          "hint": "whose (masculine singular)",
           "answer": "cuyo",
           "answers": [
             "cuyo"
@@ -2600,7 +2601,7 @@
           "index": 25
         },
         {
-          "hint": "cuya",
+          "hint": "whose (feminine singular)",
           "answer": "cuya",
           "answers": [
             "cuya"
@@ -2608,7 +2609,7 @@
           "index": 26
         },
         {
-          "hint": "cuyos",
+          "hint": "whose (masculine plural)",
           "answer": "cuyos",
           "answers": [
             "cuyos"
@@ -2616,7 +2617,7 @@
           "index": 27
         },
         {
-          "hint": "cuyas",
+          "hint": "whose (feminine plural)",
           "answer": "cuyas",
           "answers": [
             "cuyas"
@@ -2629,7 +2630,7 @@
           "index": 29
         },
         {
-          "hint": "alguien",
+          "hint": "someone",
           "answer": "alguien",
           "answers": [
             "alguien"
@@ -2637,7 +2638,7 @@
           "index": 30
         },
         {
-          "hint": "nadie",
+          "hint": "nobody",
           "answer": "nadie",
           "answers": [
             "nadie"
@@ -2645,7 +2646,7 @@
           "index": 31
         },
         {
-          "hint": "algo",
+          "hint": "something",
           "answer": "algo",
           "answers": [
             "algo"
@@ -2653,7 +2654,7 @@
           "index": 32
         },
         {
-          "hint": "nada",
+          "hint": "nothing",
           "answer": "nada",
           "answers": [
             "nada"
@@ -2666,7 +2667,7 @@
           "index": 34
         },
         {
-          "hint": "cualquiera",
+          "hint": "anyone / any (singular)",
           "answer": "cualquiera",
           "answers": [
             "cualquiera"
@@ -2674,7 +2675,7 @@
           "index": 35
         },
         {
-          "hint": "cualesquiera",
+          "hint": "any (plural)",
           "answer": "cualesquiera",
           "answers": [
             "cualesquiera"
@@ -2682,7 +2683,7 @@
           "index": 36
         },
         {
-          "hint": "quienquiera",
+          "hint": "whoever",
           "answer": "quienquiera",
           "answers": [
             "quienquiera"
@@ -2690,7 +2691,7 @@
           "index": 37
         },
         {
-          "hint": "quienesquiera",
+          "hint": "whoever (plural)",
           "answer": "quienesquiera",
           "answers": [
             "quienesquiera"
@@ -2706,7 +2707,7 @@
       "count": 60,
       "items": [
         {
-          "hint": "cero",
+          "hint": "0 (zero)",
           "answer": "cero",
           "answers": [
             "cero"
@@ -2714,7 +2715,7 @@
           "index": 1
         },
         {
-          "hint": "uno",
+          "hint": "one (pronoun, masculine)",
           "answer": "uno",
           "answers": [
             "uno"
@@ -2722,7 +2723,7 @@
           "index": 2
         },
         {
-          "hint": "dos",
+          "hint": "2 (two)",
           "answer": "dos",
           "answers": [
             "dos"
@@ -2730,7 +2731,7 @@
           "index": 3
         },
         {
-          "hint": "tres",
+          "hint": "3 (three)",
           "answer": "tres",
           "answers": [
             "tres"
@@ -2738,7 +2739,7 @@
           "index": 4
         },
         {
-          "hint": "cuatro",
+          "hint": "4 (four)",
           "answer": "cuatro",
           "answers": [
             "cuatro"
@@ -2746,7 +2747,7 @@
           "index": 5
         },
         {
-          "hint": "cinco",
+          "hint": "5 (five)",
           "answer": "cinco",
           "answers": [
             "cinco"
@@ -2754,7 +2755,7 @@
           "index": 6
         },
         {
-          "hint": "seis",
+          "hint": "6 (six)",
           "answer": "seis",
           "answers": [
             "seis"
@@ -2762,7 +2763,7 @@
           "index": 7
         },
         {
-          "hint": "siete",
+          "hint": "7 (seven)",
           "answer": "siete",
           "answers": [
             "siete"
@@ -2770,7 +2771,7 @@
           "index": 8
         },
         {
-          "hint": "ocho",
+          "hint": "8 (eight)",
           "answer": "ocho",
           "answers": [
             "ocho"
@@ -2778,7 +2779,7 @@
           "index": 9
         },
         {
-          "hint": "nueve",
+          "hint": "9 (nine)",
           "answer": "nueve",
           "answers": [
             "nueve"
@@ -2786,7 +2787,7 @@
           "index": 10
         },
         {
-          "hint": "diez",
+          "hint": "10 (ten)",
           "answer": "diez",
           "answers": [
             "diez"
@@ -2794,7 +2795,7 @@
           "index": 11
         },
         {
-          "hint": "once",
+          "hint": "11 (eleven)",
           "answer": "once",
           "answers": [
             "once"
@@ -2802,7 +2803,7 @@
           "index": 12
         },
         {
-          "hint": "doce",
+          "hint": "12 (twelve)",
           "answer": "doce",
           "answers": [
             "doce"
@@ -2810,7 +2811,7 @@
           "index": 13
         },
         {
-          "hint": "trece",
+          "hint": "13 (thirteen)",
           "answer": "trece",
           "answers": [
             "trece"
@@ -2818,7 +2819,7 @@
           "index": 14
         },
         {
-          "hint": "catorce",
+          "hint": "14 (fourteen)",
           "answer": "catorce",
           "answers": [
             "catorce"
@@ -2826,7 +2827,7 @@
           "index": 15
         },
         {
-          "hint": "quince",
+          "hint": "15 (fifteen)",
           "answer": "quince",
           "answers": [
             "quince"
@@ -2834,7 +2835,7 @@
           "index": 16
         },
         {
-          "hint": "dieciséis",
+          "hint": "16 (sixteen)",
           "answer": "dieciséis",
           "answers": [
             "dieciséis"
@@ -2842,7 +2843,7 @@
           "index": 17
         },
         {
-          "hint": "diecisiete",
+          "hint": "17 (seventeen)",
           "answer": "diecisiete",
           "answers": [
             "diecisiete"
@@ -2850,7 +2851,7 @@
           "index": 18
         },
         {
-          "hint": "dieciocho",
+          "hint": "18 (eighteen)",
           "answer": "dieciocho",
           "answers": [
             "dieciocho"
@@ -2858,7 +2859,7 @@
           "index": 19
         },
         {
-          "hint": "diecinueve",
+          "hint": "19 (nineteen)",
           "answer": "diecinueve",
           "answers": [
             "diecinueve"
@@ -2866,7 +2867,7 @@
           "index": 20
         },
         {
-          "hint": "veinte",
+          "hint": "20 (twenty)",
           "answer": "veinte",
           "answers": [
             "veinte"
@@ -2874,7 +2875,7 @@
           "index": 21
         },
         {
-          "hint": "veintiuno",
+          "hint": "21 (twenty-one)",
           "answer": "veintiuno",
           "answers": [
             "veintiuno"
@@ -2882,7 +2883,7 @@
           "index": 22
         },
         {
-          "hint": "veintidós",
+          "hint": "22 (twenty-two)",
           "answer": "veintidós",
           "answers": [
             "veintidós"
@@ -2890,7 +2891,7 @@
           "index": 23
         },
         {
-          "hint": "veintitrés",
+          "hint": "23 (twenty-three)",
           "answer": "veintitrés",
           "answers": [
             "veintitrés"
@@ -2898,7 +2899,7 @@
           "index": 24
         },
         {
-          "hint": "veinticuatro",
+          "hint": "24 (twenty-four)",
           "answer": "veinticuatro",
           "answers": [
             "veinticuatro"
@@ -2906,7 +2907,7 @@
           "index": 25
         },
         {
-          "hint": "veinticinco",
+          "hint": "25 (twenty-five)",
           "answer": "veinticinco",
           "answers": [
             "veinticinco"
@@ -2914,7 +2915,7 @@
           "index": 26
         },
         {
-          "hint": "veintiséis",
+          "hint": "26 (twenty-six)",
           "answer": "veintiséis",
           "answers": [
             "veintiséis"
@@ -2922,7 +2923,7 @@
           "index": 27
         },
         {
-          "hint": "veintisiete",
+          "hint": "27 (twenty-seven)",
           "answer": "veintisiete",
           "answers": [
             "veintisiete"
@@ -2930,7 +2931,7 @@
           "index": 28
         },
         {
-          "hint": "veintiocho",
+          "hint": "28 (twenty-eight)",
           "answer": "veintiocho",
           "answers": [
             "veintiocho"
@@ -2938,7 +2939,7 @@
           "index": 29
         },
         {
-          "hint": "veintinueve",
+          "hint": "29 (twenty-nine)",
           "answer": "veintinueve",
           "answers": [
             "veintinueve"
@@ -2946,7 +2947,7 @@
           "index": 30
         },
         {
-          "hint": "treinta",
+          "hint": "30 (thirty)",
           "answer": "treinta",
           "answers": [
             "treinta"
@@ -2954,7 +2955,7 @@
           "index": 31
         },
         {
-          "hint": "treinta y uno",
+          "hint": "31 (thirty-one)",
           "answer": "treinta y uno",
           "answers": [
             "treinta y uno"
@@ -2962,7 +2963,7 @@
           "index": 32
         },
         {
-          "hint": "treinta y dos",
+          "hint": "32 (thirty-two)",
           "answer": "treinta y dos",
           "answers": [
             "treinta y dos"
@@ -2970,7 +2971,7 @@
           "index": 33
         },
         {
-          "hint": "treinta y tres",
+          "hint": "33 (thirty-three)",
           "answer": "treinta y tres",
           "answers": [
             "treinta y tres"
@@ -2978,7 +2979,7 @@
           "index": 34
         },
         {
-          "hint": "treinta y cuatro",
+          "hint": "34 (thirty-four)",
           "answer": "treinta y cuatro",
           "answers": [
             "treinta y cuatro"
@@ -2986,7 +2987,7 @@
           "index": 35
         },
         {
-          "hint": "treinta y cinco",
+          "hint": "35 (thirty-five)",
           "answer": "treinta y cinco",
           "answers": [
             "treinta y cinco"
@@ -2994,7 +2995,7 @@
           "index": 36
         },
         {
-          "hint": "treinta y seis",
+          "hint": "36 (thirty-six)",
           "answer": "treinta y seis",
           "answers": [
             "treinta y seis"
@@ -3002,7 +3003,7 @@
           "index": 37
         },
         {
-          "hint": "treinta y siete",
+          "hint": "37 (thirty-seven)",
           "answer": "treinta y siete",
           "answers": [
             "treinta y siete"
@@ -3010,7 +3011,7 @@
           "index": 38
         },
         {
-          "hint": "treinta y ocho",
+          "hint": "38 (thirty-eight)",
           "answer": "treinta y ocho",
           "answers": [
             "treinta y ocho"
@@ -3018,7 +3019,7 @@
           "index": 39
         },
         {
-          "hint": "treinta y nueve",
+          "hint": "39 (thirty-nine)",
           "answer": "treinta y nueve",
           "answers": [
             "treinta y nueve"
@@ -3026,7 +3027,7 @@
           "index": 40
         },
         {
-          "hint": "cuarenta",
+          "hint": "40 (forty)",
           "answer": "cuarenta",
           "answers": [
             "cuarenta"
@@ -3034,7 +3035,7 @@
           "index": 41
         },
         {
-          "hint": "cuarenta y uno",
+          "hint": "41 (forty-one)",
           "answer": "cuarenta y uno",
           "answers": [
             "cuarenta y uno"
@@ -3042,7 +3043,7 @@
           "index": 42
         },
         {
-          "hint": "cuarenta y dos",
+          "hint": "42 (forty-two)",
           "answer": "cuarenta y dos",
           "answers": [
             "cuarenta y dos"
@@ -3050,7 +3051,7 @@
           "index": 43
         },
         {
-          "hint": "cuarenta y tres",
+          "hint": "43 (forty-three)",
           "answer": "cuarenta y tres",
           "answers": [
             "cuarenta y tres"
@@ -3058,7 +3059,7 @@
           "index": 44
         },
         {
-          "hint": "cuarenta y cuatro",
+          "hint": "44 (forty-four)",
           "answer": "cuarenta y cuatro",
           "answers": [
             "cuarenta y cuatro"
@@ -3066,7 +3067,7 @@
           "index": 45
         },
         {
-          "hint": "cuarenta y cinco",
+          "hint": "45 (forty-five)",
           "answer": "cuarenta y cinco",
           "answers": [
             "cuarenta y cinco"
@@ -3074,7 +3075,7 @@
           "index": 46
         },
         {
-          "hint": "cuarenta y seis",
+          "hint": "46 (forty-six)",
           "answer": "cuarenta y seis",
           "answers": [
             "cuarenta y seis"
@@ -3082,7 +3083,7 @@
           "index": 47
         },
         {
-          "hint": "cuarenta y siete",
+          "hint": "47 (forty-seven)",
           "answer": "cuarenta y siete",
           "answers": [
             "cuarenta y siete"
@@ -3090,7 +3091,7 @@
           "index": 48
         },
         {
-          "hint": "cuarenta y ocho",
+          "hint": "48 (forty-eight)",
           "answer": "cuarenta y ocho",
           "answers": [
             "cuarenta y ocho"
@@ -3098,7 +3099,7 @@
           "index": 49
         },
         {
-          "hint": "cuarenta y nueve",
+          "hint": "49 (forty-nine)",
           "answer": "cuarenta y nueve",
           "answers": [
             "cuarenta y nueve"
@@ -3106,7 +3107,7 @@
           "index": 50
         },
         {
-          "hint": "cincuenta",
+          "hint": "50 (fifty)",
           "answer": "cincuenta",
           "answers": [
             "cincuenta"
@@ -3114,7 +3115,7 @@
           "index": 51
         },
         {
-          "hint": "cincuenta y uno",
+          "hint": "51 (fifty-one)",
           "answer": "cincuenta y uno",
           "answers": [
             "cincuenta y uno"
@@ -3122,7 +3123,7 @@
           "index": 52
         },
         {
-          "hint": "cincuenta y dos",
+          "hint": "52 (fifty-two)",
           "answer": "cincuenta y dos",
           "answers": [
             "cincuenta y dos"
@@ -3130,7 +3131,7 @@
           "index": 53
         },
         {
-          "hint": "cincuenta y tres",
+          "hint": "53 (fifty-three)",
           "answer": "cincuenta y tres",
           "answers": [
             "cincuenta y tres"
@@ -3138,7 +3139,7 @@
           "index": 54
         },
         {
-          "hint": "cincuenta y cuatro",
+          "hint": "54 (fifty-four)",
           "answer": "cincuenta y cuatro",
           "answers": [
             "cincuenta y cuatro"
@@ -3146,7 +3147,7 @@
           "index": 55
         },
         {
-          "hint": "cincuenta y cinco",
+          "hint": "55 (fifty-five)",
           "answer": "cincuenta y cinco",
           "answers": [
             "cincuenta y cinco"
@@ -3154,7 +3155,7 @@
           "index": 56
         },
         {
-          "hint": "cincuenta y seis",
+          "hint": "56 (fifty-six)",
           "answer": "cincuenta y seis",
           "answers": [
             "cincuenta y seis"
@@ -3162,7 +3163,7 @@
           "index": 57
         },
         {
-          "hint": "cincuenta y siete",
+          "hint": "57 (fifty-seven)",
           "answer": "cincuenta y siete",
           "answers": [
             "cincuenta y siete"
@@ -3170,7 +3171,7 @@
           "index": 58
         },
         {
-          "hint": "cincuenta y ocho",
+          "hint": "58 (fifty-eight)",
           "answer": "cincuenta y ocho",
           "answers": [
             "cincuenta y ocho"
@@ -3178,7 +3179,7 @@
           "index": 59
         },
         {
-          "hint": "cincuenta y nueve",
+          "hint": "59 (fifty-nine)",
           "answer": "cincuenta y nueve",
           "answers": [
             "cincuenta y nueve"
@@ -3194,7 +3195,7 @@
       "count": 41,
       "items": [
         {
-          "hint": "sesenta",
+          "hint": "60 (sixty)",
           "answer": "sesenta",
           "answers": [
             "sesenta"
@@ -3202,7 +3203,7 @@
           "index": 1
         },
         {
-          "hint": "sesenta y uno",
+          "hint": "61 (sixty-one)",
           "answer": "sesenta y uno",
           "answers": [
             "sesenta y uno"
@@ -3210,7 +3211,7 @@
           "index": 2
         },
         {
-          "hint": "sesenta y dos",
+          "hint": "62 (sixty-two)",
           "answer": "sesenta y dos",
           "answers": [
             "sesenta y dos"
@@ -3218,7 +3219,7 @@
           "index": 3
         },
         {
-          "hint": "sesenta y tres",
+          "hint": "63 (sixty-three)",
           "answer": "sesenta y tres",
           "answers": [
             "sesenta y tres"
@@ -3226,7 +3227,7 @@
           "index": 4
         },
         {
-          "hint": "sesenta y cuatro",
+          "hint": "64 (sixty-four)",
           "answer": "sesenta y cuatro",
           "answers": [
             "sesenta y cuatro"
@@ -3234,7 +3235,7 @@
           "index": 5
         },
         {
-          "hint": "sesenta y cinco",
+          "hint": "65 (sixty-five)",
           "answer": "sesenta y cinco",
           "answers": [
             "sesenta y cinco"
@@ -3242,7 +3243,7 @@
           "index": 6
         },
         {
-          "hint": "sesenta y seis",
+          "hint": "66 (sixty-six)",
           "answer": "sesenta y seis",
           "answers": [
             "sesenta y seis"
@@ -3250,7 +3251,7 @@
           "index": 7
         },
         {
-          "hint": "sesenta y siete",
+          "hint": "67 (sixty-seven)",
           "answer": "sesenta y siete",
           "answers": [
             "sesenta y siete"
@@ -3258,7 +3259,7 @@
           "index": 8
         },
         {
-          "hint": "sesenta y ocho",
+          "hint": "68 (sixty-eight)",
           "answer": "sesenta y ocho",
           "answers": [
             "sesenta y ocho"
@@ -3266,7 +3267,7 @@
           "index": 9
         },
         {
-          "hint": "sesenta y nueve",
+          "hint": "69 (sixty-nine)",
           "answer": "sesenta y nueve",
           "answers": [
             "sesenta y nueve"
@@ -3274,7 +3275,7 @@
           "index": 10
         },
         {
-          "hint": "setenta",
+          "hint": "70 (seventy)",
           "answer": "setenta",
           "answers": [
             "setenta"
@@ -3282,7 +3283,7 @@
           "index": 11
         },
         {
-          "hint": "setenta y uno",
+          "hint": "71 (seventy-one)",
           "answer": "setenta y uno",
           "answers": [
             "setenta y uno"
@@ -3290,7 +3291,7 @@
           "index": 12
         },
         {
-          "hint": "setenta y dos",
+          "hint": "72 (seventy-two)",
           "answer": "setenta y dos",
           "answers": [
             "setenta y dos"
@@ -3298,7 +3299,7 @@
           "index": 13
         },
         {
-          "hint": "setenta y tres",
+          "hint": "73 (seventy-three)",
           "answer": "setenta y tres",
           "answers": [
             "setenta y tres"
@@ -3306,7 +3307,7 @@
           "index": 14
         },
         {
-          "hint": "setenta y cuatro",
+          "hint": "74 (seventy-four)",
           "answer": "setenta y cuatro",
           "answers": [
             "setenta y cuatro"
@@ -3314,7 +3315,7 @@
           "index": 15
         },
         {
-          "hint": "setenta y cinco",
+          "hint": "75 (seventy-five)",
           "answer": "setenta y cinco",
           "answers": [
             "setenta y cinco"
@@ -3322,7 +3323,7 @@
           "index": 16
         },
         {
-          "hint": "setenta y seis",
+          "hint": "76 (seventy-six)",
           "answer": "setenta y seis",
           "answers": [
             "setenta y seis"
@@ -3330,7 +3331,7 @@
           "index": 17
         },
         {
-          "hint": "setenta y siete",
+          "hint": "77 (seventy-seven)",
           "answer": "setenta y siete",
           "answers": [
             "setenta y siete"
@@ -3338,7 +3339,7 @@
           "index": 18
         },
         {
-          "hint": "setenta y ocho",
+          "hint": "78 (seventy-eight)",
           "answer": "setenta y ocho",
           "answers": [
             "setenta y ocho"
@@ -3346,7 +3347,7 @@
           "index": 19
         },
         {
-          "hint": "setenta y nueve",
+          "hint": "79 (seventy-nine)",
           "answer": "setenta y nueve",
           "answers": [
             "setenta y nueve"
@@ -3354,7 +3355,7 @@
           "index": 20
         },
         {
-          "hint": "ochenta",
+          "hint": "80 (eighty)",
           "answer": "ochenta",
           "answers": [
             "ochenta"
@@ -3362,7 +3363,7 @@
           "index": 21
         },
         {
-          "hint": "ochenta y uno",
+          "hint": "81 (eighty-one)",
           "answer": "ochenta y uno",
           "answers": [
             "ochenta y uno"
@@ -3370,7 +3371,7 @@
           "index": 22
         },
         {
-          "hint": "ochenta y dos",
+          "hint": "82 (eighty-two)",
           "answer": "ochenta y dos",
           "answers": [
             "ochenta y dos"
@@ -3378,7 +3379,7 @@
           "index": 23
         },
         {
-          "hint": "ochenta y tres",
+          "hint": "83 (eighty-three)",
           "answer": "ochenta y tres",
           "answers": [
             "ochenta y tres"
@@ -3386,7 +3387,7 @@
           "index": 24
         },
         {
-          "hint": "ochenta y cuatro",
+          "hint": "84 (eighty-four)",
           "answer": "ochenta y cuatro",
           "answers": [
             "ochenta y cuatro"
@@ -3394,7 +3395,7 @@
           "index": 25
         },
         {
-          "hint": "ochenta y cinco",
+          "hint": "85 (eighty-five)",
           "answer": "ochenta y cinco",
           "answers": [
             "ochenta y cinco"
@@ -3402,7 +3403,7 @@
           "index": 26
         },
         {
-          "hint": "ochenta y seis",
+          "hint": "86 (eighty-six)",
           "answer": "ochenta y seis",
           "answers": [
             "ochenta y seis"
@@ -3410,7 +3411,7 @@
           "index": 27
         },
         {
-          "hint": "ochenta y siete",
+          "hint": "87 (eighty-seven)",
           "answer": "ochenta y siete",
           "answers": [
             "ochenta y siete"
@@ -3418,7 +3419,7 @@
           "index": 28
         },
         {
-          "hint": "ochenta y ocho",
+          "hint": "88 (eighty-eight)",
           "answer": "ochenta y ocho",
           "answers": [
             "ochenta y ocho"
@@ -3426,7 +3427,7 @@
           "index": 29
         },
         {
-          "hint": "ochenta y nueve",
+          "hint": "89 (eighty-nine)",
           "answer": "ochenta y nueve",
           "answers": [
             "ochenta y nueve"
@@ -3434,7 +3435,7 @@
           "index": 30
         },
         {
-          "hint": "noventa",
+          "hint": "90 (ninety)",
           "answer": "noventa",
           "answers": [
             "noventa"
@@ -3442,7 +3443,7 @@
           "index": 31
         },
         {
-          "hint": "noventa y uno",
+          "hint": "91 (ninety-one)",
           "answer": "noventa y uno",
           "answers": [
             "noventa y uno"
@@ -3450,7 +3451,7 @@
           "index": 32
         },
         {
-          "hint": "noventa y dos",
+          "hint": "92 (ninety-two)",
           "answer": "noventa y dos",
           "answers": [
             "noventa y dos"
@@ -3458,7 +3459,7 @@
           "index": 33
         },
         {
-          "hint": "noventa y tres",
+          "hint": "93 (ninety-three)",
           "answer": "noventa y tres",
           "answers": [
             "noventa y tres"
@@ -3466,7 +3467,7 @@
           "index": 34
         },
         {
-          "hint": "noventa y cuatro",
+          "hint": "94 (ninety-four)",
           "answer": "noventa y cuatro",
           "answers": [
             "noventa y cuatro"
@@ -3474,7 +3475,7 @@
           "index": 35
         },
         {
-          "hint": "noventa y cinco",
+          "hint": "95 (ninety-five)",
           "answer": "noventa y cinco",
           "answers": [
             "noventa y cinco"
@@ -3482,7 +3483,7 @@
           "index": 36
         },
         {
-          "hint": "noventa y seis",
+          "hint": "96 (ninety-six)",
           "answer": "noventa y seis",
           "answers": [
             "noventa y seis"
@@ -3490,7 +3491,7 @@
           "index": 37
         },
         {
-          "hint": "noventa y siete",
+          "hint": "97 (ninety-seven)",
           "answer": "noventa y siete",
           "answers": [
             "noventa y siete"
@@ -3498,7 +3499,7 @@
           "index": 38
         },
         {
-          "hint": "noventa y ocho",
+          "hint": "98 (ninety-eight)",
           "answer": "noventa y ocho",
           "answers": [
             "noventa y ocho"
@@ -3506,7 +3507,7 @@
           "index": 39
         },
         {
-          "hint": "noventa y nueve",
+          "hint": "99 (ninety-nine)",
           "answer": "noventa y nueve",
           "answers": [
             "noventa y nueve"
@@ -3514,7 +3515,7 @@
           "index": 40
         },
         {
-          "hint": "cien",
+          "hint": "100 (one hundred)",
           "answer": "cien",
           "answers": [
             "cien"
@@ -3530,7 +3531,7 @@
       "count": 20,
       "items": [
         {
-          "hint": "blanco",
+          "hint": "white",
           "answer": "blanco",
           "answers": [
             "blanco"
@@ -3538,7 +3539,7 @@
           "index": 1
         },
         {
-          "hint": "negro",
+          "hint": "black",
           "answer": "negro",
           "answers": [
             "negro"
@@ -3546,7 +3547,7 @@
           "index": 2
         },
         {
-          "hint": "gris",
+          "hint": "gray",
           "answer": "gris",
           "answers": [
             "gris"
@@ -3554,7 +3555,7 @@
           "index": 3
         },
         {
-          "hint": "rojo",
+          "hint": "red",
           "answer": "rojo",
           "answers": [
             "rojo"
@@ -3562,7 +3563,7 @@
           "index": 4
         },
         {
-          "hint": "azul",
+          "hint": "blue",
           "answer": "azul",
           "answers": [
             "azul"
@@ -3570,7 +3571,7 @@
           "index": 5
         },
         {
-          "hint": "verde",
+          "hint": "green",
           "answer": "verde",
           "answers": [
             "verde"
@@ -3578,7 +3579,7 @@
           "index": 6
         },
         {
-          "hint": "amarillo",
+          "hint": "yellow",
           "answer": "amarillo",
           "answers": [
             "amarillo"
@@ -3586,7 +3587,7 @@
           "index": 7
         },
         {
-          "hint": "naranja",
+          "hint": "orange",
           "answer": "naranja",
           "answers": [
             "naranja"
@@ -3594,7 +3595,7 @@
           "index": 8
         },
         {
-          "hint": "morado",
+          "hint": "purple",
           "answer": "morado",
           "answers": [
             "morado"
@@ -3602,7 +3603,7 @@
           "index": 9
         },
         {
-          "hint": "violeta",
+          "hint": "violet",
           "answer": "violeta",
           "answers": [
             "violeta"
@@ -3610,7 +3611,7 @@
           "index": 10
         },
         {
-          "hint": "rosa",
+          "hint": "pink (alt form)",
           "answer": "rosa",
           "answers": [
             "rosa"
@@ -3618,7 +3619,7 @@
           "index": 11
         },
         {
-          "hint": "marrón",
+          "hint": "brown",
           "answer": "marrón",
           "answers": [
             "marrón"
@@ -3626,7 +3627,7 @@
           "index": 12
         },
         {
-          "hint": "café",
+          "hint": "brown (alt form)",
           "answer": "café",
           "answers": [
             "café"
@@ -3642,7 +3643,7 @@
           "index": 14
         },
         {
-          "hint": "dorado",
+          "hint": "golden",
           "answer": "dorado",
           "answers": [
             "dorado"
@@ -3650,7 +3651,7 @@
           "index": 15
         },
         {
-          "hint": "plateado",
+          "hint": "silver",
           "answer": "plateado",
           "answers": [
             "plateado"
@@ -3658,7 +3659,7 @@
           "index": 16
         },
         {
-          "hint": "turquesa",
+          "hint": "turquoise",
           "answer": "turquesa",
           "answers": [
             "turquesa"
@@ -3666,7 +3667,7 @@
           "index": 17
         },
         {
-          "hint": "celeste",
+          "hint": "light blue",
           "answer": "celeste",
           "answers": [
             "celeste"
@@ -3674,7 +3675,7 @@
           "index": 18
         },
         {
-          "hint": "granate",
+          "hint": "maroon",
           "answer": "granate",
           "answers": [
             "granate"
@@ -3682,7 +3683,7 @@
           "index": 19
         },
         {
-          "hint": "fucsia",
+          "hint": "fuchsia",
           "answer": "fucsia",
           "answers": [
             "fucsia"
@@ -3698,7 +3699,7 @@
       "count": 50,
       "items": [
         {
-          "hint": "bueno",
+          "hint": "good",
           "answer": "bueno",
           "answers": [
             "bueno"
@@ -3706,7 +3707,7 @@
           "index": 1
         },
         {
-          "hint": "malo",
+          "hint": "bad",
           "answer": "malo",
           "answers": [
             "malo"
@@ -3714,7 +3715,7 @@
           "index": 2
         },
         {
-          "hint": "grande",
+          "hint": "big / large",
           "answer": "grande",
           "answers": [
             "grande"
@@ -3722,7 +3723,7 @@
           "index": 3
         },
         {
-          "hint": "pequeño",
+          "hint": "small",
           "answer": "pequeño",
           "answers": [
             "pequeño"
@@ -3730,7 +3731,7 @@
           "index": 4
         },
         {
-          "hint": "nuevo",
+          "hint": "new",
           "answer": "nuevo",
           "answers": [
             "nuevo"
@@ -3738,7 +3739,7 @@
           "index": 5
         },
         {
-          "hint": "viejo",
+          "hint": "old",
           "answer": "viejo",
           "answers": [
             "viejo"
@@ -3746,7 +3747,7 @@
           "index": 6
         },
         {
-          "hint": "joven",
+          "hint": "young",
           "answer": "joven",
           "answers": [
             "joven"
@@ -3754,7 +3755,7 @@
           "index": 7
         },
         {
-          "hint": "bonito",
+          "hint": "pretty / nice",
           "answer": "bonito",
           "answers": [
             "bonito"
@@ -3762,7 +3763,7 @@
           "index": 8
         },
         {
-          "hint": "feo",
+          "hint": "ugly",
           "answer": "feo",
           "answers": [
             "feo"
@@ -3770,7 +3771,7 @@
           "index": 9
         },
         {
-          "hint": "alto",
+          "hint": "tall / high",
           "answer": "alto",
           "answers": [
             "alto"
@@ -3778,7 +3779,7 @@
           "index": 10
         },
         {
-          "hint": "bajo",
+          "hint": "under",
           "answer": "bajo",
           "answers": [
             "bajo"
@@ -3786,7 +3787,7 @@
           "index": 11
         },
         {
-          "hint": "largo",
+          "hint": "long",
           "answer": "largo",
           "answers": [
             "largo"
@@ -3794,7 +3795,7 @@
           "index": 12
         },
         {
-          "hint": "corto",
+          "hint": "short (length)",
           "answer": "corto",
           "answers": [
             "corto"
@@ -3802,7 +3803,7 @@
           "index": 13
         },
         {
-          "hint": "ancho",
+          "hint": "wide",
           "answer": "ancho",
           "answers": [
             "ancho"
@@ -3810,7 +3811,7 @@
           "index": 14
         },
         {
-          "hint": "estrecho",
+          "hint": "narrow",
           "answer": "estrecho",
           "answers": [
             "estrecho"
@@ -3818,7 +3819,7 @@
           "index": 15
         },
         {
-          "hint": "caro",
+          "hint": "expensive",
           "answer": "caro",
           "answers": [
             "caro"
@@ -3826,7 +3827,7 @@
           "index": 16
         },
         {
-          "hint": "barato",
+          "hint": "cheap",
           "answer": "barato",
           "answers": [
             "barato"
@@ -3834,7 +3835,7 @@
           "index": 17
         },
         {
-          "hint": "fácil",
+          "hint": "easy",
           "answer": "fácil",
           "answers": [
             "fácil"
@@ -3842,7 +3843,7 @@
           "index": 18
         },
         {
-          "hint": "difícil",
+          "hint": "difficult",
           "answer": "difícil",
           "answers": [
             "difícil"
@@ -3850,7 +3851,7 @@
           "index": 19
         },
         {
-          "hint": "rápido",
+          "hint": "fast",
           "answer": "rápido",
           "answers": [
             "rápido"
@@ -3858,7 +3859,7 @@
           "index": 20
         },
         {
-          "hint": "lento",
+          "hint": "slow",
           "answer": "lento",
           "answers": [
             "lento"
@@ -3866,7 +3867,7 @@
           "index": 21
         },
         {
-          "hint": "cerca",
+          "hint": "near / close",
           "answer": "cerca",
           "answers": [
             "cerca"
@@ -3874,7 +3875,7 @@
           "index": 22
         },
         {
-          "hint": "lejos",
+          "hint": "far",
           "answer": "lejos",
           "answers": [
             "lejos"
@@ -3882,7 +3883,7 @@
           "index": 23
         },
         {
-          "hint": "fuerte",
+          "hint": "strong",
           "answer": "fuerte",
           "answers": [
             "fuerte"
@@ -3890,7 +3891,7 @@
           "index": 24
         },
         {
-          "hint": "débil",
+          "hint": "weak",
           "answer": "débil",
           "answers": [
             "débil"
@@ -3898,7 +3899,7 @@
           "index": 25
         },
         {
-          "hint": "duro",
+          "hint": "hard",
           "answer": "duro",
           "answers": [
             "duro"
@@ -3906,7 +3907,7 @@
           "index": 26
         },
         {
-          "hint": "blando",
+          "hint": "soft",
           "answer": "blando",
           "answers": [
             "blando"
@@ -3914,7 +3915,7 @@
           "index": 27
         },
         {
-          "hint": "caliente",
+          "hint": "hot (temperature)",
           "answer": "caliente",
           "answers": [
             "caliente"
@@ -3922,7 +3923,7 @@
           "index": 28
         },
         {
-          "hint": "frío",
+          "hint": "cold",
           "answer": "frío",
           "answers": [
             "frío"
@@ -3930,7 +3931,7 @@
           "index": 29
         },
         {
-          "hint": "limpio",
+          "hint": "clean",
           "answer": "limpio",
           "answers": [
             "limpio"
@@ -3938,7 +3939,7 @@
           "index": 30
         },
         {
-          "hint": "sucio",
+          "hint": "dirty",
           "answer": "sucio",
           "answers": [
             "sucio"
@@ -3946,7 +3947,7 @@
           "index": 31
         },
         {
-          "hint": "abierto",
+          "hint": "open",
           "answer": "abierto",
           "answers": [
             "abierto"
@@ -3954,7 +3955,7 @@
           "index": 32
         },
         {
-          "hint": "cerrado",
+          "hint": "closed",
           "answer": "cerrado",
           "answers": [
             "cerrado"
@@ -3962,7 +3963,7 @@
           "index": 33
         },
         {
-          "hint": "seguro",
+          "hint": "safe / sure",
           "answer": "seguro",
           "answers": [
             "seguro"
@@ -3970,7 +3971,7 @@
           "index": 34
         },
         {
-          "hint": "peligroso",
+          "hint": "dangerous",
           "answer": "peligroso",
           "answers": [
             "peligroso"
@@ -3978,7 +3979,7 @@
           "index": 35
         },
         {
-          "hint": "importante",
+          "hint": "important",
           "answer": "importante",
           "answers": [
             "importante"
@@ -3986,7 +3987,7 @@
           "index": 36
         },
         {
-          "hint": "necesario",
+          "hint": "necessary",
           "answer": "necesario",
           "answers": [
             "necesario"
@@ -3994,7 +3995,7 @@
           "index": 37
         },
         {
-          "hint": "posible",
+          "hint": "possible",
           "answer": "posible",
           "answers": [
             "posible"
@@ -4002,7 +4003,7 @@
           "index": 38
         },
         {
-          "hint": "imposible",
+          "hint": "impossible",
           "answer": "imposible",
           "answers": [
             "imposible"
@@ -4010,7 +4011,7 @@
           "index": 39
         },
         {
-          "hint": "verdadero",
+          "hint": "true",
           "answer": "verdadero",
           "answers": [
             "verdadero"
@@ -4018,7 +4019,7 @@
           "index": 40
         },
         {
-          "hint": "falso",
+          "hint": "false",
           "answer": "falso",
           "answers": [
             "falso"
@@ -4026,7 +4027,7 @@
           "index": 41
         },
         {
-          "hint": "mejor",
+          "hint": "better / best",
           "answer": "mejor",
           "answers": [
             "mejor"
@@ -4034,7 +4035,7 @@
           "index": 42
         },
         {
-          "hint": "peor",
+          "hint": "worse / worst",
           "answer": "peor",
           "answers": [
             "peor"
@@ -4042,7 +4043,7 @@
           "index": 43
         },
         {
-          "hint": "mismo",
+          "hint": "same",
           "answer": "mismo",
           "answers": [
             "mismo"
@@ -4050,7 +4051,7 @@
           "index": 44
         },
         {
-          "hint": "diferente",
+          "hint": "different",
           "answer": "diferente",
           "answers": [
             "diferente"
@@ -4058,7 +4059,7 @@
           "index": 45
         },
         {
-          "hint": "igual",
+          "hint": "same / equal",
           "answer": "igual",
           "answers": [
             "igual"
@@ -4066,7 +4067,7 @@
           "index": 46
         },
         {
-          "hint": "otro",
+          "hint": "other / another (masculine singular)",
           "answer": "otro",
           "answers": [
             "otro"
@@ -4074,7 +4075,7 @@
           "index": 47
         },
         {
-          "hint": "último",
+          "hint": "last",
           "answer": "último",
           "answers": [
             "último"
@@ -4082,7 +4083,7 @@
           "index": 48
         },
         {
-          "hint": "primero",
+          "hint": "first",
           "answer": "primero",
           "answers": [
             "primero"
@@ -4090,7 +4091,7 @@
           "index": 49
         },
         {
-          "hint": "siguiente",
+          "hint": "next / following",
           "answer": "siguiente",
           "answers": [
             "siguiente"
@@ -4106,7 +4107,7 @@
       "count": 30,
       "items": [
         {
-          "hint": "hola",
+          "hint": "hello",
           "answer": "hola",
           "answers": [
             "hola"
@@ -4114,7 +4115,7 @@
           "index": 1
         },
         {
-          "hint": "buenos días",
+          "hint": "good morning",
           "answer": "buenos días",
           "answers": [
             "buenos días"
@@ -4122,7 +4123,7 @@
           "index": 2
         },
         {
-          "hint": "buenas tardes",
+          "hint": "good afternoon",
           "answer": "buenas tardes",
           "answers": [
             "buenas tardes"
@@ -4130,7 +4131,7 @@
           "index": 3
         },
         {
-          "hint": "buenas noches",
+          "hint": "good evening / good night",
           "answer": "buenas noches",
           "answers": [
             "buenas noches"
@@ -4138,7 +4139,7 @@
           "index": 4
         },
         {
-          "hint": "¿qué tal?",
+          "hint": "how's it going?",
           "answer": "¿qué tal?",
           "answers": [
             "¿qué tal?"
@@ -4146,7 +4147,7 @@
           "index": 5
         },
         {
-          "hint": "¿cómo estás?",
+          "hint": "how are you? (informal)",
           "answer": "¿cómo estás?",
           "answers": [
             "¿cómo estás?"
@@ -4154,7 +4155,7 @@
           "index": 6
         },
         {
-          "hint": "¿cómo está?",
+          "hint": "how are you? (formal)",
           "answer": "¿cómo está?",
           "answers": [
             "¿cómo está?"
@@ -4162,7 +4163,7 @@
           "index": 7
         },
         {
-          "hint": "¿cómo estás tú?",
+          "hint": "how are you? (you specifically)",
           "answer": "¿cómo estás tú?",
           "answers": [
             "¿cómo estás tú?"
@@ -4170,7 +4171,7 @@
           "index": 8
         },
         {
-          "hint": "¿cómo te va?",
+          "hint": "how's it going?",
           "answer": "¿cómo te va?",
           "answers": [
             "¿cómo te va?"
@@ -4178,7 +4179,7 @@
           "index": 9
         },
         {
-          "hint": "¿qué pasa?",
+          "hint": "what's happening?",
           "answer": "¿qué pasa?",
           "answers": [
             "¿qué pasa?"
@@ -4186,7 +4187,7 @@
           "index": 10
         },
         {
-          "hint": "¿qué hay?",
+          "hint": "what's up?",
           "answer": "¿qué hay?",
           "answers": [
             "¿qué hay?"
@@ -4194,7 +4195,7 @@
           "index": 11
         },
         {
-          "hint": "¿qué haces?",
+          "hint": "what are you doing?",
           "answer": "¿qué haces?",
           "answers": [
             "¿qué haces?"
@@ -4202,7 +4203,7 @@
           "index": 12
         },
         {
-          "hint": "encantado",
+          "hint": "pleased to meet you (masculine speaker)",
           "answer": "encantado",
           "answers": [
             "encantado"
@@ -4210,7 +4211,7 @@
           "index": 13
         },
         {
-          "hint": "encantada",
+          "hint": "pleased to meet you (feminine speaker)",
           "answer": "encantada",
           "answers": [
             "encantada"
@@ -4218,7 +4219,7 @@
           "index": 14
         },
         {
-          "hint": "mucho gusto",
+          "hint": "nice to meet you",
           "answer": "mucho gusto",
           "answers": [
             "mucho gusto"
@@ -4226,7 +4227,7 @@
           "index": 15
         },
         {
-          "hint": "bienvenido",
+          "hint": "welcome (to a man)",
           "answer": "bienvenido",
           "answers": [
             "bienvenido"
@@ -4234,7 +4235,7 @@
           "index": 16
         },
         {
-          "hint": "bienvenida",
+          "hint": "welcome (to a woman)",
           "answer": "bienvenida",
           "answers": [
             "bienvenida"
@@ -4242,7 +4243,7 @@
           "index": 17
         },
         {
-          "hint": "bienvenidos",
+          "hint": "welcome (men/mixed, plural)",
           "answer": "bienvenidos",
           "answers": [
             "bienvenidos"
@@ -4250,7 +4251,7 @@
           "index": 18
         },
         {
-          "hint": "bienvenidas",
+          "hint": "welcome (women, plural)",
           "answer": "bienvenidas",
           "answers": [
             "bienvenidas"
@@ -4258,7 +4259,7 @@
           "index": 19
         },
         {
-          "hint": "feliz cumpleaños",
+          "hint": "happy birthday",
           "answer": "feliz cumpleaños",
           "answers": [
             "feliz cumpleaños"
@@ -4266,7 +4267,7 @@
           "index": 20
         },
         {
-          "hint": "felicidades",
+          "hint": "congratulations",
           "answer": "felicidades",
           "answers": [
             "felicidades"
@@ -4274,7 +4275,7 @@
           "index": 21
         },
         {
-          "hint": "saludos",
+          "hint": "greetings",
           "answer": "saludos",
           "answers": [
             "saludos"
@@ -4282,7 +4283,7 @@
           "index": 22
         },
         {
-          "hint": "un saludo",
+          "hint": "a greeting / regards",
           "answer": "un saludo",
           "answers": [
             "un saludo"
@@ -4290,7 +4291,7 @@
           "index": 23
         },
         {
-          "hint": "hasta luego",
+          "hint": "see you later",
           "answer": "hasta luego",
           "answers": [
             "hasta luego"
@@ -4298,7 +4299,7 @@
           "index": 24
         },
         {
-          "hint": "hasta pronto",
+          "hint": "see you soon",
           "answer": "hasta pronto",
           "answers": [
             "hasta pronto"
@@ -4306,7 +4307,7 @@
           "index": 25
         },
         {
-          "hint": "hasta mañana",
+          "hint": "see you tomorrow",
           "answer": "hasta mañana",
           "answers": [
             "hasta mañana"
@@ -4314,7 +4315,7 @@
           "index": 26
         },
         {
-          "hint": "nos vemos",
+          "hint": "see you",
           "answer": "nos vemos",
           "answers": [
             "nos vemos"
@@ -4322,7 +4323,7 @@
           "index": 27
         },
         {
-          "hint": "adiós",
+          "hint": "goodbye",
           "answer": "adiós",
           "answers": [
             "adiós"
@@ -4330,7 +4331,7 @@
           "index": 28
         },
         {
-          "hint": "chao",
+          "hint": "bye",
           "answer": "chao",
           "answers": [
             "chao"
@@ -4338,7 +4339,7 @@
           "index": 29
         },
         {
-          "hint": "hasta la próxima",
+          "hint": "until next time",
           "answer": "hasta la próxima",
           "answers": [
             "hasta la próxima"
@@ -4354,7 +4355,7 @@
       "count": 30,
       "items": [
         {
-          "hint": "quisiera",
+          "hint": "I would like",
           "answer": "quisiera",
           "answers": [
             "quisiera"
@@ -4362,7 +4363,7 @@
           "index": 1
         },
         {
-          "hint": "me gustaría",
+          "hint": "I would like",
           "answer": "me gustaría",
           "answers": [
             "me gustaría"
@@ -4370,7 +4371,7 @@
           "index": 2
         },
         {
-          "hint": "voy a pedir",
+          "hint": "I'm going to order",
           "answer": "voy a pedir",
           "answers": [
             "voy a pedir"
@@ -4378,7 +4379,7 @@
           "index": 3
         },
         {
-          "hint": "para mí",
+          "hint": "for me...",
           "answer": "para mí",
           "answers": [
             "para mí"
@@ -4386,7 +4387,7 @@
           "index": 4
         },
         {
-          "hint": "para nosotros",
+          "hint": "for us",
           "answer": "para nosotros",
           "answers": [
             "para nosotros"
@@ -4394,7 +4395,7 @@
           "index": 5
         },
         {
-          "hint": "¿me trae…?",
+          "hint": "could you bring me...?",
           "answer": "¿me trae…?",
           "answers": [
             "¿me trae…?"
@@ -4402,7 +4403,7 @@
           "index": 6
         },
         {
-          "hint": "¿me pone…?",
+          "hint": "can you serve me...?",
           "answer": "¿me pone…?",
           "answers": [
             "¿me pone…?"
@@ -4410,7 +4411,7 @@
           "index": 7
         },
         {
-          "hint": "¿me da…?",
+          "hint": "can you give me...?",
           "answer": "¿me da…?",
           "answers": [
             "¿me da…?"
@@ -4418,7 +4419,7 @@
           "index": 8
         },
         {
-          "hint": "¿me puede traer…?",
+          "hint": "can you bring me...?",
           "answer": "¿me puede traer…?",
           "answers": [
             "¿me puede traer…?"
@@ -4426,7 +4427,7 @@
           "index": 9
         },
         {
-          "hint": "¿me puede poner…?",
+          "hint": "can you serve me...?",
           "answer": "¿me puede poner…?",
           "answers": [
             "¿me puede poner…?"
@@ -4434,7 +4435,7 @@
           "index": 10
         },
         {
-          "hint": "¿me puede dar…?",
+          "hint": "can you give me...?",
           "answer": "¿me puede dar…?",
           "answers": [
             "¿me puede dar…?"
@@ -4442,7 +4443,7 @@
           "index": 11
         },
         {
-          "hint": "¿qué me recomienda?",
+          "hint": "what do you recommend?",
           "answer": "¿qué me recomienda?",
           "answers": [
             "¿qué me recomienda?"
@@ -4450,7 +4451,7 @@
           "index": 12
         },
         {
-          "hint": "¿qué hay de comer?",
+          "hint": "what is there to eat?",
           "answer": "¿qué hay de comer?",
           "answers": [
             "¿qué hay de comer?"
@@ -4458,7 +4459,7 @@
           "index": 13
         },
         {
-          "hint": "¿tienen…?",
+          "hint": "do you have...?",
           "answer": "¿tienen…?",
           "answers": [
             "¿tienen…?"
@@ -4466,7 +4467,7 @@
           "index": 14
         },
         {
-          "hint": "¿hay…?",
+          "hint": "is there...?",
           "answer": "¿hay…?",
           "answers": [
             "¿hay…?"
@@ -4474,7 +4475,7 @@
           "index": 15
         },
         {
-          "hint": "¿qué lleva?",
+          "hint": "what does it have?",
           "answer": "¿qué lleva?",
           "answers": [
             "¿qué lleva?"
@@ -4482,7 +4483,7 @@
           "index": 16
         },
         {
-          "hint": "¿qué contiene?",
+          "hint": "what does it contain?",
           "answer": "¿qué contiene?",
           "answers": [
             "¿qué contiene?"
@@ -4490,7 +4491,7 @@
           "index": 17
         },
         {
-          "hint": "¿es picante?",
+          "hint": "is it spicy?",
           "answer": "¿es picante?",
           "answers": [
             "¿es picante?"
@@ -4498,7 +4499,7 @@
           "index": 18
         },
         {
-          "hint": "sin…",
+          "hint": "without",
           "answer": "sin…",
           "answers": [
             "sin…"
@@ -4506,7 +4507,7 @@
           "index": 19
         },
         {
-          "hint": "con…",
+          "hint": "with",
           "answer": "con…",
           "answers": [
             "con…"
@@ -4514,7 +4515,7 @@
           "index": 20
         },
         {
-          "hint": "solo…",
+          "hint": "only / just",
           "answer": "solo…",
           "answers": [
             "solo…"
@@ -4522,7 +4523,7 @@
           "index": 21
         },
         {
-          "hint": "para llevar",
+          "hint": "to go",
           "answer": "para llevar",
           "answers": [
             "para llevar"
@@ -4530,7 +4531,7 @@
           "index": 22
         },
         {
-          "hint": "para aquí",
+          "hint": "for here (to eat here)",
           "answer": "para aquí",
           "answers": [
             "para aquí"
@@ -4538,7 +4539,7 @@
           "index": 23
         },
         {
-          "hint": "la cuenta, por favor",
+          "hint": "the check, please",
           "answer": "la cuenta, por favor",
           "answers": [
             "la cuenta, por favor"
@@ -4546,7 +4547,7 @@
           "index": 24
         },
         {
-          "hint": "¿me puede traer la carta?",
+          "hint": "can you bring me the menu?",
           "answer": "¿me puede traer la carta?",
           "answers": [
             "¿me puede traer la carta?"
@@ -4554,7 +4555,7 @@
           "index": 25
         },
         {
-          "hint": "el menú",
+          "hint": "menu",
           "answer": "el menú",
           "answers": [
             "el menú"
@@ -4562,7 +4563,7 @@
           "index": 26
         },
         {
-          "hint": "agua",
+          "hint": "water",
           "answer": "agua",
           "answers": [
             "agua"
@@ -4570,7 +4571,7 @@
           "index": 27
         },
         {
-          "hint": "con hielo",
+          "hint": "with ice",
           "answer": "con hielo",
           "answers": [
             "con hielo"
@@ -4578,7 +4579,7 @@
           "index": 28
         },
         {
-          "hint": "sin hielo",
+          "hint": "without ice",
           "answer": "sin hielo",
           "answers": [
             "sin hielo"
@@ -4586,7 +4587,7 @@
           "index": 29
         },
         {
-          "hint": "una mesa para dos",
+          "hint": "a table for two",
           "answer": "una mesa para dos",
           "answers": [
             "una mesa para dos"
@@ -4602,7 +4603,7 @@
       "count": 40,
       "items": [
         {
-          "hint": "aquí",
+          "hint": "here",
           "answer": "aquí",
           "answers": [
             "aquí"
@@ -4610,7 +4611,7 @@
           "index": 1
         },
         {
-          "hint": "ahí",
+          "hint": "there (near you)",
           "answer": "ahí",
           "answers": [
             "ahí"
@@ -4618,7 +4619,7 @@
           "index": 2
         },
         {
-          "hint": "allí",
+          "hint": "there",
           "answer": "allí",
           "answers": [
             "allí"
@@ -4626,7 +4627,7 @@
           "index": 3
         },
         {
-          "hint": "allá",
+          "hint": "over there",
           "answer": "allá",
           "answers": [
             "allá"
@@ -4634,7 +4635,7 @@
           "index": 4
         },
         {
-          "hint": "cerca",
+          "hint": "near / close",
           "answer": "cerca",
           "answers": [
             "cerca"
@@ -4642,7 +4643,7 @@
           "index": 5
         },
         {
-          "hint": "lejos",
+          "hint": "far",
           "answer": "lejos",
           "answers": [
             "lejos"
@@ -4650,7 +4651,7 @@
           "index": 6
         },
         {
-          "hint": "delante",
+          "hint": "in front",
           "answer": "delante",
           "answers": [
             "delante"
@@ -4658,7 +4659,7 @@
           "index": 7
         },
         {
-          "hint": "detrás",
+          "hint": "behind",
           "answer": "detrás",
           "answers": [
             "detrás"
@@ -4666,7 +4667,7 @@
           "index": 8
         },
         {
-          "hint": "encima",
+          "hint": "on top / above",
           "answer": "encima",
           "answers": [
             "encima"
@@ -4674,7 +4675,7 @@
           "index": 9
         },
         {
-          "hint": "debajo",
+          "hint": "under / below",
           "answer": "debajo",
           "answers": [
             "debajo"
@@ -4682,7 +4683,7 @@
           "index": 10
         },
         {
-          "hint": "arriba",
+          "hint": "up / upstairs",
           "answer": "arriba",
           "answers": [
             "arriba"
@@ -4690,7 +4691,7 @@
           "index": 11
         },
         {
-          "hint": "abajo",
+          "hint": "down / downstairs",
           "answer": "abajo",
           "answers": [
             "abajo"
@@ -4698,7 +4699,7 @@
           "index": 12
         },
         {
-          "hint": "dentro",
+          "hint": "inside",
           "answer": "dentro",
           "answers": [
             "dentro"
@@ -4706,7 +4707,7 @@
           "index": 13
         },
         {
-          "hint": "fuera",
+          "hint": "outside",
           "answer": "fuera",
           "answers": [
             "fuera"
@@ -4714,7 +4715,7 @@
           "index": 14
         },
         {
-          "hint": "a la izquierda",
+          "hint": "to the left",
           "answer": "a la izquierda",
           "answers": [
             "a la izquierda"
@@ -4722,7 +4723,7 @@
           "index": 15
         },
         {
-          "hint": "a la derecha",
+          "hint": "to the right",
           "answer": "a la derecha",
           "answers": [
             "a la derecha"
@@ -4730,7 +4731,7 @@
           "index": 16
         },
         {
-          "hint": "recto",
+          "hint": "straight",
           "answer": "recto",
           "answers": [
             "recto"
@@ -4738,7 +4739,7 @@
           "index": 17
         },
         {
-          "hint": "todo recto",
+          "hint": "straight ahead",
           "answer": "todo recto",
           "answers": [
             "todo recto"
@@ -4746,7 +4747,7 @@
           "index": 18
         },
         {
-          "hint": "sigue recto",
+          "hint": "keep going straight",
           "answer": "sigue recto",
           "answers": [
             "sigue recto"
@@ -4754,7 +4755,7 @@
           "index": 19
         },
         {
-          "hint": "gira a la izquierda",
+          "hint": "make a left turn",
           "answer": "gira a la izquierda",
           "answers": [
             "gira a la izquierda"
@@ -4762,7 +4763,7 @@
           "index": 20
         },
         {
-          "hint": "gira a la derecha",
+          "hint": "make a right turn",
           "answer": "gira a la derecha",
           "answers": [
             "gira a la derecha"
@@ -4770,7 +4771,7 @@
           "index": 21
         },
         {
-          "hint": "dobla a la izquierda",
+          "hint": "turn left",
           "answer": "dobla a la izquierda",
           "answers": [
             "dobla a la izquierda"
@@ -4778,7 +4779,7 @@
           "index": 22
         },
         {
-          "hint": "dobla a la derecha",
+          "hint": "turn right",
           "answer": "dobla a la derecha",
           "answers": [
             "dobla a la derecha"
@@ -4786,7 +4787,7 @@
           "index": 23
         },
         {
-          "hint": "cruza",
+          "hint": "cross",
           "answer": "cruza",
           "answers": [
             "cruza"
@@ -4794,7 +4795,7 @@
           "index": 24
         },
         {
-          "hint": "pasa",
+          "hint": "pass / come in",
           "answer": "pasa",
           "answers": [
             "pasa"
@@ -4802,7 +4803,7 @@
           "index": 25
         },
         {
-          "hint": "entra",
+          "hint": "enter / go in",
           "answer": "entra",
           "answers": [
             "entra"
@@ -4810,7 +4811,7 @@
           "index": 26
         },
         {
-          "hint": "sal",
+          "hint": "exit / go out",
           "answer": "sal",
           "answers": [
             "sal"
@@ -4818,7 +4819,7 @@
           "index": 27
         },
         {
-          "hint": "sube",
+          "hint": "go up",
           "answer": "sube",
           "answers": [
             "sube"
@@ -4826,7 +4827,7 @@
           "index": 28
         },
         {
-          "hint": "baja",
+          "hint": "go down",
           "answer": "baja",
           "answers": [
             "baja"
@@ -4834,7 +4835,7 @@
           "index": 29
         },
         {
-          "hint": "al lado de",
+          "hint": "next to",
           "answer": "al lado de",
           "answers": [
             "al lado de"
@@ -4842,7 +4843,7 @@
           "index": 30
         },
         {
-          "hint": "enfrente de",
+          "hint": "across from",
           "answer": "enfrente de",
           "answers": [
             "enfrente de"
@@ -4850,7 +4851,7 @@
           "index": 31
         },
         {
-          "hint": "detrás de",
+          "hint": "behind",
           "answer": "detrás de",
           "answers": [
             "detrás de"
@@ -4858,7 +4859,7 @@
           "index": 32
         },
         {
-          "hint": "entre",
+          "hint": "between / among",
           "answer": "entre",
           "answers": [
             "entre"
@@ -4866,7 +4867,7 @@
           "index": 33
         },
         {
-          "hint": "sobre",
+          "hint": "on / about",
           "answer": "sobre",
           "answers": [
             "sobre"
@@ -4874,7 +4875,7 @@
           "index": 34
         },
         {
-          "hint": "bajo",
+          "hint": "under",
           "answer": "bajo",
           "answers": [
             "bajo"
@@ -4882,7 +4883,7 @@
           "index": 35
         },
         {
-          "hint": "en la esquina",
+          "hint": "on the corner",
           "answer": "en la esquina",
           "answers": [
             "en la esquina"
@@ -4890,7 +4891,7 @@
           "index": 36
         },
         {
-          "hint": "por aquí",
+          "hint": "around here / this way",
           "answer": "por aquí",
           "answers": [
             "por aquí"
@@ -4898,7 +4899,7 @@
           "index": 37
         },
         {
-          "hint": "por allí",
+          "hint": "over there / through there",
           "answer": "por allí",
           "answers": [
             "por allí"
@@ -4906,7 +4907,7 @@
           "index": 38
         },
         {
-          "hint": "¿dónde está…?",
+          "hint": "where is ...?",
           "answer": "¿dónde está…?",
           "answers": [
             "¿dónde está…?"
@@ -4914,7 +4915,7 @@
           "index": 39
         },
         {
-          "hint": "¿cómo llego a…?",
+          "hint": "how do I get to...?",
           "answer": "¿cómo llego a…?",
           "answers": [
             "¿cómo llego a…?"
