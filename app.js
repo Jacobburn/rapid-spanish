@@ -6,6 +6,14 @@ const CONVERSION_DATA_URL = "./data/english-spanish-conversion.json";
 const GRAMMAR_DATA_URL = "./data/grammar-decks.json";
 const SLANG_DATA_URL = "./data/slang.json";
 const STORIES_DATA_URL = "./data/stories.json";
+const ITALIAN_VERBS_DATA_URL = "./data/kofi-verbs-it.json";
+const ITALIAN_NOUNS_DATA_URL = "./data/top-2000-nouns-it.json";
+const ITALIAN_BEGINNER_DATA_URL = "./data/beginner-phrases-it.json";
+const ITALIAN_DISCOURSE_DATA_URL = "./data/discourse-chunks-it.json";
+const ITALIAN_CONVERSION_DATA_URL = "./data/english-italian-conversion.json";
+const ITALIAN_GRAMMAR_DATA_URL = "./data/grammar-decks-it.json";
+const ITALIAN_SLANG_DATA_URL = "./data/slang-it.json";
+const ITALIAN_STORIES_DATA_URL = "./data/stories-it.json";
 const BEST_SCORES_STORAGE_KEY = "rapid-spanish-best-scores-v3";
 const ADMIN_MODE_STORAGE_KEY = "rapid-spanish-admin-mode-v1";
 const USERS_STORAGE_KEY = "rapid-spanish-users-v1";
@@ -15,7 +23,10 @@ const ATTEMPT_STATS_STORAGE_KEY = "rapid-spanish-attempt-stats-v1";
 const SRS_STORAGE_KEY = "rapid-spanish-srs-v1";
 const GAMIFICATION_STORAGE_KEY = "rapid-spanish-gamification-v1";
 const SUPABASE_SESSION_STORAGE_KEY = "rapid-spanish-supabase-session-v1";
+const LANGUAGE_STORAGE_KEY = "rapid-spanish-language-v1";
 const ADMIN_MODE_USERNAME = "jake";
+const DEFAULT_LANGUAGE = "es";
+const SUPPORTED_LANGUAGES = ["es", "it"];
 const STORY_UNLOCK_THRESHOLDS = [2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 const QUIZ_TIMER_DURATION_MS = 5 * 60 * 1000;
 const TRACK_UNLOCK_THRESHOLD_PERCENT = 90;
@@ -154,6 +165,108 @@ const TRAINING_MODULES = [
   },
 ];
 
+const TRAINING_MODULES_ITALIAN = [
+  {
+    id: "beginner-phrases-it",
+    title: "Beginner Phrases",
+    subtitle: "16 grouped decks (635 items)",
+    type: "beginner",
+  },
+  {
+    id: "italian-verb-training",
+    title: "Italian Verb Training",
+    subtitle: "Core tenses",
+    type: "kofi",
+  },
+  {
+    id: "top-italian-nouns",
+    title: "Top Italian Nouns",
+    subtitle: "10 decks of 50 nouns",
+    type: "nouns",
+  },
+  {
+    id: "italian-discourse-chunks",
+    title: "Discourse Chunks",
+    subtitle: "High-frequency phrase chunks",
+    type: "discourse",
+  },
+  {
+    id: "english-to-italian-conversion",
+    title: "English -> Italian Conversion",
+    subtitle: "Pattern and conversion drills",
+    type: "conversion",
+  },
+  {
+    id: "italian-grammar",
+    title: "Grammar",
+    subtitle: "Italian grammar prompts",
+    type: "grammar",
+  },
+  {
+    id: "italian-slang",
+    title: "Slang",
+    subtitle: "Regional + modern Italian slang",
+    type: "slang",
+  },
+  {
+    id: "italian-verb-training-additional",
+    title: "Italian Verb Training Additional Moods",
+    subtitle: "Subgiuntivo + imperativo (+ infinitive)",
+    type: "kofi-additional",
+  },
+  {
+    id: "top-italian-nouns-advanced",
+    title: "Top Italian Nouns Advanced",
+    subtitle: "30 decks of 50 nouns",
+    type: "nouns-advanced",
+  },
+];
+
+const TRAINING_MODULES_BY_LANGUAGE = {
+  es: TRAINING_MODULES,
+  it: TRAINING_MODULES_ITALIAN,
+};
+
+const LANGUAGE_DATA_URLS = {
+  es: {
+    verbs: VERBS_DATA_URL,
+    nouns: NOUNS_DATA_URL,
+    beginner: BEGINNER_DATA_URL,
+    discourse: DISCOURSE_DATA_URL,
+    conversion: CONVERSION_DATA_URL,
+    grammar: GRAMMAR_DATA_URL,
+    slang: SLANG_DATA_URL,
+    stories: STORIES_DATA_URL,
+  },
+  it: {
+    verbs: ITALIAN_VERBS_DATA_URL,
+    nouns: ITALIAN_NOUNS_DATA_URL,
+    beginner: ITALIAN_BEGINNER_DATA_URL,
+    discourse: ITALIAN_DISCOURSE_DATA_URL,
+    conversion: ITALIAN_CONVERSION_DATA_URL,
+    grammar: ITALIAN_GRAMMAR_DATA_URL,
+    slang: ITALIAN_SLANG_DATA_URL,
+    stories: ITALIAN_STORIES_DATA_URL,
+  },
+};
+
+const LANGUAGE_UI_COPY = {
+  es: {
+    appTitle: "Rapid Spanish",
+    targetLanguageName: "Spanish",
+    targetLanguageAdjective: "Spanish",
+    storiesIntro: "Read short stories in Spanish. They unlock as your study progress increases.",
+    srsIntro: "Type the Spanish answer, press Enter to check, then grade your recall quality.",
+  },
+  it: {
+    appTitle: "Rapid Italian",
+    targetLanguageName: "Italian",
+    targetLanguageAdjective: "Italian",
+    storiesIntro: "Read short stories in Italian. They unlock as your study progress increases.",
+    srsIntro: "Type the Italian answer, press Enter to check, then grade your recall quality.",
+  },
+};
+
 const TRACK_UNLOCK_TIERS = [
   ["beginner"],
   ["kofi", "nouns"],
@@ -252,12 +365,15 @@ const appViews = [
 ];
 
 const trainingGrid = document.getElementById("trainingGrid");
+const appEyebrow = document.getElementById("appEyebrow");
+const languageToggle = document.getElementById("languageToggle");
 const progressMap = document.getElementById("progressMap");
 const trainingHubProgressText = document.getElementById("trainingHubProgressText");
 const trainingHubProgressFill = document.getElementById("trainingHubProgressFill");
 const adminModeToggle = document.getElementById("adminModeToggle");
 const adminModeControl = adminModeToggle?.closest(".admin-mode-toggle");
 const storiesUnlockMeta = document.getElementById("storiesUnlockMeta");
+const storiesIntroText = document.getElementById("storiesIntroText");
 const storiesGrid = document.getElementById("storiesGrid");
 const srsHubMeta = document.getElementById("srsHubMeta");
 const srsDueNow = document.getElementById("srsDueNow");
@@ -484,6 +600,8 @@ const srsManageFromReviewButton = document.getElementById("srsManageFromReviewBu
 const srsReviewMeta = document.getElementById("srsReviewMeta");
 const srsDeckLabel = document.getElementById("srsDeckLabel");
 const srsPrompt = document.getElementById("srsPrompt");
+const srsIntroText = document.getElementById("srsIntroText");
+const srsAnswerLabel = document.getElementById("srsAnswerLabel");
 const srsAnswerInput = document.getElementById("srsAnswerInput");
 const srsFeedback = document.getElementById("srsFeedback");
 const srsRevealAnswer = document.getElementById("srsRevealAnswer");
@@ -499,6 +617,11 @@ const srsManageSummary = document.getElementById("srsManageSummary");
 const srsManageDeckList = document.getElementById("srsManageDeckList");
 const verbDashboardTitle = dashboardView?.querySelector(".panel-header h2");
 const nounsDashboardTitle = nounsDashboardView?.querySelector(".panel-header h2");
+const beginnerDashboardTitle = beginnerDashboardView?.querySelector(".panel-header h2");
+const discourseDashboardTitle = discourseDashboardView?.querySelector(".panel-header h2");
+const conversionDashboardTitle = conversionDashboardView?.querySelector(".panel-header h2");
+const grammarDashboardTitle = grammarDashboardView?.querySelector(".panel-header h2");
+const slangDashboardTitle = slangDashboardView?.querySelector(".panel-header h2");
 
 function createEmptyBestScores() {
   return {
@@ -544,6 +667,7 @@ const state = {
   grammarGroups: [],
   slangGroups: [],
   stories: [],
+  activeLanguage: loadPreferredLanguage(),
   nounMode: "singular",
   activeVerbTrack: "core",
   activeNounTrack: "core",
@@ -832,6 +956,106 @@ function normalizeGamificationData(rawData) {
   return safe;
 }
 
+function normalizeLanguageCode(value) {
+  const normalized = String(value || "")
+    .trim()
+    .toLowerCase();
+  return SUPPORTED_LANGUAGES.includes(normalized) ? normalized : DEFAULT_LANGUAGE;
+}
+
+function loadPreferredLanguage() {
+  try {
+    return normalizeLanguageCode(localStorage.getItem(LANGUAGE_STORAGE_KEY) || DEFAULT_LANGUAGE);
+  } catch (error) {
+    console.warn("Unable to load language setting:", error);
+    return DEFAULT_LANGUAGE;
+  }
+}
+
+function savePreferredLanguage(language) {
+  try {
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, normalizeLanguageCode(language));
+  } catch (error) {
+    console.warn("Unable to persist language setting:", error);
+  }
+}
+
+function getCurrentLanguage() {
+  return normalizeLanguageCode(state?.activeLanguage || DEFAULT_LANGUAGE);
+}
+
+function getLanguageUiCopy(language = getCurrentLanguage()) {
+  return LANGUAGE_UI_COPY[normalizeLanguageCode(language)] || LANGUAGE_UI_COPY[DEFAULT_LANGUAGE];
+}
+
+function getTargetLanguageName() {
+  return getLanguageUiCopy().targetLanguageName;
+}
+
+function getTargetLanguageAdjective() {
+  return getLanguageUiCopy().targetLanguageAdjective;
+}
+
+function getDataUrlsForLanguage(language = getCurrentLanguage()) {
+  const normalized = normalizeLanguageCode(language);
+  return LANGUAGE_DATA_URLS[normalized] || LANGUAGE_DATA_URLS[DEFAULT_LANGUAGE];
+}
+
+function getTrainingModules(language = getCurrentLanguage()) {
+  const normalized = normalizeLanguageCode(language);
+  return TRAINING_MODULES_BY_LANGUAGE[normalized] || TRAINING_MODULES_BY_LANGUAGE[DEFAULT_LANGUAGE];
+}
+
+function getTrainingModuleByType(type, language = getCurrentLanguage()) {
+  return getTrainingModules(language).find((module) => module.type === type) || null;
+}
+
+function getLanguageScopedStorageKey(baseKey) {
+  return `${baseKey}::${getCurrentLanguage()}`;
+}
+
+function applyLanguageUiText() {
+  const copy = getLanguageUiCopy();
+  document.title = `${copy.appTitle} | Training Dashboard`;
+  if (appEyebrow) {
+    appEyebrow.textContent = copy.appTitle;
+  }
+  if (storiesIntroText) {
+    storiesIntroText.textContent = copy.storiesIntro;
+  }
+  if (srsIntroText) {
+    srsIntroText.textContent = copy.srsIntro;
+  }
+  if (srsAnswerLabel) {
+    srsAnswerLabel.textContent = `Type ${copy.targetLanguageAdjective} answer`;
+  }
+}
+
+function refreshLanguageModuleTitles() {
+  if (verbDashboardTitle) {
+    verbDashboardTitle.textContent = getVerbTrackTitle(state.activeVerbTrack || "core");
+  }
+  if (nounsDashboardTitle) {
+    nounsDashboardTitle.textContent = getNounTrackTitle(state.activeNounTrack || "core");
+  }
+  if (beginnerDashboardTitle) {
+    beginnerDashboardTitle.textContent = getTrainingModuleByType("beginner")?.title || "Beginner Phrases";
+  }
+  if (discourseDashboardTitle) {
+    discourseDashboardTitle.textContent = getTrainingModuleByType("discourse")?.title || "Discourse Chunks";
+  }
+  if (conversionDashboardTitle) {
+    conversionDashboardTitle.textContent =
+      getTrainingModuleByType("conversion")?.title || "English -> Spanish Conversion";
+  }
+  if (grammarDashboardTitle) {
+    grammarDashboardTitle.textContent = getTrainingModuleByType("grammar")?.title || "Grammar";
+  }
+  if (slangDashboardTitle) {
+    slangDashboardTitle.textContent = getTrainingModuleByType("slang")?.title || "Slang";
+  }
+}
+
 function canUseAdminMode(user = state.currentUser) {
   return normalizeUsername(user?.username || "") === ADMIN_MODE_USERNAME;
 }
@@ -856,30 +1080,34 @@ function refreshAdminModeAccess() {
 
 function getBestScoresStorageKey() {
   if (!state.currentUser?.username) {
-    return `${BEST_SCORES_STORAGE_KEY}::guest`;
+    return `${getLanguageScopedStorageKey(BEST_SCORES_STORAGE_KEY)}::guest`;
   }
-  return `${BEST_SCORES_STORAGE_KEY}::${state.currentUser.username}`;
+  return `${getLanguageScopedStorageKey(BEST_SCORES_STORAGE_KEY)}::${state.currentUser.username}`;
 }
 
 function getAttemptStatsStorageKey() {
   if (!state.currentUser?.username) {
-    return `${ATTEMPT_STATS_STORAGE_KEY}::guest`;
+    return `${getLanguageScopedStorageKey(ATTEMPT_STATS_STORAGE_KEY)}::guest`;
   }
-  return `${ATTEMPT_STATS_STORAGE_KEY}::${state.currentUser.username}`;
+  return `${getLanguageScopedStorageKey(ATTEMPT_STATS_STORAGE_KEY)}::${state.currentUser.username}`;
 }
 
 function getSrsStorageKey() {
   if (!state.currentUser?.username) {
-    return `${SRS_STORAGE_KEY}::guest`;
+    return `${getLanguageScopedStorageKey(SRS_STORAGE_KEY)}::guest`;
   }
-  return `${SRS_STORAGE_KEY}::${state.currentUser.username}`;
+  return `${getLanguageScopedStorageKey(SRS_STORAGE_KEY)}::${state.currentUser.username}`;
 }
 
 function getGamificationStorageKey() {
   if (!state.currentUser?.username) {
-    return `${GAMIFICATION_STORAGE_KEY}::guest`;
+    return `${getLanguageScopedStorageKey(GAMIFICATION_STORAGE_KEY)}::guest`;
   }
-  return `${GAMIFICATION_STORAGE_KEY}::${state.currentUser.username}`;
+  return `${getLanguageScopedStorageKey(GAMIFICATION_STORAGE_KEY)}::${state.currentUser.username}`;
+}
+
+function getActivityStorageKey() {
+  return getLanguageScopedStorageKey(ACTIVITY_STORAGE_KEY);
 }
 
 let remoteStateSyncTimer = null;
@@ -1342,7 +1570,10 @@ function loadActivityMap() {
     return {};
   }
   try {
-    const raw = localStorage.getItem(ACTIVITY_STORAGE_KEY);
+    let raw = localStorage.getItem(getActivityStorageKey());
+    if (!raw && getCurrentLanguage() === DEFAULT_LANGUAGE) {
+      raw = localStorage.getItem(ACTIVITY_STORAGE_KEY);
+    }
     if (!raw) {
       return {};
     }
@@ -1359,7 +1590,7 @@ function saveActivityMap(activityMap) {
     scheduleRemoteStateSync();
   }
   try {
-    localStorage.setItem(ACTIVITY_STORAGE_KEY, JSON.stringify(activityMap));
+    localStorage.setItem(getActivityStorageKey(), JSON.stringify(activityMap));
   } catch (error) {
     console.error("Could not save activity data:", error);
   }
@@ -1370,7 +1601,11 @@ function loadAttemptStats() {
     return normalizeAttemptStats(state.attemptStats);
   }
   try {
-    const raw = localStorage.getItem(getAttemptStatsStorageKey());
+    let raw = localStorage.getItem(getAttemptStatsStorageKey());
+    if (!raw && getCurrentLanguage() === DEFAULT_LANGUAGE) {
+      const legacyUser = state.currentUser?.username || "guest";
+      raw = localStorage.getItem(`${ATTEMPT_STATS_STORAGE_KEY}::${legacyUser}`);
+    }
     if (!raw) {
       return createEmptyAttemptStats();
     }
@@ -1400,7 +1635,11 @@ function loadSrsData() {
     return normalizeSrsData(state.srsData);
   }
   try {
-    const raw = localStorage.getItem(getSrsStorageKey());
+    let raw = localStorage.getItem(getSrsStorageKey());
+    if (!raw && getCurrentLanguage() === DEFAULT_LANGUAGE) {
+      const legacyUser = state.currentUser?.username || "guest";
+      raw = localStorage.getItem(`${SRS_STORAGE_KEY}::${legacyUser}`);
+    }
     if (!raw) {
       return createEmptySrsData();
     }
@@ -1427,7 +1666,11 @@ function loadGamificationData() {
     return normalizeGamificationData(state.gamificationData);
   }
   try {
-    const raw = localStorage.getItem(getGamificationStorageKey());
+    let raw = localStorage.getItem(getGamificationStorageKey());
+    if (!raw && getCurrentLanguage() === DEFAULT_LANGUAGE) {
+      const legacyUser = state.currentUser?.username || "guest";
+      raw = localStorage.getItem(`${GAMIFICATION_STORAGE_KEY}::${legacyUser}`);
+    }
     if (!raw) {
       return createEmptyGamificationData();
     }
@@ -1769,6 +2012,77 @@ async function ensureDataLoaded() {
   }
 }
 
+function reloadLanguageScopedLocalState() {
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    if (!state.activityMap || typeof state.activityMap !== "object") {
+      state.activityMap = {};
+    }
+  } else {
+    state.activityMap = loadActivityMap();
+  }
+  if (!state.currentUser?.username) {
+    state.bestScores = createEmptyBestScores();
+    state.attemptStats = createEmptyAttemptStats();
+    state.gamificationData = createEmptyGamificationData();
+    state.srsData = createEmptySrsData();
+    return;
+  }
+  if (hasSupabaseConfig() && state.currentUser?.user_id) {
+    state.bestScores = normalizeBestScores(state.bestScores);
+    state.attemptStats = normalizeAttemptStats(state.attemptStats);
+    state.gamificationData = normalizeGamificationData(state.gamificationData);
+    state.srsData = normalizeSrsData(state.srsData);
+    return;
+  }
+  state.bestScores = loadBestScores();
+  state.attemptStats = loadAttemptStats();
+  state.gamificationData = loadGamificationData();
+  state.srsData = loadSrsData();
+}
+
+async function switchActiveLanguage(language) {
+  const nextLanguage = normalizeLanguageCode(language);
+  if (nextLanguage === state.activeLanguage) {
+    return;
+  }
+
+  const previousLanguage = state.activeLanguage;
+  state.activeLanguage = nextLanguage;
+  savePreferredLanguage(nextLanguage);
+  if (languageToggle) {
+    languageToggle.value = nextLanguage;
+  }
+
+  try {
+    applyLanguageUiText();
+    refreshLanguageModuleTitles();
+    reloadLanguageScopedLocalState();
+    state.dataLoaded = false;
+
+    if (state.currentUser) {
+      await ensureDataLoaded();
+      refreshProgressViews();
+      openTrainingHub();
+    } else {
+      updateDashboardProgressBars();
+      renderTrainingGrid();
+    }
+    clearStatus();
+  } catch (error) {
+    console.error(error);
+    state.activeLanguage = previousLanguage;
+    savePreferredLanguage(previousLanguage);
+    if (languageToggle) {
+      languageToggle.value = previousLanguage;
+    }
+    applyLanguageUiText();
+    refreshLanguageModuleTitles();
+    reloadLanguageScopedLocalState();
+    state.dataLoaded = false;
+    throw error;
+  }
+}
+
 function loadAdminMode() {
   try {
     return localStorage.getItem(ADMIN_MODE_STORAGE_KEY) === "true";
@@ -1811,6 +2125,11 @@ state.attemptStats = loadAttemptStats();
 state.gamificationData = loadGamificationData();
 state.srsData = loadSrsData();
 state.adminMode = loadAdminMode();
+if (languageToggle) {
+  languageToggle.value = state.activeLanguage;
+}
+applyLanguageUiText();
+refreshLanguageModuleTitles();
 if (adminModeToggle) {
   adminModeToggle.checked = state.adminMode;
 }
@@ -1849,8 +2168,10 @@ function isSubjuntivoOrImperativoForm(form) {
   const label = normalize(form?.label || "");
   return (
     tenseTag.includes("subjuntivo") ||
+    tenseTag.includes("subgiuntivo") ||
     tenseTag.includes("imperativo") ||
     label.includes("subjuntivo") ||
+    label.includes("subgiuntivo") ||
     label.includes("imperativo")
   );
 }
@@ -1871,7 +2192,12 @@ function splitVerbTracks(verbs) {
     const coreForms = verb.forms.filter((form) => !isSubjuntivoOrImperativoForm(form));
     const additionalForms = verb.forms.filter((form) => {
       const tenseTag = normalize(form?.tenseTag || "");
-      return isSubjuntivoOrImperativoForm(form) || tenseTag === "infinitivo";
+      return (
+        isSubjuntivoOrImperativoForm(form) ||
+        tenseTag === "infinitivo" ||
+        tenseTag === "infinito" ||
+        tenseTag === "infinitive"
+      );
     });
 
     core.push(copyVerbWithForms(verb, coreForms));
@@ -1911,13 +2237,17 @@ function getVerbBestScore(verb, trackMode = state.activeVerbTrack) {
 }
 
 function getVerbTrackTitle(trackMode = state.activeVerbTrack) {
-  return trackMode === "additional"
+  const type = trackMode === "additional" ? "kofi-additional" : "kofi";
+  return getTrainingModuleByType(type)?.title || (trackMode === "additional"
     ? "KOFI Verb Training Additional Tenses"
-    : "KOFI Verb Training";
+    : "KOFI Verb Training");
 }
 
 function getNounTrackTitle(trackMode = state.activeNounTrack) {
-  return trackMode === "advanced" ? "Top Nouns 501 - 2000" : "Top 500 Nouns";
+  const type = trackMode === "advanced" ? "nouns-advanced" : "nouns";
+  return getTrainingModuleByType(type)?.title || (trackMode === "advanced"
+    ? "Top Nouns 501 - 2000"
+    : "Top 500 Nouns");
 }
 
 function placeholder(answer) {
@@ -2009,7 +2339,11 @@ function loadBestScores() {
     return normalizeBestScores(state.bestScores);
   }
   try {
-    const raw = localStorage.getItem(getBestScoresStorageKey());
+    let raw = localStorage.getItem(getBestScoresStorageKey());
+    if (!raw && getCurrentLanguage() === DEFAULT_LANGUAGE) {
+      const legacyUser = state.currentUser?.username || "guest";
+      raw = localStorage.getItem(`${BEST_SCORES_STORAGE_KEY}::${legacyUser}`);
+    }
     if (!raw) {
       return createEmptyBestScores();
     }
@@ -2055,7 +2389,12 @@ function loadBestScoresForUser(username) {
     return createEmptyBestScores();
   }
   try {
-    const raw = localStorage.getItem(`${BEST_SCORES_STORAGE_KEY}::${username}`);
+    let raw = localStorage.getItem(
+      `${getLanguageScopedStorageKey(BEST_SCORES_STORAGE_KEY)}::${username}`,
+    );
+    if (!raw && getCurrentLanguage() === DEFAULT_LANGUAGE) {
+      raw = localStorage.getItem(`${BEST_SCORES_STORAGE_KEY}::${username}`);
+    }
     if (!raw) {
       return createEmptyBestScores();
     }
@@ -2323,6 +2662,10 @@ function renderLeaderboardHubTile() {
 }
 
 function getTrackLabel(trackId) {
+  const module = getTrainingModuleByType(trackId);
+  if (module?.title) {
+    return module.title;
+  }
   const match = STATS_TRACKS.find((track) => track.id === trackId);
   return match ? match.label : trackId;
 }
@@ -2575,7 +2918,7 @@ function renderStatsHubTile() {
       trackStats.attempts > 0 ? calculatePercent(trackStats.correct, trackStats.attempts) : 0;
     return {
       id: track.id,
-      label: track.label,
+      label: getTrackLabel(track.id),
       attempts: trackStats.attempts,
       percent,
       correct: trackStats.correct,
@@ -2607,7 +2950,7 @@ function renderStatsHubTile() {
           ? `${percent}% (${trackStats.correct}/${trackStats.attempts})`
           : "No attempts";
       return {
-        label: track.label,
+        label: getTrackLabel(track.id),
         metric,
       };
     })
@@ -3268,7 +3611,7 @@ function getTrackUnlockInfo(moduleType) {
   const requiredTypes = TRACK_UNLOCK_TIERS[tierIndex - 1];
   const lockedModules = requiredTypes
     .map((type) => {
-      const module = TRAINING_MODULES.find((item) => item.type === type);
+      const module = getTrainingModuleByType(type);
       if (!module) {
         return null;
       }
@@ -3472,7 +3815,7 @@ function renderProgressMap() {
     nodesWrap.className = "progress-tier-nodes";
 
     tier.forEach((type) => {
-      const module = TRAINING_MODULES.find((item) => item.type === type);
+      const module = getTrainingModuleByType(type);
       if (!module) {
         return;
       }
@@ -3519,7 +3862,7 @@ function renderTrainingGrid() {
   }
   trainingGrid.innerHTML = "";
 
-  TRAINING_MODULES.forEach((module, index) => {
+  getTrainingModules().forEach((module, index) => {
     const moduleProgress = getModuleProgress(module.type);
     const percent = calculatePercent(moduleProgress.current, moduleProgress.total);
     const unlockInfo = getTrackUnlockInfo(module.type);
@@ -3547,7 +3890,7 @@ function renderTrainingGrid() {
         setStatus(unlockInfo.message, true);
         return;
       }
-      if (TRAINING_MODULES.some((item) => item.type === module.type)) {
+      if (getTrainingModules().some((item) => item.type === module.type)) {
         openTrackByType(module.type);
         return;
       }
@@ -3761,7 +4104,7 @@ function openStory(storyId) {
 }
 
 function getModuleTitleByType(moduleType) {
-  const module = TRAINING_MODULES.find((item) => item.type === moduleType);
+  const module = getTrainingModuleByType(moduleType);
   return module ? module.title : moduleType;
 }
 
@@ -3840,7 +4183,7 @@ function buildSrsDeckCatalog() {
       deck.items.forEach((item, index) => {
         const singularAnswers = item.answers && item.answers.length ? item.answers : [item.answer];
         const singularUnique = [...new Set(singularAnswers)];
-        const pluralUnique = [...new Set(singularUnique.map(pluralizeAnswerWithArticle))];
+        const pluralUnique = getPluralAnswersFromItem(item, singularUnique);
         const baseHint = addEnglishArticle(item.hint);
 
         const singularCard = makeSrsCardFromAnswers({
@@ -4594,16 +4937,17 @@ function buildAnswerLookup(items, answerSelector) {
 }
 
 function buildDiscourseGroups(rawData) {
+  const languagePrefix = getCurrentLanguage() === "es" ? "" : `${getCurrentLanguage()}-`;
   return DISCOURSE_GROUPS.map((group) => {
     const rows = Array.isArray(rawData?.[group.key]) ? rawData[group.key] : [];
     const items = rows.map((row, index) => ({
       hint: row.en || "",
-      answer: row.es || "",
-      answers: [row.es || ""],
+      answer: row.it || row.es || row.target || "",
+      answers: [row.it || row.es || row.target || ""],
       index: index + 1,
     }));
     return {
-      id: group.id,
+      id: `${languagePrefix}${group.id}`,
       title: group.title,
       count: items.length,
       items,
@@ -4688,7 +5032,7 @@ function buildStories(rawData) {
   return rows
     .map((story, index) => ({
       id: story.id ?? `story-${index + 1}`,
-      title: story.title || `Historia ${index + 1}`,
+      title: story.title || `${getTargetLanguageName()} Story ${index + 1}`,
       level: story.level || story.target_cefr || "A1",
       unlockPercent:
         Number(story.unlockPercent) || STORY_UNLOCK_THRESHOLDS[index] || 100,
@@ -5048,13 +5392,20 @@ function pluralizeAnswerWithArticle(answer) {
   return `${pluralArticle} ${pluralNoun}`;
 }
 
+function getPluralAnswersFromItem(item, singularAnswers) {
+  if (Array.isArray(item?.pluralAnswers) && item.pluralAnswers.length > 0) {
+    return [...new Set(item.pluralAnswers.filter(Boolean).map((entry) => String(entry).trim()))];
+  }
+  return [...new Set((singularAnswers || []).map(pluralizeAnswerWithArticle))];
+}
+
 function makeNounQuizItem(item) {
   const singularAnswers = item.answers && item.answers.length ? item.answers : [item.answer];
   const singularUnique = [...new Set(singularAnswers)];
   const baseHint = addEnglishArticle(item.hint);
 
   if (state.nounMode === "plural") {
-    const pluralAnswers = [...new Set(singularUnique.map(pluralizeAnswerWithArticle))];
+    const pluralAnswers = getPluralAnswersFromItem(item, singularUnique);
     return {
       hint: `${baseHint} (plural)`,
       displayAnswer: pluralAnswers[0],
@@ -5070,12 +5421,17 @@ function makeNounQuizItem(item) {
 }
 
 function updateNounsAnswerPrompt() {
+  const target = getTargetLanguageAdjective();
+  const examples =
+    getCurrentLanguage() === "it"
+      ? { singular: "Example: il libro", plural: "Example: i libri" }
+      : { singular: "Example: el libro", plural: "Example: los libros" };
   if (state.nounMode === "plural") {
-    nounsAnswerLabel.textContent = "Type Spanish noun with article (plural)";
-    nounsAnswerInput.placeholder = "Example: los libros";
+    nounsAnswerLabel.textContent = `Type ${target} noun with article (plural)`;
+    nounsAnswerInput.placeholder = examples.plural;
   } else {
-    nounsAnswerLabel.textContent = "Type Spanish noun with article (singular)";
-    nounsAnswerInput.placeholder = "Example: el libro";
+    nounsAnswerLabel.textContent = `Type ${target} noun with article (singular)`;
+    nounsAnswerInput.placeholder = examples.singular;
   }
 }
 
@@ -5538,7 +5894,7 @@ function openBeginnerQuiz(groupId) {
     },
   });
   updateBeginnerQuizMeta();
-  beginnerAnswerLabel.textContent = "Type Spanish answer";
+  beginnerAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} answer`;
   beginnerAnswerInput.placeholder = "Press Enter to submit...";
   beginnerFeedback.className = "feedback";
   beginnerFeedback.textContent = "";
@@ -5806,7 +6162,7 @@ function openDiscourseQuiz(groupId) {
     },
   });
   updateDiscourseQuizMeta();
-  discourseAnswerLabel.textContent = "Type Spanish chunk";
+  discourseAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} chunk`;
   discourseAnswerInput.placeholder = "Press Enter to submit...";
   discourseFeedback.className = "feedback";
   discourseFeedback.textContent = "";
@@ -6062,7 +6418,7 @@ function openConversionQuiz(groupId) {
     },
   });
   updateConversionQuizMeta();
-  conversionAnswerLabel.textContent = "Type Spanish conversion";
+  conversionAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} conversion`;
   conversionAnswerInput.placeholder = "Press Enter to submit...";
   conversionFeedback.className = "feedback";
   conversionFeedback.textContent = "";
@@ -6314,7 +6670,7 @@ function openGrammarQuiz(groupId) {
     },
   });
   updateGrammarQuizMeta();
-  grammarAnswerLabel.textContent = "Type Spanish answer";
+  grammarAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} answer`;
   grammarAnswerInput.placeholder = "Press Enter to submit...";
   grammarFeedback.className = "feedback";
   grammarFeedback.textContent = "";
@@ -6565,7 +6921,7 @@ function openSlangQuiz(groupId) {
     },
   });
   updateSlangQuizMeta();
-  slangAnswerLabel.textContent = "Type regional Spanish slang";
+  slangAnswerLabel.textContent = `Type regional ${getTargetLanguageAdjective()} slang`;
   slangAnswerInput.placeholder = "Press Enter to submit...";
   slangFeedback.className = "feedback";
   slangFeedback.textContent = "";
@@ -6901,6 +7257,7 @@ async function loadData() {
   setStatus("Loading training data...");
 
   try {
+    const dataUrls = getDataUrlsForLanguage();
     const [
       verbsResponse,
       nounsResponse,
@@ -6912,14 +7269,14 @@ async function loadData() {
       storiesResponse,
     ] =
       await Promise.all([
-        fetch(VERBS_DATA_URL),
-        fetch(NOUNS_DATA_URL),
-        fetch(BEGINNER_DATA_URL),
-        fetch(DISCOURSE_DATA_URL),
-        fetch(CONVERSION_DATA_URL),
-        fetch(GRAMMAR_DATA_URL),
-        fetch(SLANG_DATA_URL),
-        fetch(STORIES_DATA_URL),
+        fetch(dataUrls.verbs),
+        fetch(dataUrls.nouns),
+        fetch(dataUrls.beginner),
+        fetch(dataUrls.discourse),
+        fetch(dataUrls.conversion),
+        fetch(dataUrls.grammar),
+        fetch(dataUrls.slang),
+        fetch(dataUrls.stories),
       ]);
 
     if (!verbsResponse.ok) {
@@ -6982,12 +7339,7 @@ async function loadData() {
     rebuildSrsCatalog();
     evaluateAchievementsAndSync({ source: "init", save: true });
 
-    if (verbDashboardTitle) {
-      verbDashboardTitle.textContent = getVerbTrackTitle("core");
-    }
-    if (nounsDashboardTitle) {
-      nounsDashboardTitle.textContent = getNounTrackTitle("core");
-    }
+    refreshLanguageModuleTitles();
 
     filterAndRenderVerbs();
     renderNounsDeckGrid();
@@ -7015,6 +7367,18 @@ async function loadData() {
 }
 
 verbSearch.addEventListener("input", filterAndRenderVerbs);
+
+if (languageToggle) {
+  languageToggle.addEventListener("change", async (event) => {
+    const nextLanguage = normalizeLanguageCode(event.target.value);
+    setStatus(`Switching to ${getLanguageUiCopy(nextLanguage).targetLanguageName}...`);
+    try {
+      await switchActiveLanguage(nextLanguage);
+    } catch (_error) {
+      setStatus("Could not switch language. Check data files and try again.", true);
+    }
+  });
+}
 
 if (adminModeToggle) {
   adminModeToggle.addEventListener("change", (event) => {

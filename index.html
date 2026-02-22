@@ -48,10 +48,17 @@
       <div id="appContent" hidden>
       <header class="hero">
         <div class="hero-top-row">
-          <p class="eyebrow">Rapid Spanish</p>
+          <p id="appEyebrow" class="eyebrow">Rapid Spanish</p>
           <div class="hero-controls">
             <div class="hero-control-row">
               <span id="currentUserLabel" class="user-chip" aria-live="polite"></span>
+              <label class="language-toggle" for="languageToggle">
+                <span>Language</span>
+                <select id="languageToggle" aria-label="Learning language">
+                  <option value="es">Spanish</option>
+                  <option value="it">Italian</option>
+                </select>
+              </label>
               <label class="admin-mode-toggle" for="adminModeToggle">
                 <input id="adminModeToggle" type="checkbox" />
                 <span>Admin mode (unlock all)</span>
@@ -87,7 +94,7 @@
               <h2>Stories</h2>
               <p id="storiesUnlockMeta" class="meta"></p>
             </div>
-            <p class="meta">
+            <p id="storiesIntroText" class="meta">
               Read short stories in Spanish. They unlock as your study progress increases.
             </p>
             <div id="storiesGrid" class="training-grid stories-grid"></div>
@@ -784,7 +791,7 @@
           </div>
         </div>
 
-        <p class="rule-description">
+        <p id="srsIntroText" class="rule-description">
           Type the Spanish answer, press Enter to check, then grade your recall quality.
         </p>
 
@@ -794,7 +801,7 @@
         </div>
 
         <div class="quiz-entry">
-          <label for="srsAnswerInput">Type Spanish answer</label>
+          <label id="srsAnswerLabel" for="srsAnswerInput">Type Spanish answer</label>
           <input
             id="srsAnswerInput"
             type="text"

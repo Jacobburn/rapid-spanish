@@ -1,0 +1,75 @@
+{
+  "language": "it",
+  "stories": [
+    {
+      "id": "it-story-1",
+      "title": "La tazza verde",
+      "level": "A1",
+      "unlockPercent": 2,
+      "story": "Mi chiamo Luca e vivo in un appartamento piccolo. Ogni mattina preparo il caffe in una tazza verde. Non e nuova, ma mi piace molto.\n\nUn giorno non trovo la tazza. Cerco in cucina, sul tavolo e vicino al lavello. Finalmente la vedo sul balcone, vicino alle piante.\n\nSorrido, preparo il caffe e guardo la strada. Le cose semplici, quando le ritrovi, sembrano speciali."
+    },
+    {
+      "id": "it-story-2",
+      "title": "Pioggia al mercato",
+      "level": "A1-A2",
+      "unlockPercent": 5,
+      "story": "Sabato mattina vado al mercato con mia sorella. Vogliamo comprare frutta, pane e formaggio. Il cielo e grigio, ma non ci preoccupiamo.\n\nDopo dieci minuti inizia a piovere forte. Le persone corrono sotto i tendoni. Un musicista continua a suonare la chitarra e tutti si fermano ad ascoltare.\n\nQuando la pioggia finisce, torniamo a casa con le borse piene. Prepariamo il pranzo e ridiamo: anche con la pioggia, e stata una bella mattina."
+    },
+    {
+      "id": "it-story-3",
+      "title": "Il treno notturno",
+      "level": "A2",
+      "unlockPercent": 10,
+      "story": "Prendo il treno alle undici di sera per andare a Torino. Nel vagone c e una signora anziana che legge un libro molto spesso.\n\nParliamo un po. Mi dice che viaggiare di notte e diverso: la citta sparisce e rimane solo il rumore delle rotaie. Io guardo fuori e vedo le luci lontane.\n\nPrima di dormire scrivo una frase sul quaderno: \"A volte il viaggio ti ascolta prima di portarti da qualche parte.\""
+    },
+    {
+      "id": "it-story-4",
+      "title": "Una lettera in ritardo",
+      "level": "A2-B1",
+      "unlockPercent": 20,
+      "story": "Trovo una vecchia lettera in una scatola nell armadio. E di mio nonno, scritta molti anni fa. Racconta del pane che prova a fare ogni domenica e di un uccello rosso nel giardino.\n\nAlla fine della lettera c e una frase: \"Non correre sempre. A volte bisogna fermarsi e guardare.\"\n\nChiudo il telefono, apro la finestra e resto in silenzio per qualche minuto. La lettera arriva tardi, ma arriva nel giorno giusto."
+    },
+    {
+      "id": "it-story-5",
+      "title": "Il quartiere senza mappa",
+      "level": "B1",
+      "unlockPercent": 30,
+      "story": "Un amico mi parla di un quartiere che non esiste sulle mappe. Dice che appare solo quando non hai fretta.\n\nUna sera cammino senza destinazione e trovo un passaggio stretto tra due muri. Dentro c e una strada piena di luci calde, librerie piccole e persone che parlano piano.\n\nQuando esco, il passaggio non c e piu. Non so se era reale, ma il giorno dopo cammino piu lentamente e ascolto di piu."
+    },
+    {
+      "id": "it-story-6",
+      "title": "Sotto il faro",
+      "level": "B1-B2",
+      "unlockPercent": 40,
+      "story": "Raggiungo mio fratello vicino a un faro sul mare. C e vento forte e nessuno intorno. Mi guarda e dice: \"Non sto bene.\"\n\nParliamo a lungo. Non cerco frasi perfette, gli offro solo caffe caldo e ascolto. Lui dice che domani chiamera un medico.\n\nLa luce del faro gira: un attimo chiaro, un attimo scuro. Capisco che stare meglio non e un salto, e una serie di piccoli passi."
+    },
+    {
+      "id": "it-story-7",
+      "title": "La stanza delle chiavi",
+      "level": "B2",
+      "unlockPercent": 50,
+      "story": "Dopo la morte di mia nonna ricevo un cassetto con undici chiavi. Nessuna etichetta, nessuna spiegazione.\n\nUn giorno provo una chiave su una porta antica in un vicolo. Si apre. Dentro c e un cortile con centinaia di chiavi appese, ognuna con una parola: \"coraggio\", \"pazienza\", \"responsabilita\".\n\nScelgo una parola per la mia chiave e torno a casa con una sensazione strana: non ho trovato un tesoro, ma una direzione."
+    },
+    {
+      "id": "it-story-8",
+      "title": "Intervista alle dieci e trenta",
+      "level": "B2",
+      "unlockPercent": 60,
+      "story": "Arrivo in anticipo all intervista, ma dentro sono in ritardo su tutto: domande, risposte, sicurezza.\n\nLa commissione chiede: \"Di cosa hai paura?\" Potrei rispondere con qualcosa di elegante. Invece dico: \"Ho paura di vivere per abitudine.\"\n\nQuando esco non so se avro il lavoro. Pero sento di aver fatto una cosa giusta: dire una verita ad alta voce."
+    },
+    {
+      "id": "it-story-9",
+      "title": "Il ponte e il vento",
+      "level": "B2-C1",
+      "unlockPercent": 70,
+      "story": "Nella mia citta c e un ponte vecchio che tutti attraversano di fretta. Io ci torno una sera con il vento forte e nessun rumore di macchine.\n\nMi fermo al centro. Il fiume sotto sembra lento, ma continua a muoversi. Penso a quante decisioni ho rimandato.\n\nScrivo sul telefono tre cose da fare domani e una da lasciare andare. Il ponte non cambia, ma io scendo dall altra parte un po diverso."
+    },
+    {
+      "id": "it-story-10",
+      "title": "Manuale per un arrivederci",
+      "level": "C1",
+      "unlockPercent": 80,
+      "story": "Nessuno insegna davvero a salutare bene. Ci dicono come iniziare, non come chiudere.\n\nQuando finisce una storia, il saluto non succede in un minuto: succede ogni volta che non mandi un messaggio, ogni volta che scegli di non tornare indietro.\n\nScrivo un piccolo manuale personale: respirare, non idealizzare, non distruggere, ringraziare. Non per dimenticare in fretta, ma per restare intero mentre il tempo fa il suo lavoro."
+    }
+  ]
+}

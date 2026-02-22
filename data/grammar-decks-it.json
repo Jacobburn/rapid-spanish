@@ -1,0 +1,167 @@
+{
+  "source": "Rapid Italian curated grammar deck set",
+  "groupCount": 10,
+  "totalItems": 80,
+  "groups": [
+    {
+      "id": "it-sentence-structure-svo",
+      "title": "Sentence Structure: Basic SVO",
+      "description": "Rule focus: Standard declarative order is subject + verb + object.",
+      "count": 8,
+      "items": [
+        { "hint": "Maria buys bread.", "answer": "maria compra il pane", "answers": ["maria compra il pane"], "index": 1 },
+        { "hint": "My brother reads the newspaper.", "answer": "mio fratello legge il giornale", "answers": ["mio fratello legge il giornale"], "index": 2 },
+        { "hint": "The teacher explains the lesson.", "answer": "il professore spiega la lezione", "answers": ["il professore spiega la lezione"], "index": 3 },
+        { "hint": "We watch a movie.", "answer": "guardiamo un film", "answers": ["guardiamo un film", "noi guardiamo un film"], "index": 4 },
+        { "hint": "The dog eats chicken.", "answer": "il cane mangia pollo", "answers": ["il cane mangia pollo"], "index": 5 },
+        { "hint": "Ana writes an email.", "answer": "ana scrive una email", "answers": ["ana scrive una email", "ana scrive un email"], "index": 6 },
+        { "hint": "They open the door.", "answer": "aprono la porta", "answers": ["aprono la porta", "loro aprono la porta"], "index": 7 },
+        { "hint": "I clean the kitchen.", "answer": "pulisco la cucina", "answers": ["pulisco la cucina", "io pulisco la cucina"], "index": 8 }
+      ]
+    },
+    {
+      "id": "it-subject-pronouns",
+      "title": "Subject Pronouns and Omission",
+      "description": "Rule focus: Italian can omit pronouns when the verb form is clear.",
+      "count": 8,
+      "items": [
+        { "hint": "I speak Italian.", "answer": "parlo italiano", "answers": ["parlo italiano", "io parlo italiano"], "index": 1 },
+        { "hint": "You work a lot.", "answer": "lavori molto", "answers": ["lavori molto", "tu lavori molto"], "index": 2 },
+        { "hint": "She lives in Rome.", "answer": "vive a roma", "answers": ["vive a roma", "lei vive a roma"], "index": 3 },
+        { "hint": "We study every day.", "answer": "studiamo ogni giorno", "answers": ["studiamo ogni giorno", "noi studiamo ogni giorno"], "index": 4 },
+        { "hint": "They eat late.", "answer": "mangiano tardi", "answers": ["mangiano tardi", "loro mangiano tardi"], "index": 5 },
+        { "hint": "I am tired.", "answer": "sono stanco", "answers": ["sono stanco", "io sono stanco"], "index": 6 },
+        { "hint": "He runs in the morning.", "answer": "corre la mattina", "answers": ["corre la mattina", "lui corre la mattina"], "index": 7 },
+        { "hint": "You all arrive early.", "answer": "arrivate presto", "answers": ["arrivate presto", "voi arrivate presto"], "index": 8 }
+      ]
+    },
+    {
+      "id": "it-present-vs-imperfetto",
+      "title": "Present vs Imperfetto",
+      "description": "Rule focus: Use imperfetto for background and repeated past actions.",
+      "count": 8,
+      "items": [
+        { "hint": "When I was little, I played football.", "answer": "quando ero piccolo giocavo a calcio", "answers": ["quando ero piccolo giocavo a calcio"], "index": 1 },
+        { "hint": "Yesterday I worked from home.", "answer": "ieri ho lavorato da casa", "answers": ["ieri ho lavorato da casa"], "index": 2 },
+        { "hint": "Every summer we went to the sea.", "answer": "ogni estate andavamo al mare", "answers": ["ogni estate andavamo al mare"], "index": 3 },
+        { "hint": "Last night it rained.", "answer": "ieri sera ha piovuto", "answers": ["ieri sera ha piovuto"], "index": 4 },
+        { "hint": "She always read before bed.", "answer": "lei leggeva sempre prima di dormire", "answers": ["lei leggeva sempre prima di dormire", "leggeva sempre prima di dormire"], "index": 5 },
+        { "hint": "This morning I had coffee.", "answer": "stamattina ho preso un caffe", "answers": ["stamattina ho preso un caffe"], "index": 6 },
+        { "hint": "We often met at the station.", "answer": "ci incontravamo spesso alla stazione", "answers": ["ci incontravamo spesso alla stazione"], "index": 7 },
+        { "hint": "They finished the project.", "answer": "hanno finito il progetto", "answers": ["hanno finito il progetto"], "index": 8 }
+      ]
+    },
+    {
+      "id": "it-articles",
+      "title": "Definite and Indefinite Articles",
+      "description": "Rule focus: Match article to gender and number.",
+      "count": 8,
+      "items": [
+        { "hint": "the book", "answer": "il libro", "answers": ["il libro"], "index": 1 },
+        { "hint": "the house", "answer": "la casa", "answers": ["la casa"], "index": 2 },
+        { "hint": "the friends", "answer": "gli amici", "answers": ["gli amici", "i amici"], "index": 3 },
+        { "hint": "the schools", "answer": "le scuole", "answers": ["le scuole"], "index": 4 },
+        { "hint": "a coffee", "answer": "un caffe", "answers": ["un caffe"], "index": 5 },
+        { "hint": "a table", "answer": "un tavolo", "answers": ["un tavolo"], "index": 6 },
+        { "hint": "a chair", "answer": "una sedia", "answers": ["una sedia"], "index": 7 },
+        { "hint": "an idea", "answer": "un idea", "answers": ["un idea", "una idea"], "index": 8 }
+      ]
+    },
+    {
+      "id": "it-prepositions",
+      "title": "Simple Prepositions",
+      "description": "Rule focus: Use core prepositions with places and time.",
+      "count": 8,
+      "items": [
+        { "hint": "I live in Milan.", "answer": "abito a milano", "answers": ["abito a milano"], "index": 1 },
+        { "hint": "We are at home.", "answer": "siamo a casa", "answers": ["siamo a casa"], "index": 2 },
+        { "hint": "The keys are on the table.", "answer": "le chiavi sono sul tavolo", "answers": ["le chiavi sono sul tavolo"], "index": 3 },
+        { "hint": "The cat is under the chair.", "answer": "il gatto e sotto la sedia", "answers": ["il gatto e sotto la sedia"], "index": 4 },
+        { "hint": "I am from Rome.", "answer": "sono di roma", "answers": ["sono di roma"], "index": 5 },
+        { "hint": "He goes to school by bus.", "answer": "va a scuola in autobus", "answers": ["va a scuola in autobus"], "index": 6 },
+        { "hint": "The meeting starts at nine.", "answer": "la riunione inizia alle nove", "answers": ["la riunione inizia alle nove"], "index": 7 },
+        { "hint": "I write with a pen.", "answer": "scrivo con una penna", "answers": ["scrivo con una penna"], "index": 8 }
+      ]
+    },
+    {
+      "id": "it-negation",
+      "title": "Negation",
+      "description": "Rule focus: Place non before the conjugated verb.",
+      "count": 8,
+      "items": [
+        { "hint": "I do not know.", "answer": "non so", "answers": ["non so"], "index": 1 },
+        { "hint": "We are not ready.", "answer": "non siamo pronti", "answers": ["non siamo pronti"], "index": 2 },
+        { "hint": "She does not work today.", "answer": "non lavora oggi", "answers": ["non lavora oggi"], "index": 3 },
+        { "hint": "They are not here.", "answer": "non sono qui", "answers": ["non sono qui"], "index": 4 },
+        { "hint": "I never eat meat.", "answer": "non mangio mai carne", "answers": ["non mangio mai carne"], "index": 5 },
+        { "hint": "He no longer lives there.", "answer": "non vive piu li", "answers": ["non vive piu li"], "index": 6 },
+        { "hint": "We cannot come.", "answer": "non possiamo venire", "answers": ["non possiamo venire"], "index": 7 },
+        { "hint": "I do not want coffee.", "answer": "non voglio caffe", "answers": ["non voglio caffe"], "index": 8 }
+      ]
+    },
+    {
+      "id": "it-modal-verbs",
+      "title": "Modal Verbs",
+      "description": "Rule focus: modal + infinitive for ability, duty, and desire.",
+      "count": 8,
+      "items": [
+        { "hint": "I can help you.", "answer": "posso aiutarti", "answers": ["posso aiutarti", "posso aiutare te"], "index": 1 },
+        { "hint": "You must study more.", "answer": "devi studiare di piu", "answers": ["devi studiare di piu"], "index": 2 },
+        { "hint": "We want to leave now.", "answer": "vogliamo partire adesso", "answers": ["vogliamo partire adesso"], "index": 3 },
+        { "hint": "She can speak English.", "answer": "puo parlare inglese", "answers": ["puo parlare inglese"], "index": 4 },
+        { "hint": "I have to go to work.", "answer": "devo andare al lavoro", "answers": ["devo andare al lavoro"], "index": 5 },
+        { "hint": "They want to buy a car.", "answer": "vogliono comprare una macchina", "answers": ["vogliono comprare una macchina"], "index": 6 },
+        { "hint": "Can we sit here?", "answer": "possiamo sederci qui", "answers": ["possiamo sederci qui"], "index": 7 },
+        { "hint": "You should rest.", "answer": "dovresti riposare", "answers": ["dovresti riposare"], "index": 8 }
+      ]
+    },
+    {
+      "id": "it-object-pronouns",
+      "title": "Direct Object Pronouns",
+      "description": "Rule focus: short object pronouns often come before the verb.",
+      "count": 8,
+      "items": [
+        { "hint": "I see him.", "answer": "lo vedo", "answers": ["lo vedo"], "index": 1 },
+        { "hint": "I see her.", "answer": "la vedo", "answers": ["la vedo"], "index": 2 },
+        { "hint": "I call them.", "answer": "li chiamo", "answers": ["li chiamo", "le chiamo"], "index": 3 },
+        { "hint": "We know you (singular).", "answer": "ti conosciamo", "answers": ["ti conosciamo"], "index": 4 },
+        { "hint": "Do you understand me?", "answer": "mi capisci", "answers": ["mi capisci"], "index": 5 },
+        { "hint": "I do not hear you.", "answer": "non ti sento", "answers": ["non ti sento"], "index": 6 },
+        { "hint": "She invites us.", "answer": "ci invita", "answers": ["ci invita"], "index": 7 },
+        { "hint": "They wait for you all.", "answer": "vi aspettano", "answers": ["vi aspettano"], "index": 8 }
+      ]
+    },
+    {
+      "id": "it-comparatives",
+      "title": "Comparatives",
+      "description": "Rule focus: piu/meno + adjective + di and come.",
+      "count": 8,
+      "items": [
+        { "hint": "Rome is bigger than Bologna.", "answer": "roma e piu grande di bologna", "answers": ["roma e piu grande di bologna"], "index": 1 },
+        { "hint": "This task is less difficult.", "answer": "questo compito e meno difficile", "answers": ["questo compito e meno difficile"], "index": 2 },
+        { "hint": "She runs as fast as me.", "answer": "corre veloce come me", "answers": ["corre veloce come me"], "index": 3 },
+        { "hint": "Today is better than yesterday.", "answer": "oggi e meglio di ieri", "answers": ["oggi e meglio di ieri"], "index": 4 },
+        { "hint": "This coffee is stronger.", "answer": "questo caffe e piu forte", "answers": ["questo caffe e piu forte"], "index": 5 },
+        { "hint": "That street is quieter.", "answer": "quella strada e piu tranquilla", "answers": ["quella strada e piu tranquilla"], "index": 6 },
+        { "hint": "My car is less expensive.", "answer": "la mia macchina e meno costosa", "answers": ["la mia macchina e meno costosa"], "index": 7 },
+        { "hint": "This route is the shortest.", "answer": "questo percorso e il piu corto", "answers": ["questo percorso e il piu corto"], "index": 8 }
+      ]
+    },
+    {
+      "id": "it-basic-questions",
+      "title": "Question Formation",
+      "description": "Rule focus: intonation + question words for natural questions.",
+      "count": 8,
+      "items": [
+        { "hint": "Where do you live?", "answer": "dove abiti", "answers": ["dove abiti"], "index": 1 },
+        { "hint": "What time is it?", "answer": "che ora e", "answers": ["che ora e"], "index": 2 },
+        { "hint": "Why are you sad?", "answer": "perche sei triste", "answers": ["perche sei triste"], "index": 3 },
+        { "hint": "Who is she?", "answer": "chi e lei", "answers": ["chi e lei", "chi e"], "index": 4 },
+        { "hint": "When do they arrive?", "answer": "quando arrivano", "answers": ["quando arrivano"], "index": 5 },
+        { "hint": "How do we get there?", "answer": "come arriviamo li", "answers": ["come arriviamo li"], "index": 6 },
+        { "hint": "Which train do we take?", "answer": "quale treno prendiamo", "answers": ["quale treno prendiamo"], "index": 7 },
+        { "hint": "How much does it cost?", "answer": "quanto costa", "answers": ["quanto costa"], "index": 8 }
+      ]
+    }
+  ]
+}

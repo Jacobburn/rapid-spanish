@@ -1,0 +1,105 @@
+{
+  "source": "Rapid Italian curated regional slang decks",
+  "groups": [
+    {
+      "id": "it-general",
+      "title": "Italy (General)",
+      "description": "Widely used colloquial Italian slang.",
+      "count": 12,
+      "items": [
+        { "hint": "cool", "answer": "figo", "answers": ["figo", "fighissimo"] },
+        { "hint": "friend / buddy", "answer": "amico", "answers": ["amico", "raga"] },
+        { "hint": "guy", "answer": "tipo", "answers": ["tipo"] },
+        { "hint": "girl", "answer": "tipa", "answers": ["tipa"] },
+        { "hint": "money", "answer": "soldi", "answers": ["soldi", "grana"] },
+        { "hint": "work hard", "answer": "spaccarsi", "answers": ["spaccarsi"] },
+        { "hint": "to party", "answer": "fare festa", "answers": ["fare festa"] },
+        { "hint": "to chill", "answer": "rilassarsi", "answers": ["rilassarsi", "stare chill"] },
+        { "hint": "nonsense", "answer": "cavolata", "answers": ["cavolata", "sciocchezza"] },
+        { "hint": "what a mess", "answer": "che casino", "answers": ["che casino"] },
+        { "hint": "to understand", "answer": "capire", "answers": ["capire", "beccare"] },
+        { "hint": "great", "answer": "top", "answers": ["top", "grandioso"] }
+      ]
+    },
+    {
+      "id": "it-rome",
+      "title": "Rome",
+      "description": "Common Roman colloquial expressions.",
+      "count": 12,
+      "items": [
+        { "hint": "kid / guy", "answer": "regazzo", "answers": ["regazzo", "ragazzo"] },
+        { "hint": "very", "answer": "na cifra", "answers": ["na cifra"] },
+        { "hint": "to go away", "answer": "annasse", "answers": ["annasse", "andarsene"] },
+        { "hint": "to be very good", "answer": "esse forte", "answers": ["esse forte"] },
+        { "hint": "friend", "answer": "frate", "answers": ["frate"] },
+        { "hint": "to joke", "answer": "fa ride", "answers": ["fa ride"] },
+        { "hint": "without money", "answer": "al verde", "answers": ["al verde"] },
+        { "hint": "to eat a lot", "answer": "magnare", "answers": ["magnare", "mangiare"] },
+        { "hint": "to speak", "answer": "parla", "answers": ["parla", "parlare"] },
+        { "hint": "right now", "answer": "mo", "answers": ["mo", "adesso"] },
+        { "hint": "sure", "answer": "daje", "answers": ["daje"] },
+        { "hint": "calm down", "answer": "annamo piano", "answers": ["annamo piano"] }
+      ]
+    },
+    {
+      "id": "it-milan",
+      "title": "Milan and North",
+      "description": "Urban slang heard in northern cities.",
+      "count": 12,
+      "items": [
+        { "hint": "stylish", "answer": "in", "answers": ["in"] },
+        { "hint": "outdated", "answer": "out", "answers": ["out"] },
+        { "hint": "to show off", "answer": "tirarsela", "answers": ["tirarsela"] },
+        { "hint": "to hang out", "answer": "sbattersi in giro", "answers": ["sbattersi in giro"] },
+        { "hint": "boring", "answer": "pesante", "answers": ["pesante"] },
+        { "hint": "awesome", "answer": "spettacolo", "answers": ["spettacolo"] },
+        { "hint": "to rush", "answer": "andare di fretta", "answers": ["andare di fretta"] },
+        { "hint": "fancy place", "answer": "locale figo", "answers": ["locale figo"] },
+        { "hint": "expensive", "answer": "carissimo", "answers": ["carissimo"] },
+        { "hint": "cheap", "answer": "economico", "answers": ["economico", "a poco"] },
+        { "hint": "to fail badly", "answer": "fare flop", "answers": ["fare flop"] },
+        { "hint": "to make money fast", "answer": "fare cassa", "answers": ["fare cassa"] }
+      ]
+    },
+    {
+      "id": "it-naples",
+      "title": "Naples and South",
+      "description": "Popular southern colloquialisms.",
+      "count": 12,
+      "items": [
+        { "hint": "boy", "answer": "guaglione", "answers": ["guaglione"] },
+        { "hint": "girl", "answer": "guagliona", "answers": ["guagliona"] },
+        { "hint": "trouble", "answer": "guaio", "answers": ["guaio"] },
+        { "hint": "lucky", "answer": "fortunato", "answers": ["fortunato"] },
+        { "hint": "to talk too much", "answer": "chiacchierare", "answers": ["chiacchierare"] },
+        { "hint": "to eat quickly", "answer": "mangiare al volo", "answers": ["mangiare al volo"] },
+        { "hint": "friend", "answer": "fratm", "answers": ["fratm", "fratmo"] },
+        { "hint": "to get angry", "answer": "incazzarsi", "answers": ["incazzarsi"] },
+        { "hint": "to calm down", "answer": "stai tranquillo", "answers": ["stai tranquillo"] },
+        { "hint": "amazing", "answer": "pazzesco", "answers": ["pazzesco"] },
+        { "hint": "to work hard", "answer": "faticare", "answers": ["faticare"] },
+        { "hint": "to have fun", "answer": "divertirsi", "answers": ["divertirsi"] }
+      ]
+    },
+    {
+      "id": "it-online-youth",
+      "title": "Online and Youth",
+      "description": "Modern online/chat slang in Italian.",
+      "count": 12,
+      "items": [
+        { "hint": "laughing", "answer": "ahah", "answers": ["ahah", "lol"] },
+        { "hint": "I do not care", "answer": "sticazzi", "answers": ["sticazzi"] },
+        { "hint": "seriously", "answer": "davvero", "answers": ["davvero"] },
+        { "hint": "obviously", "answer": "ovvio", "answers": ["ovvio"] },
+        { "hint": "bro", "answer": "bro", "answers": ["bro"] },
+        { "hint": "cringe", "answer": "imbarazzante", "answers": ["imbarazzante", "cringe"] },
+        { "hint": "to ghost", "answer": "sparire", "answers": ["sparire", "ghostare"] },
+        { "hint": "to spam", "answer": "spammare", "answers": ["spammare"] },
+        { "hint": "viral", "answer": "virale", "answers": ["virale"] },
+        { "hint": "I am done", "answer": "sono cotto", "answers": ["sono cotto"] },
+        { "hint": "let us go", "answer": "andiamo", "answers": ["andiamo"] },
+        { "hint": "what a fail", "answer": "che fail", "answers": ["che fail"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5219 @@
+{
+  "source": "Rapid Italian curated beginner phrases (aligned with Spanish beginner quiz map)",
+  "generatedAt": "2026-02-21T23:19:10.881786+00:00",
+  "groupCount": 16,
+  "totalItems": 635,
+  "groups": [
+    {
+      "id": "core-functional-words",
+      "title": "Core Functional Words",
+      "description": "High-utility words and question forms used in beginner conversation.",
+      "count": 31,
+      "items": [
+        {
+          "hint": "yes",
+          "answer": "sì",
+          "answers": [
+            "sì"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "no",
+          "answer": "no",
+          "answers": [
+            "no"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "okay / all right",
+          "answer": "ok",
+          "answers": [
+            "ok"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "agreed",
+          "answer": "d'accordo",
+          "answers": [
+            "d'accordo"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "it is fine",
+          "answer": "va bene",
+          "answers": [
+            "va bene"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "of course",
+          "answer": "certo",
+          "answers": [
+            "certo"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "maybe",
+          "answer": "forse",
+          "answers": [
+            "forse"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "perhaps",
+          "answer": "magari",
+          "answers": [
+            "magari"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "maybe / perhaps",
+          "answer": "può darsi",
+          "answers": [
+            "può darsi"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "I understand",
+          "answer": "capisco",
+          "answers": [
+            "capisco"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "I don't understand",
+          "answer": "non capisco",
+          "answers": [
+            "non capisco"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "I don't know",
+          "answer": "non lo so",
+          "answers": [
+            "non lo so"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "please repeat",
+          "answer": "ripeta, per favore",
+          "answers": [
+            "ripeta, per favore"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "more slowly, please",
+          "answer": "più lentamente, per favore",
+          "answers": [
+            "più lentamente, per favore"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "what?",
+          "answer": "che cosa?",
+          "answers": [
+            "che cosa?"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "who?",
+          "answer": "chi?",
+          "answers": [
+            "chi?"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "who? (plural)",
+          "answer": "chi sono?",
+          "answers": [
+            "chi sono?"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "which?",
+          "answer": "quale?",
+          "answers": [
+            "quale?"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "which ones?",
+          "answer": "quali?",
+          "answers": [
+            "quali?"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "where?",
+          "answer": "dove?",
+          "answers": [
+            "dove?"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "to where?",
+          "answer": "verso dove?",
+          "answers": [
+            "verso dove?"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "when?",
+          "answer": "quando?",
+          "answers": [
+            "quando?"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "how?",
+          "answer": "come?",
+          "answers": [
+            "come?"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "how much?",
+          "answer": "quanto?",
+          "answers": [
+            "quanto?"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "how much? (feminine)",
+          "answer": "quanta?",
+          "answers": [
+            "quanta?"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "how many? (masculine)",
+          "answer": "quanti?",
+          "answers": [
+            "quanti?"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "how many? (feminine)",
+          "answer": "quante?",
+          "answers": [
+            "quante?"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "why?",
+          "answer": "perché?",
+          "answers": [
+            "perché?"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "what for?",
+          "answer": "per che cosa?",
+          "answers": [
+            "per che cosa?"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "from where?",
+          "answer": "da dove?",
+          "answers": [
+            "da dove?"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "at what time?",
+          "answer": "a che ora?",
+          "answers": [
+            "a che ora?"
+          ],
+          "index": 31
+        }
+      ]
+    },
+    {
+      "id": "greetings-social-phrases",
+      "title": "Greetings & Social Phrases",
+      "description": "Core greetings, farewells, and social courtesy phrases.",
+      "count": 36,
+      "items": [
+        {
+          "hint": "hello",
+          "answer": "ciao",
+          "answers": [
+            "ciao"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "good morning",
+          "answer": "buongiorno",
+          "answers": [
+            "buongiorno"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "good afternoon",
+          "answer": "buon pomeriggio",
+          "answers": [
+            "buon pomeriggio"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "good evening / good night",
+          "answer": "buonasera",
+          "answers": [
+            "buonasera",
+            "buonanotte"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "how are you? (formal)",
+          "answer": "come sta?",
+          "answers": [
+            "come sta?"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "how are you? (informal)",
+          "answer": "come stai?",
+          "answers": [
+            "come stai?"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "how are you? (plural)",
+          "answer": "come state?",
+          "answers": [
+            "come state?"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "how's it going?",
+          "answer": "come va?",
+          "answers": [
+            "come va?"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "nice to meet you",
+          "answer": "piacere di conoscerti",
+          "answers": [
+            "piacere di conoscerti",
+            "piacere"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "pleased to meet you (masculine speaker)",
+          "answer": "lieto di conoscerla",
+          "answers": [
+            "lieto di conoscerla"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "pleased to meet you (feminine speaker)",
+          "answer": "lieta di conoscerla",
+          "answers": [
+            "lieta di conoscerla"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "likewise",
+          "answer": "altrettanto",
+          "answers": [
+            "altrettanto"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "welcome (to a man)",
+          "answer": "benvenuto",
+          "answers": [
+            "benvenuto"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "welcome (to a woman)",
+          "answer": "benvenuta",
+          "answers": [
+            "benvenuta"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "goodbye",
+          "answer": "arrivederci",
+          "answers": [
+            "arrivederci"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "see you later",
+          "answer": "a più tardi",
+          "answers": [
+            "a più tardi"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "see you tomorrow",
+          "answer": "a domani",
+          "answers": [
+            "a domani"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "see you soon",
+          "answer": "a presto",
+          "answers": [
+            "a presto"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "see you",
+          "answer": "ci vediamo",
+          "answers": [
+            "ci vediamo"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "have a good day (formal)",
+          "answer": "buona giornata",
+          "answers": [
+            "buona giornata"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "have a good day (informal)",
+          "answer": "buona giornata a te",
+          "answers": [
+            "buona giornata a te"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "thanks",
+          "answer": "grazie",
+          "answers": [
+            "grazie"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "thank you very much",
+          "answer": "grazie mille",
+          "answers": [
+            "grazie mille"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "you're welcome",
+          "answer": "prego",
+          "answers": [
+            "prego"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "don't mention it",
+          "answer": "di niente",
+          "answers": [
+            "di niente",
+            "non c'è di che"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "please",
+          "answer": "per favore",
+          "answers": [
+            "per favore"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "excuse me (passing by)",
+          "answer": "permesso",
+          "answers": [
+            "permesso"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "excuse me (with permission)",
+          "answer": "con permesso",
+          "answers": [
+            "con permesso"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "sorry / pardon",
+          "answer": "scusi",
+          "answers": [
+            "scusi"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "I'm sorry",
+          "answer": "mi dispiace",
+          "answers": [
+            "mi dispiace"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "excuse me (formal apology)",
+          "answer": "mi scusi",
+          "answers": [
+            "mi scusi"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "excuse me (informal apology)",
+          "answer": "scusa",
+          "answers": [
+            "scusa"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "bless you / cheers",
+          "answer": "salute",
+          "answers": [
+            "salute"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "congratulations",
+          "answer": "congratulazioni",
+          "answers": [
+            "congratulazioni"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "have a good trip",
+          "answer": "buon viaggio",
+          "answers": [
+            "buon viaggio"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "rest well",
+          "answer": "riposati bene",
+          "answers": [
+            "riposati bene"
+          ],
+          "index": 36
+        }
+      ]
+    },
+    {
+      "id": "articles",
+      "title": "Articles",
+      "description": "Definite and indefinite Spanish articles.",
+      "count": 9,
+      "items": [
+        {
+          "hint": "the (masculine singular)",
+          "answer": "il",
+          "answers": [
+            "il"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "the (feminine singular)",
+          "answer": "la",
+          "answers": [
+            "la"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "the (masculine plural)",
+          "answer": "i",
+          "answers": [
+            "i"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "the (feminine plural)",
+          "answer": "le",
+          "answers": [
+            "le"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "the (neuter)",
+          "answer": "lo",
+          "answers": [
+            "lo"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "a / an (masculine singular)",
+          "answer": "un",
+          "answers": [
+            "un"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "a / an (feminine singular)",
+          "answer": "una",
+          "answers": [
+            "una"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "some (masculine plural)",
+          "answer": "dei",
+          "answers": [
+            "dei"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "some (feminine plural)",
+          "answer": "delle",
+          "answers": [
+            "delle"
+          ],
+          "index": 9
+        }
+      ]
+    },
+    {
+      "id": "pronouns",
+      "title": "Pronouns",
+      "description": "Personal pronouns and core object/prepositional forms.",
+      "count": 51,
+      "items": [
+        {
+          "hint": "I",
+          "answer": "io",
+          "answers": [
+            "io"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "you (informal singular)",
+          "answer": "tu",
+          "answers": [
+            "tu"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "you (voseo singular)",
+          "answer": "tu (voseo non usato)",
+          "answers": [
+            "tu (voseo non usato)"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "you (formal singular)",
+          "answer": "Lei",
+          "answers": [
+            "Lei"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "he",
+          "answer": "lui",
+          "answers": [
+            "lui"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "she",
+          "answer": "ella",
+          "answers": [
+            "ella"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "it (neuter pronoun)",
+          "answer": "esso",
+          "answers": [
+            "esso"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "we (masculine/mixed)",
+          "answer": "noi",
+          "answers": [
+            "noi"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "we (feminine)",
+          "answer": "noi stesse",
+          "answers": [
+            "noi stesse"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "you all (informal Spain, masculine/mixed)",
+          "answer": "voi",
+          "answers": [
+            "voi"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "you all (informal Spain, feminine)",
+          "answer": "voi stesse",
+          "answers": [
+            "voi stesse"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "you all (formal/plural)",
+          "answer": "Loro",
+          "answers": [
+            "Loro"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "they (masculine/mixed)",
+          "answer": "essi",
+          "answers": [
+            "essi"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "they (feminine)",
+          "answer": "esse",
+          "answers": [
+            "esse"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "me",
+          "answer": "mi",
+          "answers": [
+            "mi"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "you (object, informal)",
+          "answer": "ti",
+          "answers": [
+            "ti"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "him/it (direct object, masculine singular)",
+          "answer": "lo",
+          "answers": [
+            "lo"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "her/it (direct object, feminine singular)",
+          "answer": "la",
+          "answers": [
+            "la"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "them (direct object, masculine plural)",
+          "answer": "li",
+          "answers": [
+            "li"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "them (direct object, feminine plural)",
+          "answer": "le",
+          "answers": [
+            "le"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "him/her/to him/to her (indirect object)",
+          "answer": "gli",
+          "answers": [
+            "gli"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "to them / to you all (indirect object)",
+          "answer": "a loro",
+          "answers": [
+            "a loro"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "himself/herself/itself (clitic)",
+          "answer": "si",
+          "answers": [
+            "si"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "us (object)",
+          "answer": "ci",
+          "answers": [
+            "ci"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "you all (object, informal Spain)",
+          "answer": "vi",
+          "answers": [
+            "vi"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "me (after preposition)",
+          "answer": "me",
+          "answers": [
+            "me"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "you (after preposition)",
+          "answer": "te",
+          "answers": [
+            "te"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "self (after preposition)",
+          "answer": "sé",
+          "answers": [
+            "sé"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "with me",
+          "answer": "con me",
+          "answers": [
+            "con me"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "with you",
+          "answer": "con te",
+          "answers": [
+            "con te"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "with himself/herself/itself",
+          "answer": "con sé",
+          "answers": [
+            "con sé"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "who / whoever (singular relative pronoun)",
+          "answer": "chi",
+          "answers": [
+            "chi"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "who / whoever (plural relative pronoun)",
+          "answer": "coloro che",
+          "answers": [
+            "coloro che"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "the one who / that (masculine singular)",
+          "answer": "quello che",
+          "answers": [
+            "quello che"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "the one who / that (feminine singular)",
+          "answer": "quella che",
+          "answers": [
+            "quella che"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "the ones who / that (masculine plural)",
+          "answer": "quelli che",
+          "answers": [
+            "quelli che"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "the ones who / that (feminine plural)",
+          "answer": "quelle che",
+          "answers": [
+            "quelle che"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "what / that which",
+          "answer": "ciò che",
+          "answers": [
+            "ciò che"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "which / who (formal relative, masculine singular)",
+          "answer": "il quale",
+          "answers": [
+            "il quale"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "which / who (formal relative, feminine singular)",
+          "answer": "la quale",
+          "answers": [
+            "la quale"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "which / who (formal relative, masculine plural)",
+          "answer": "i quali",
+          "answers": [
+            "i quali"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "which / who (formal relative, feminine plural)",
+          "answer": "le quali",
+          "answers": [
+            "le quali"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "which / what (formal relative, neuter)",
+          "answer": "il che",
+          "answers": [
+            "il che"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "whose (masculine singular)",
+          "answer": "il cui",
+          "answers": [
+            "il cui"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "whose (feminine singular)",
+          "answer": "la cui",
+          "answers": [
+            "la cui"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "whose (masculine plural)",
+          "answer": "i cui",
+          "answers": [
+            "i cui"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "whose (feminine plural)",
+          "answer": "le cui",
+          "answers": [
+            "le cui"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "as much as / all that (masculine singular)",
+          "answer": "quanto",
+          "answers": [
+            "quanto"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "as much as / all that (feminine singular)",
+          "answer": "quanta",
+          "answers": [
+            "quanta"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "as many as / all those (masculine plural)",
+          "answer": "quanti",
+          "answers": [
+            "quanti"
+          ],
+          "index": 50
+        },
+        {
+          "hint": "as many as / all those (feminine plural)",
+          "answer": "quante",
+          "answers": [
+            "quante"
+          ],
+          "index": 51
+        }
+      ]
+    },
+    {
+      "id": "possessives",
+      "title": "Possessives",
+      "description": "Possessive determiners and possessive pronoun forms.",
+      "count": 26,
+      "items": [
+        {
+          "hint": "my",
+          "answer": "mio",
+          "answers": [
+            "mio"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "my (plural possessed)",
+          "answer": "miei",
+          "answers": [
+            "miei"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "your (informal singular)",
+          "answer": "tuo",
+          "answers": [
+            "tuo"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "your (informal singular, plural possessed)",
+          "answer": "tuoi",
+          "answers": [
+            "tuoi"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "his/her/your/their",
+          "answer": "suo",
+          "answers": [
+            "suo"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "his/her/your/their (plural possessed)",
+          "answer": "suoi",
+          "answers": [
+            "suoi"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "our (masculine singular)",
+          "answer": "nostro",
+          "answers": [
+            "nostro"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "our (feminine singular)",
+          "answer": "nostra",
+          "answers": [
+            "nostra"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "our (masculine plural)",
+          "answer": "nostri",
+          "answers": [
+            "nostri"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "our (feminine plural)",
+          "answer": "nostre",
+          "answers": [
+            "nostre"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "your all (Spain, masculine singular)",
+          "answer": "vostro",
+          "answers": [
+            "vostro"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "your all (Spain, feminine singular)",
+          "answer": "vostra",
+          "answers": [
+            "vostra"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "your all (Spain, masculine plural)",
+          "answer": "vostri",
+          "answers": [
+            "vostri"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "your all (Spain, feminine plural)",
+          "answer": "vostre",
+          "answers": [
+            "vostre"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "mine (masculine singular)",
+          "answer": "il mio",
+          "answers": [
+            "il mio"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "mine (feminine singular)",
+          "answer": "la mia",
+          "answers": [
+            "la mia"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "mine (masculine plural)",
+          "answer": "i miei",
+          "answers": [
+            "i miei"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "mine (feminine plural)",
+          "answer": "le mie",
+          "answers": [
+            "le mie"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "yours (informal, masculine singular)",
+          "answer": "il tuo",
+          "answers": [
+            "il tuo"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "yours (informal, feminine singular)",
+          "answer": "la tua",
+          "answers": [
+            "la tua"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "yours (informal, masculine plural)",
+          "answer": "i tuoi",
+          "answers": [
+            "i tuoi"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "yours (informal, feminine plural)",
+          "answer": "le tue",
+          "answers": [
+            "le tue"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "his/hers/yours/theirs (masculine singular)",
+          "answer": "il suo",
+          "answers": [
+            "il suo"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "his/hers/yours/theirs (feminine singular)",
+          "answer": "la sua",
+          "answers": [
+            "la sua"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "his/hers/yours/theirs (masculine plural)",
+          "answer": "i suoi",
+          "answers": [
+            "i suoi"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "his/hers/yours/theirs (feminine plural)",
+          "answer": "le sue",
+          "answers": [
+            "le sue"
+          ],
+          "index": 26
+        }
+      ]
+    },
+    {
+      "id": "demonstratives",
+      "title": "Demonstratives",
+      "description": "Demonstrative determiners/pronouns across distance contrasts.",
+      "count": 15,
+      "items": [
+        {
+          "hint": "this (masculine singular)",
+          "answer": "questo",
+          "answers": [
+            "questo"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "this (feminine singular)",
+          "answer": "questa",
+          "answers": [
+            "questa"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "these (masculine plural)",
+          "answer": "questi",
+          "answers": [
+            "questi"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "these (feminine plural)",
+          "answer": "queste",
+          "answers": [
+            "queste"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "that (masculine singular)",
+          "answer": "codesto",
+          "answers": [
+            "codesto"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "that (feminine singular)",
+          "answer": "codesta",
+          "answers": [
+            "codesta"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "those (masculine plural)",
+          "answer": "codesti",
+          "answers": [
+            "codesti"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "those (feminine plural)",
+          "answer": "codeste",
+          "answers": [
+            "codeste"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "that over there (masculine singular)",
+          "answer": "quello laggiù",
+          "answers": [
+            "quello laggiù"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "that over there (feminine singular)",
+          "answer": "quella laggiù",
+          "answers": [
+            "quella laggiù"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "those over there (masculine plural)",
+          "answer": "quelli laggiù",
+          "answers": [
+            "quelli laggiù"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "those over there (feminine plural)",
+          "answer": "quelle laggiù",
+          "answers": [
+            "quelle laggiù"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "this thing",
+          "answer": "questa cosa",
+          "answers": [
+            "questa cosa"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "that thing",
+          "answer": "quella cosa",
+          "answers": [
+            "quella cosa"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "that thing over there",
+          "answer": "quella cosa laggiù",
+          "answers": [
+            "quella cosa laggiù"
+          ],
+          "index": 15
+        }
+      ]
+    },
+    {
+      "id": "quantifiers",
+      "title": "Quantifiers",
+      "description": "Universal and indefinite quantifier forms commonly taught to beginners.",
+      "count": 57,
+      "items": [
+        {
+          "hint": "all / every (masculine singular)",
+          "answer": "tutto",
+          "answers": [
+            "tutto"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "all / every (feminine singular)",
+          "answer": "tutta",
+          "answers": [
+            "tutta"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "all (masculine plural)",
+          "answer": "tutti",
+          "answers": [
+            "tutti"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "all (feminine plural)",
+          "answer": "tutte",
+          "answers": [
+            "tutte"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "some / any (masculine singular)",
+          "answer": "alcuno",
+          "answers": [
+            "alcuno"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "some / any (feminine singular)",
+          "answer": "alcuna",
+          "answers": [
+            "alcuna"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "some / any (masculine plural)",
+          "answer": "alcuni",
+          "answers": [
+            "alcuni"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "some / any (feminine plural)",
+          "answer": "alcune",
+          "answers": [
+            "alcune"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "some / any (apocopated masculine)",
+          "answer": "alcun",
+          "answers": [
+            "alcun"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "none / not any (masculine singular)",
+          "answer": "nessuno",
+          "answers": [
+            "nessuno"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "none / not any (feminine singular)",
+          "answer": "nessuna",
+          "answers": [
+            "nessuna"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "none / not any (apocopated masculine)",
+          "answer": "nessun",
+          "answers": [
+            "nessun"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "much / many (masculine singular)",
+          "answer": "molto",
+          "answers": [
+            "molto"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "much / many (feminine singular)",
+          "answer": "molta",
+          "answers": [
+            "molta"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "many (masculine plural)",
+          "answer": "molti",
+          "answers": [
+            "molti"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "many (feminine plural)",
+          "answer": "molte",
+          "answers": [
+            "molte"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "little / few (masculine singular)",
+          "answer": "poco",
+          "answers": [
+            "poco"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "little / few (feminine singular)",
+          "answer": "poca",
+          "answers": [
+            "poca"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "few (masculine plural)",
+          "answer": "pochi",
+          "answers": [
+            "pochi"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "few (feminine plural)",
+          "answer": "poche",
+          "answers": [
+            "poche"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "enough / quite a lot (singular)",
+          "answer": "sufficienti",
+          "answers": [
+            "sufficienti"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "enough / quite a lot (plural)",
+          "answer": "abbastanza",
+          "answers": [
+            "abbastanza"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "several (masculine)",
+          "answer": "vari",
+          "answers": [
+            "vari"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "several (feminine)",
+          "answer": "varie",
+          "answers": [
+            "varie"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "each",
+          "answer": "ogni",
+          "answers": [
+            "ogni"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "other / another (masculine singular)",
+          "answer": "altro",
+          "answers": [
+            "altro"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "other / another (feminine singular)",
+          "answer": "altra",
+          "answers": [
+            "altra"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "other / others (masculine plural)",
+          "answer": "altri",
+          "answers": [
+            "altri"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "other / others (feminine plural)",
+          "answer": "altre",
+          "answers": [
+            "altre"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "so much / so many (masculine singular)",
+          "answer": "tanto",
+          "answers": [
+            "tanto"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "so much / so many (feminine singular)",
+          "answer": "tanta",
+          "answers": [
+            "tanta"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "so many (masculine plural)",
+          "answer": "tanti",
+          "answers": [
+            "tanti"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "so many (feminine plural)",
+          "answer": "tante",
+          "answers": [
+            "tante"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "too much / too many (masculine singular)",
+          "answer": "troppo",
+          "answers": [
+            "troppo"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "too much / too many (feminine singular)",
+          "answer": "troppa",
+          "answers": [
+            "troppa"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "too many (masculine plural)",
+          "answer": "troppi",
+          "answers": [
+            "troppi"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "too many (feminine plural)",
+          "answer": "troppe",
+          "answers": [
+            "troppe"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "any (before noun)",
+          "answer": "qualsiasi",
+          "answers": [
+            "qualsiasi"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "anyone / any (singular)",
+          "answer": "chiunque",
+          "answers": [
+            "chiunque"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "any (plural)",
+          "answer": "qualsivoglia",
+          "answers": [
+            "qualsivoglia"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "both (masculine/mixed)",
+          "answer": "entrambi",
+          "answers": [
+            "entrambi"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "both (feminine)",
+          "answer": "entrambe",
+          "answers": [
+            "entrambe"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "more",
+          "answer": "più",
+          "answers": [
+            "più"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "less",
+          "answer": "meno",
+          "answers": [
+            "meno"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "something",
+          "answer": "qualcosa",
+          "answers": [
+            "qualcosa"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "nothing",
+          "answer": "niente",
+          "answers": [
+            "niente"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "someone",
+          "answer": "qualcuno",
+          "answers": [
+            "qualcuno"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "nobody",
+          "answer": "nessuna persona",
+          "answers": [
+            "nessuna persona"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "one (pronoun, masculine)",
+          "answer": "uno",
+          "answers": [
+            "uno"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "one (pronoun, feminine)",
+          "answer": "una",
+          "answers": [
+            "una"
+          ],
+          "index": 50
+        },
+        {
+          "hint": "ones (pronoun, masculine plural)",
+          "answer": "gli uni",
+          "answers": [
+            "gli uni"
+          ],
+          "index": 51
+        },
+        {
+          "hint": "ones (pronoun, feminine plural)",
+          "answer": "le une",
+          "answers": [
+            "le une"
+          ],
+          "index": 52
+        },
+        {
+          "hint": "the rest / others",
+          "answer": "gli altri",
+          "answers": [
+            "gli altri"
+          ],
+          "index": 53
+        },
+        {
+          "hint": "such (singular)",
+          "answer": "tale",
+          "answers": [
+            "tale"
+          ],
+          "index": 54
+        },
+        {
+          "hint": "such (plural)",
+          "answer": "tali",
+          "answers": [
+            "tali"
+          ],
+          "index": 55
+        },
+        {
+          "hint": "each one (masculine)",
+          "answer": "ciascuno",
+          "answers": [
+            "ciascuno"
+          ],
+          "index": 56
+        },
+        {
+          "hint": "each one (feminine)",
+          "answer": "ciascuna",
+          "answers": [
+            "ciascuna"
+          ],
+          "index": 57
+        }
+      ]
+    },
+    {
+      "id": "prepositions",
+      "title": "Prepositions",
+      "description": "The canonical set of Spanish prepositions.",
+      "count": 29,
+      "items": [
+        {
+          "hint": "to / at",
+          "answer": "a",
+          "answers": [
+            "a"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "to the / at the (a + el contraction)",
+          "answer": "al",
+          "answers": [
+            "al"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "before / in the presence of",
+          "answer": "dinanzi a",
+          "answers": [
+            "dinanzi a"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "under",
+          "answer": "sotto",
+          "answers": [
+            "sotto"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "next to (archaic/literary)",
+          "answer": "accanto a",
+          "answers": [
+            "accanto a"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "with",
+          "answer": "con",
+          "answers": [
+            "con"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "against",
+          "answer": "contro",
+          "answers": [
+            "contro"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "of / from",
+          "answer": "di",
+          "answers": [
+            "di"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "of the / from the (de + el contraction)",
+          "answer": "del",
+          "answers": [
+            "del"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "from / since",
+          "answer": "da",
+          "answers": [
+            "da"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "during",
+          "answer": "durante",
+          "answers": [
+            "durante"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "in / on",
+          "answer": "in",
+          "answers": [
+            "in"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "between / among",
+          "answer": "tra",
+          "answers": [
+            "tra"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "except / excluding",
+          "answer": "eccetto",
+          "answers": [
+            "eccetto"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "toward",
+          "answer": "verso",
+          "answers": [
+            "verso"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "until / up to",
+          "answer": "fino a",
+          "answers": [
+            "fino a"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "including / even",
+          "answer": "incluso",
+          "answers": [
+            "incluso"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "by means of",
+          "answer": "mediante",
+          "answers": [
+            "mediante"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "except / minus",
+          "answer": "salvo",
+          "answers": [
+            "salvo"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "for / in order to",
+          "answer": "per",
+          "answers": [
+            "per"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "for / through / by",
+          "answer": "tramite",
+          "answers": [
+            "tramite"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "except / save",
+          "answer": "tranne",
+          "answers": [
+            "tranne"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "according to",
+          "answer": "secondo",
+          "answers": [
+            "secondo"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "without",
+          "answer": "senza",
+          "answers": [
+            "senza"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "under (archaic)",
+          "answer": "sotto a",
+          "answers": [
+            "sotto a"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "on / about",
+          "answer": "su",
+          "answers": [
+            "su"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "after / behind",
+          "answer": "dopo",
+          "answers": [
+            "dopo"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "versus / against",
+          "answer": "versus",
+          "answers": [
+            "versus"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "via / by way of",
+          "answer": "via",
+          "answers": [
+            "via"
+          ],
+          "index": 29
+        }
+      ]
+    },
+    {
+      "id": "conjunctions",
+      "title": "Conjunctions",
+      "description": "Common coordinating and subordinating conjunctions.",
+      "count": 51,
+      "items": [
+        {
+          "hint": "and",
+          "answer": "e",
+          "answers": [
+            "e"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "and (before i/hi)",
+          "answer": "ed",
+          "answers": [
+            "ed"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "or",
+          "answer": "o",
+          "answers": [
+            "o"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "or (before o/ho)",
+          "answer": "od",
+          "answers": [
+            "od"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "neither / nor",
+          "answer": "né",
+          "answers": [
+            "né"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "or else / or rather",
+          "answer": "oppure",
+          "answers": [
+            "oppure"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "but",
+          "answer": "ma",
+          "answers": [
+            "ma"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "but (formal/literary)",
+          "answer": "però",
+          "answers": [
+            "però"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "but rather",
+          "answer": "bensì",
+          "answers": [
+            "bensì"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "but rather that",
+          "answer": "bensì che",
+          "answers": [
+            "bensì che"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "neither...nor",
+          "answer": "né...né",
+          "answers": [
+            "né...né"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "either...or",
+          "answer": "o...o",
+          "answers": [
+            "o...o"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "whether...or / either...or",
+          "answer": "sia...sia",
+          "answers": [
+            "sia...sia"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "whether...or (alt correlative)",
+          "answer": "ora...ora",
+          "answers": [
+            "ora...ora"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "be it...be it",
+          "answer": "che sia...che sia",
+          "answers": [
+            "che sia...che sia"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "both...and",
+          "answer": "sia...che",
+          "answers": [
+            "sia...che"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "that",
+          "answer": "che",
+          "answers": [
+            "che"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "because",
+          "answer": "perché",
+          "answers": [
+            "perché"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "since / because",
+          "answer": "poiché",
+          "answers": [
+            "poiché"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "since",
+          "answer": "dato che",
+          "answers": [
+            "dato che"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "since / given that",
+          "answer": "visto che",
+          "answers": [
+            "visto che"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "given that",
+          "answer": "giacché",
+          "answers": [
+            "giacché"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "like / as",
+          "answer": "come",
+          "answers": [
+            "come"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "if",
+          "answer": "se",
+          "answers": [
+            "se"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "as if",
+          "answer": "come se",
+          "answers": [
+            "come se"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "although",
+          "answer": "sebbene",
+          "answers": [
+            "sebbene"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "even though",
+          "answer": "anche se",
+          "answers": [
+            "anche se"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "while",
+          "answer": "mentre",
+          "answers": [
+            "mentre"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "while / whereas",
+          "answer": "mentre invece",
+          "answers": [
+            "mentre invece"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "when",
+          "answer": "quando",
+          "answers": [
+            "quando"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "where",
+          "answer": "dove",
+          "answers": [
+            "dove"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "as soon as / as",
+          "answer": "non appena",
+          "answers": [
+            "non appena"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "as soon as",
+          "answer": "appena",
+          "answers": [
+            "appena"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "as soon as / hardly when",
+          "answer": "a stento quando",
+          "answers": [
+            "a stento quando"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "before",
+          "answer": "prima che",
+          "answers": [
+            "prima che"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "after",
+          "answer": "dopo che",
+          "answers": [
+            "dopo che"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "since / ever since",
+          "answer": "da quando",
+          "answers": [
+            "da quando"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "until",
+          "answer": "finché",
+          "answers": [
+            "finché"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "so that / in order that",
+          "answer": "affinché",
+          "answers": [
+            "affinché"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "so that",
+          "answer": "in modo che",
+          "answers": [
+            "in modo che"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "without ...ing / without that",
+          "answer": "senza che",
+          "answers": [
+            "senza che"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "unless",
+          "answer": "a meno che",
+          "answers": [
+            "a meno che"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "provided that",
+          "answer": "purché",
+          "answers": [
+            "purché"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "as long as / whenever",
+          "answer": "ogni volta che",
+          "answers": [
+            "ogni volta che"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "in case",
+          "answer": "nel caso in cui",
+          "answers": [
+            "nel caso in cui"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "so / therefore",
+          "answer": "dunque",
+          "answers": [
+            "dunque"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "so / thus",
+          "answer": "quindi",
+          "answers": [
+            "quindi"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "therefore",
+          "answer": "perciò",
+          "answers": [
+            "perciò"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "consequently",
+          "answer": "di conseguenza",
+          "answers": [
+            "di conseguenza"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "then / afterwards",
+          "answer": "poi",
+          "answers": [
+            "poi"
+          ],
+          "index": 50
+        },
+        {
+          "hint": "then",
+          "answer": "allora",
+          "answers": [
+            "allora"
+          ],
+          "index": 51
+        }
+      ]
+    },
+    {
+      "id": "interjections",
+      "title": "Interjections",
+      "description": "Frequent interjections for reactions, emphasis, and exclamations.",
+      "count": 16,
+      "items": [
+        {
+          "hint": "ouch!",
+          "answer": "ahi!",
+          "answers": [
+            "ahi!"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "ah!",
+          "answer": "ah!",
+          "answers": [
+            "ah!"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "hey! / huh?",
+          "answer": "eh?",
+          "answers": [
+            "eh?"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "oh!",
+          "answer": "oh!",
+          "answers": [
+            "oh!"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "ugh!",
+          "answer": "uff!",
+          "answers": [
+            "uff!"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "bah!",
+          "answer": "bah!",
+          "answers": [
+            "bah!"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "wow / well then!",
+          "answer": "caspita!",
+          "answers": [
+            "caspita!"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "gosh!",
+          "answer": "accidenti!",
+          "answers": [
+            "accidenti!"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "bravo!",
+          "answer": "bravo!",
+          "answers": [
+            "bravo!"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "come on!",
+          "answer": "dai!",
+          "answers": [
+            "dai!"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "come on! / wow!",
+          "answer": "su!",
+          "answers": [
+            "su!"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "watch out!",
+          "answer": "occhio!",
+          "answers": [
+            "occhio!"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "careful!",
+          "answer": "attenzione!",
+          "answers": [
+            "attenzione!"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "oops!",
+          "answer": "ops!",
+          "answers": [
+            "ops!"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "yikes!",
+          "answer": "aiuto!",
+          "answers": [
+            "aiuto!"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "phew!",
+          "answer": "meno male!",
+          "answers": [
+            "meno male!"
+          ],
+          "index": 16
+        }
+      ]
+    },
+    {
+      "id": "directions-location",
+      "title": "Directions & Location",
+      "description": "Phrases and words for navigating and talking about location.",
+      "count": 39,
+      "items": [
+        {
+          "hint": "to the right",
+          "answer": "a destra",
+          "answers": [
+            "a destra"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "to the left",
+          "answer": "a sinistra",
+          "answers": [
+            "a sinistra"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "straight ahead",
+          "answer": "dritto",
+          "answers": [
+            "dritto"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "straight",
+          "answer": "diritto",
+          "answers": [
+            "diritto"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "at the end of the street",
+          "answer": "in fondo alla strada",
+          "answers": [
+            "in fondo alla strada"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "on the corner",
+          "answer": "all'angolo",
+          "answers": [
+            "all'angolo"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "next to",
+          "answer": "accanto a",
+          "answers": [
+            "accanto a"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "near",
+          "answer": "vicino a",
+          "answers": [
+            "vicino a"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "far from",
+          "answer": "lontano da",
+          "answers": [
+            "lontano da"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "in front of",
+          "answer": "davanti a",
+          "answers": [
+            "davanti a"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "behind",
+          "answer": "dietro",
+          "answers": [
+            "dietro"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "across from",
+          "answer": "di fronte a",
+          "answers": [
+            "di fronte a"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "up / upstairs",
+          "answer": "su",
+          "answers": [
+            "su"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "down / downstairs",
+          "answer": "giù",
+          "answers": [
+            "giù"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "inside",
+          "answer": "dentro",
+          "answers": [
+            "dentro"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "outside",
+          "answer": "fuori",
+          "answers": [
+            "fuori"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "north",
+          "answer": "nord",
+          "answers": [
+            "nord"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "south",
+          "answer": "sud",
+          "answers": [
+            "sud"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "west",
+          "answer": "ovest",
+          "answers": [
+            "ovest"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "east",
+          "answer": "est",
+          "answers": [
+            "est"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "map",
+          "answer": "mappa",
+          "answers": [
+            "mappa"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "street",
+          "answer": "strada",
+          "answers": [
+            "strada"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "avenue",
+          "answer": "viale",
+          "answers": [
+            "viale"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "square / plaza",
+          "answer": "piazza",
+          "answers": [
+            "piazza"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "corner",
+          "answer": "angolo",
+          "answers": [
+            "angolo"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "traffic light",
+          "answer": "semaforo",
+          "answers": [
+            "semaforo"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "crosswalk/intersection",
+          "answer": "attraversamento pedonale",
+          "answers": [
+            "attraversamento pedonale"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "bridge",
+          "answer": "ponte",
+          "answers": [
+            "ponte"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "roundabout",
+          "answer": "rotonda",
+          "answers": [
+            "rotonda"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "entrance",
+          "answer": "entrata",
+          "answers": [
+            "entrata"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "exit",
+          "answer": "uscita",
+          "answers": [
+            "uscita"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "where is ...?",
+          "answer": "dov'è ...?",
+          "answers": [
+            "dov'è ...?"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "how do I get ...?",
+          "answer": "come arrivo ...?",
+          "answers": [
+            "come arrivo ...?"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "keep going straight",
+          "answer": "continua dritto",
+          "answers": [
+            "continua dritto"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "turn right",
+          "answer": "giri a destra",
+          "answers": [
+            "giri a destra"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "turn left",
+          "answer": "giri a sinistra",
+          "answers": [
+            "giri a sinistra"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "cross the street",
+          "answer": "attraversi la strada",
+          "answers": [
+            "attraversi la strada"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "it is here",
+          "answer": "è qui",
+          "answers": [
+            "è qui"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "it is there",
+          "answer": "è lì",
+          "answers": [
+            "è lì"
+          ],
+          "index": 39
+        }
+      ]
+    },
+    {
+      "id": "ordering-food",
+      "title": "Ordering Food",
+      "description": "Core restaurant phrases for requesting, ordering, and paying.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "a table for two",
+          "answer": "un tavolo per due",
+          "answers": [
+            "un tavolo per due"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "do you have a table available?",
+          "answer": "avete un tavolo libero?",
+          "answers": [
+            "avete un tavolo libero?"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "menu (card)",
+          "answer": "la carta",
+          "answers": [
+            "la carta"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "menu",
+          "answer": "il menù",
+          "answers": [
+            "il menù"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "waiter",
+          "answer": "il cameriere",
+          "answers": [
+            "il cameriere"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "waitress",
+          "answer": "la cameriera",
+          "answers": [
+            "la cameriera"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "dish of the day",
+          "answer": "il piatto del giorno",
+          "answers": [
+            "il piatto del giorno"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "what do you recommend?",
+          "answer": "cosa consiglia?",
+          "answers": [
+            "cosa consiglia?"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "for me...",
+          "answer": "per me...",
+          "answers": [
+            "per me..."
+          ],
+          "index": 9
+        },
+        {
+          "hint": "to share",
+          "answer": "da condividere",
+          "answers": [
+            "da condividere"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "what does it have?",
+          "answer": "cosa contiene?",
+          "answers": [
+            "cosa contiene?"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "is it spicy?",
+          "answer": "è piccante?",
+          "answers": [
+            "è piccante?"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "not spicy",
+          "answer": "non piccante",
+          "answers": [
+            "non piccante"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "with ice",
+          "answer": "con ghiaccio",
+          "answers": [
+            "con ghiaccio"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "without ice",
+          "answer": "senza ghiaccio",
+          "answers": [
+            "senza ghiaccio"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "still water",
+          "answer": "acqua naturale",
+          "answers": [
+            "acqua naturale"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "sparkling water",
+          "answer": "acqua frizzante",
+          "answers": [
+            "acqua frizzante"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "I want to order",
+          "answer": "vorrei ordinare",
+          "answers": [
+            "vorrei ordinare"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "I'll have...",
+          "answer": "prendo...",
+          "answers": [
+            "prendo..."
+          ],
+          "index": 19
+        },
+        {
+          "hint": "for the first course",
+          "answer": "come primo",
+          "answers": [
+            "come primo"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "for the second course",
+          "answer": "come secondo",
+          "answers": [
+            "come secondo"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "for dessert",
+          "answer": "come dolce",
+          "answers": [
+            "come dolce"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "the check, please",
+          "answer": "il conto, per favore",
+          "answers": [
+            "il conto, per favore"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "can you bring me the check?",
+          "answer": "mi porta il conto?",
+          "answers": [
+            "mi porta il conto?"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "do you accept card?",
+          "answer": "accettate la carta?",
+          "answers": [
+            "accettate la carta?"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "I pay in cash",
+          "answer": "pago in contanti",
+          "answers": [
+            "pago in contanti"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "I pay by card",
+          "answer": "pago con carta",
+          "answers": [
+            "pago con carta"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "is tip included?",
+          "answer": "il servizio è incluso?",
+          "answers": [
+            "il servizio è incluso?"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "tip",
+          "answer": "la mancia",
+          "answers": [
+            "la mancia"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "I am allergic to...",
+          "answer": "sono allergico a...",
+          "answers": [
+            "sono allergico a..."
+          ],
+          "index": 30
+        },
+        {
+          "hint": "gluten-free",
+          "answer": "senza glutine",
+          "answers": [
+            "senza glutine"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "lactose-free",
+          "answer": "senza lattosio",
+          "answers": [
+            "senza lattosio"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "I am vegetarian (masculine speaker)",
+          "answer": "sono vegetariano",
+          "answers": [
+            "sono vegetariano"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "I am vegetarian (feminine speaker)",
+          "answer": "sono vegetariana",
+          "answers": [
+            "sono vegetariana"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "I am vegan (masculine speaker)",
+          "answer": "sono vegano",
+          "answers": [
+            "sono vegano"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "I am vegan (feminine speaker)",
+          "answer": "sono vegana",
+          "answers": [
+            "sono vegana"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "can you repeat?",
+          "answer": "può ripetere?",
+          "answers": [
+            "può ripetere?"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "can you recommend something?",
+          "answer": "mi può consigliare qualcosa?",
+          "answers": [
+            "mi può consigliare qualcosa?"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "can you bring me another napkin?",
+          "answer": "mi porta un altro tovagliolo?",
+          "answers": [
+            "mi porta un altro tovagliolo?"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "another round",
+          "answer": "un altro giro",
+          "answers": [
+            "un altro giro"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "to go",
+          "answer": "da asporto",
+          "answers": [
+            "da asporto"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "for here",
+          "answer": "da consumare qui",
+          "answers": [
+            "da consumare qui"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "it's delicious",
+          "answer": "è delizioso",
+          "answers": [
+            "è delizioso"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "it's cold",
+          "answer": "è freddo",
+          "answers": [
+            "è freddo"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "it's hot",
+          "answer": "è caldo",
+          "answers": [
+            "è caldo"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "I would like a reservation",
+          "answer": "vorrei una prenotazione",
+          "answers": [
+            "vorrei una prenotazione"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "we have a reservation",
+          "answer": "abbiamo una prenotazione",
+          "answers": [
+            "abbiamo una prenotazione"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "split check",
+          "answer": "conto separato",
+          "answers": [
+            "conto separato"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "a bottle of water",
+          "answer": "una bottiglia d'acqua",
+          "answers": [
+            "una bottiglia d'acqua"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "a black coffee",
+          "answer": "un caffè nero",
+          "answers": [
+            "un caffè nero"
+          ],
+          "index": 50
+        }
+      ]
+    },
+    {
+      "id": "common-adjectives-50",
+      "title": "50 Common Adjectives",
+      "description": "A high-utility beginner adjective set.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "good",
+          "answer": "buono",
+          "answers": [
+            "buono"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "bad",
+          "answer": "cattivo",
+          "answers": [
+            "cattivo"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "big / large",
+          "answer": "grande",
+          "answers": [
+            "grande"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "small",
+          "answer": "piccolo",
+          "answers": [
+            "piccolo"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "tall / high",
+          "answer": "alto",
+          "answers": [
+            "alto"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "wide",
+          "answer": "largo",
+          "answers": [
+            "largo"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "long",
+          "answer": "lungo",
+          "answers": [
+            "lungo"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "short (length)",
+          "answer": "corto",
+          "answers": [
+            "corto"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "new",
+          "answer": "nuovo",
+          "answers": [
+            "nuovo"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "old",
+          "answer": "vecchio",
+          "answers": [
+            "vecchio"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "young",
+          "answer": "giovane",
+          "answers": [
+            "giovane"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "pretty / nice",
+          "answer": "bello",
+          "answers": [
+            "bello"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "ugly",
+          "answer": "brutto",
+          "answers": [
+            "brutto"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "easy",
+          "answer": "facile",
+          "answers": [
+            "facile"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "difficult",
+          "answer": "difficile",
+          "answers": [
+            "difficile"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "fast",
+          "answer": "veloce",
+          "answers": [
+            "veloce"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "slow",
+          "answer": "lento",
+          "answers": [
+            "lento"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "hot (temperature)",
+          "answer": "caldo",
+          "answers": [
+            "caldo"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "cold",
+          "answer": "freddo",
+          "answers": [
+            "freddo"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "strong",
+          "answer": "forte",
+          "answers": [
+            "forte"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "weak",
+          "answer": "debole",
+          "answers": [
+            "debole"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "expensive",
+          "answer": "costoso",
+          "answers": [
+            "costoso"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "cheap",
+          "answer": "economico",
+          "answers": [
+            "economico"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "clean",
+          "answer": "pulito",
+          "answers": [
+            "pulito"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "dirty",
+          "answer": "sporco",
+          "answers": [
+            "sporco"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "full",
+          "answer": "pieno",
+          "answers": [
+            "pieno"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "empty",
+          "answer": "vuoto",
+          "answers": [
+            "vuoto"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "happy",
+          "answer": "felice",
+          "answers": [
+            "felice"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "sad",
+          "answer": "triste",
+          "answers": [
+            "triste"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "tired",
+          "answer": "stanco",
+          "answers": [
+            "stanco"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "busy",
+          "answer": "occupato",
+          "answers": [
+            "occupato"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "free / available",
+          "answer": "libero",
+          "answers": [
+            "libero"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "safe / sure",
+          "answer": "sicuro",
+          "answers": [
+            "sicuro"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "dangerous",
+          "answer": "pericoloso",
+          "answers": [
+            "pericoloso"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "important",
+          "answer": "importante",
+          "answers": [
+            "importante"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "possible",
+          "answer": "possibile",
+          "answers": [
+            "possibile"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "impossible",
+          "answer": "impossibile",
+          "answers": [
+            "impossibile"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "necessary",
+          "answer": "necessario",
+          "answers": [
+            "necessario"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "useful",
+          "answer": "utile",
+          "answers": [
+            "utile"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "useless",
+          "answer": "inutile",
+          "answers": [
+            "inutile"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "kind",
+          "answer": "gentile",
+          "answers": [
+            "gentile"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "nice / friendly",
+          "answer": "simpatico",
+          "answers": [
+            "simpatico"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "unfriendly / unpleasant",
+          "answer": "antipatico",
+          "answers": [
+            "antipatico"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "serious",
+          "answer": "serio",
+          "answers": [
+            "serio"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "fun",
+          "answer": "divertente",
+          "answers": [
+            "divertente"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "boring",
+          "answer": "noioso",
+          "answers": [
+            "noioso"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "intelligent",
+          "answer": "intelligente",
+          "answers": [
+            "intelligente"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "silly / dumb",
+          "answer": "sciocco",
+          "answers": [
+            "sciocco"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "correct",
+          "answer": "corretto",
+          "answers": [
+            "corretto"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "incorrect / wrong",
+          "answer": "scorretto",
+          "answers": [
+            "scorretto"
+          ],
+          "index": 50
+        }
+      ]
+    },
+    {
+      "id": "common-adverbs-50",
+      "title": "50 Common Adverbs",
+      "description": "A high-utility beginner adverb set spanning time, frequency, and manner.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "well",
+          "answer": "bene",
+          "answers": [
+            "bene"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "badly",
+          "answer": "male",
+          "answers": [
+            "male"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "very",
+          "answer": "molto",
+          "answers": [
+            "molto"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "almost",
+          "answer": "quasi",
+          "answers": [
+            "quasi"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "already",
+          "answer": "già",
+          "answers": [
+            "già"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "still / yet",
+          "answer": "ancora",
+          "answers": [
+            "ancora"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "still / yet",
+          "answer": "tuttora",
+          "answers": [
+            "tuttora"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "always",
+          "answer": "sempre",
+          "answers": [
+            "sempre"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "never",
+          "answer": "mai",
+          "answers": [
+            "mai"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "never ever",
+          "answer": "mai e poi mai",
+          "answers": [
+            "mai e poi mai"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "today",
+          "answer": "oggi",
+          "answers": [
+            "oggi"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "yesterday",
+          "answer": "ieri",
+          "answers": [
+            "ieri"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "tomorrow",
+          "answer": "domani",
+          "answers": [
+            "domani"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "now",
+          "answer": "adesso",
+          "answers": [
+            "adesso"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "before",
+          "answer": "prima",
+          "answers": [
+            "prima"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "after",
+          "answer": "dopo",
+          "answers": [
+            "dopo"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "soon",
+          "answer": "presto",
+          "answers": [
+            "presto"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "late",
+          "answer": "tardi",
+          "answers": [
+            "tardi"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "early",
+          "answer": "di buon'ora",
+          "answers": [
+            "di buon'ora"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "often",
+          "answer": "spesso",
+          "answers": [
+            "spesso"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "sometimes",
+          "answer": "a volte",
+          "answers": [
+            "a volte"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "from time to time",
+          "answer": "di tanto in tanto",
+          "answers": [
+            "di tanto in tanto"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "generally",
+          "answer": "generalmente",
+          "answers": [
+            "generalmente"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "normally",
+          "answer": "normalmente",
+          "answers": [
+            "normalmente"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "frequently",
+          "answer": "frequentemente",
+          "answers": [
+            "frequentemente"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "regularly",
+          "answer": "regolarmente",
+          "answers": [
+            "regolarmente"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "immediately",
+          "answer": "immediatamente",
+          "answers": [
+            "immediatamente"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "right away",
+          "answer": "subito",
+          "answers": [
+            "subito"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "slowly",
+          "answer": "lentamente",
+          "answers": [
+            "lentamente"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "quickly",
+          "answer": "rapidamente",
+          "answers": [
+            "rapidamente"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "easily",
+          "answer": "facilmente",
+          "answers": [
+            "facilmente"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "with difficulty",
+          "answer": "con difficoltà",
+          "answers": [
+            "con difficoltà"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "clearly",
+          "answer": "chiaramente",
+          "answers": [
+            "chiaramente"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "exactly",
+          "answer": "esattamente",
+          "answers": [
+            "esattamente"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "approximately",
+          "answer": "approssimativamente",
+          "answers": [
+            "approssimativamente"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "really",
+          "answer": "davvero",
+          "answers": [
+            "davvero"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "simply",
+          "answer": "semplicemente",
+          "answers": [
+            "semplicemente"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "especially",
+          "answer": "soprattutto",
+          "answers": [
+            "soprattutto"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "directly",
+          "answer": "direttamente",
+          "answers": [
+            "direttamente"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "correctly",
+          "answer": "correttamente",
+          "answers": [
+            "correttamente"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "probably",
+          "answer": "probabilmente",
+          "answers": [
+            "probabilmente"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "surely",
+          "answer": "sicuramente",
+          "answers": [
+            "sicuramente"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "fortunately",
+          "answer": "fortunatamente",
+          "answers": [
+            "fortunatamente"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "unfortunately",
+          "answer": "sfortunatamente",
+          "answers": [
+            "sfortunatamente"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "carefully",
+          "answer": "attentamente",
+          "answers": [
+            "attentamente"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "quietly",
+          "answer": "silenziosamente",
+          "answers": [
+            "silenziosamente"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "openly",
+          "answer": "apertamente",
+          "answers": [
+            "apertamente"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "literally",
+          "answer": "letteralmente",
+          "answers": [
+            "letteralmente"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "totally",
+          "answer": "totalmente",
+          "answers": [
+            "totalmente"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "partially",
+          "answer": "parzialmente",
+          "answers": [
+            "parzialmente"
+          ],
+          "index": 50
+        }
+      ]
+    },
+    {
+      "id": "numbers-0-100",
+      "title": "Numbers (0-100)",
+      "description": "Cardinal numbers from 0 through 100.",
+      "count": 101,
+      "items": [
+        {
+          "hint": "0 (zero)",
+          "answer": "zero",
+          "answers": [
+            "zero"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "1 (one)",
+          "answer": "uno",
+          "answers": [
+            "uno"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "2 (two)",
+          "answer": "due",
+          "answers": [
+            "due"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "3 (three)",
+          "answer": "tre",
+          "answers": [
+            "tre"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "4 (four)",
+          "answer": "quattro",
+          "answers": [
+            "quattro"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "5 (five)",
+          "answer": "cinque",
+          "answers": [
+            "cinque"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "6 (six)",
+          "answer": "sei",
+          "answers": [
+            "sei"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "7 (seven)",
+          "answer": "sette",
+          "answers": [
+            "sette"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "8 (eight)",
+          "answer": "otto",
+          "answers": [
+            "otto"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "9 (nine)",
+          "answer": "nove",
+          "answers": [
+            "nove"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "10 (ten)",
+          "answer": "dieci",
+          "answers": [
+            "dieci"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "11 (eleven)",
+          "answer": "undici",
+          "answers": [
+            "undici"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "12 (twelve)",
+          "answer": "dodici",
+          "answers": [
+            "dodici"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "13 (thirteen)",
+          "answer": "tredici",
+          "answers": [
+            "tredici"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "14 (fourteen)",
+          "answer": "quattordici",
+          "answers": [
+            "quattordici"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "15 (fifteen)",
+          "answer": "quindici",
+          "answers": [
+            "quindici"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "16 (sixteen)",
+          "answer": "sedici",
+          "answers": [
+            "sedici"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "17 (seventeen)",
+          "answer": "diciassette",
+          "answers": [
+            "diciassette"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "18 (eighteen)",
+          "answer": "diciotto",
+          "answers": [
+            "diciotto"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "19 (nineteen)",
+          "answer": "diciannove",
+          "answers": [
+            "diciannove"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "20 (twenty)",
+          "answer": "venti",
+          "answers": [
+            "venti"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "21 (twenty-one)",
+          "answer": "ventuno",
+          "answers": [
+            "ventuno"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "22 (twenty-two)",
+          "answer": "ventidue",
+          "answers": [
+            "ventidue"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "23 (twenty-three)",
+          "answer": "ventitré",
+          "answers": [
+            "ventitré"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "24 (twenty-four)",
+          "answer": "ventiquattro",
+          "answers": [
+            "ventiquattro"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "25 (twenty-five)",
+          "answer": "venticinque",
+          "answers": [
+            "venticinque"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "26 (twenty-six)",
+          "answer": "ventisei",
+          "answers": [
+            "ventisei"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "27 (twenty-seven)",
+          "answer": "ventisette",
+          "answers": [
+            "ventisette"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "28 (twenty-eight)",
+          "answer": "ventotto",
+          "answers": [
+            "ventotto"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "29 (twenty-nine)",
+          "answer": "ventinove",
+          "answers": [
+            "ventinove"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "30 (thirty)",
+          "answer": "trenta",
+          "answers": [
+            "trenta"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "31 (thirty-one)",
+          "answer": "trentuno",
+          "answers": [
+            "trentuno"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "32 (thirty-two)",
+          "answer": "trentadue",
+          "answers": [
+            "trentadue"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "33 (thirty-three)",
+          "answer": "trentatré",
+          "answers": [
+            "trentatré"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "34 (thirty-four)",
+          "answer": "trentaquattro",
+          "answers": [
+            "trentaquattro"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "35 (thirty-five)",
+          "answer": "trentacinque",
+          "answers": [
+            "trentacinque"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "36 (thirty-six)",
+          "answer": "trentasei",
+          "answers": [
+            "trentasei"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "37 (thirty-seven)",
+          "answer": "trentasette",
+          "answers": [
+            "trentasette"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "38 (thirty-eight)",
+          "answer": "trentotto",
+          "answers": [
+            "trentotto"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "39 (thirty-nine)",
+          "answer": "trentanove",
+          "answers": [
+            "trentanove"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "40 (forty)",
+          "answer": "quaranta",
+          "answers": [
+            "quaranta"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "41 (forty-one)",
+          "answer": "quarantuno",
+          "answers": [
+            "quarantuno"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "42 (forty-two)",
+          "answer": "quarantadue",
+          "answers": [
+            "quarantadue"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "43 (forty-three)",
+          "answer": "quarantatré",
+          "answers": [
+            "quarantatré"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "44 (forty-four)",
+          "answer": "quarantaquattro",
+          "answers": [
+            "quarantaquattro"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "45 (forty-five)",
+          "answer": "quarantacinque",
+          "answers": [
+            "quarantacinque"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "46 (forty-six)",
+          "answer": "quarantasei",
+          "answers": [
+            "quarantasei"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "47 (forty-seven)",
+          "answer": "quarantasette",
+          "answers": [
+            "quarantasette"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "48 (forty-eight)",
+          "answer": "quarantotto",
+          "answers": [
+            "quarantotto"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "49 (forty-nine)",
+          "answer": "quarantanove",
+          "answers": [
+            "quarantanove"
+          ],
+          "index": 50
+        },
+        {
+          "hint": "50 (fifty)",
+          "answer": "cinquanta",
+          "answers": [
+            "cinquanta"
+          ],
+          "index": 51
+        },
+        {
+          "hint": "51 (fifty-one)",
+          "answer": "cinquantuno",
+          "answers": [
+            "cinquantuno"
+          ],
+          "index": 52
+        },
+        {
+          "hint": "52 (fifty-two)",
+          "answer": "cinquantadue",
+          "answers": [
+            "cinquantadue"
+          ],
+          "index": 53
+        },
+        {
+          "hint": "53 (fifty-three)",
+          "answer": "cinquantatré",
+          "answers": [
+            "cinquantatré"
+          ],
+          "index": 54
+        },
+        {
+          "hint": "54 (fifty-four)",
+          "answer": "cinquantaquattro",
+          "answers": [
+            "cinquantaquattro"
+          ],
+          "index": 55
+        },
+        {
+          "hint": "55 (fifty-five)",
+          "answer": "cinquantacinque",
+          "answers": [
+            "cinquantacinque"
+          ],
+          "index": 56
+        },
+        {
+          "hint": "56 (fifty-six)",
+          "answer": "cinquantasei",
+          "answers": [
+            "cinquantasei"
+          ],
+          "index": 57
+        },
+        {
+          "hint": "57 (fifty-seven)",
+          "answer": "cinquantasette",
+          "answers": [
+            "cinquantasette"
+          ],
+          "index": 58
+        },
+        {
+          "hint": "58 (fifty-eight)",
+          "answer": "cinquantotto",
+          "answers": [
+            "cinquantotto"
+          ],
+          "index": 59
+        },
+        {
+          "hint": "59 (fifty-nine)",
+          "answer": "cinquantanove",
+          "answers": [
+            "cinquantanove"
+          ],
+          "index": 60
+        },
+        {
+          "hint": "60 (sixty)",
+          "answer": "sessanta",
+          "answers": [
+            "sessanta"
+          ],
+          "index": 61
+        },
+        {
+          "hint": "61 (sixty-one)",
+          "answer": "sessantuno",
+          "answers": [
+            "sessantuno"
+          ],
+          "index": 62
+        },
+        {
+          "hint": "62 (sixty-two)",
+          "answer": "sessantadue",
+          "answers": [
+            "sessantadue"
+          ],
+          "index": 63
+        },
+        {
+          "hint": "63 (sixty-three)",
+          "answer": "sessantatré",
+          "answers": [
+            "sessantatré"
+          ],
+          "index": 64
+        },
+        {
+          "hint": "64 (sixty-four)",
+          "answer": "sessantaquattro",
+          "answers": [
+            "sessantaquattro"
+          ],
+          "index": 65
+        },
+        {
+          "hint": "65 (sixty-five)",
+          "answer": "sessantacinque",
+          "answers": [
+            "sessantacinque"
+          ],
+          "index": 66
+        },
+        {
+          "hint": "66 (sixty-six)",
+          "answer": "sessantasei",
+          "answers": [
+            "sessantasei"
+          ],
+          "index": 67
+        },
+        {
+          "hint": "67 (sixty-seven)",
+          "answer": "sessantasette",
+          "answers": [
+            "sessantasette"
+          ],
+          "index": 68
+        },
+        {
+          "hint": "68 (sixty-eight)",
+          "answer": "sessantotto",
+          "answers": [
+            "sessantotto"
+          ],
+          "index": 69
+        },
+        {
+          "hint": "69 (sixty-nine)",
+          "answer": "sessantanove",
+          "answers": [
+            "sessantanove"
+          ],
+          "index": 70
+        },
+        {
+          "hint": "70 (seventy)",
+          "answer": "settanta",
+          "answers": [
+            "settanta"
+          ],
+          "index": 71
+        },
+        {
+          "hint": "71 (seventy-one)",
+          "answer": "settantuno",
+          "answers": [
+            "settantuno"
+          ],
+          "index": 72
+        },
+        {
+          "hint": "72 (seventy-two)",
+          "answer": "settantadue",
+          "answers": [
+            "settantadue"
+          ],
+          "index": 73
+        },
+        {
+          "hint": "73 (seventy-three)",
+          "answer": "settantatré",
+          "answers": [
+            "settantatré"
+          ],
+          "index": 74
+        },
+        {
+          "hint": "74 (seventy-four)",
+          "answer": "settantaquattro",
+          "answers": [
+            "settantaquattro"
+          ],
+          "index": 75
+        },
+        {
+          "hint": "75 (seventy-five)",
+          "answer": "settantacinque",
+          "answers": [
+            "settantacinque"
+          ],
+          "index": 76
+        },
+        {
+          "hint": "76 (seventy-six)",
+          "answer": "settantasei",
+          "answers": [
+            "settantasei"
+          ],
+          "index": 77
+        },
+        {
+          "hint": "77 (seventy-seven)",
+          "answer": "settantasette",
+          "answers": [
+            "settantasette"
+          ],
+          "index": 78
+        },
+        {
+          "hint": "78 (seventy-eight)",
+          "answer": "settantotto",
+          "answers": [
+            "settantotto"
+          ],
+          "index": 79
+        },
+        {
+          "hint": "79 (seventy-nine)",
+          "answer": "settantanove",
+          "answers": [
+            "settantanove"
+          ],
+          "index": 80
+        },
+        {
+          "hint": "80 (eighty)",
+          "answer": "ottanta",
+          "answers": [
+            "ottanta"
+          ],
+          "index": 81
+        },
+        {
+          "hint": "81 (eighty-one)",
+          "answer": "ottantuno",
+          "answers": [
+            "ottantuno"
+          ],
+          "index": 82
+        },
+        {
+          "hint": "82 (eighty-two)",
+          "answer": "ottantadue",
+          "answers": [
+            "ottantadue"
+          ],
+          "index": 83
+        },
+        {
+          "hint": "83 (eighty-three)",
+          "answer": "ottantatré",
+          "answers": [
+            "ottantatré"
+          ],
+          "index": 84
+        },
+        {
+          "hint": "84 (eighty-four)",
+          "answer": "ottantaquattro",
+          "answers": [
+            "ottantaquattro"
+          ],
+          "index": 85
+        },
+        {
+          "hint": "85 (eighty-five)",
+          "answer": "ottantacinque",
+          "answers": [
+            "ottantacinque"
+          ],
+          "index": 86
+        },
+        {
+          "hint": "86 (eighty-six)",
+          "answer": "ottantasei",
+          "answers": [
+            "ottantasei"
+          ],
+          "index": 87
+        },
+        {
+          "hint": "87 (eighty-seven)",
+          "answer": "ottantasette",
+          "answers": [
+            "ottantasette"
+          ],
+          "index": 88
+        },
+        {
+          "hint": "88 (eighty-eight)",
+          "answer": "ottantotto",
+          "answers": [
+            "ottantotto"
+          ],
+          "index": 89
+        },
+        {
+          "hint": "89 (eighty-nine)",
+          "answer": "ottantanove",
+          "answers": [
+            "ottantanove"
+          ],
+          "index": 90
+        },
+        {
+          "hint": "90 (ninety)",
+          "answer": "novanta",
+          "answers": [
+            "novanta"
+          ],
+          "index": 91
+        },
+        {
+          "hint": "91 (ninety-one)",
+          "answer": "novantuno",
+          "answers": [
+            "novantuno"
+          ],
+          "index": 92
+        },
+        {
+          "hint": "92 (ninety-two)",
+          "answer": "novantadue",
+          "answers": [
+            "novantadue"
+          ],
+          "index": 93
+        },
+        {
+          "hint": "93 (ninety-three)",
+          "answer": "novantatré",
+          "answers": [
+            "novantatré"
+          ],
+          "index": 94
+        },
+        {
+          "hint": "94 (ninety-four)",
+          "answer": "novantaquattro",
+          "answers": [
+            "novantaquattro"
+          ],
+          "index": 95
+        },
+        {
+          "hint": "95 (ninety-five)",
+          "answer": "novantacinque",
+          "answers": [
+            "novantacinque"
+          ],
+          "index": 96
+        },
+        {
+          "hint": "96 (ninety-six)",
+          "answer": "novantasei",
+          "answers": [
+            "novantasei"
+          ],
+          "index": 97
+        },
+        {
+          "hint": "97 (ninety-seven)",
+          "answer": "novantasette",
+          "answers": [
+            "novantasette"
+          ],
+          "index": 98
+        },
+        {
+          "hint": "98 (ninety-eight)",
+          "answer": "novantotto",
+          "answers": [
+            "novantotto"
+          ],
+          "index": 99
+        },
+        {
+          "hint": "99 (ninety-nine)",
+          "answer": "novantanove",
+          "answers": [
+            "novantanove"
+          ],
+          "index": 100
+        },
+        {
+          "hint": "100 (one hundred)",
+          "answer": "cento",
+          "answers": [
+            "cento"
+          ],
+          "index": 101
+        }
+      ]
+    },
+    {
+      "id": "colours",
+      "title": "Colours",
+      "description": "Common basic and high-frequency colour terms.",
+      "count": 24,
+      "items": [
+        {
+          "hint": "yellow",
+          "answer": "giallo",
+          "answers": [
+            "giallo"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "blue",
+          "answer": "blu",
+          "answers": [
+            "blu"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "white",
+          "answer": "bianco",
+          "answers": [
+            "bianco"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "gray",
+          "answer": "grigio",
+          "answers": [
+            "grigio"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "brown",
+          "answer": "marrone",
+          "answers": [
+            "marrone"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "brown (alt form)",
+          "answer": "castano",
+          "answers": [
+            "castano"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "purple",
+          "answer": "viola",
+          "answers": [
+            "viola"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "purple (alt form)",
+          "answer": "porpora",
+          "answers": [
+            "porpora"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "orange",
+          "answer": "arancione",
+          "answers": [
+            "arancione"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "orange (adjectival)",
+          "answer": "aranciato",
+          "answers": [
+            "aranciato"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "black",
+          "answer": "nero",
+          "answers": [
+            "nero"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "red",
+          "answer": "rosso",
+          "answers": [
+            "rosso"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "pink",
+          "answer": "rosa",
+          "answers": [
+            "rosa"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "pink (alt form)",
+          "answer": "rosato",
+          "answers": [
+            "rosato"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "green",
+          "answer": "verde",
+          "answers": [
+            "verde"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "violet",
+          "answer": "violetto",
+          "answers": [
+            "violetto"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "light blue",
+          "answer": "azzurro",
+          "answers": [
+            "azzurro"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "turquoise",
+          "answer": "turchese",
+          "answers": [
+            "turchese"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "beige",
+          "answer": "beige",
+          "answers": [
+            "beige"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "golden",
+          "answer": "dorato",
+          "answers": [
+            "dorato"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "silver",
+          "answer": "argentato",
+          "answers": [
+            "argentato"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "maroon",
+          "answer": "bordeaux",
+          "answers": [
+            "bordeaux"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "lilac",
+          "answer": "lilla",
+          "answers": [
+            "lilla"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "lavender",
+          "answer": "lavanda",
+          "answers": [
+            "lavanda"
+          ],
+          "index": 24
+        }
+      ]
+    }
+  ]
+}

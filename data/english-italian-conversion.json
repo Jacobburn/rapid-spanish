@@ -1,0 +1,135 @@
+{
+  "source": "Rapid Italian conversion drills",
+  "groupCount": 8,
+  "totalItems": 64,
+  "groups": [
+    {
+      "id": "it-rule-tion-zione",
+      "title": "The \"TION\" -> \"ZIONE\" Rule",
+      "description": "Many English words ending in -tion map to Italian -zione.",
+      "count": 8,
+      "items": [
+        { "hint": "information", "answer": "informazione", "answers": ["informazione"], "imperfect": false, "index": 1 },
+        { "hint": "nation", "answer": "nazione", "answers": ["nazione"], "imperfect": false, "index": 2 },
+        { "hint": "station", "answer": "stazione", "answers": ["stazione"], "imperfect": false, "index": 3 },
+        { "hint": "conversation", "answer": "conversazione", "answers": ["conversazione"], "imperfect": false, "index": 4 },
+        { "hint": "decision", "answer": "decisione", "answers": ["decisione"], "imperfect": true, "index": 5 },
+        { "hint": "direction", "answer": "direzione", "answers": ["direzione"], "imperfect": false, "index": 6 },
+        { "hint": "solution", "answer": "soluzione", "answers": ["soluzione"], "imperfect": false, "index": 7 },
+        { "hint": "organization", "answer": "organizzazione", "answers": ["organizzazione"], "imperfect": false, "index": 8 }
+      ]
+    },
+    {
+      "id": "it-rule-ity-ita",
+      "title": "The \"ITY\" -> \"ITA\" Rule",
+      "description": "English -ity often becomes Italian -ita.",
+      "count": 8,
+      "items": [
+        { "hint": "quality", "answer": "qualita", "answers": ["qualita"], "imperfect": false, "index": 1 },
+        { "hint": "reality", "answer": "realta", "answers": ["realta"], "imperfect": false, "index": 2 },
+        { "hint": "university", "answer": "universita", "answers": ["universita"], "imperfect": false, "index": 3 },
+        { "hint": "necessity", "answer": "necessita", "answers": ["necessita"], "imperfect": false, "index": 4 },
+        { "hint": "activity", "answer": "attivita", "answers": ["attivita"], "imperfect": false, "index": 5 },
+        { "hint": "identity", "answer": "identita", "answers": ["identita"], "imperfect": false, "index": 6 },
+        { "hint": "opportunity", "answer": "opportunita", "answers": ["opportunita"], "imperfect": false, "index": 7 },
+        { "hint": "responsibility", "answer": "responsabilita", "answers": ["responsabilita"], "imperfect": false, "index": 8 }
+      ]
+    },
+    {
+      "id": "it-rule-ous-oso",
+      "title": "The \"OUS\" -> \"OSO\" Pattern",
+      "description": "Many adjectives ending in -ous become -oso/-osa in Italian.",
+      "count": 8,
+      "items": [
+        { "hint": "curious", "answer": "curioso", "answers": ["curioso", "curiosa"], "imperfect": false, "index": 1 },
+        { "hint": "famous", "answer": "famoso", "answers": ["famoso", "famosa"], "imperfect": false, "index": 2 },
+        { "hint": "dangerous", "answer": "pericoloso", "answers": ["pericoloso", "pericolosa"], "imperfect": false, "index": 3 },
+        { "hint": "nervous", "answer": "nervoso", "answers": ["nervoso", "nervosa"], "imperfect": false, "index": 4 },
+        { "hint": "serious", "answer": "serio", "answers": ["serio", "seria"], "imperfect": true, "index": 5 },
+        { "hint": "delicious", "answer": "delizioso", "answers": ["delizioso", "deliziosa"], "imperfect": false, "index": 6 },
+        { "hint": "generous", "answer": "generoso", "answers": ["generoso", "generosa"], "imperfect": false, "index": 7 },
+        { "hint": "religious", "answer": "religioso", "answers": ["religioso", "religiosa"], "imperfect": false, "index": 8 }
+      ]
+    },
+    {
+      "id": "it-rule-ary-ario",
+      "title": "The \"ARY\" -> \"ARIO\" Pattern",
+      "description": "Many nouns ending in -ary become -ario in Italian.",
+      "count": 8,
+      "items": [
+        { "hint": "library", "answer": "biblioteca", "answers": ["biblioteca"], "imperfect": true, "index": 1 },
+        { "hint": "dictionary", "answer": "dizionario", "answers": ["dizionario"], "imperfect": false, "index": 2 },
+        { "hint": "secretary", "answer": "segretario", "answers": ["segretario", "segretaria"], "imperfect": false, "index": 3 },
+        { "hint": "vocabulary", "answer": "vocabolario", "answers": ["vocabolario"], "imperfect": false, "index": 4 },
+        { "hint": "commentary", "answer": "commentario", "answers": ["commentario"], "imperfect": false, "index": 5 },
+        { "hint": "itinerary", "answer": "itinerario", "answers": ["itinerario"], "imperfect": false, "index": 6 },
+        { "hint": "salary", "answer": "salario", "answers": ["salario"], "imperfect": false, "index": 7 },
+        { "hint": "voluntary", "answer": "volontario", "answers": ["volontario", "volontaria"], "imperfect": true, "index": 8 }
+      ]
+    },
+    {
+      "id": "it-rule-al-ale",
+      "title": "The \"AL\" -> \"ALE\" Pattern",
+      "description": "A frequent adjective conversion is -al to -ale.",
+      "count": 8,
+      "items": [
+        { "hint": "natural", "answer": "naturale", "answers": ["naturale"], "imperfect": false, "index": 1 },
+        { "hint": "personal", "answer": "personale", "answers": ["personale"], "imperfect": false, "index": 2 },
+        { "hint": "central", "answer": "centrale", "answers": ["centrale"], "imperfect": false, "index": 3 },
+        { "hint": "global", "answer": "globale", "answers": ["globale"], "imperfect": false, "index": 4 },
+        { "hint": "social", "answer": "sociale", "answers": ["sociale"], "imperfect": false, "index": 5 },
+        { "hint": "digital", "answer": "digitale", "answers": ["digitale"], "imperfect": false, "index": 6 },
+        { "hint": "critical", "answer": "critico", "answers": ["critico", "critica"], "imperfect": true, "index": 7 },
+        { "hint": "formal", "answer": "formale", "answers": ["formale"], "imperfect": false, "index": 8 }
+      ]
+    },
+    {
+      "id": "it-rule-ic-ico",
+      "title": "The \"IC\" -> \"ICO\" Pattern",
+      "description": "English adjectives ending in -ic often become -ico/-ica.",
+      "count": 8,
+      "items": [
+        { "hint": "economic", "answer": "economico", "answers": ["economico", "economica"], "imperfect": false, "index": 1 },
+        { "hint": "historic", "answer": "storico", "answers": ["storico", "storica"], "imperfect": false, "index": 2 },
+        { "hint": "romantic", "answer": "romantico", "answers": ["romantico", "romantica"], "imperfect": false, "index": 3 },
+        { "hint": "classic", "answer": "classico", "answers": ["classico", "classica"], "imperfect": false, "index": 4 },
+        { "hint": "specific", "answer": "specifico", "answers": ["specifico", "specifica"], "imperfect": false, "index": 5 },
+        { "hint": "public", "answer": "pubblico", "answers": ["pubblico", "pubblica"], "imperfect": true, "index": 6 },
+        { "hint": "athletic", "answer": "atletico", "answers": ["atletico", "atletica"], "imperfect": false, "index": 7 },
+        { "hint": "symbolic", "answer": "simbolico", "answers": ["simbolico", "simbolica"], "imperfect": false, "index": 8 }
+      ]
+    },
+    {
+      "id": "it-rule-ble-bile",
+      "title": "The \"BLE\" -> \"BILE\" Pattern",
+      "description": "Some -ble adjectives map directly to -bile in Italian.",
+      "count": 8,
+      "items": [
+        { "hint": "possible", "answer": "possibile", "answers": ["possibile"], "imperfect": false, "index": 1 },
+        { "hint": "terrible", "answer": "terribile", "answers": ["terribile"], "imperfect": false, "index": 2 },
+        { "hint": "flexible", "answer": "flessibile", "answers": ["flessibile"], "imperfect": false, "index": 3 },
+        { "hint": "visible", "answer": "visibile", "answers": ["visibile"], "imperfect": false, "index": 4 },
+        { "hint": "incredible", "answer": "incredibile", "answers": ["incredibile"], "imperfect": false, "index": 5 },
+        { "hint": "compatible", "answer": "compatibile", "answers": ["compatibile"], "imperfect": false, "index": 6 },
+        { "hint": "responsible", "answer": "responsabile", "answers": ["responsabile"], "imperfect": true, "index": 7 },
+        { "hint": "reliable", "answer": "affidabile", "answers": ["affidabile"], "imperfect": true, "index": 8 }
+      ]
+    },
+    {
+      "id": "it-common-phrases",
+      "title": "Common Direct Conversions",
+      "description": "Useful frequent words that convert directly.",
+      "count": 8,
+      "items": [
+        { "hint": "important", "answer": "importante", "answers": ["importante"], "imperfect": false, "index": 1 },
+        { "hint": "modern", "answer": "moderno", "answers": ["moderno", "moderna"], "imperfect": false, "index": 2 },
+        { "hint": "original", "answer": "originale", "answers": ["originale"], "imperfect": false, "index": 3 },
+        { "hint": "family", "answer": "famiglia", "answers": ["famiglia"], "imperfect": false, "index": 4 },
+        { "hint": "future", "answer": "futuro", "answers": ["futuro", "futura"], "imperfect": false, "index": 5 },
+        { "hint": "minute", "answer": "minuto", "answers": ["minuto"], "imperfect": false, "index": 6 },
+        { "hint": "problem", "answer": "problema", "answers": ["problema"], "imperfect": false, "index": 7 },
+        { "hint": "project", "answer": "progetto", "answers": ["progetto"], "imperfect": false, "index": 8 }
+      ]
+    }
+  ]
+}

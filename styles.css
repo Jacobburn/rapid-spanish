@@ -121,6 +121,34 @@ body {
   white-space: nowrap;
 }
 
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  border: 1px solid #ccb791;
+  border-radius: 999px;
+  background: #fff6e6;
+  color: #5f4f33;
+  padding: 0.28rem 0.6rem;
+  font-size: 0.77rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.language-toggle select {
+  border: 1px solid #d8c4a0;
+  border-radius: 999px;
+  background: #fff;
+  color: #4b3b1f;
+  font: inherit;
+  padding: 0.1rem 0.45rem;
+}
+
+.language-toggle select:focus {
+  outline: 2px solid rgba(62, 106, 78, 0.3);
+  outline-offset: 1px;
+}
+
 .admin-mode-toggle input {
   accent-color: var(--brand);
 }
