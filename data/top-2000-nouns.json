@@ -12,7 +12,7 @@
       "count": 25,
       "items": [
         {
-          "hint": "vez",
+          "hint": "time / occurrence",
           "answer": "la vez",
           "answers": [
             "la vez"
@@ -112,7 +112,7 @@
           "index": 10
         },
         {
-          "hint": "mañana",
+          "hint": "morning / tomorrow",
           "answer": "la mañana",
           "answers": [
             "la mañana"
@@ -162,7 +162,7 @@
           "index": 15
         },
         {
-          "hint": "final",
+          "hint": "end / finale",
           "answer": "el final",
           "answers": [
             "el final"
@@ -172,7 +172,7 @@
           "index": 16
         },
         {
-          "hint": "época",
+          "hint": "era / period",
           "answer": "la época",
           "answers": [
             "la época"
@@ -182,7 +182,7 @@
           "index": 17
         },
         {
-          "hint": "rato",
+          "hint": "while / short time",
           "answer": "el rato",
           "answers": [
             "el rato"
@@ -222,7 +222,7 @@
           "index": 21
         },
         {
-          "hint": "fecha",
+          "hint": "date",
           "answer": "la fecha",
           "answers": [
             "la fecha"
@@ -311,7 +311,7 @@
           "index": 4
         },
         {
-          "hint": "señor",
+          "hint": "sir / mister",
           "answer": "el señor",
           "answers": [
             "el señor"
@@ -351,7 +351,7 @@
           "index": 8
         },
         {
-          "hint": "señorito",
+          "hint": "young gentleman",
           "answer": "el señorito",
           "answers": [
             "el señorito"
@@ -371,7 +371,7 @@
           "index": 10
         },
         {
-          "hint": "don",
+          "hint": "honorific don",
           "answer": "el don",
           "answers": [
             "el don"
@@ -381,7 +381,7 @@
           "index": 11
         },
         {
-          "hint": "amo",
+          "hint": "master",
           "answer": "el amo",
           "answers": [
             "el amo"
@@ -401,7 +401,7 @@
           "index": 13
         },
         {
-          "hint": "director",
+          "hint": "director / manager",
           "answer": "el director",
           "answers": [
             "el director"
@@ -421,7 +421,7 @@
           "index": 15
         },
         {
-          "hint": "ministro",
+          "hint": "minister",
           "answer": "el ministro",
           "answers": [
             "el ministro"
@@ -494,7 +494,7 @@
           "index": 22
         },
         {
-          "hint": "coronel",
+          "hint": "colonel",
           "answer": "el coronel",
           "answers": [
             "el coronel"
@@ -504,7 +504,7 @@
           "index": 23
         },
         {
-          "hint": "secretario",
+          "hint": "secretary",
           "answer": "el secretario",
           "answers": [
             "el secretario"
@@ -625,7 +625,7 @@
           "index": 9
         },
         {
-          "hint": "marido",
+          "hint": "husband",
           "answer": "el marido",
           "answers": [
             "el marido"
@@ -705,7 +705,7 @@
           "index": 17
         },
         {
-          "hint": "boda",
+          "hint": "wedding",
           "answer": "la boda",
           "answers": [
             "la boda"
@@ -715,7 +715,7 @@
           "index": 18
         },
         {
-          "hint": "amor",
+          "hint": "love",
           "answer": "el amor",
           "answers": [
             "el amor"
@@ -775,7 +775,7 @@
           "index": 24
         },
         {
-          "hint": "rey",
+          "hint": "king",
           "answer": "el rey",
           "answers": [
             "el rey"
@@ -894,7 +894,7 @@
           "index": 10
         },
         {
-          "hint": "espalda",
+          "hint": "back",
           "answer": "la espalda",
           "answers": [
             "la espalda"
@@ -994,7 +994,7 @@
           "index": 20
         },
         {
-          "hint": "enfermo",
+          "hint": "sick person",
           "answer": "el enfermo",
           "answers": [
             "el enfermo"
@@ -1004,7 +1004,7 @@
           "index": 21
         },
         {
-          "hint": "doctor",
+          "hint": "doctor / physician",
           "answer": "el doctor",
           "answers": [
             "el doctor"
@@ -1084,7 +1084,7 @@
           "index": 3
         },
         {
-          "hint": "cuarto",
+          "hint": "room",
           "answer": "el cuarto",
           "answers": [
             "el cuarto"
@@ -1094,7 +1094,7 @@
           "index": 4
         },
         {
-          "hint": "piso",
+          "hint": "apartment / floor",
           "answer": "el piso",
           "answers": [
             "el piso"
@@ -1294,7 +1294,7 @@
           "index": 24
         },
         {
-          "hint": "cuidado",
+          "hint": "care",
           "answer": "el cuidado",
           "answers": [
             "el cuidado"
@@ -1413,7 +1413,7 @@
           "index": 10
         },
         {
-          "hint": "edificio",
+          "hint": "building",
           "answer": "el edificio",
           "answers": [
             "el edificio"
@@ -1443,7 +1443,7 @@
           "index": 13
         },
         {
-          "hint": "bar",
+          "hint": "bar / pub",
           "answer": "el bar",
           "answers": [
             "el bar"
@@ -1463,7 +1463,7 @@
           "index": 15
         },
         {
-          "hint": "hotel",
+          "hint": "hotel / inn",
           "answer": "el hotel",
           "answers": [
             "el hotel"
@@ -1483,7 +1483,7 @@
           "index": 17
         },
         {
-          "hint": "hospital",
+          "hint": "hospital / clinic",
           "answer": "el hospital",
           "answers": [
             "el hospital"
@@ -1523,7 +1523,7 @@
           "index": 21
         },
         {
-          "hint": "area",
+          "hint": "area / zone",
           "answer": "la área",
           "answers": [
             "la área"
@@ -1533,7 +1533,7 @@
           "index": 22
         },
         {
-          "hint": "base",
+          "hint": "base / foundation",
           "answer": "la base",
           "answers": [
             "la base"
@@ -1692,7 +1692,7 @@
           "index": 12
         },
         {
-          "hint": "vuelta",
+          "hint": "return / turn",
           "answer": "la vuelta",
           "answers": [
             "la vuelta"
@@ -1702,7 +1702,7 @@
           "index": 13
         },
         {
-          "hint": "marcha",
+          "hint": "march / departure",
           "answer": "la marcha",
           "answers": [
             "la marcha"
@@ -1782,7 +1782,7 @@
           "index": 21
         },
         {
-          "hint": "nave",
+          "hint": "ship / vessel",
           "answer": "la nave",
           "answers": [
             "la nave"
@@ -1881,7 +1881,7 @@
           "index": 5
         },
         {
-          "hint": "copa",
+          "hint": "glass",
           "answer": "la copa",
           "answers": [
             "la copa"
@@ -2071,7 +2071,7 @@
           "index": 24
         },
         {
-          "hint": "resto",
+          "hint": "remainder",
           "answer": "el resto",
           "answers": [
             "el resto"
@@ -2120,7 +2120,7 @@
           "index": 3
         },
         {
-          "hint": "dólar",
+          "hint": "dollar",
           "answer": "el dólar",
           "answers": [
             "el dólar"
@@ -2180,7 +2180,7 @@
           "index": 9
         },
         {
-          "hint": "compañía",
+          "hint": "company",
           "answer": "la compañía",
           "answers": [
             "la compañía"
@@ -2250,7 +2250,7 @@
           "index": 16
         },
         {
-          "hint": "capital",
+          "hint": "capital (city or funds)",
           "answer": "el capital",
           "answers": [
             "el capital"
@@ -2270,7 +2270,7 @@
           "index": 18
         },
         {
-          "hint": "recurso",
+          "hint": "resource",
           "answer": "el recurso",
           "answers": [
             "el recurso"
@@ -2280,7 +2280,7 @@
           "index": 19
         },
         {
-          "hint": "sector",
+          "hint": "sector / field",
           "answer": "el sector",
           "answers": [
             "el sector"
@@ -2290,7 +2290,7 @@
           "index": 20
         },
         {
-          "hint": "plan",
+          "hint": "plan / scheme",
           "answer": "el plan",
           "answers": [
             "el plan"
@@ -2389,7 +2389,7 @@
           "index": 4
         },
         {
-          "hint": "derecho",
+          "hint": "right / law",
           "answer": "el derecho",
           "answers": [
             "el derecho"
@@ -2520,7 +2520,7 @@
           "index": 17
         },
         {
-          "hint": "detective",
+          "hint": "detective / investigator",
           "answer": "el detective",
           "answers": [
             "el detective",
@@ -2661,7 +2661,7 @@
           "index": 5
         },
         {
-          "hint": "noticia",
+          "hint": "news item",
           "answer": "la noticia",
           "answers": [
             "la noticia"
@@ -2701,7 +2701,7 @@
           "index": 9
         },
         {
-          "hint": "opinion",
+          "hint": "opinion / viewpoint",
           "answer": "la opinión",
           "answers": [
             "la opinión"
@@ -2711,7 +2711,7 @@
           "index": 10
         },
         {
-          "hint": "recuerdo",
+          "hint": "memory",
           "answer": "el recuerdo",
           "answers": [
             "el recuerdo"
@@ -2751,7 +2751,7 @@
           "index": 14
         },
         {
-          "hint": "escrito",
+          "hint": "written piece",
           "answer": "el escrito",
           "answers": [
             "el escrito"
@@ -2791,7 +2791,7 @@
           "index": 18
         },
         {
-          "hint": "foto",
+          "hint": "photo",
           "answer": "la foto",
           "answers": [
             "la foto"
@@ -2811,7 +2811,7 @@
           "index": 20
         },
         {
-          "hint": "radio",
+          "hint": "radio (device or medium)",
           "answer": "la radio",
           "answers": [
             "la radio"
@@ -2821,7 +2821,7 @@
           "index": 21
         },
         {
-          "hint": "television",
+          "hint": "television / TV",
           "answer": "la televisión",
           "answers": [
             "la televisión"
@@ -2940,7 +2940,7 @@
           "index": 6
         },
         {
-          "hint": "actor",
+          "hint": "actor / performer",
           "answer": "el actor",
           "answers": [
             "el actor"
@@ -2974,7 +2974,7 @@
           "index": 9
         },
         {
-          "hint": "obra",
+          "hint": "work / play",
           "answer": "la obra",
           "answers": [
             "la obra"
@@ -2984,7 +2984,7 @@
           "index": 10
         },
         {
-          "hint": "club",
+          "hint": "club / association",
           "answer": "el club",
           "answers": [
             "el club"
@@ -3014,7 +3014,7 @@
           "index": 13
         },
         {
-          "hint": "jugador",
+          "hint": "player",
           "answer": "el jugador",
           "answers": [
             "el jugador"
@@ -3064,7 +3064,7 @@
           "index": 18
         },
         {
-          "hint": "color",
+          "hint": "color / hue",
           "answer": "el color",
           "answers": [
             "el color"
@@ -3094,7 +3094,7 @@
           "index": 21
         },
         {
-          "hint": "reina",
+          "hint": "queen",
           "answer": "la reina",
           "answers": [
             "la reina"
@@ -3104,7 +3104,7 @@
           "index": 22
         },
         {
-          "hint": "personaje",
+          "hint": "character",
           "answer": "el personaje",
           "answers": [
             "el personaje"
@@ -3273,7 +3273,7 @@
           "index": 13
         },
         {
-          "hint": "animal",
+          "hint": "animal / creature",
           "answer": "el animal",
           "answers": [
             "el animal"
@@ -3363,7 +3363,7 @@
           "index": 22
         },
         {
-          "hint": "material",
+          "hint": "material / substance",
           "answer": "el material",
           "answers": [
             "el material"
@@ -3532,7 +3532,7 @@
           "index": 13
         },
         {
-          "hint": "honor",
+          "hint": "honor / dignity",
           "answer": "el honor",
           "answers": [
             "el honor"
@@ -3582,7 +3582,7 @@
           "index": 18
         },
         {
-          "hint": "necesidad",
+          "hint": "need",
           "answer": "la necesidad",
           "answers": [
             "la necesidad"
@@ -3612,7 +3612,7 @@
           "index": 21
         },
         {
-          "hint": "lamento",
+          "hint": "regret",
           "answer": "el lamento",
           "answers": [
             "el lamento"
@@ -3691,7 +3691,7 @@
           "index": 3
         },
         {
-          "hint": "profesor",
+          "hint": "teacher / professor",
           "answer": "el profesor",
           "answers": [
             "el profesor"
@@ -3882,7 +3882,7 @@
           "index": 22
         },
         {
-          "hint": "universidad",
+          "hint": "university",
           "answer": "la universidad",
           "answers": [
             "la universidad"
@@ -3902,7 +3902,7 @@
           "index": 24
         },
         {
-          "hint": "dato",
+          "hint": "data point",
           "answer": "el dato",
           "answers": [
             "el dato"
@@ -3921,7 +3921,7 @@
       "count": 25,
       "items": [
         {
-          "hint": "gracias",
+          "hint": "thanks",
           "answer": "las gracias",
           "answers": [
             "las gracias"
@@ -3931,7 +3931,7 @@
           "index": 1
         },
         {
-          "hint": "cosa",
+          "hint": "thing",
           "answer": "la cosa",
           "answers": [
             "la cosa"
@@ -3941,7 +3941,7 @@
           "index": 2
         },
         {
-          "hint": "favor",
+          "hint": "favor / kindness",
           "answer": "el favor",
           "answers": [
             "el favor"
@@ -4001,7 +4001,7 @@
           "index": 8
         },
         {
-          "hint": "caso",
+          "hint": "case",
           "answer": "el caso",
           "answers": [
             "el caso"
@@ -4031,7 +4031,7 @@
           "index": 11
         },
         {
-          "hint": "idea",
+          "hint": "idea / concept",
           "answer": "la idea",
           "answers": [
             "la idea"
@@ -4101,7 +4101,7 @@
           "index": 18
         },
         {
-          "hint": "loco",
+          "hint": "crazy person",
           "answer": "el loco",
           "answers": [
             "el loco"
@@ -4111,7 +4111,7 @@
           "index": 19
         },
         {
-          "hint": "millón",
+          "hint": "million",
           "answer": "el millón",
           "answers": [
             "el millón"
@@ -4131,7 +4131,7 @@
           "index": 21
         },
         {
-          "hint": "supuesto",
+          "hint": "assumption",
           "answer": "el supuesto",
           "answers": [
             "el supuesto"
@@ -4141,7 +4141,7 @@
           "index": 22
         },
         {
-          "hint": "viejo",
+          "hint": "old man",
           "answer": "el viejo",
           "answers": [
             "el viejo"
@@ -4151,7 +4151,7 @@
           "index": 23
         },
         {
-          "hint": "adiós",
+          "hint": "goodbye",
           "answer": "el adiós",
           "answers": [
             "el adiós"
@@ -4161,7 +4161,7 @@
           "index": 24
         },
         {
-          "hint": "modo",
+          "hint": "mode / way",
           "answer": "el modo",
           "answers": [
             "el modo"
@@ -4260,7 +4260,7 @@
           "index": 8
         },
         {
-          "hint": "malo",
+          "hint": "bad person / bad one",
           "answer": "el malo",
           "answers": [
             "el malo"
@@ -4270,7 +4270,7 @@
           "index": 9
         },
         {
-          "hint": "puesto",
+          "hint": "position / post",
           "answer": "el puesto",
           "answers": [
             "el puesto"
@@ -4300,7 +4300,7 @@
           "index": 12
         },
         {
-          "hint": "embargo",
+          "hint": "embargo / seizure",
           "answer": "el embargo",
           "answers": [
             "el embargo"
@@ -4360,7 +4360,7 @@
           "index": 18
         },
         {
-          "hint": "puta",
+          "hint": "prostitute",
           "answer": "la puta",
           "answers": [
             "la puta"
@@ -4370,7 +4370,7 @@
           "index": 19
         },
         {
-          "hint": "través",
+          "hint": "through / way",
           "answer": "el través",
           "answers": [
             "el través"
@@ -4380,7 +4380,7 @@
           "index": 20
         },
         {
-          "hint": "decision",
+          "hint": "decision / choice",
           "answer": "la decisión",
           "answers": [
             "la decisión"
@@ -4390,7 +4390,7 @@
           "index": 21
         },
         {
-          "hint": "control",
+          "hint": "control / supervision",
           "answer": "el control",
           "answers": [
             "el control"
@@ -4459,7 +4459,7 @@
           "index": 2
         },
         {
-          "hint": "maldito",
+          "hint": "damned person",
           "answer": "el maldito",
           "answers": [
             "el maldito"
@@ -4469,7 +4469,7 @@
           "index": 3
         },
         {
-          "hint": "reunión",
+          "hint": "meeting",
           "answer": "la reunión",
           "answers": [
             "la reunión"
@@ -4529,7 +4529,7 @@
           "index": 9
         },
         {
-          "hint": "mayoría",
+          "hint": "majority",
           "answer": "la mayoría",
           "answers": [
             "la mayoría"
@@ -4599,7 +4599,7 @@
           "index": 16
         },
         {
-          "hint": "i",
+          "hint": "letter i",
           "answer": "la i",
           "answers": [
             "la i"
@@ -4609,7 +4609,7 @@
           "index": 17
         },
         {
-          "hint": "respecto",
+          "hint": "regard",
           "answer": "el respecto",
           "answers": [
             "el respecto"
@@ -4698,7 +4698,7 @@
       "count": 25,
       "items": [
         {
-          "hint": "encuentro",
+          "hint": "encounter / meeting",
           "answer": "el encuentro",
           "answers": [
             "el encuentro"
@@ -4738,7 +4738,7 @@
           "index": 4
         },
         {
-          "hint": "ministro",
+          "hint": "minister",
           "answer": "el ministro",
           "answers": [
             "el ministro"
@@ -4809,7 +4809,7 @@
           "index": 11
         },
         {
-          "hint": "ocación",
+          "hint": "occasion",
           "answer": "la ocación",
           "answers": [
             "la ocación"
@@ -4819,7 +4819,7 @@
           "index": 12
         },
         {
-          "hint": "area",
+          "hint": "area / zone",
           "answer": "la área",
           "answers": [
             "la área"
@@ -4829,7 +4829,7 @@
           "index": 13
         },
         {
-          "hint": "detective",
+          "hint": "detective / investigator",
           "answer": "el detective",
           "answers": [
             "el detective",
@@ -4900,7 +4900,7 @@
           "index": 20
         },
         {
-          "hint": "radio",
+          "hint": "radio (device or medium)",
           "answer": "la radio",
           "answers": [
             "la radio"
@@ -4910,7 +4910,7 @@
           "index": 21
         },
         {
-          "hint": "enemigo",
+          "hint": "enemy",
           "answer": "el enemigo",
           "answers": [
             "el enemigo"
@@ -5019,7 +5019,7 @@
           "index": 6
         },
         {
-          "hint": "sector",
+          "hint": "sector / field",
           "answer": "el sector",
           "answers": [
             "el sector"
@@ -5069,7 +5069,7 @@
           "index": 11
         },
         {
-          "hint": "época",
+          "hint": "era / period",
           "answer": "la época",
           "answers": [
             "la época"
@@ -5079,7 +5079,7 @@
           "index": 12
         },
         {
-          "hint": "rato",
+          "hint": "while / short time",
           "answer": "el rato",
           "answers": [
             "el rato"
@@ -5190,7 +5190,7 @@
           "index": 23
         },
         {
-          "hint": "consecuencia",
+          "hint": "consequence",
           "answer": "la consecuencia",
           "answers": [
             "la consecuencia"
@@ -5230,7 +5230,7 @@
           "index": 27
         },
         {
-          "hint": "gato",
+          "hint": "cat",
           "answer": "el gato",
           "answers": [
             "el gato"

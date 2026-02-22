@@ -3057,7 +3057,7 @@ function renderStatsHubTile() {
   statsMinutesStudied.textContent =
     totalAttempts > 0 ? `${totalMinutes.toFixed(1)} min` : "No attempts yet";
   statsWordsPerMinute.textContent =
-    totalWords > 0 && totalMinutes > 0 ? `${(totalWords / totalMinutes).toFixed(1)} wpm` : "No data yet";
+    totalWords > 0 && totalMinutes > 0 ? `${(totalWords / totalMinutes).toFixed(1)} /min` : "No data yet";
 
   const trend = getWeeklyProgressTrend(state.currentUser?.username || "");
   if (trend.thisWeekPoints === 0 && trend.lastWeekPoints === 0) {
