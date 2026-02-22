@@ -1239,6 +1239,21 @@ h2 {
   border-bottom: none;
 }
 
+.form-row.form-subheading {
+  grid-template-columns: 1fr;
+  background: #f3e6ce;
+  border-bottom-color: #e7d7ba;
+}
+
+.form-subheading-label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #6a5632;
+}
+
 .form-label {
   color: var(--ink-muted);
   font-size: 0.85rem;
@@ -1668,6 +1683,14 @@ h2 {
     text-align: right;
     overflow-wrap: anywhere;
     word-break: break-word;
+  }
+
+  .form-row.form-subheading {
+    display: block;
+  }
+
+  .form-subheading-label {
+    font-size: 0.7rem;
   }
 
   .srs-grade-row .ghost-button {

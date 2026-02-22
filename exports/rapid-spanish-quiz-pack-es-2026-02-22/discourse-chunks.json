@@ -1,0 +1,1016 @@
+{
+  "verb_preposition_chunks": [
+    {
+      "es": "hablar de",
+      "en": "talk about"
+    },
+    {
+      "es": "hablar con",
+      "en": "talk with"
+    },
+    {
+      "es": "pensar en",
+      "en": "think about"
+    },
+    {
+      "es": "soñar con",
+      "en": "dream about"
+    },
+    {
+      "es": "depender de",
+      "en": "depend on"
+    },
+    {
+      "es": "contar con",
+      "en": "count on / rely on"
+    },
+    {
+      "es": "creer en",
+      "en": "believe in"
+    },
+    {
+      "es": "insistir en",
+      "en": "insist on"
+    },
+    {
+      "es": "dudar de",
+      "en": "doubt"
+    },
+    {
+      "es": "acordarse de",
+      "en": "remember"
+    },
+    {
+      "es": "olvidarse de",
+      "en": "forget"
+    },
+    {
+      "es": "quejarse de",
+      "en": "complain about"
+    },
+    {
+      "es": "enamorarse de",
+      "en": "fall in love with"
+    },
+    {
+      "es": "cuidar de",
+      "en": "take care of"
+    },
+    {
+      "es": "tratar de",
+      "en": "try to"
+    },
+    {
+      "es": "ayudar a",
+      "en": "help (someone) to"
+    },
+    {
+      "es": "invitar a",
+      "en": "invite (someone) to"
+    },
+    {
+      "es": "esperar a",
+      "en": "wait for"
+    },
+    {
+      "es": "entrar en",
+      "en": "enter into"
+    },
+    {
+      "es": "salir de",
+      "en": "leave / exit"
+    },
+    {
+      "es": "volver a",
+      "en": "do again / return to"
+    },
+    {
+      "es": "empezar a",
+      "en": "start to"
+    },
+    {
+      "es": "comenzar a",
+      "en": "begin to"
+    },
+    {
+      "es": "aprender a",
+      "en": "learn to"
+    },
+    {
+      "es": "enseñar a",
+      "en": "teach to"
+    },
+    {
+      "es": "obligar a",
+      "en": "force to"
+    },
+    {
+      "es": "decidirse a",
+      "en": "decide to"
+    },
+    {
+      "es": "negarse a",
+      "en": "refuse to"
+    },
+    {
+      "es": "contribuir a",
+      "en": "contribute to"
+    },
+    {
+      "es": "asistir a",
+      "en": "attend"
+    },
+    {
+      "es": "llegar a",
+      "en": "arrive at / manage to"
+    },
+    {
+      "es": "acercarse a",
+      "en": "approach"
+    },
+    {
+      "es": "referirse a",
+      "en": "refer to"
+    },
+    {
+      "es": "pertenecer a",
+      "en": "belong to"
+    },
+    {
+      "es": "responder a",
+      "en": "answer / respond to"
+    },
+    {
+      "es": "culpar de",
+      "en": "blame for"
+    },
+    {
+      "es": "disculparse por",
+      "en": "apologize for"
+    },
+    {
+      "es": "preocuparse por",
+      "en": "worry about"
+    },
+    {
+      "es": "interesarse por",
+      "en": "be interested in"
+    },
+    {
+      "es": "apostar por",
+      "en": "bet on / go for"
+    },
+    {
+      "es": "optar por",
+      "en": "opt for"
+    },
+    {
+      "es": "fijarse en",
+      "en": "notice"
+    },
+    {
+      "es": "concentrarse en",
+      "en": "focus on"
+    },
+    {
+      "es": "consistir en",
+      "en": "consist of / in"
+    },
+    {
+      "es": "convertirse en",
+      "en": "become"
+    },
+    {
+      "es": "sustituir por",
+      "en": "replace with"
+    },
+    {
+      "es": "comparar con",
+      "en": "compare with"
+    },
+    {
+      "es": "comparar a",
+      "en": "compare to"
+    },
+    {
+      "es": "pensar de",
+      "en": "think of / have an opinion about"
+    },
+    {
+      "es": "carecer de",
+      "en": "lack"
+    }
+  ],
+  "verb_noun_fixed_phrases": [
+    {
+      "es": "tener ganas de",
+      "en": "feel like (doing)"
+    },
+    {
+      "es": "tener hambre",
+      "en": "be hungry"
+    },
+    {
+      "es": "tener sed",
+      "en": "be thirsty"
+    },
+    {
+      "es": "tener sueño",
+      "en": "be sleepy"
+    },
+    {
+      "es": "tener prisa",
+      "en": "be in a hurry"
+    },
+    {
+      "es": "tener frío",
+      "en": "be cold"
+    },
+    {
+      "es": "tener calor",
+      "en": "be hot"
+    },
+    {
+      "es": "tener miedo",
+      "en": "be afraid"
+    },
+    {
+      "es": "tener razón",
+      "en": "be right"
+    },
+    {
+      "es": "tener suerte",
+      "en": "be lucky"
+    },
+    {
+      "es": "tener cuidado",
+      "en": "be careful"
+    },
+    {
+      "es": "tener vergüenza",
+      "en": "be embarrassed/ashamed"
+    },
+    {
+      "es": "tener celos",
+      "en": "be jealous"
+    },
+    {
+      "es": "tener flojera",
+      "en": "feel lazy"
+    },
+    {
+      "es": "tener dudas",
+      "en": "have doubts"
+    },
+    {
+      "es": "tener la culpa",
+      "en": "be to blame"
+    },
+    {
+      "es": "tener lugar",
+      "en": "take place"
+    },
+    {
+      "es": "tener sentido",
+      "en": "make sense"
+    },
+    {
+      "es": "tener en cuenta",
+      "en": "take into account"
+    },
+    {
+      "es": "tener pinta de",
+      "en": "look like / seem"
+    },
+    {
+      "es": "tener que ver con",
+      "en": "have to do with"
+    },
+    {
+      "es": "estar de acuerdo",
+      "en": "agree"
+    },
+    {
+      "es": "estar al tanto de",
+      "en": "be aware of / up to date"
+    },
+    {
+      "es": "estar de mal humor",
+      "en": "be in a bad mood"
+    },
+    {
+      "es": "estar de buen humor",
+      "en": "be in a good mood"
+    },
+    {
+      "es": "echar de menos",
+      "en": "miss (someone/something)"
+    },
+    {
+      "es": "darse cuenta de",
+      "en": "realize"
+    },
+    {
+      "es": "quedarse sin",
+      "en": "run out of / be left without"
+    },
+    {
+      "es": "quedarse en blanco",
+      "en": "go blank (mind)"
+    },
+    {
+      "es": "poner atención",
+      "en": "pay attention"
+    },
+    {
+      "es": "hacer falta",
+      "en": "be necessary / be needed"
+    },
+    {
+      "es": "hacer caso",
+      "en": "pay attention / listen"
+    },
+    {
+      "es": "hacer daño",
+      "en": "hurt"
+    },
+    {
+      "es": "hacer ilusión",
+      "en": "be exciting (to someone)"
+    },
+    {
+      "es": "hacer gracia",
+      "en": "be funny"
+    },
+    {
+      "es": "dar igual",
+      "en": "not matter"
+    },
+    {
+      "es": "dar miedo",
+      "en": "be scary"
+    },
+    {
+      "es": "dar pena",
+      "en": "be a pity / make (someone) sad"
+    },
+    {
+      "es": "dar rabia",
+      "en": "make (someone) angry"
+    },
+    {
+      "es": "dar vergüenza",
+      "en": "be embarrassing"
+    },
+    {
+      "es": "dar asco",
+      "en": "be disgusting"
+    },
+    {
+      "es": "valer la pena",
+      "en": "be worth it"
+    },
+    {
+      "es": "merecer la pena",
+      "en": "be worth it"
+    },
+    {
+      "es": "costar trabajo",
+      "en": "be hard (to do)"
+    },
+    {
+      "es": "salir bien",
+      "en": "turn out well"
+    },
+    {
+      "es": "salir mal",
+      "en": "turn out badly"
+    },
+    {
+      "es": "caer bien",
+      "en": "like (a person) / get along"
+    },
+    {
+      "es": "caer mal",
+      "en": "dislike (a person)"
+    },
+    {
+      "es": "llevarse bien",
+      "en": "get along"
+    },
+    {
+      "es": "llevarse mal",
+      "en": "get along badly"
+    }
+  ],
+  "light_verb_constructions": [
+    {
+      "es": "dar un paseo",
+      "en": "take a walk"
+    },
+    {
+      "es": "dar una vuelta",
+      "en": "take a stroll / go for a spin"
+    },
+    {
+      "es": "dar un abrazo",
+      "en": "give a hug"
+    },
+    {
+      "es": "dar un beso",
+      "en": "give a kiss"
+    },
+    {
+      "es": "dar un consejo",
+      "en": "give advice"
+    },
+    {
+      "es": "dar una respuesta",
+      "en": "give an answer"
+    },
+    {
+      "es": "dar una explicación",
+      "en": "give an explanation"
+    },
+    {
+      "es": "dar un grito",
+      "en": "let out a shout"
+    },
+    {
+      "es": "dar un salto",
+      "en": "take a jump"
+    },
+    {
+      "es": "dar una noticia",
+      "en": "break some news"
+    },
+    {
+      "es": "dar una opinión",
+      "en": "give an opinion"
+    },
+    {
+      "es": "dar una clase",
+      "en": "teach a class / give a lesson"
+    },
+    {
+      "es": "dar un discurso",
+      "en": "give a speech"
+    },
+    {
+      "es": "dar una oportunidad",
+      "en": "give an opportunity"
+    },
+    {
+      "es": "dar un ejemplo",
+      "en": "give an example"
+    },
+    {
+      "es": "dar una señal",
+      "en": "give a sign/signal"
+    },
+    {
+      "es": "dar una idea",
+      "en": "give an idea"
+    },
+    {
+      "es": "dar un empujón",
+      "en": "give a push"
+    },
+    {
+      "es": "dar un golpe",
+      "en": "give a hit / knock"
+    },
+    {
+      "es": "hacer una llamada",
+      "en": "make a call"
+    },
+    {
+      "es": "hacer una pregunta",
+      "en": "ask a question"
+    },
+    {
+      "es": "hacer una reserva",
+      "en": "make a reservation"
+    },
+    {
+      "es": "hacer una compra",
+      "en": "make a purchase"
+    },
+    {
+      "es": "hacer un pedido",
+      "en": "place an order"
+    },
+    {
+      "es": "hacer una visita",
+      "en": "pay a visit"
+    },
+    {
+      "es": "hacer una reunión",
+      "en": "hold a meeting"
+    },
+    {
+      "es": "hacer un viaje",
+      "en": "take a trip"
+    },
+    {
+      "es": "hacer una pausa",
+      "en": "take a break"
+    },
+    {
+      "es": "hacer un esfuerzo",
+      "en": "make an effort"
+    },
+    {
+      "es": "hacer un comentario",
+      "en": "make a comment"
+    },
+    {
+      "es": "hacer un favor",
+      "en": "do a favor"
+    },
+    {
+      "es": "hacer un cambio",
+      "en": "make a change"
+    },
+    {
+      "es": "hacer una lista",
+      "en": "make a list"
+    },
+    {
+      "es": "hacer una promesa",
+      "en": "make a promise"
+    },
+    {
+      "es": "hacer un trato",
+      "en": "make a deal"
+    },
+    {
+      "es": "hacer una prueba",
+      "en": "do a test / trial"
+    },
+    {
+      "es": "tomar una decisión",
+      "en": "make a decision"
+    },
+    {
+      "es": "tomar medidas",
+      "en": "take measures"
+    },
+    {
+      "es": "tomar un descanso",
+      "en": "take a break"
+    },
+    {
+      "es": "tomar una copa",
+      "en": "have a drink"
+    },
+    {
+      "es": "tomar el sol",
+      "en": "sunbathe"
+    },
+    {
+      "es": "tomar nota",
+      "en": "take note"
+    },
+    {
+      "es": "tomar conciencia",
+      "en": "become aware"
+    },
+    {
+      "es": "tomar el control",
+      "en": "take control"
+    },
+    {
+      "es": "echar un vistazo",
+      "en": "have a look"
+    },
+    {
+      "es": "echar una mano",
+      "en": "lend a hand"
+    },
+    {
+      "es": "echar una siesta",
+      "en": "take a nap"
+    },
+    {
+      "es": "echar la culpa a",
+      "en": "blame"
+    },
+    {
+      "es": "poner una queja",
+      "en": "file a complaint"
+    },
+    {
+      "es": "poner una condición",
+      "en": "set a condition"
+    }
+  ],
+  "discourse_conversation_chunks": [
+    {
+      "es": "bueno",
+      "en": "well / okay"
+    },
+    {
+      "es": "pues",
+      "en": "well / so"
+    },
+    {
+      "es": "o sea",
+      "en": "I mean / that is"
+    },
+    {
+      "es": "es que",
+      "en": "it's just that"
+    },
+    {
+      "es": "a ver",
+      "en": "let's see"
+    },
+    {
+      "es": "vamos a ver",
+      "en": "let's see"
+    },
+    {
+      "es": "mira",
+      "en": "look / listen"
+    },
+    {
+      "es": "oye",
+      "en": "hey / listen"
+    },
+    {
+      "es": "verás",
+      "en": "you'll see"
+    },
+    {
+      "es": "digo",
+      "en": "I mean"
+    },
+    {
+      "es": "quiero decir",
+      "en": "I mean"
+    },
+    {
+      "es": "me refiero",
+      "en": "I mean"
+    },
+    {
+      "es": "en fin",
+      "en": "anyway"
+    },
+    {
+      "es": "total",
+      "en": "so / in the end"
+    },
+    {
+      "es": "entonces",
+      "en": "so / then"
+    },
+    {
+      "es": "así que",
+      "en": "so / therefore"
+    },
+    {
+      "es": "por cierto",
+      "en": "by the way"
+    },
+    {
+      "es": "de hecho",
+      "en": "in fact"
+    },
+    {
+      "es": "en realidad",
+      "en": "actually"
+    },
+    {
+      "es": "la verdad es que",
+      "en": "the truth is"
+    },
+    {
+      "es": "en general",
+      "en": "in general"
+    },
+    {
+      "es": "por lo general",
+      "en": "generally"
+    },
+    {
+      "es": "por ejemplo",
+      "en": "for example"
+    },
+    {
+      "es": "es decir",
+      "en": "that is to say"
+    },
+    {
+      "es": "en otras palabras",
+      "en": "in other words"
+    },
+    {
+      "es": "más bien",
+      "en": "rather"
+    },
+    {
+      "es": "o mejor dicho",
+      "en": "or rather"
+    },
+    {
+      "es": "digamos",
+      "en": "let's say"
+    },
+    {
+      "es": "al final",
+      "en": "in the end"
+    },
+    {
+      "es": "aun así",
+      "en": "even so"
+    },
+    {
+      "es": "sin embargo",
+      "en": "however"
+    },
+    {
+      "es": "no obstante",
+      "en": "nevertheless"
+    },
+    {
+      "es": "además",
+      "en": "besides / moreover"
+    },
+    {
+      "es": "encima",
+      "en": "on top of that"
+    },
+    {
+      "es": "por eso",
+      "en": "that's why"
+    },
+    {
+      "es": "por eso mismo",
+      "en": "for that very reason"
+    },
+    {
+      "es": "por lo tanto",
+      "en": "therefore"
+    },
+    {
+      "es": "en cambio",
+      "en": "on the other hand"
+    },
+    {
+      "es": "por un lado",
+      "en": "on the one hand"
+    },
+    {
+      "es": "por otro lado",
+      "en": "on the other hand"
+    },
+    {
+      "es": "primero",
+      "en": "first"
+    },
+    {
+      "es": "después",
+      "en": "afterwards"
+    },
+    {
+      "es": "luego",
+      "en": "then"
+    },
+    {
+      "es": "mientras tanto",
+      "en": "meanwhile"
+    },
+    {
+      "es": "a propósito",
+      "en": "speaking of"
+    },
+    {
+      "es": "a ver si",
+      "en": "let's see if / hopefully"
+    },
+    {
+      "es": "pues nada",
+      "en": "well then"
+    },
+    {
+      "es": "pues eso",
+      "en": "that's that"
+    },
+    {
+      "es": "vale",
+      "en": "okay"
+    },
+    {
+      "es": "claro",
+      "en": "sure / of course"
+    },
+    {
+      "es": "como si",
+      "en": "as if"
+    }
+  ],
+  "emotional_reaction_chunks": [
+    {
+      "es": "¡Qué bien!",
+      "en": "how great!"
+    },
+    {
+      "es": "¡Qué mal!",
+      "en": "how bad!"
+    },
+    {
+      "es": "¡Qué pena!",
+      "en": "what a shame!"
+    },
+    {
+      "es": "¡Qué lástima!",
+      "en": "what a pity!"
+    },
+    {
+      "es": "¡Qué fuerte!",
+      "en": "wow / that's intense!"
+    },
+    {
+      "es": "¡Qué suerte!",
+      "en": "how lucky!"
+    },
+    {
+      "es": "¡Qué miedo!",
+      "en": "how scary!"
+    },
+    {
+      "es": "¡Qué asco!",
+      "en": "how disgusting!"
+    },
+    {
+      "es": "¡Qué rabia!",
+      "en": "how annoying / infuriating!"
+    },
+    {
+      "es": "¡Qué vergüenza!",
+      "en": "how embarrassing!"
+    },
+    {
+      "es": "¡Qué rollo!",
+      "en": "what a drag!"
+    },
+    {
+      "es": "¡Qué risa!",
+      "en": "so funny!"
+    },
+    {
+      "es": "¡Qué raro!",
+      "en": "how weird!"
+    },
+    {
+      "es": "¡Qué genial!",
+      "en": "how awesome!"
+    },
+    {
+      "es": "¡Qué desastre!",
+      "en": "what a disaster!"
+    },
+    {
+      "es": "¡Madre mía!",
+      "en": "oh my god!"
+    },
+    {
+      "es": "¡Dios mío!",
+      "en": "oh my god!"
+    },
+    {
+      "es": "¡No me digas!",
+      "en": "no way! / you don’t say!"
+    },
+    {
+      "es": "¿En serio?",
+      "en": "seriously?"
+    },
+    {
+      "es": "¿De verdad?",
+      "en": "really?"
+    },
+    {
+      "es": "¡Anda!",
+      "en": "wow! / come on!"
+    },
+    {
+      "es": "¡Venga!",
+      "en": "come on!"
+    },
+    {
+      "es": "¡Venga ya!",
+      "en": "come on! / no way!"
+    },
+    {
+      "es": "¡Anda ya!",
+      "en": "no way!"
+    },
+    {
+      "es": "¡Caramba!",
+      "en": "wow! / darn!"
+    },
+    {
+      "es": "¡Caray!",
+      "en": "wow! / darn!"
+    },
+    {
+      "es": "¡Qué barbaridad!",
+      "en": "oh my goodness! / outrageous!"
+    },
+    {
+      "es": "¡Uf!",
+      "en": "ugh!"
+    },
+    {
+      "es": "¡Ay!",
+      "en": "ow! / oh!"
+    },
+    {
+      "es": "¡Guau!",
+      "en": "wow!"
+    },
+    {
+      "es": "¡Ojalá!",
+      "en": "hopefully! / I wish!"
+    },
+    {
+      "es": "Ni idea.",
+      "en": "no idea."
+    },
+    {
+      "es": "Ni hablar.",
+      "en": "no way."
+    },
+    {
+      "es": "Ni de broma.",
+      "en": "no way / not even joking."
+    },
+    {
+      "es": "Para nada.",
+      "en": "not at all."
+    },
+    {
+      "es": "Qué va.",
+      "en": "no way / not really."
+    },
+    {
+      "es": "En absoluto.",
+      "en": "absolutely not."
+    },
+    {
+      "es": "No pasa nada.",
+      "en": "it's fine / no worries."
+    },
+    {
+      "es": "No te preocupes.",
+      "en": "don't worry."
+    },
+    {
+      "es": "Tranquilo/a.",
+      "en": "relax / take it easy."
+    },
+    {
+      "es": "¡Qué alivio!",
+      "en": "what a relief!"
+    },
+    {
+      "es": "¡Qué susto!",
+      "en": "what a scare!"
+    },
+    {
+      "es": "¡Qué mono!",
+      "en": "so cute!"
+    },
+    {
+      "es": "¡Qué bonito!",
+      "en": "how beautiful!"
+    },
+    {
+      "es": "¡Qué interesante!",
+      "en": "how interesting!"
+    },
+    {
+      "es": "¡Qué aburrido!",
+      "en": "how boring!"
+    },
+    {
+      "es": "¡Me alegro!",
+      "en": "I’m glad!"
+    },
+    {
+      "es": "¡Lo siento!",
+      "en": "I’m sorry!"
+    },
+    {
+      "es": "¡Felicidades!",
+      "en": "congrats!"
+    },
+    {
+      "es": "¡Buen provecho!",
+      "en": "enjoy your meal!"
+    }
+  ]
+}

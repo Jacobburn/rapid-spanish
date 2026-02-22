@@ -5801,13 +5801,37 @@ function returnToNounsDashboard() {
 }
 
 function makeBeginnerQuizItem(item) {
+  if (item?.kind === "subheading") {
+    return {
+      kind: "subheading",
+      hint: item.hint || item.title || "",
+      displayAnswer: "",
+      answers: [],
+    };
+  }
   const answers = item.answers && item.answers.length ? item.answers : [item.answer];
   const uniqueAnswers = [...new Set(answers)];
   return {
+    kind: "quiz",
     hint: item.hint,
     displayAnswer: uniqueAnswers[0],
     answers: uniqueAnswers,
   };
+}
+
+function isBeginnerAnswerableItem(item) {
+  return (
+    item?.kind !== "subheading" &&
+    Array.isArray(item?.answers) &&
+    item.answers.some((answer) => Boolean(normalize(answer)))
+  );
+}
+
+function getBeginnerQuizTotal(items = state.currentBeginnerItems) {
+  if (!Array.isArray(items)) {
+    return 0;
+  }
+  return items.reduce((count, item) => count + (isBeginnerAnswerableItem(item) ? 1 : 0), 0);
 }
 
 function renderBeginnerDeckGrid() {
@@ -5843,12 +5867,18 @@ function renderBeginnerQuizItems(items) {
   beginnerList.innerHTML = "";
   items.forEach((item, index) => {
     const row = document.createElement("li");
-    row.className = "form-row";
+    row.className = item.kind === "subheading" ? "form-row form-subheading" : "form-row";
     row.dataset.index = index.toString();
-    row.innerHTML = `
-      <span class="form-label">${item.hint}</span>
-      <span class="form-answer">${placeholder(item.displayAnswer)}</span>
-    `;
+    if (item.kind === "subheading") {
+      row.innerHTML = `
+        <span class="form-subheading-label">${item.hint}</span>
+      `;
+    } else {
+      row.innerHTML = `
+        <span class="form-label">${item.hint}</span>
+        <span class="form-answer">${placeholder(item.displayAnswer)}</span>
+      `;
+    }
     beginnerList.appendChild(row);
   });
 }
@@ -5858,14 +5888,14 @@ function updateBeginnerQuizMeta() {
     beginnerQuizMeta.textContent = "";
     return;
   }
-  const total = state.currentBeginnerGroup.count;
+  const total = getBeginnerQuizTotal();
   const best = getBeginnerBestScore(state.currentBeginnerGroup);
   const timerMeta = state.beginnerQuizEnded ? "" : ` • ${getQuizTimerText()}`;
   beginnerQuizMeta.textContent = `${total} items • Best: ${formatScore(best, total)}${timerMeta}`;
 }
 
 function updateBeginnerProgress() {
-  const total = state.currentBeginnerItems.length;
+  const total = getBeginnerQuizTotal();
   const found = state.beginnerFoundIndexes.size;
   const percent = total === 0 ? 0 : Math.round((found / total) * 100);
 
@@ -5891,14 +5921,19 @@ function markBeginnerMatches(indices) {
       return;
     }
     row.classList.add("found");
-    row.querySelector(".form-answer").textContent =
-      state.currentBeginnerItems[index].displayAnswer;
+    const answerEl = row.querySelector(".form-answer");
+    if (answerEl) {
+      answerEl.textContent = state.currentBeginnerItems[index].displayAnswer;
+    }
   });
   return added;
 }
 
 function revealAllBeginnerAnswers() {
   state.currentBeginnerItems.forEach((item, index) => {
+    if (!isBeginnerAnswerableItem(item)) {
+      return;
+    }
     const row = beginnerList.querySelector(`[data-index="${index}"]`);
     if (!row) {
       return;
@@ -5906,7 +5941,10 @@ function revealAllBeginnerAnswers() {
     if (!state.beginnerFoundIndexes.has(index)) {
       row.classList.add("revealed");
     }
-    row.querySelector(".form-answer").textContent = item.displayAnswer;
+    const answerEl = row.querySelector(".form-answer");
+    if (answerEl) {
+      answerEl.textContent = item.displayAnswer;
+    }
   });
 }
 
@@ -5917,7 +5955,7 @@ function endBeginnerQuiz(reason) {
 
   state.beginnerQuizEnded = true;
   stopQuizTimer();
-  const total = state.currentBeginnerItems.length;
+  const total = getBeginnerQuizTotal();
   const score = state.beginnerFoundIndexes.size;
   const changed = recordBestScore("beginner", state.currentBeginnerGroup.id, score, total);
   updateBeginnerQuizMeta();
@@ -5995,7 +6033,7 @@ function openBeginnerQuiz(groupId) {
   state.beginnerFoundIndexes = new Set();
   state.beginnerAnswerLookup = buildAnswerLookup(
     state.currentBeginnerItems,
-    (item) => item.answers,
+    (item) => (isBeginnerAnswerableItem(item) ? item.answers : []),
   );
   state.beginnerQuizEnded = false;
 
@@ -6034,7 +6072,7 @@ function returnToBeginnerDashboard() {
       "beginner",
       state.currentBeginnerGroup.id,
       state.beginnerFoundIndexes.size,
-      state.currentBeginnerItems.length,
+      getBeginnerQuizTotal(),
     );
     if (changed) {
       refreshProgressViews();

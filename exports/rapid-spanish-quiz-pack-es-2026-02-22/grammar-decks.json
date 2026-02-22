@@ -1,0 +1,1619 @@
+{
+  "source": "Rapid Spanish curated grammar MVP deck set",
+  "generatedAt": "2026-02-15T05:19:23.651947+00:00",
+  "groupCount": 18,
+  "totalItems": 180,
+  "groups": [
+    {
+      "id": "sentence-structure-svo",
+      "title": "Sentence Structure: Basic Word Order (SVO)",
+      "description": "Rule focus: Standard declarative order is subject + verb + object.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "María buys bread.",
+          "answer": "maria compra pan",
+          "answers": [
+            "maria compra pan"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "My brother reads the newspaper.",
+          "answer": "mi hermano lee el periodico",
+          "answers": [
+            "mi hermano lee el periodico"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "The teacher explains the lesson.",
+          "answer": "el profesor explica la leccion",
+          "answers": [
+            "el profesor explica la leccion"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "We watch a movie.",
+          "answer": "nosotros vemos una pelicula",
+          "answers": [
+            "nosotros vemos una pelicula",
+            "vemos una pelicula"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "The dog eats chicken.",
+          "answer": "el perro come pollo",
+          "answers": [
+            "el perro come pollo"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "Ana writes an email.",
+          "answer": "ana escribe un correo",
+          "answers": [
+            "ana escribe un correo"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "They open the door.",
+          "answer": "ellos abren la puerta",
+          "answers": [
+            "ellos abren la puerta",
+            "abren la puerta"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "I clean the kitchen.",
+          "answer": "yo limpio la cocina",
+          "answers": [
+            "yo limpio la cocina",
+            "limpio la cocina"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "The children draw a house.",
+          "answer": "los ninos dibujan una casa",
+          "answers": [
+            "los ninos dibujan una casa"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "Pedro needs a car.",
+          "answer": "pedro necesita un carro",
+          "answers": [
+            "pedro necesita un carro"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "sentence-structure-subject-pronouns",
+      "title": "Sentence Structure: Subject Pronouns vs Omission",
+      "description": "Rule focus: Spanish usually omits subject pronouns unless contrast/emphasis is needed.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "I speak Spanish.",
+          "answer": "hablo espanol",
+          "answers": [
+            "hablo espanol",
+            "yo hablo espanol"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "You work a lot. (informal)",
+          "answer": "trabajas mucho",
+          "answers": [
+            "trabajas mucho",
+            "tu trabajas mucho"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "She lives in Lima.",
+          "answer": "vive en lima",
+          "answers": [
+            "vive en lima",
+            "ella vive en lima"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "We study every day.",
+          "answer": "estudiamos cada dia",
+          "answers": [
+            "estudiamos cada dia",
+            "nosotros estudiamos cada dia"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "They eat late.",
+          "answer": "comen tarde",
+          "answers": [
+            "comen tarde",
+            "ellos comen tarde"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "I am tired.",
+          "answer": "estoy cansado",
+          "answers": [
+            "estoy cansado",
+            "yo estoy cansado"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "You are right. (formal)",
+          "answer": "usted tiene razon",
+          "answers": [
+            "usted tiene razon",
+            "tiene razon"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "He runs in the morning.",
+          "answer": "corre por la manana",
+          "answers": [
+            "corre por la manana",
+            "el corre por la manana"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "We are ready.",
+          "answer": "estamos listos",
+          "answers": [
+            "estamos listos",
+            "nosotros estamos listos"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "You all arrive early.",
+          "answer": "ustedes llegan temprano",
+          "answers": [
+            "ustedes llegan temprano",
+            "llegan temprano"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "sentence-structure-questions",
+      "title": "Sentence Structure: Question Formation",
+      "description": "Rule focus: Form questions with intonation, punctuation, and question words.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "Where do you live? (informal)",
+          "answer": "donde vives",
+          "answers": [
+            "donde vives"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "What time is it?",
+          "answer": "que hora es",
+          "answers": [
+            "que hora es"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "Why are you sad? (informal)",
+          "answer": "por que estas triste",
+          "answers": [
+            "por que estas triste"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "Who is she?",
+          "answer": "quien es ella",
+          "answers": [
+            "quien es ella"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "When do they arrive?",
+          "answer": "cuando llegan",
+          "answers": [
+            "cuando llegan"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "How do you say this?",
+          "answer": "como se dice esto",
+          "answers": [
+            "como se dice esto"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "How much does it cost?",
+          "answer": "cuanto cuesta",
+          "answers": [
+            "cuanto cuesta"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "Which one do you prefer? (informal)",
+          "answer": "cual prefieres",
+          "answers": [
+            "cual prefieres"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "How many books do you have? (informal)",
+          "answer": "cuantos libros tienes",
+          "answers": [
+            "cuantos libros tienes"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "Do you like coffee? (informal)",
+          "answer": "te gusta el cafe",
+          "answers": [
+            "te gusta el cafe"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "sentence-structure-negation",
+      "title": "Sentence Structure: Negation Placement",
+      "description": "Rule focus: Place no before the verb; combine with nunca, tampoco, nadie, nada.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "I do not eat meat.",
+          "answer": "no como carne",
+          "answers": [
+            "no como carne"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "She does not understand.",
+          "answer": "no entiende",
+          "answers": [
+            "no entiende"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "We never go there.",
+          "answer": "nunca vamos alli",
+          "answers": [
+            "nunca vamos alli",
+            "no vamos nunca alli"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "I don't know anything.",
+          "answer": "no se nada",
+          "answers": [
+            "no se nada"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "Nobody came.",
+          "answer": "no vino nadie",
+          "answers": [
+            "no vino nadie"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "He doesn't want coffee either.",
+          "answer": "tampoco quiere cafe",
+          "answers": [
+            "tampoco quiere cafe",
+            "el tampoco quiere cafe"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "I am not ready yet.",
+          "answer": "todavia no estoy listo",
+          "answers": [
+            "todavia no estoy listo",
+            "aun no estoy listo"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "They never study at night.",
+          "answer": "nunca estudian de noche",
+          "answers": [
+            "nunca estudian de noche",
+            "no estudian nunca de noche"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "I don't see anyone.",
+          "answer": "no veo a nadie",
+          "answers": [
+            "no veo a nadie"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "No one can help me.",
+          "answer": "nadie puede ayudarme",
+          "answers": [
+            "nadie puede ayudarme"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "sentence-structure-adverbs",
+      "title": "Sentence Structure: Adverb Placement",
+      "description": "Rule focus: Time/frequency adverbs often go before the verb or at sentence boundaries.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "I already ate.",
+          "answer": "ya comi",
+          "answers": [
+            "ya comi"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "I still don't understand.",
+          "answer": "todavia no entiendo",
+          "answers": [
+            "todavia no entiendo",
+            "aun no entiendo"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "She always arrives early.",
+          "answer": "siempre llega temprano",
+          "answers": [
+            "siempre llega temprano"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "We often walk to work.",
+          "answer": "a menudo caminamos al trabajo",
+          "answers": [
+            "a menudo caminamos al trabajo"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "They also want dessert.",
+          "answer": "tambien quieren postre",
+          "answers": [
+            "tambien quieren postre"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "I almost finished.",
+          "answer": "casi termine",
+          "answers": [
+            "casi termine"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "He never cooks.",
+          "answer": "nunca cocina",
+          "answers": [
+            "nunca cocina"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "We usually have class on Monday.",
+          "answer": "normalmente tenemos clase el lunes",
+          "answers": [
+            "normalmente tenemos clase el lunes"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "I really like this song.",
+          "answer": "realmente me gusta esta cancion",
+          "answers": [
+            "realmente me gusta esta cancion"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "Soon we leave.",
+          "answer": "pronto nos vamos",
+          "answers": [
+            "pronto nos vamos"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "sentence-structure-clause-connectors",
+      "title": "Sentence Structure: Connecting Clauses",
+      "description": "Rule focus: Join clauses with porque, aunque, si, cuando, mientras, etc.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "I stay home because it is raining.",
+          "answer": "me quedo en casa porque esta lloviendo",
+          "answers": [
+            "me quedo en casa porque esta lloviendo"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "Although I am tired, I work.",
+          "answer": "aunque estoy cansado trabajo",
+          "answers": [
+            "aunque estoy cansado trabajo"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "If I have time, I call you.",
+          "answer": "si tengo tiempo te llamo",
+          "answers": [
+            "si tengo tiempo te llamo"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "When I arrive, I text you.",
+          "answer": "cuando llego te escribo",
+          "answers": [
+            "cuando llego te escribo"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "I study while my sister cooks.",
+          "answer": "estudio mientras mi hermana cocina",
+          "answers": [
+            "estudio mientras mi hermana cocina"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "We leave after we eat.",
+          "answer": "salimos despues de comer",
+          "answers": [
+            "salimos despues de comer"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "He doesn't go out because he has homework.",
+          "answer": "no sale porque tiene tarea",
+          "answers": [
+            "no sale porque tiene tarea"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "I will tell you when I know.",
+          "answer": "te dire cuando sepa",
+          "answers": [
+            "te dire cuando sepa"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "If it is cold, we stay inside.",
+          "answer": "si hace frio nos quedamos dentro",
+          "answers": [
+            "si hace frio nos quedamos dentro"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "They work but they are happy.",
+          "answer": "trabajan pero estan felices",
+          "answers": [
+            "trabajan pero estan felices"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "ser-vs-estar",
+      "title": "Ser vs Estar",
+      "description": "Rule focus: Use ser for identity/essential traits and estar for state/location.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "She is a doctor.",
+          "answer": "ella es doctora",
+          "answers": [
+            "ella es doctora"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "Madrid is in Spain.",
+          "answer": "madrid esta en espana",
+          "answers": [
+            "madrid esta en espana"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "My house is big.",
+          "answer": "mi casa es grande",
+          "answers": [
+            "mi casa es grande"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "The soup is hot.",
+          "answer": "la sopa esta caliente",
+          "answers": [
+            "la sopa esta caliente"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "They are from Colombia.",
+          "answer": "ellos son de colombia",
+          "answers": [
+            "ellos son de colombia"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "I am tired.",
+          "answer": "estoy cansado",
+          "answers": [
+            "estoy cansado"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "The party is at my house.",
+          "answer": "la fiesta esta en mi casa",
+          "answers": [
+            "la fiesta esta en mi casa"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "You are very kind. (informal)",
+          "answer": "eres muy amable",
+          "answers": [
+            "eres muy amable"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "The children are quiet today.",
+          "answer": "los ninos estan callados hoy",
+          "answers": [
+            "los ninos estan callados hoy"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "This exercise is easy.",
+          "answer": "este ejercicio es facil",
+          "answers": [
+            "este ejercicio es facil"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "hay-vs-esta-estan",
+      "title": "Hay vs Está/Están",
+      "description": "Rule focus: hay = existence (there is/are); estar = location of known things.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "There is a park in my neighborhood.",
+          "answer": "hay un parque en mi barrio",
+          "answers": [
+            "hay un parque en mi barrio"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "The park is near my house.",
+          "answer": "el parque esta cerca de mi casa",
+          "answers": [
+            "el parque esta cerca de mi casa"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "There are two banks on this street.",
+          "answer": "hay dos bancos en esta calle",
+          "answers": [
+            "hay dos bancos en esta calle"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "The bank is next to the pharmacy.",
+          "answer": "el banco esta al lado de la farmacia",
+          "answers": [
+            "el banco esta al lado de la farmacia"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "There is a problem.",
+          "answer": "hay un problema",
+          "answers": [
+            "hay un problema"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "The problem is here.",
+          "answer": "el problema esta aqui",
+          "answers": [
+            "el problema esta aqui"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "There are many people at the party.",
+          "answer": "hay mucha gente en la fiesta",
+          "answers": [
+            "hay mucha gente en la fiesta"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "My friends are at the party.",
+          "answer": "mis amigos estan en la fiesta",
+          "answers": [
+            "mis amigos estan en la fiesta"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "There isn't any milk.",
+          "answer": "no hay leche",
+          "answers": [
+            "no hay leche"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "The milk is in the fridge.",
+          "answer": "la leche esta en el refrigerador",
+          "answers": [
+            "la leche esta en el refrigerador"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "por-vs-para",
+      "title": "Por vs Para",
+      "description": "Rule focus: por = cause/motion/exchange; para = purpose/destination/deadline.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "This gift is for you.",
+          "answer": "este regalo es para ti",
+          "answers": [
+            "este regalo es para ti"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "I walk through the park.",
+          "answer": "camino por el parque",
+          "answers": [
+            "camino por el parque"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "I study to learn.",
+          "answer": "estudio para aprender",
+          "answers": [
+            "estudio para aprender"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "Thanks for your help.",
+          "answer": "gracias por tu ayuda",
+          "answers": [
+            "gracias por tu ayuda"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "The train leaves for Madrid tomorrow.",
+          "answer": "el tren sale para madrid manana",
+          "answers": [
+            "el tren sale para madrid manana"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "I was late because of traffic.",
+          "answer": "llegue tarde por el trafico",
+          "answers": [
+            "llegue tarde por el trafico"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "I need it by Monday.",
+          "answer": "lo necesito para el lunes",
+          "answers": [
+            "lo necesito para el lunes"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "We paid twenty dollars for the book.",
+          "answer": "pagamos veinte dolares por el libro",
+          "answers": [
+            "pagamos veinte dolares por el libro"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "I did it for you.",
+          "answer": "lo hice por ti",
+          "answers": [
+            "lo hice por ti"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "This report is for the boss.",
+          "answer": "este informe es para el jefe",
+          "answers": [
+            "este informe es para el jefe"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "direct-vs-indirect-objects",
+      "title": "Direct vs Indirect Object Pronouns",
+      "description": "Rule focus: direct object pronouns (lo/la/los/las) vs indirect (le/les).",
+      "count": 10,
+      "items": [
+        {
+          "hint": "I see him.",
+          "answer": "lo veo",
+          "answers": [
+            "lo veo"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "I see her.",
+          "answer": "la veo",
+          "answers": [
+            "la veo"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "I see them. (masculine)",
+          "answer": "los veo",
+          "answers": [
+            "los veo"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "I give him the book.",
+          "answer": "le doy el libro",
+          "answers": [
+            "le doy el libro"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "I give them the keys.",
+          "answer": "les doy las llaves",
+          "answers": [
+            "les doy las llaves"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "She writes us a message.",
+          "answer": "nos escribe un mensaje",
+          "answers": [
+            "nos escribe un mensaje"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "We tell you the truth. (informal singular)",
+          "answer": "te decimos la verdad",
+          "answers": [
+            "te decimos la verdad"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "They call me every day.",
+          "answer": "me llaman cada dia",
+          "answers": [
+            "me llaman cada dia"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "I buy it.",
+          "answer": "lo compro",
+          "answers": [
+            "lo compro"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "I explain the problem to her.",
+          "answer": "le explico el problema",
+          "answers": [
+            "le explico el problema"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "pronoun-position",
+      "title": "Pronoun Position",
+      "description": "Rule focus: pronouns go before conjugated verbs, or attach to infinitives/gerunds/affirmative commands.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "I want to buy it.",
+          "answer": "quiero comprarlo",
+          "answers": [
+            "quiero comprarlo",
+            "lo quiero comprar"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "I am watching it.",
+          "answer": "lo estoy viendo",
+          "answers": [
+            "lo estoy viendo",
+            "estoy viendolo"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "Can you explain it to me?",
+          "answer": "me lo puedes explicar",
+          "answers": [
+            "me lo puedes explicar",
+            "puedes explicarmelo"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "Tell me. (tú command)",
+          "answer": "dime",
+          "answers": [
+            "dime"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "Don't tell me. (tú command)",
+          "answer": "no me digas",
+          "answers": [
+            "no me digas"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "I need to send it to them.",
+          "answer": "necesito enviarselo",
+          "answers": [
+            "necesito enviarselo",
+            "se lo necesito enviar"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "She keeps reading it.",
+          "answer": "sigue leyendolo",
+          "answers": [
+            "sigue leyendolo",
+            "lo sigue leyendo"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "Write it down for me. (tú command)",
+          "answer": "apuntamelo",
+          "answers": [
+            "apuntamelo"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "Don't buy it. (tú command)",
+          "answer": "no lo compres",
+          "answers": [
+            "no lo compres"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "We're going to tell you tomorrow.",
+          "answer": "vamos a decirtelo",
+          "answers": [
+            "vamos a decirtelo",
+            "te lo vamos a decir"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "reflexive-vs-non-reflexive",
+      "title": "Reflexive vs Non-Reflexive Verbs",
+      "description": "Rule focus: reflexive forms indicate the subject acts on itself or idiomatic meaning changes.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "I wake up at six.",
+          "answer": "me despierto a las seis",
+          "answers": [
+            "me despierto a las seis"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "I wake my brother up at six.",
+          "answer": "despierto a mi hermano a las seis",
+          "answers": [
+            "despierto a mi hermano a las seis"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "We are leaving now.",
+          "answer": "nos vamos ahora",
+          "answers": [
+            "nos vamos ahora"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "We are going to the office.",
+          "answer": "vamos a la oficina",
+          "answers": [
+            "vamos a la oficina"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "She remembers the date.",
+          "answer": "recuerda la fecha",
+          "answers": [
+            "recuerda la fecha"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "She remembers the trip.",
+          "answer": "se acuerda del viaje",
+          "answers": [
+            "se acuerda del viaje"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "They put on their coats.",
+          "answer": "se ponen los abrigos",
+          "answers": [
+            "se ponen los abrigos"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "They put the books on the table.",
+          "answer": "ponen los libros en la mesa",
+          "answers": [
+            "ponen los libros en la mesa"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "I am getting dressed.",
+          "answer": "me visto",
+          "answers": [
+            "me visto"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "I dress my son.",
+          "answer": "visto a mi hijo",
+          "answers": [
+            "visto a mi hijo"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "preterite-vs-imperfect",
+      "title": "Preterite vs Imperfect",
+      "description": "Rule focus: preterite for completed events, imperfect for background/habitual past.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "Yesterday I went to the store.",
+          "answer": "ayer fui a la tienda",
+          "answers": [
+            "ayer fui a la tienda"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "When I was a child, I lived in Chile.",
+          "answer": "cuando era nino vivia en chile",
+          "answers": [
+            "cuando era nino vivia en chile"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "It was raining when I left.",
+          "answer": "llovia cuando sali",
+          "answers": [
+            "llovia cuando sali"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "Last night we watched a movie.",
+          "answer": "anoche vimos una pelicula",
+          "answers": [
+            "anoche vimos una pelicula"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "She always studied at night.",
+          "answer": "siempre estudiaba de noche",
+          "answers": [
+            "siempre estudiaba de noche"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "Suddenly the phone rang.",
+          "answer": "de repente sono el telefono",
+          "answers": [
+            "de repente sono el telefono"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "Before, I worked in a bank.",
+          "answer": "antes trabajaba en un banco",
+          "answers": [
+            "antes trabajaba en un banco"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "This morning I had coffee.",
+          "answer": "esta manana tome cafe",
+          "answers": [
+            "esta manana tome cafe"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "While they were cooking, we cleaned.",
+          "answer": "mientras cocinaban limpiamos",
+          "answers": [
+            "mientras cocinaban limpiamos"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "He was tall and had blue eyes.",
+          "answer": "era alto y tenia ojos azules",
+          "answers": [
+            "era alto y tenia ojos azules"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "present-perfect-vs-preterite",
+      "title": "Present Perfect vs Preterite",
+      "description": "Rule focus: present perfect links to present timeframe; preterite marks finished past events.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "This week I have studied a lot.",
+          "answer": "esta semana he estudiado mucho",
+          "answers": [
+            "esta semana he estudiado mucho"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "Yesterday I studied a lot.",
+          "answer": "ayer estudie mucho",
+          "answers": [
+            "ayer estudie mucho"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "Have you eaten today? (informal)",
+          "answer": "has comido hoy",
+          "answers": [
+            "has comido hoy",
+            "comiste hoy"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "I already have seen that movie.",
+          "answer": "ya he visto esa pelicula",
+          "answers": [
+            "ya he visto esa pelicula"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "Last year we traveled to Peru.",
+          "answer": "el ano pasado viajamos a peru",
+          "answers": [
+            "el ano pasado viajamos a peru"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "This month they have sold many cars.",
+          "answer": "este mes han vendido muchos carros",
+          "answers": [
+            "este mes han vendido muchos carros"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "Two days ago she called me.",
+          "answer": "hace dos dias me llamo",
+          "answers": [
+            "hace dos dias me llamo"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "Have you ever been to Mexico? (informal)",
+          "answer": "has estado alguna vez en mexico",
+          "answers": [
+            "has estado alguna vez en mexico"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "This morning I had three meetings.",
+          "answer": "esta manana tuve tres reuniones",
+          "answers": [
+            "esta manana tuve tres reuniones"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "He has not finished yet.",
+          "answer": "todavia no ha terminado",
+          "answers": [
+            "todavia no ha terminado",
+            "aun no ha terminado"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "present-subjunctive-triggers",
+      "title": "Present Subjunctive Triggers",
+      "description": "Rule focus: use subjunctive after many expressions of desire, doubt, emotion, and impersonal judgment.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "I want you to come.",
+          "answer": "quiero que vengas",
+          "answers": [
+            "quiero que vengas"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "It is important that we study.",
+          "answer": "es importante que estudiemos",
+          "answers": [
+            "es importante que estudiemos"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "I hope it doesn't rain.",
+          "answer": "espero que no llueva",
+          "answers": [
+            "espero que no llueva"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "I doubt that he has time.",
+          "answer": "dudo que tenga tiempo",
+          "answers": [
+            "dudo que tenga tiempo"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "Maybe they arrive late.",
+          "answer": "quizas lleguen tarde",
+          "answers": [
+            "quizas lleguen tarde",
+            "quiza lleguen tarde"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "I am glad you are here.",
+          "answer": "me alegra que estes aqui",
+          "answers": [
+            "me alegra que estes aqui"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "I don't think she knows.",
+          "answer": "no creo que ella sepa",
+          "answers": [
+            "no creo que ella sepa"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "It is possible that we leave early.",
+          "answer": "es posible que salgamos temprano",
+          "answers": [
+            "es posible que salgamos temprano"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "I prefer that you call me tomorrow.",
+          "answer": "prefiero que me llames manana",
+          "answers": [
+            "prefiero que me llames manana"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "I recommend that they rest.",
+          "answer": "recomiendo que descansen",
+          "answers": [
+            "recomiendo que descansen"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "commands",
+      "title": "Commands",
+      "description": "Rule focus: affirmative and negative commands for tú, usted, ustedes, and nosotros forms.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "Eat! (tú)",
+          "answer": "come",
+          "answers": [
+            "come"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "Don't eat! (tú)",
+          "answer": "no comas",
+          "answers": [
+            "no comas"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "Speak! (usted)",
+          "answer": "hable",
+          "answers": [
+            "hable"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "Don't speak! (usted)",
+          "answer": "no hable",
+          "answers": [
+            "no hable"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "Open the door! (ustedes)",
+          "answer": "abran la puerta",
+          "answers": [
+            "abran la puerta"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "Don't open the door! (ustedes)",
+          "answer": "no abran la puerta",
+          "answers": [
+            "no abran la puerta"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "Let's go!",
+          "answer": "vamos",
+          "answers": [
+            "vamos"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "Let's not leave.",
+          "answer": "no salgamos",
+          "answers": [
+            "no salgamos"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "Tell me! (tú)",
+          "answer": "dime",
+          "answers": [
+            "dime"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "Tell me! (usted)",
+          "answer": "digame",
+          "answers": [
+            "digame"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "se-constructions",
+      "title": "Se Constructions",
+      "description": "Rule focus: impersonal se, passive se, and accidental se patterns.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "Spanish is spoken here.",
+          "answer": "se habla espanol aqui",
+          "answers": [
+            "se habla espanol aqui"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "Cars are sold here.",
+          "answer": "se venden carros aqui",
+          "answers": [
+            "se venden carros aqui"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "One eats well here.",
+          "answer": "se come bien aqui",
+          "answers": [
+            "se come bien aqui"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "How do you say this?",
+          "answer": "como se dice esto",
+          "answers": [
+            "como se dice esto"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "No smoking.",
+          "answer": "no se fuma",
+          "answers": [
+            "no se fuma"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "The glass broke on me. (accidental)",
+          "answer": "se me rompio el vaso",
+          "answers": [
+            "se me rompio el vaso"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "We forgot the keys. (accidental)",
+          "answer": "se nos olvidaron las llaves",
+          "answers": [
+            "se nos olvidaron las llaves"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "My phone got lost. (accidental)",
+          "answer": "se me perdio el telefono",
+          "answers": [
+            "se me perdio el telefono"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "Tickets are bought online.",
+          "answer": "se compran boletos en linea",
+          "answers": [
+            "se compran boletos en linea"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "The doors were opened at eight.",
+          "answer": "se abrieron las puertas a las ocho",
+          "answers": [
+            "se abrieron las puertas a las ocho"
+          ],
+          "index": 10
+        }
+      ]
+    },
+    {
+      "id": "si-clauses-conditional",
+      "title": "Si Clauses and Conditional",
+      "description": "Rule focus: combine si clauses with present/conditional/pluperfect patterns.",
+      "count": 10,
+      "items": [
+        {
+          "hint": "If I have time, I call you.",
+          "answer": "si tengo tiempo te llamo",
+          "answers": [
+            "si tengo tiempo te llamo"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "If I had time, I would call you.",
+          "answer": "si tuviera tiempo te llamaria",
+          "answers": [
+            "si tuviera tiempo te llamaria"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "If I had studied, I would have passed.",
+          "answer": "si hubiera estudiado habria aprobado",
+          "answers": [
+            "si hubiera estudiado habria aprobado"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "If it rains, we stay home.",
+          "answer": "si llueve nos quedamos en casa",
+          "answers": [
+            "si llueve nos quedamos en casa"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "If I were you, I would rest.",
+          "answer": "si yo fuera tu descansaria",
+          "answers": [
+            "si yo fuera tu descansaria"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "If they invite us, we will go.",
+          "answer": "si nos invitan iremos",
+          "answers": [
+            "si nos invitan iremos"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "If you need help, tell me.",
+          "answer": "si necesitas ayuda dimelo",
+          "answers": [
+            "si necesitas ayuda dimelo"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "If he arrives early, we can eat.",
+          "answer": "si llega temprano podemos comer",
+          "answers": [
+            "si llega temprano podemos comer"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "If she knew, she would not say anything.",
+          "answer": "si lo supiera no diria nada",
+          "answers": [
+            "si lo supiera no diria nada"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "If you had called me, I would have come.",
+          "answer": "si me hubieras llamado habria venido",
+          "answers": [
+            "si me hubieras llamado habria venido"
+          ],
+          "index": 10
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2511 @@
+{
+  "source": "Rapid Spanish curated regional slang decks",
+  "groups": [
+    {
+      "id": "mexico",
+      "title": "Mexico",
+      "description": "Common Mexican slang used in daily conversation.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "dude / guy",
+          "answer": "wey",
+          "answers": [
+            "wey"
+          ]
+        },
+        {
+          "hint": "idiot",
+          "answer": "pendejo",
+          "answers": [
+            "pendejo"
+          ]
+        },
+        {
+          "hint": "cool",
+          "answer": "chido",
+          "answers": [
+            "chido"
+          ]
+        },
+        {
+          "hint": "awesome",
+          "answer": "padre",
+          "answers": [
+            "padre"
+          ]
+        },
+        {
+          "hint": "friend",
+          "answer": "cuate",
+          "answers": [
+            "cuate"
+          ]
+        },
+        {
+          "hint": "bro / close friend",
+          "answer": "carnal",
+          "answers": [
+            "carnal"
+          ]
+        },
+        {
+          "hint": "kid (boy)",
+          "answer": "chamaco",
+          "answers": [
+            "chamaco"
+          ]
+        },
+        {
+          "hint": "kid (girl)",
+          "answer": "chamaca",
+          "answers": [
+            "chamaca"
+          ]
+        },
+        {
+          "hint": "beer",
+          "answer": "chela",
+          "answers": [
+            "chela"
+          ]
+        },
+        {
+          "hint": "money",
+          "answer": "lana",
+          "answers": [
+            "lana"
+          ]
+        },
+        {
+          "hint": "job",
+          "answer": "chamba",
+          "answers": [
+            "chamba"
+          ]
+        },
+        {
+          "hint": "to work",
+          "answer": "chambear",
+          "answers": [
+            "chambear"
+          ]
+        },
+        {
+          "hint": "hangover",
+          "answer": "cruda",
+          "answers": [
+            "cruda"
+          ]
+        },
+        {
+          "hint": "drunk",
+          "answer": "pedo",
+          "answers": [
+            "pedo"
+          ]
+        },
+        {
+          "hint": "party (drinking)",
+          "answer": "peda",
+          "answers": [
+            "peda"
+          ]
+        },
+        {
+          "hint": "to drink alcohol",
+          "answer": "pistear",
+          "answers": [
+            "pistear"
+          ]
+        },
+        {
+          "hint": "joking around",
+          "answer": "cotorreo",
+          "answers": [
+            "cotorreo"
+          ]
+        },
+        {
+          "hint": "to hang out",
+          "answer": "cotorrear",
+          "answers": [
+            "cotorrear"
+          ]
+        },
+        {
+          "hint": "right now",
+          "answer": "ahorita",
+          "answers": [
+            "ahorita"
+          ]
+        },
+        {
+          "hint": "no way / wow",
+          "answer": "no manches",
+          "answers": [
+            "no manches"
+          ]
+        },
+        {
+          "hint": "no way (vulgar)",
+          "answer": "no mames",
+          "answers": [
+            "no mames"
+          ]
+        },
+        {
+          "hint": "ok / wow",
+          "answer": "orale",
+          "answers": [
+            "orale"
+          ]
+        },
+        {
+          "hint": "problem",
+          "answer": "bronca",
+          "answers": [
+            "bronca"
+          ]
+        },
+        {
+          "hint": "no problem",
+          "answer": "no hay bronca",
+          "answers": [
+            "no hay bronca"
+          ]
+        },
+        {
+          "hint": "for real / truth",
+          "answer": "neta",
+          "answers": [
+            "neta"
+          ]
+        },
+        {
+          "hint": "seriously?",
+          "answer": "neta?",
+          "answers": [
+            "neta?"
+          ]
+        },
+        {
+          "hint": "cheap",
+          "answer": "bara",
+          "answers": [
+            "bara"
+          ]
+        },
+        {
+          "hint": "old broken car",
+          "answer": "carcacha",
+          "answers": [
+            "carcacha"
+          ]
+        },
+        {
+          "hint": "crew / group",
+          "answer": "banda",
+          "answers": [
+            "banda"
+          ]
+        },
+        {
+          "hint": "thing / stuff",
+          "answer": "madre",
+          "answers": [
+            "madre"
+          ]
+        },
+        {
+          "hint": "to mess up",
+          "answer": "regarla",
+          "answers": [
+            "regarla"
+          ]
+        },
+        {
+          "hint": "girlfriend (casual)",
+          "answer": "morra",
+          "answers": [
+            "morra"
+          ]
+        },
+        {
+          "hint": "boyfriend / young guy",
+          "answer": "morro",
+          "answers": [
+            "morro"
+          ]
+        },
+        {
+          "hint": "corner shop",
+          "answer": "tiendita",
+          "answers": [
+            "tiendita"
+          ]
+        },
+        {
+          "hint": "street corn cup",
+          "answer": "esquite",
+          "answers": [
+            "esquite"
+          ]
+        },
+        {
+          "hint": "corn on the cob (street)",
+          "answer": "elote",
+          "answers": [
+            "elote"
+          ]
+        },
+        {
+          "hint": "immediately",
+          "answer": "en corto",
+          "answers": [
+            "en corto"
+          ]
+        },
+        {
+          "hint": "fake / pirated",
+          "answer": "pirata",
+          "answers": [
+            "pirata"
+          ]
+        },
+        {
+          "hint": "crooked / shady",
+          "answer": "chueco",
+          "answers": [
+            "chueco"
+          ]
+        },
+        {
+          "hint": "awesome / badass",
+          "answer": "chingon",
+          "answers": [
+            "chingon"
+          ]
+        },
+        {
+          "hint": "terrible / awful",
+          "answer": "de la chingada",
+          "answers": [
+            "de la chingada"
+          ]
+        },
+        {
+          "hint": "to flirt",
+          "answer": "ligar",
+          "answers": [
+            "ligar"
+          ]
+        },
+        {
+          "hint": "to make out",
+          "answer": "fajar",
+          "answers": [
+            "fajar"
+          ]
+        },
+        {
+          "hint": "buddy",
+          "answer": "compa",
+          "answers": [
+            "compa"
+          ]
+        },
+        {
+          "hint": "cop",
+          "answer": "tira",
+          "answers": [
+            "tira"
+          ]
+        },
+        {
+          "hint": "bus",
+          "answer": "camion",
+          "answers": [
+            "camion"
+          ]
+        },
+        {
+          "hint": "to argue",
+          "answer": "echar bronca",
+          "answers": [
+            "echar bronca"
+          ]
+        },
+        {
+          "hint": "a little while",
+          "answer": "ratito",
+          "answers": [
+            "ratito"
+          ]
+        },
+        {
+          "hint": "later / in a bit",
+          "answer": "al rato",
+          "answers": [
+            "al rato"
+          ]
+        },
+        {
+          "hint": "that is awesome",
+          "answer": "que padre",
+          "answers": [
+            "que padre"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spain",
+      "title": "Spain",
+      "description": "Frequent colloquial slang from Spain.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "dude (male)",
+          "answer": "tio",
+          "answers": [
+            "tio"
+          ]
+        },
+        {
+          "hint": "dude (female)",
+          "answer": "tia",
+          "answers": [
+            "tia"
+          ]
+        },
+        {
+          "hint": "cool",
+          "answer": "guay",
+          "answers": [
+            "guay"
+          ]
+        },
+        {
+          "hint": "awesome / cool",
+          "answer": "mola",
+          "answers": [
+            "mola"
+          ]
+        },
+        {
+          "hint": "okay",
+          "answer": "vale",
+          "answers": [
+            "vale"
+          ]
+        },
+        {
+          "hint": "job",
+          "answer": "curro",
+          "answers": [
+            "curro"
+          ]
+        },
+        {
+          "hint": "to work",
+          "answer": "currar",
+          "answers": [
+            "currar"
+          ]
+        },
+        {
+          "hint": "money",
+          "answer": "pasta",
+          "answers": [
+            "pasta"
+          ]
+        },
+        {
+          "hint": "beer",
+          "answer": "birra",
+          "answers": [
+            "birra"
+          ]
+        },
+        {
+          "hint": "friend",
+          "answer": "colega",
+          "answers": [
+            "colega"
+          ]
+        },
+        {
+          "hint": "teen / young person",
+          "answer": "chaval",
+          "answers": [
+            "chaval"
+          ]
+        },
+        {
+          "hint": "kid",
+          "answer": "crio",
+          "answers": [
+            "crio"
+          ]
+        },
+        {
+          "hint": "nice person",
+          "answer": "majo",
+          "answers": [
+            "majo"
+          ]
+        },
+        {
+          "hint": "tacky / low quality",
+          "answer": "cutre",
+          "answers": [
+            "cutre"
+          ]
+        },
+        {
+          "hint": "nerd / geek",
+          "answer": "friki",
+          "answers": [
+            "friki"
+          ]
+        },
+        {
+          "hint": "posh / snobbish",
+          "answer": "pijo",
+          "answers": [
+            "pijo"
+          ]
+        },
+        {
+          "hint": "to freak out",
+          "answer": "flipar",
+          "answers": [
+            "flipar"
+          ]
+        },
+        {
+          "hint": "I am freaking out",
+          "answer": "flipo",
+          "answers": [
+            "flipo"
+          ]
+        },
+        {
+          "hint": "to overthink / obsess",
+          "answer": "rayarse",
+          "answers": [
+            "rayarse"
+          ]
+        },
+        {
+          "hint": "stressed / obsessed",
+          "answer": "rayado",
+          "answers": [
+            "rayado"
+          ]
+        },
+        {
+          "hint": "to get / understand",
+          "answer": "pillar",
+          "answers": [
+            "pillar"
+          ]
+        },
+        {
+          "hint": "I got it",
+          "answer": "lo pille",
+          "answers": [
+            "lo pille"
+          ]
+        },
+        {
+          "hint": "to flirt",
+          "answer": "ligar",
+          "answers": [
+            "ligar"
+          ]
+        },
+        {
+          "hint": "hookup / fling",
+          "answer": "ligue",
+          "answers": [
+            "ligue"
+          ]
+        },
+        {
+          "hint": "to crush it",
+          "answer": "petarlo",
+          "answers": [
+            "petarlo"
+          ]
+        },
+        {
+          "hint": "this is amazing",
+          "answer": "es la hostia",
+          "answers": [
+            "es la hostia"
+          ]
+        },
+        {
+          "hint": "awesome (strong)",
+          "answer": "de puta madre",
+          "answers": [
+            "de puta madre"
+          ]
+        },
+        {
+          "hint": "hangover",
+          "answer": "resaca",
+          "answers": [
+            "resaca"
+          ]
+        },
+        {
+          "hint": "nightlife / going out",
+          "answer": "marcha",
+          "answers": [
+            "marcha"
+          ]
+        },
+        {
+          "hint": "street drinking",
+          "answer": "botellon",
+          "answers": [
+            "botellon"
+          ]
+        },
+        {
+          "hint": "draft beer",
+          "answer": "cana",
+          "answers": [
+            "cana"
+          ]
+        },
+        {
+          "hint": "to grab a drink",
+          "answer": "tomar algo",
+          "answers": [
+            "tomar algo"
+          ]
+        },
+        {
+          "hint": "foreign tourist",
+          "answer": "guiri",
+          "answers": [
+            "guiri"
+          ]
+        },
+        {
+          "hint": "top quality / awesome",
+          "answer": "de lujo",
+          "answers": [
+            "de lujo"
+          ]
+        },
+        {
+          "hint": "fooling around",
+          "answer": "cachondeo",
+          "answers": [
+            "cachondeo"
+          ]
+        },
+        {
+          "hint": "big mess",
+          "answer": "follon",
+          "answers": [
+            "follon"
+          ]
+        },
+        {
+          "hint": "annoying person",
+          "answer": "pesado",
+          "answers": [
+            "pesado"
+          ]
+        },
+        {
+          "hint": "very easy",
+          "answer": "tirado",
+          "answers": [
+            "tirado"
+          ]
+        },
+        {
+          "hint": "hard / sketchy",
+          "answer": "chungo",
+          "answers": [
+            "chungo"
+          ]
+        },
+        {
+          "hint": "cops",
+          "answer": "maderos",
+          "answers": [
+            "maderos"
+          ]
+        },
+        {
+          "hint": "to sneak in",
+          "answer": "colarse",
+          "answers": [
+            "colarse"
+          ]
+        },
+        {
+          "hint": "very drunk",
+          "answer": "ciego",
+          "answers": [
+            "ciego"
+          ]
+        },
+        {
+          "hint": "to leave / get out",
+          "answer": "pirarse",
+          "answers": [
+            "pirarse"
+          ]
+        },
+        {
+          "hint": "to lose your mind",
+          "answer": "irse la olla",
+          "answers": [
+            "irse la olla"
+          ]
+        },
+        {
+          "hint": "loser / sucker",
+          "answer": "pringado",
+          "answers": [
+            "pringado"
+          ]
+        },
+        {
+          "hint": "freeloader",
+          "answer": "gorron",
+          "answers": [
+            "gorron"
+          ]
+        },
+        {
+          "hint": "to make a big scene",
+          "answer": "liarla",
+          "answers": [
+            "liarla"
+          ]
+        },
+        {
+          "hint": "you are the best",
+          "answer": "eres un crack",
+          "answers": [
+            "eres un crack"
+          ]
+        },
+        {
+          "hint": "to skip class/work",
+          "answer": "hacer pellas",
+          "answers": [
+            "hacer pellas"
+          ]
+        },
+        {
+          "hint": "it is obvious",
+          "answer": "de cajon",
+          "answers": [
+            "de cajon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "river-plate",
+      "title": "River Plate (Argentina / Uruguay)",
+      "description": "Rioplatense slang common in Argentina and Uruguay.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "hey",
+          "answer": "che",
+          "answers": [
+            "che"
+          ]
+        },
+        {
+          "hint": "dude",
+          "answer": "boludo",
+          "answers": [
+            "boludo"
+          ]
+        },
+        {
+          "hint": "friend (casual)",
+          "answer": "flaco",
+          "answers": [
+            "flaco"
+          ]
+        },
+        {
+          "hint": "girl",
+          "answer": "mina",
+          "answers": [
+            "mina"
+          ]
+        },
+        {
+          "hint": "kid (boy)",
+          "answer": "pibe",
+          "answers": [
+            "pibe"
+          ]
+        },
+        {
+          "hint": "kid (girl)",
+          "answer": "piba",
+          "answers": [
+            "piba"
+          ]
+        },
+        {
+          "hint": "money",
+          "answer": "plata",
+          "answers": [
+            "plata"
+          ]
+        },
+        {
+          "hint": "job",
+          "answer": "laburo",
+          "answers": [
+            "laburo"
+          ]
+        },
+        {
+          "hint": "to work",
+          "answer": "laburar",
+          "answers": [
+            "laburar"
+          ]
+        },
+        {
+          "hint": "mess / chaos",
+          "answer": "quilombo",
+          "answers": [
+            "quilombo"
+          ]
+        },
+        {
+          "hint": "laziness / not feeling it",
+          "answer": "fiaca",
+          "answers": [
+            "fiaca"
+          ]
+        },
+        {
+          "hint": "bus",
+          "answer": "bondi",
+          "answers": [
+            "bondi"
+          ]
+        },
+        {
+          "hint": "apartment",
+          "answer": "depto",
+          "answers": [
+            "depto"
+          ]
+        },
+        {
+          "hint": "beer",
+          "answer": "birra",
+          "answers": [
+            "birra"
+          ]
+        },
+        {
+          "hint": "cool",
+          "answer": "copado",
+          "answers": [
+            "copado"
+          ]
+        },
+        {
+          "hint": "really cool",
+          "answer": "re copado",
+          "answers": [
+            "re copado"
+          ]
+        },
+        {
+          "hint": "for real",
+          "answer": "posta",
+          "answers": [
+            "posta"
+          ]
+        },
+        {
+          "hint": "to sweet-talk",
+          "answer": "chamuyar",
+          "answers": [
+            "chamuyar"
+          ]
+        },
+        {
+          "hint": "smooth talk",
+          "answer": "chamuyo",
+          "answers": [
+            "chamuyo"
+          ]
+        },
+        {
+          "hint": "to support / back up",
+          "answer": "bancar",
+          "answers": [
+            "bancar"
+          ]
+        },
+        {
+          "hint": "deal with it",
+          "answer": "bancatela",
+          "answers": [
+            "bancatela"
+          ]
+        },
+        {
+          "hint": "bad luck",
+          "answer": "yeta",
+          "answers": [
+            "yeta"
+          ]
+        },
+        {
+          "hint": "trippy / weird",
+          "answer": "flashero",
+          "answers": [
+            "flashero"
+          ]
+        },
+        {
+          "hint": "party",
+          "answer": "joda",
+          "answers": [
+            "joda"
+          ]
+        },
+        {
+          "hint": "to go partying",
+          "answer": "salir de joda",
+          "answers": [
+            "salir de joda"
+          ]
+        },
+        {
+          "hint": "exhausted",
+          "answer": "hecho bolsa",
+          "answers": [
+            "hecho bolsa"
+          ]
+        },
+        {
+          "hint": "broke (no money)",
+          "answer": "seco",
+          "answers": [
+            "seco"
+          ]
+        },
+        {
+          "hint": "cash / money",
+          "answer": "guita",
+          "answers": [
+            "guita"
+          ]
+        },
+        {
+          "hint": "to fool around",
+          "answer": "boludear",
+          "answers": [
+            "boludear"
+          ]
+        },
+        {
+          "hint": "what a drag",
+          "answer": "que paja",
+          "answers": [
+            "que paja"
+          ]
+        },
+        {
+          "hint": "laziness",
+          "answer": "paja",
+          "answers": [
+            "paja"
+          ]
+        },
+        {
+          "hint": "to make out",
+          "answer": "transar",
+          "answers": [
+            "transar"
+          ]
+        },
+        {
+          "hint": "great / fantastic",
+          "answer": "barbaro",
+          "answers": [
+            "barbaro"
+          ]
+        },
+        {
+          "hint": "cool / low key",
+          "answer": "piola",
+          "answers": [
+            "piola"
+          ]
+        },
+        {
+          "hint": "cop",
+          "answer": "cana",
+          "answers": [
+            "cana"
+          ]
+        },
+        {
+          "hint": "to realize suddenly",
+          "answer": "caer la ficha",
+          "answers": [
+            "caer la ficha"
+          ]
+        },
+        {
+          "hint": "no way",
+          "answer": "ni en pedo",
+          "answers": [
+            "ni en pedo"
+          ]
+        },
+        {
+          "hint": "drunk",
+          "answer": "en pedo",
+          "answers": [
+            "en pedo"
+          ]
+        },
+        {
+          "hint": "hangover",
+          "answer": "resaca",
+          "answers": [
+            "resaca"
+          ]
+        },
+        {
+          "hint": "group / crew",
+          "answer": "banda",
+          "answers": [
+            "banda"
+          ]
+        },
+        {
+          "hint": "totally broke",
+          "answer": "en la lona",
+          "answers": [
+            "en la lona"
+          ]
+        },
+        {
+          "hint": "to go too far",
+          "answer": "irse al pasto",
+          "answers": [
+            "irse al pasto"
+          ]
+        },
+        {
+          "hint": "dad (casual)",
+          "answer": "viejo",
+          "answers": [
+            "viejo"
+          ]
+        },
+        {
+          "hint": "mom (casual)",
+          "answer": "vieja",
+          "answers": [
+            "vieja"
+          ]
+        },
+        {
+          "hint": "worker",
+          "answer": "laburante",
+          "answers": [
+            "laburante"
+          ]
+        },
+        {
+          "hint": "spacey / absent-minded",
+          "answer": "colgado",
+          "answers": [
+            "colgado"
+          ]
+        },
+        {
+          "hint": "to be absent-minded",
+          "answer": "estar colgado",
+          "answers": [
+            "estar colgado"
+          ]
+        },
+        {
+          "hint": "awesome / killer",
+          "answer": "mortal",
+          "answers": [
+            "mortal"
+          ]
+        },
+        {
+          "hint": "very good",
+          "answer": "de diez",
+          "answers": [
+            "de diez"
+          ]
+        },
+        {
+          "hint": "to drink alcohol",
+          "answer": "chupar",
+          "answers": [
+            "chupar"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "caribbean",
+      "title": "Caribbean (Cuba / DR / Puerto Rico)",
+      "description": "Common Caribbean Spanish slang across major islands.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "friend / pal",
+          "answer": "pana",
+          "answers": [
+            "pana"
+          ]
+        },
+        {
+          "hint": "buddy (Cuba)",
+          "answer": "asere",
+          "answers": [
+            "asere"
+          ]
+        },
+        {
+          "hint": "buddy (variant)",
+          "answer": "acere",
+          "answers": [
+            "acere"
+          ]
+        },
+        {
+          "hint": "bro",
+          "answer": "mano",
+          "answers": [
+            "mano"
+          ]
+        },
+        {
+          "hint": "girlfriend",
+          "answer": "jeva",
+          "answers": [
+            "jeva"
+          ]
+        },
+        {
+          "hint": "boyfriend",
+          "answer": "jevo",
+          "answers": [
+            "jevo"
+          ]
+        },
+        {
+          "hint": "to hang out",
+          "answer": "janguear",
+          "answers": [
+            "janguear"
+          ]
+        },
+        {
+          "hint": "friend group",
+          "answer": "corillo",
+          "answers": [
+            "corillo"
+          ]
+        },
+        {
+          "hint": "bus",
+          "answer": "guagua",
+          "answers": [
+            "guagua"
+          ]
+        },
+        {
+          "hint": "money",
+          "answer": "cuartos",
+          "answers": [
+            "cuartos"
+          ]
+        },
+        {
+          "hint": "a little bit",
+          "answer": "un chin",
+          "answers": [
+            "un chin"
+          ]
+        },
+        {
+          "hint": "cool",
+          "answer": "chevere",
+          "answers": [
+            "chevere"
+          ]
+        },
+        {
+          "hint": "awesome",
+          "answer": "brutal",
+          "answers": [
+            "brutal"
+          ]
+        },
+        {
+          "hint": "no stress / chill",
+          "answer": "tranqui",
+          "answers": [
+            "tranqui"
+          ]
+        },
+        {
+          "hint": "cops",
+          "answer": "la jara",
+          "answers": [
+            "la jara"
+          ]
+        },
+        {
+          "hint": "old run-down car",
+          "answer": "carcacha",
+          "answers": [
+            "carcacha"
+          ]
+        },
+        {
+          "hint": "gossip",
+          "answer": "chisme",
+          "answers": [
+            "chisme"
+          ]
+        },
+        {
+          "hint": "to joke around",
+          "answer": "relajar",
+          "answers": [
+            "relajar"
+          ]
+        },
+        {
+          "hint": "are you kidding?",
+          "answer": "es relajo?",
+          "answers": [
+            "es relajo?"
+          ]
+        },
+        {
+          "hint": "drunk",
+          "answer": "jumo",
+          "answers": [
+            "jumo"
+          ]
+        },
+        {
+          "hint": "hangover",
+          "answer": "resaca",
+          "answers": [
+            "resaca"
+          ]
+        },
+        {
+          "hint": "party",
+          "answer": "rumba",
+          "answers": [
+            "rumba"
+          ]
+        },
+        {
+          "hint": "reggaeton dancing",
+          "answer": "perreo",
+          "answers": [
+            "perreo"
+          ]
+        },
+        {
+          "hint": "to party",
+          "answer": "ir de rumba",
+          "answers": [
+            "ir de rumba"
+          ]
+        },
+        {
+          "hint": "street-smart guy",
+          "answer": "tiguere",
+          "answers": [
+            "tiguere"
+          ]
+        },
+        {
+          "hint": "garbage / crappy",
+          "answer": "porqueria",
+          "answers": [
+            "porqueria"
+          ]
+        },
+        {
+          "hint": "liar",
+          "answer": "embustero",
+          "answers": [
+            "embustero"
+          ]
+        },
+        {
+          "hint": "to annoy",
+          "answer": "joder",
+          "answers": [
+            "joder"
+          ]
+        },
+        {
+          "hint": "very fast",
+          "answer": "volando",
+          "answers": [
+            "volando"
+          ]
+        },
+        {
+          "hint": "very hungry",
+          "answer": "muerto de hambre",
+          "answers": [
+            "muerto de hambre"
+          ]
+        },
+        {
+          "hint": "to eat quickly",
+          "answer": "jartar",
+          "answers": [
+            "jartar"
+          ]
+        },
+        {
+          "hint": "packed bus",
+          "answer": "guagua llena",
+          "answers": [
+            "guagua llena"
+          ]
+        },
+        {
+          "hint": "little kid",
+          "answer": "muchachito",
+          "answers": [
+            "muchachito"
+          ]
+        },
+        {
+          "hint": "stop clowning",
+          "answer": "no seas payaso",
+          "answers": [
+            "no seas payaso"
+          ]
+        },
+        {
+          "hint": "stingy",
+          "answer": "tacano",
+          "answers": [
+            "tacano"
+          ]
+        },
+        {
+          "hint": "this is hard / intense",
+          "answer": "esta heavy",
+          "answers": [
+            "esta heavy"
+          ]
+        },
+        {
+          "hint": "awesome (Cuba)",
+          "answer": "de show",
+          "answers": [
+            "de show"
+          ]
+        },
+        {
+          "hint": "friend (Cuba)",
+          "answer": "socio",
+          "answers": [
+            "socio"
+          ]
+        },
+        {
+          "hint": "to leave quickly",
+          "answer": "arrancar",
+          "answers": [
+            "arrancar"
+          ]
+        },
+        {
+          "hint": "right now",
+          "answer": "ahora mismito",
+          "answers": [
+            "ahora mismito"
+          ]
+        },
+        {
+          "hint": "cool / very skilled",
+          "answer": "duro",
+          "answers": [
+            "duro"
+          ]
+        },
+        {
+          "hint": "neighborhood block",
+          "answer": "cuadra",
+          "answers": [
+            "cuadra"
+          ]
+        },
+        {
+          "hint": "short while",
+          "answer": "ratito",
+          "answers": [
+            "ratito"
+          ]
+        },
+        {
+          "hint": "nonsense",
+          "answer": "boberia",
+          "answers": [
+            "boberia"
+          ]
+        },
+        {
+          "hint": "fool",
+          "answer": "bobo",
+          "answers": [
+            "bobo"
+          ]
+        },
+        {
+          "hint": "police raid",
+          "answer": "redada",
+          "answers": [
+            "redada"
+          ]
+        },
+        {
+          "hint": "let us go",
+          "answer": "vamonos",
+          "answers": [
+            "vamonos"
+          ]
+        },
+        {
+          "hint": "wow (DR/PR)",
+          "answer": "diache",
+          "answers": [
+            "diache"
+          ]
+        },
+        {
+          "hint": "no way",
+          "answer": "ni loco",
+          "answers": [
+            "ni loco"
+          ]
+        },
+        {
+          "hint": "what is up?",
+          "answer": "que es la que hay",
+          "answers": [
+            "que es la que hay"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "andean",
+      "title": "Andean (Colombia / Peru / Ecuador / Bolivia)",
+      "description": "High-frequency colloquial slang from Andean Spanish.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "friend (Colombia)",
+          "answer": "parce",
+          "answers": [
+            "parce"
+          ]
+        },
+        {
+          "hint": "close friend",
+          "answer": "parcero",
+          "answers": [
+            "parcero"
+          ]
+        },
+        {
+          "hint": "cool",
+          "answer": "bacano",
+          "answers": [
+            "bacano"
+          ]
+        },
+        {
+          "hint": "awesome / intense",
+          "answer": "berraco",
+          "answers": [
+            "berraco"
+          ]
+        },
+        {
+          "hint": "kid",
+          "answer": "chino",
+          "answers": [
+            "chino"
+          ]
+        },
+        {
+          "hint": "money (1k)",
+          "answer": "luca",
+          "answers": [
+            "luca"
+          ]
+        },
+        {
+          "hint": "money (plural)",
+          "answer": "lucas",
+          "answers": [
+            "lucas"
+          ]
+        },
+        {
+          "hint": "home / place",
+          "answer": "jato",
+          "answers": [
+            "jato"
+          ]
+        },
+        {
+          "hint": "job",
+          "answer": "chamba",
+          "answers": [
+            "chamba"
+          ]
+        },
+        {
+          "hint": "to work",
+          "answer": "chambear",
+          "answers": [
+            "chambear"
+          ]
+        },
+        {
+          "hint": "friend (Peru)",
+          "answer": "causa",
+          "answers": [
+            "causa"
+          ]
+        },
+        {
+          "hint": "wow",
+          "answer": "ala",
+          "answers": [
+            "ala"
+          ]
+        },
+        {
+          "hint": "wow / damn",
+          "answer": "pucha",
+          "answers": [
+            "pucha"
+          ]
+        },
+        {
+          "hint": "thing / stuff",
+          "answer": "vaina",
+          "answers": [
+            "vaina"
+          ]
+        },
+        {
+          "hint": "bus",
+          "answer": "micro",
+          "answers": [
+            "micro"
+          ]
+        },
+        {
+          "hint": "small bus",
+          "answer": "buseta",
+          "answers": [
+            "buseta"
+          ]
+        },
+        {
+          "hint": "short while",
+          "answer": "ratito",
+          "answers": [
+            "ratito"
+          ]
+        },
+        {
+          "hint": "to party (Peru)",
+          "answer": "tonear",
+          "answers": [
+            "tonear"
+          ]
+        },
+        {
+          "hint": "party (Peru)",
+          "answer": "toneo",
+          "answers": [
+            "toneo"
+          ]
+        },
+        {
+          "hint": "cool / nice",
+          "answer": "chevere",
+          "answers": [
+            "chevere"
+          ]
+        },
+        {
+          "hint": "pal / buddy",
+          "answer": "pana",
+          "answers": [
+            "pana"
+          ]
+        },
+        {
+          "hint": "brother / close friend (Ecuador)",
+          "answer": "nano",
+          "answers": [
+            "nano"
+          ]
+        },
+        {
+          "hint": "to understand",
+          "answer": "cachar",
+          "answers": [
+            "cachar"
+          ]
+        },
+        {
+          "hint": "to waste time",
+          "answer": "huevear",
+          "answers": [
+            "huevear"
+          ]
+        },
+        {
+          "hint": "lazy",
+          "answer": "flojo",
+          "answers": [
+            "flojo"
+          ]
+        },
+        {
+          "hint": "exhausted",
+          "answer": "molido",
+          "answers": [
+            "molido"
+          ]
+        },
+        {
+          "hint": "angry",
+          "answer": "bravo",
+          "answers": [
+            "bravo"
+          ]
+        },
+        {
+          "hint": "snitch",
+          "answer": "sapo",
+          "answers": [
+            "sapo"
+          ]
+        },
+        {
+          "hint": "cops (Colombia)",
+          "answer": "tombos",
+          "answers": [
+            "tombos"
+          ]
+        },
+        {
+          "hint": "cop (Colombia)",
+          "answer": "tombo",
+          "answers": [
+            "tombo"
+          ]
+        },
+        {
+          "hint": "very cheap",
+          "answer": "baratongo",
+          "answers": [
+            "baratongo"
+          ]
+        },
+        {
+          "hint": "to flirt",
+          "answer": "levantar",
+          "answers": [
+            "levantar"
+          ]
+        },
+        {
+          "hint": "flirting / pickup",
+          "answer": "levante",
+          "answers": [
+            "levante"
+          ]
+        },
+        {
+          "hint": "broke (Peru)",
+          "answer": "misio",
+          "answers": [
+            "misio"
+          ]
+        },
+        {
+          "hint": "drunk",
+          "answer": "chupado",
+          "answers": [
+            "chupado"
+          ]
+        },
+        {
+          "hint": "drinking session",
+          "answer": "chupe",
+          "answers": [
+            "chupe"
+          ]
+        },
+        {
+          "hint": "to drink alcohol",
+          "answer": "chupar",
+          "answers": [
+            "chupar"
+          ]
+        },
+        {
+          "hint": "delicious",
+          "answer": "rico",
+          "answers": [
+            "rico"
+          ]
+        },
+        {
+          "hint": "no way",
+          "answer": "ni loco",
+          "answers": [
+            "ni loco"
+          ]
+        },
+        {
+          "hint": "right now",
+          "answer": "ahorita",
+          "answers": [
+            "ahorita"
+          ]
+        },
+        {
+          "hint": "right away (Peru)",
+          "answer": "al toque",
+          "answers": [
+            "al toque"
+          ]
+        },
+        {
+          "hint": "right away (Colombia)",
+          "answer": "de una",
+          "answers": [
+            "de una"
+          ]
+        },
+        {
+          "hint": "okay / done",
+          "answer": "listo",
+          "answers": [
+            "listo"
+          ]
+        },
+        {
+          "hint": "mess / disorder",
+          "answer": "despelote",
+          "answers": [
+            "despelote"
+          ]
+        },
+        {
+          "hint": "trouble",
+          "answer": "lio",
+          "answers": [
+            "lio"
+          ]
+        },
+        {
+          "hint": "unlucky",
+          "answer": "salado",
+          "answers": [
+            "salado"
+          ]
+        },
+        {
+          "hint": "super cool",
+          "answer": "bacanisimo",
+          "answers": [
+            "bacanisimo"
+          ]
+        },
+        {
+          "hint": "close friend (Colombia)",
+          "answer": "llave",
+          "answers": [
+            "llave"
+          ]
+        },
+        {
+          "hint": "fake / counterfeit (Peru)",
+          "answer": "bamba",
+          "answers": [
+            "bamba"
+          ]
+        },
+        {
+          "hint": "to be embarrassed",
+          "answer": "paltearse",
+          "answers": [
+            "paltearse"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "central-america",
+      "title": "Central America",
+      "description": "Shared slang from Costa Rica, Guatemala, El Salvador, Honduras, and Nicaragua.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "friend / dude (Costa Rica)",
+          "answer": "mae",
+          "answers": [
+            "mae"
+          ]
+        },
+        {
+          "hint": "cool (Costa Rica)",
+          "answer": "tuanis",
+          "answers": [
+            "tuanis"
+          ]
+        },
+        {
+          "hint": "money",
+          "answer": "pisto",
+          "answers": [
+            "pisto"
+          ]
+        },
+        {
+          "hint": "kid (El Salvador)",
+          "answer": "cipote",
+          "answers": [
+            "cipote"
+          ]
+        },
+        {
+          "hint": "kid (Guatemala)",
+          "answer": "patojo",
+          "answers": [
+            "patojo"
+          ]
+        },
+        {
+          "hint": "friend (Honduras/El Salvador)",
+          "answer": "chero",
+          "answers": [
+            "chero"
+          ]
+        },
+        {
+          "hint": "female friend",
+          "answer": "chera",
+          "answers": [
+            "chera"
+          ]
+        },
+        {
+          "hint": "dude (Nicaragua)",
+          "answer": "maje",
+          "answers": [
+            "maje"
+          ]
+        },
+        {
+          "hint": "wow",
+          "answer": "puchica",
+          "answers": [
+            "puchica"
+          ]
+        },
+        {
+          "hint": "yes (casual)",
+          "answer": "simon",
+          "answers": [
+            "simon"
+          ]
+        },
+        {
+          "hint": "no way",
+          "answer": "nel",
+          "answers": [
+            "nel"
+          ]
+        },
+        {
+          "hint": "bus",
+          "answer": "rapidito",
+          "answers": [
+            "rapidito"
+          ]
+        },
+        {
+          "hint": "thing / stuff (Costa Rica)",
+          "answer": "vara",
+          "answers": [
+            "vara"
+          ]
+        },
+        {
+          "hint": "to work (Costa Rica)",
+          "answer": "bretear",
+          "answers": [
+            "bretear"
+          ]
+        },
+        {
+          "hint": "job (Costa Rica)",
+          "answer": "brete",
+          "answers": [
+            "brete"
+          ]
+        },
+        {
+          "hint": "liquor",
+          "answer": "guaro",
+          "answers": [
+            "guaro"
+          ]
+        },
+        {
+          "hint": "hangover",
+          "answer": "goma",
+          "answers": [
+            "goma"
+          ]
+        },
+        {
+          "hint": "party",
+          "answer": "pachanga",
+          "answers": [
+            "pachanga"
+          ]
+        },
+        {
+          "hint": "to party",
+          "answer": "pachanguear",
+          "answers": [
+            "pachanguear"
+          ]
+        },
+        {
+          "hint": "cool (Guatemala)",
+          "answer": "chivo",
+          "answers": [
+            "chivo"
+          ]
+        },
+        {
+          "hint": "awesome (Guatemala)",
+          "answer": "chilero",
+          "answers": [
+            "chilero"
+          ]
+        },
+        {
+          "hint": "friend (borrowed)",
+          "answer": "broder",
+          "answers": [
+            "broder"
+          ]
+        },
+        {
+          "hint": "broke (no money)",
+          "answer": "sin pisto",
+          "answers": [
+            "sin pisto"
+          ]
+        },
+        {
+          "hint": "problem",
+          "answer": "clavo",
+          "answers": [
+            "clavo"
+          ]
+        },
+        {
+          "hint": "to be in trouble",
+          "answer": "estar clavado",
+          "answers": [
+            "estar clavado"
+          ]
+        },
+        {
+          "hint": "gossip",
+          "answer": "chambre",
+          "answers": [
+            "chambre"
+          ]
+        },
+        {
+          "hint": "to gossip",
+          "answer": "chambrear",
+          "answers": [
+            "chambrear"
+          ]
+        },
+        {
+          "hint": "police (Guatemala)",
+          "answer": "la chota",
+          "answers": [
+            "la chota"
+          ]
+        },
+        {
+          "hint": "cop (El Salvador)",
+          "answer": "chonte",
+          "answers": [
+            "chonte"
+          ]
+        },
+        {
+          "hint": "small snack",
+          "answer": "bocadito",
+          "answers": [
+            "bocadito"
+          ]
+        },
+        {
+          "hint": "almost there",
+          "answer": "ya mero",
+          "answers": [
+            "ya mero"
+          ]
+        },
+        {
+          "hint": "almost done",
+          "answer": "ya casi",
+          "answers": [
+            "ya casi"
+          ]
+        },
+        {
+          "hint": "right away",
+          "answer": "de volada",
+          "answers": [
+            "de volada"
+          ]
+        },
+        {
+          "hint": "very easy",
+          "answer": "pan comido",
+          "answers": [
+            "pan comido"
+          ]
+        },
+        {
+          "hint": "hard / tough",
+          "answer": "fregado",
+          "answers": [
+            "fregado"
+          ]
+        },
+        {
+          "hint": "to bother",
+          "answer": "fregar",
+          "answers": [
+            "fregar"
+          ]
+        },
+        {
+          "hint": "nice person",
+          "answer": "buena onda",
+          "answers": [
+            "buena onda"
+          ]
+        },
+        {
+          "hint": "no problem",
+          "answer": "todo bien",
+          "answers": [
+            "todo bien"
+          ]
+        },
+        {
+          "hint": "little kid",
+          "answer": "bichito",
+          "answers": [
+            "bichito"
+          ]
+        },
+        {
+          "hint": "a lot",
+          "answer": "monton",
+          "answers": [
+            "monton"
+          ]
+        },
+        {
+          "hint": "nonsense / lie",
+          "answer": "paja",
+          "answers": [
+            "paja"
+          ]
+        },
+        {
+          "hint": "liar",
+          "answer": "pajo",
+          "answers": [
+            "pajo"
+          ]
+        },
+        {
+          "hint": "awesome (vulgar)",
+          "answer": "de a huevo",
+          "answers": [
+            "de a huevo"
+          ]
+        },
+        {
+          "hint": "very cheap",
+          "answer": "baratillo",
+          "answers": [
+            "baratillo"
+          ]
+        },
+        {
+          "hint": "group / clique",
+          "answer": "mara",
+          "answers": [
+            "mara"
+          ]
+        },
+        {
+          "hint": "gang clique",
+          "answer": "clica",
+          "answers": [
+            "clica"
+          ]
+        },
+        {
+          "hint": "bus fare",
+          "answer": "pasaje",
+          "answers": [
+            "pasaje"
+          ]
+        },
+        {
+          "hint": "let us leave",
+          "answer": "jale",
+          "answers": [
+            "jale"
+          ]
+        },
+        {
+          "hint": "to look for trouble",
+          "answer": "buscar camorra",
+          "answers": [
+            "buscar camorra"
+          ]
+        },
+        {
+          "hint": "to chill out",
+          "answer": "tomarlo suave",
+          "answers": [
+            "tomarlo suave"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chile",
+      "title": "Chile",
+      "description": "Everyday Chilean slang used in informal speech.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "dude / guy",
+          "answer": "weon",
+          "answers": [
+            "weon"
+          ]
+        },
+        {
+          "hint": "idiot",
+          "answer": "aweonao",
+          "answers": [
+            "aweonao"
+          ]
+        },
+        {
+          "hint": "cool",
+          "answer": "bacan",
+          "answers": [
+            "bacan"
+          ]
+        },
+        {
+          "hint": "boring",
+          "answer": "fome",
+          "answers": [
+            "fome"
+          ]
+        },
+        {
+          "hint": "boyfriend",
+          "answer": "pololo",
+          "answers": [
+            "pololo"
+          ]
+        },
+        {
+          "hint": "girlfriend",
+          "answer": "polola",
+          "answers": [
+            "polola"
+          ]
+        },
+        {
+          "hint": "job",
+          "answer": "pega",
+          "answers": [
+            "pega"
+          ]
+        },
+        {
+          "hint": "money (1k)",
+          "answer": "luca",
+          "answers": [
+            "luca"
+          ]
+        },
+        {
+          "hint": "city bus",
+          "answer": "micro",
+          "answers": [
+            "micro"
+          ]
+        },
+        {
+          "hint": "traffic jam",
+          "answer": "taco",
+          "answers": [
+            "taco"
+          ]
+        },
+        {
+          "hint": "right away",
+          "answer": "al tiro",
+          "answers": [
+            "al tiro"
+          ]
+        },
+        {
+          "hint": "to understand",
+          "answer": "cachar",
+          "answers": [
+            "cachar"
+          ]
+        },
+        {
+          "hint": "you know? / got it?",
+          "answer": "cachai",
+          "answers": [
+            "cachai"
+          ]
+        },
+        {
+          "hint": "a lot",
+          "answer": "caleta",
+          "answers": [
+            "caleta"
+          ]
+        },
+        {
+          "hint": "party",
+          "answer": "carrete",
+          "answers": [
+            "carrete"
+          ]
+        },
+        {
+          "hint": "to party",
+          "answer": "carretear",
+          "answers": [
+            "carretear"
+          ]
+        },
+        {
+          "hint": "alcohol drink",
+          "answer": "copete",
+          "answers": [
+            "copete"
+          ]
+        },
+        {
+          "hint": "hangover",
+          "answer": "cana",
+          "answers": [
+            "cana"
+          ]
+        },
+        {
+          "hint": "baby",
+          "answer": "guagua",
+          "answers": [
+            "guagua"
+          ]
+        },
+        {
+          "hint": "friend (male)",
+          "answer": "cabro",
+          "answers": [
+            "cabro"
+          ]
+        },
+        {
+          "hint": "little kid",
+          "answer": "cabro chico",
+          "answers": [
+            "cabro chico"
+          ]
+        },
+        {
+          "hint": "awesome",
+          "answer": "la raja",
+          "answers": [
+            "la raja"
+          ]
+        },
+        {
+          "hint": "intense / crazy",
+          "answer": "cuatico",
+          "answers": [
+            "cuatico"
+          ]
+        },
+        {
+          "hint": "low-key / chill",
+          "answer": "piola",
+          "answers": [
+            "piola"
+          ]
+        },
+        {
+          "hint": "huge mess",
+          "answer": "la caga",
+          "answers": [
+            "la caga"
+          ]
+        },
+        {
+          "hint": "to mess up badly",
+          "answer": "mandarse un condoro",
+          "answers": [
+            "mandarse un condoro"
+          ]
+        },
+        {
+          "hint": "big mistake",
+          "answer": "condoro",
+          "answers": [
+            "condoro"
+          ]
+        },
+        {
+          "hint": "dad (casual)",
+          "answer": "viejo",
+          "answers": [
+            "viejo"
+          ]
+        },
+        {
+          "hint": "mom (casual)",
+          "answer": "vieja",
+          "answers": [
+            "vieja"
+          ]
+        },
+        {
+          "hint": "expensive",
+          "answer": "caro",
+          "answers": [
+            "caro"
+          ]
+        },
+        {
+          "hint": "cheap",
+          "answer": "barato",
+          "answers": [
+            "barato"
+          ]
+        },
+        {
+          "hint": "okay / sure",
+          "answer": "dale",
+          "answers": [
+            "dale"
+          ]
+        },
+        {
+          "hint": "quickly",
+          "answer": "al toque",
+          "answers": [
+            "al toque"
+          ]
+        },
+        {
+          "hint": "short while",
+          "answer": "ratito",
+          "answers": [
+            "ratito"
+          ]
+        },
+        {
+          "hint": "chilean hot dog",
+          "answer": "completo",
+          "answers": [
+            "completo"
+          ]
+        },
+        {
+          "hint": "to flirt",
+          "answer": "jotear",
+          "answers": [
+            "jotear"
+          ]
+        },
+        {
+          "hint": "flirting",
+          "answer": "joteo",
+          "answers": [
+            "joteo"
+          ]
+        },
+        {
+          "hint": "annoying person",
+          "answer": "latero",
+          "answers": [
+            "latero"
+          ]
+        },
+        {
+          "hint": "to complain",
+          "answer": "alegar",
+          "answers": [
+            "alegar"
+          ]
+        },
+        {
+          "hint": "gossip",
+          "answer": "cahuin",
+          "answers": [
+            "cahuin"
+          ]
+        },
+        {
+          "hint": "to gossip",
+          "answer": "cahuinear",
+          "answers": [
+            "cahuinear"
+          ]
+        },
+        {
+          "hint": "wow / damn",
+          "answer": "chuta",
+          "answers": [
+            "chuta"
+          ]
+        },
+        {
+          "hint": "damn (stronger)",
+          "answer": "cresta",
+          "answers": [
+            "cresta"
+          ]
+        },
+        {
+          "hint": "no way (strong)",
+          "answer": "nicagando",
+          "answers": [
+            "nicagando"
+          ]
+        },
+        {
+          "hint": "very drunk",
+          "answer": "curao",
+          "answers": [
+            "curao"
+          ]
+        },
+        {
+          "hint": "drunk person",
+          "answer": "curado",
+          "answers": [
+            "curado"
+          ]
+        },
+        {
+          "hint": "silly person",
+          "answer": "pastel",
+          "answers": [
+            "pastel"
+          ]
+        },
+        {
+          "hint": "to steal",
+          "answer": "pelar",
+          "answers": [
+            "pelar"
+          ]
+        },
+        {
+          "hint": "to leave quickly",
+          "answer": "virarse",
+          "answers": [
+            "virarse"
+          ]
+        },
+        {
+          "hint": "to zone out",
+          "answer": "andar paveando",
+          "answers": [
+            "andar paveando"
+          ]
+        }
+      ]
+    }
+  ]
+}

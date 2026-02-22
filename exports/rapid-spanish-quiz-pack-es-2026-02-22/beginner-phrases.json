@@ -1,0 +1,5234 @@
+{
+  "sourceNotes": [
+    "https://www.rae.es/buen-uso-espa%C3%B1ol/el-art%C3%ADculo-clases-y-usos",
+    "https://www.rae.es/buen-uso-espa%C3%B1ol/los-pronombres-personales-formas-y-caracter%C3%ADsticas",
+    "https://www.rae.es/buen-uso-espa%C3%B1ol/los-posesivos-caracterizaci%C3%B3n-y-formas",
+    "https://www.rae.es/buen-uso-espa%C3%B1ol/los-demostrativos",
+    "https://www.rae.es/buen-uso-espa%C3%B1ol/los-cuantificadores-alguno-ninguno-alguien-y-nadie",
+    "https://www.rae.es/gram%C3%A1tica-b%C3%A1sica/la-preposici%C3%B3n-la-conjunci%C3%B3n-la-interjecci%C3%B3n/la-preposici%C3%B3n/las-preposiciones-del-espa%C3%B1ol",
+    "https://www.rae.es/gtg/interjecci%C3%B3n",
+    "https://www.spanishdict.com/guide/greetings-in-spanish",
+    "https://www.spanishdict.com/guide/spanish-question-words",
+    "https://www.spanishdict.com/guide/get-directions-in-spanish",
+    "https://www.spanishdict.com/guide/order-at-a-restaurant-in-spanish",
+    "https://www.spanishdict.com/guide/spanish-conjunctions",
+    "https://www.spanishdict.com/guide/numbers-in-spanish-0-100",
+    "https://www.spanishdict.com/guide/colors-in-spanish",
+    "https://www.spanishdict.com/lists/351942/100-most-common-adjectives",
+    "https://www.spanishdict.com/guide/spanish-adverbs"
+  ],
+  "generatedAt": "2026-02-16T01:44:08.428988+00:00",
+  "groupCount": 16,
+  "totalItems": 635,
+  "groups": [
+    {
+      "id": "core-functional-words",
+      "title": "Core Functional Words",
+      "description": "High-utility words and question forms used in beginner conversation.",
+      "count": 31,
+      "items": [
+        {
+          "hint": "yes",
+          "answer": "sí",
+          "answers": [
+            "sí"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "no",
+          "answer": "no",
+          "answers": [
+            "no"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "okay / all right",
+          "answer": "vale",
+          "answers": [
+            "vale"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "agreed",
+          "answer": "de acuerdo",
+          "answers": [
+            "de acuerdo"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "it is fine",
+          "answer": "está bien",
+          "answers": [
+            "está bien"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "of course",
+          "answer": "claro",
+          "answers": [
+            "claro"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "maybe",
+          "answer": "quizá",
+          "answers": [
+            "quizá"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "perhaps",
+          "answer": "quizás",
+          "answers": [
+            "quizás"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "maybe / perhaps",
+          "answer": "tal vez",
+          "answers": [
+            "tal vez"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "I understand",
+          "answer": "entiendo",
+          "answers": [
+            "entiendo"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "I don't understand",
+          "answer": "no entiendo",
+          "answers": [
+            "no entiendo"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "I don't know",
+          "answer": "no sé",
+          "answers": [
+            "no sé"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "please repeat",
+          "answer": "repita, por favor",
+          "answers": [
+            "repita, por favor"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "more slowly, please",
+          "answer": "despacio, por favor",
+          "answers": [
+            "despacio, por favor"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "what?",
+          "answer": "¿qué?",
+          "answers": [
+            "¿qué?"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "who?",
+          "answer": "¿quién?",
+          "answers": [
+            "¿quién?"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "who? (plural)",
+          "answer": "¿quiénes?",
+          "answers": [
+            "¿quiénes?"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "which?",
+          "answer": "¿cuál?",
+          "answers": [
+            "¿cuál?"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "which ones?",
+          "answer": "¿cuáles?",
+          "answers": [
+            "¿cuáles?"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "where?",
+          "answer": "¿dónde?",
+          "answers": [
+            "¿dónde?"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "to where?",
+          "answer": "¿adónde?",
+          "answers": [
+            "¿adónde?"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "when?",
+          "answer": "¿cuándo?",
+          "answers": [
+            "¿cuándo?"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "how?",
+          "answer": "¿cómo?",
+          "answers": [
+            "¿cómo?"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "how much?",
+          "answer": "¿cuánto?",
+          "answers": [
+            "¿cuánto?"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "how much? (feminine)",
+          "answer": "¿cuánta?",
+          "answers": [
+            "¿cuánta?"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "how many? (masculine)",
+          "answer": "¿cuántos?",
+          "answers": [
+            "¿cuántos?"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "how many? (feminine)",
+          "answer": "¿cuántas?",
+          "answers": [
+            "¿cuántas?"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "why?",
+          "answer": "¿por qué?",
+          "answers": [
+            "¿por qué?"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "what for?",
+          "answer": "¿para qué?",
+          "answers": [
+            "¿para qué?"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "from where?",
+          "answer": "¿de dónde?",
+          "answers": [
+            "¿de dónde?"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "at what time?",
+          "answer": "¿a qué hora?",
+          "answers": [
+            "¿a qué hora?"
+          ],
+          "index": 31
+        }
+      ]
+    },
+    {
+      "id": "greetings-social-phrases",
+      "title": "Greetings & Social Phrases",
+      "description": "Core greetings, farewells, and social courtesy phrases.",
+      "count": 36,
+      "items": [
+        {
+          "hint": "hello",
+          "answer": "hola",
+          "answers": [
+            "hola"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "good morning",
+          "answer": "buenos días",
+          "answers": [
+            "buenos días"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "good afternoon",
+          "answer": "buenas tardes",
+          "answers": [
+            "buenas tardes"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "good evening / good night",
+          "answer": "buenas noches",
+          "answers": [
+            "buenas noches"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "how are you? (formal)",
+          "answer": "¿cómo está?",
+          "answers": [
+            "¿cómo está?"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "how are you? (informal)",
+          "answer": "¿cómo estás?",
+          "answers": [
+            "¿cómo estás?"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "how are you? (plural)",
+          "answer": "¿cómo están?",
+          "answers": [
+            "¿cómo están?"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "how's it going?",
+          "answer": "¿qué tal?",
+          "answers": [
+            "¿qué tal?"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "nice to meet you",
+          "answer": "mucho gusto",
+          "answers": [
+            "mucho gusto"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "pleased to meet you (masculine speaker)",
+          "answer": "encantado",
+          "answers": [
+            "encantado"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "pleased to meet you (feminine speaker)",
+          "answer": "encantada",
+          "answers": [
+            "encantada"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "likewise",
+          "answer": "igualmente",
+          "answers": [
+            "igualmente"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "welcome (to a man)",
+          "answer": "bienvenido",
+          "answers": [
+            "bienvenido"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "welcome (to a woman)",
+          "answer": "bienvenida",
+          "answers": [
+            "bienvenida"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "goodbye",
+          "answer": "adiós",
+          "answers": [
+            "adiós"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "see you later",
+          "answer": "hasta luego",
+          "answers": [
+            "hasta luego"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "see you tomorrow",
+          "answer": "hasta mañana",
+          "answers": [
+            "hasta mañana"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "see you soon",
+          "answer": "hasta pronto",
+          "answers": [
+            "hasta pronto"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "see you",
+          "answer": "nos vemos",
+          "answers": [
+            "nos vemos"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "have a good day (formal)",
+          "answer": "que tenga buen día",
+          "answers": [
+            "que tenga buen día"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "have a good day (informal)",
+          "answer": "que te vaya bien",
+          "answers": [
+            "que te vaya bien"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "thanks",
+          "answer": "gracias",
+          "answers": [
+            "gracias"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "thank you very much",
+          "answer": "muchas gracias",
+          "answers": [
+            "muchas gracias"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "you're welcome",
+          "answer": "de nada",
+          "answers": [
+            "de nada"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "don't mention it",
+          "answer": "no hay de qué",
+          "answers": [
+            "no hay de qué"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "please",
+          "answer": "por favor",
+          "answers": [
+            "por favor"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "excuse me (passing by)",
+          "answer": "permiso",
+          "answers": [
+            "permiso"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "excuse me (with permission)",
+          "answer": "con permiso",
+          "answers": [
+            "con permiso"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "sorry / pardon",
+          "answer": "perdón",
+          "answers": [
+            "perdón"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "I'm sorry",
+          "answer": "lo siento",
+          "answers": [
+            "lo siento"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "excuse me (formal apology)",
+          "answer": "disculpe",
+          "answers": [
+            "disculpe"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "excuse me (informal apology)",
+          "answer": "disculpa",
+          "answers": [
+            "disculpa"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "bless you / cheers",
+          "answer": "salud",
+          "answers": [
+            "salud"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "congratulations",
+          "answer": "felicidades",
+          "answers": [
+            "felicidades"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "have a good trip",
+          "answer": "buen viaje",
+          "answers": [
+            "buen viaje"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "rest well",
+          "answer": "que descanses",
+          "answers": [
+            "que descanses"
+          ],
+          "index": 36
+        }
+      ]
+    },
+    {
+      "id": "articles",
+      "title": "Articles",
+      "description": "Definite and indefinite Spanish articles.",
+      "count": 9,
+      "items": [
+        {
+          "hint": "the (masculine singular)",
+          "answer": "el",
+          "answers": [
+            "el"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "the (feminine singular)",
+          "answer": "la",
+          "answers": [
+            "la"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "the (masculine plural)",
+          "answer": "los",
+          "answers": [
+            "los"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "the (feminine plural)",
+          "answer": "las",
+          "answers": [
+            "las"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "the (neuter)",
+          "answer": "lo",
+          "answers": [
+            "lo"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "a / an (masculine singular)",
+          "answer": "un",
+          "answers": [
+            "un"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "a / an (feminine singular)",
+          "answer": "una",
+          "answers": [
+            "una"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "some (masculine plural)",
+          "answer": "unos",
+          "answers": [
+            "unos"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "some (feminine plural)",
+          "answer": "unas",
+          "answers": [
+            "unas"
+          ],
+          "index": 9
+        }
+      ]
+    },
+    {
+      "id": "pronouns",
+      "title": "Pronouns",
+      "description": "Personal pronouns and core object/prepositional forms.",
+      "count": 51,
+      "items": [
+        {
+          "hint": "I",
+          "answer": "yo",
+          "answers": [
+            "yo"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "you (informal singular)",
+          "answer": "tú",
+          "answers": [
+            "tú"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "you (voseo singular)",
+          "answer": "vos",
+          "answers": [
+            "vos"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "you (formal singular)",
+          "answer": "usted",
+          "answers": [
+            "usted"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "he",
+          "answer": "él",
+          "answers": [
+            "él"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "she",
+          "answer": "ella",
+          "answers": [
+            "ella"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "it (neuter pronoun)",
+          "answer": "ello",
+          "answers": [
+            "ello"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "we (masculine/mixed)",
+          "answer": "nosotros",
+          "answers": [
+            "nosotros"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "we (feminine)",
+          "answer": "nosotras",
+          "answers": [
+            "nosotras"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "you all (informal Spain, masculine/mixed)",
+          "answer": "vosotros",
+          "answers": [
+            "vosotros"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "you all (informal Spain, feminine)",
+          "answer": "vosotras",
+          "answers": [
+            "vosotras"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "you all (formal/plural)",
+          "answer": "ustedes",
+          "answers": [
+            "ustedes"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "they (masculine/mixed)",
+          "answer": "ellos",
+          "answers": [
+            "ellos"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "they (feminine)",
+          "answer": "ellas",
+          "answers": [
+            "ellas"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "me",
+          "answer": "me",
+          "answers": [
+            "me"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "you (object, informal)",
+          "answer": "te",
+          "answers": [
+            "te"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "him/it (direct object, masculine singular)",
+          "answer": "lo",
+          "answers": [
+            "lo"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "her/it (direct object, feminine singular)",
+          "answer": "la",
+          "answers": [
+            "la"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "them (direct object, masculine plural)",
+          "answer": "los",
+          "answers": [
+            "los"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "them (direct object, feminine plural)",
+          "answer": "las",
+          "answers": [
+            "las"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "him/her/to him/to her (indirect object)",
+          "answer": "le",
+          "answers": [
+            "le"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "to them / to you all (indirect object)",
+          "answer": "les",
+          "answers": [
+            "les"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "himself/herself/itself (clitic)",
+          "answer": "se",
+          "answers": [
+            "se"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "us (object)",
+          "answer": "nos",
+          "answers": [
+            "nos"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "you all (object, informal Spain)",
+          "answer": "os",
+          "answers": [
+            "os"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "me (after preposition)",
+          "answer": "mí",
+          "answers": [
+            "mí"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "you (after preposition)",
+          "answer": "ti",
+          "answers": [
+            "ti"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "self (after preposition)",
+          "answer": "sí",
+          "answers": [
+            "sí"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "with me",
+          "answer": "conmigo",
+          "answers": [
+            "conmigo"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "with you",
+          "answer": "contigo",
+          "answers": [
+            "contigo"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "with himself/herself/itself",
+          "answer": "consigo",
+          "answers": [
+            "consigo"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "who / whoever (singular relative pronoun)",
+          "answer": "quien",
+          "answers": [
+            "quien"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "who / whoever (plural relative pronoun)",
+          "answer": "quienes",
+          "answers": [
+            "quienes"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "the one who / that (masculine singular)",
+          "answer": "el que",
+          "answers": [
+            "el que"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "the one who / that (feminine singular)",
+          "answer": "la que",
+          "answers": [
+            "la que"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "the ones who / that (masculine plural)",
+          "answer": "los que",
+          "answers": [
+            "los que"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "the ones who / that (feminine plural)",
+          "answer": "las que",
+          "answers": [
+            "las que"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "what / that which",
+          "answer": "lo que",
+          "answers": [
+            "lo que"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "which / who (formal relative, masculine singular)",
+          "answer": "el cual",
+          "answers": [
+            "el cual"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "which / who (formal relative, feminine singular)",
+          "answer": "la cual",
+          "answers": [
+            "la cual"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "which / who (formal relative, masculine plural)",
+          "answer": "los cuales",
+          "answers": [
+            "los cuales"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "which / who (formal relative, feminine plural)",
+          "answer": "las cuales",
+          "answers": [
+            "las cuales"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "which / what (formal relative, neuter)",
+          "answer": "lo cual",
+          "answers": [
+            "lo cual"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "whose (masculine singular)",
+          "answer": "cuyo",
+          "answers": [
+            "cuyo"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "whose (feminine singular)",
+          "answer": "cuya",
+          "answers": [
+            "cuya"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "whose (masculine plural)",
+          "answer": "cuyos",
+          "answers": [
+            "cuyos"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "whose (feminine plural)",
+          "answer": "cuyas",
+          "answers": [
+            "cuyas"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "as much as / all that (masculine singular)",
+          "answer": "cuanto",
+          "answers": [
+            "cuanto"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "as much as / all that (feminine singular)",
+          "answer": "cuanta",
+          "answers": [
+            "cuanta"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "as many as / all those (masculine plural)",
+          "answer": "cuantos",
+          "answers": [
+            "cuantos"
+          ],
+          "index": 50
+        },
+        {
+          "hint": "as many as / all those (feminine plural)",
+          "answer": "cuantas",
+          "answers": [
+            "cuantas"
+          ],
+          "index": 51
+        }
+      ]
+    },
+    {
+      "id": "possessives",
+      "title": "Possessives",
+      "description": "Possessive determiners and possessive pronoun forms.",
+      "count": 26,
+      "items": [
+        {
+          "hint": "my",
+          "answer": "mi",
+          "answers": [
+            "mi"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "my (plural possessed)",
+          "answer": "mis",
+          "answers": [
+            "mis"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "your (informal singular)",
+          "answer": "tu",
+          "answers": [
+            "tu"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "your (informal singular, plural possessed)",
+          "answer": "tus",
+          "answers": [
+            "tus"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "his/her/your/their",
+          "answer": "su",
+          "answers": [
+            "su"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "his/her/your/their (plural possessed)",
+          "answer": "sus",
+          "answers": [
+            "sus"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "our (masculine singular)",
+          "answer": "nuestro",
+          "answers": [
+            "nuestro"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "our (feminine singular)",
+          "answer": "nuestra",
+          "answers": [
+            "nuestra"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "our (masculine plural)",
+          "answer": "nuestros",
+          "answers": [
+            "nuestros"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "our (feminine plural)",
+          "answer": "nuestras",
+          "answers": [
+            "nuestras"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "your all (Spain, masculine singular)",
+          "answer": "vuestro",
+          "answers": [
+            "vuestro"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "your all (Spain, feminine singular)",
+          "answer": "vuestra",
+          "answers": [
+            "vuestra"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "your all (Spain, masculine plural)",
+          "answer": "vuestros",
+          "answers": [
+            "vuestros"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "your all (Spain, feminine plural)",
+          "answer": "vuestras",
+          "answers": [
+            "vuestras"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "mine (masculine singular)",
+          "answer": "mío",
+          "answers": [
+            "mío"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "mine (feminine singular)",
+          "answer": "mía",
+          "answers": [
+            "mía"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "mine (masculine plural)",
+          "answer": "míos",
+          "answers": [
+            "míos"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "mine (feminine plural)",
+          "answer": "mías",
+          "answers": [
+            "mías"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "yours (informal, masculine singular)",
+          "answer": "tuyo",
+          "answers": [
+            "tuyo"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "yours (informal, feminine singular)",
+          "answer": "tuya",
+          "answers": [
+            "tuya"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "yours (informal, masculine plural)",
+          "answer": "tuyos",
+          "answers": [
+            "tuyos"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "yours (informal, feminine plural)",
+          "answer": "tuyas",
+          "answers": [
+            "tuyas"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "his/hers/yours/theirs (masculine singular)",
+          "answer": "suyo",
+          "answers": [
+            "suyo"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "his/hers/yours/theirs (feminine singular)",
+          "answer": "suya",
+          "answers": [
+            "suya"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "his/hers/yours/theirs (masculine plural)",
+          "answer": "suyos",
+          "answers": [
+            "suyos"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "his/hers/yours/theirs (feminine plural)",
+          "answer": "suyas",
+          "answers": [
+            "suyas"
+          ],
+          "index": 26
+        }
+      ]
+    },
+    {
+      "id": "demonstratives",
+      "title": "Demonstratives",
+      "description": "Demonstrative determiners/pronouns across distance contrasts.",
+      "count": 15,
+      "items": [
+        {
+          "hint": "this (masculine singular)",
+          "answer": "este",
+          "answers": [
+            "este"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "this (feminine singular)",
+          "answer": "esta",
+          "answers": [
+            "esta"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "these (masculine plural)",
+          "answer": "estos",
+          "answers": [
+            "estos"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "these (feminine plural)",
+          "answer": "estas",
+          "answers": [
+            "estas"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "that (masculine singular)",
+          "answer": "ese",
+          "answers": [
+            "ese"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "that (feminine singular)",
+          "answer": "esa",
+          "answers": [
+            "esa"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "those (masculine plural)",
+          "answer": "esos",
+          "answers": [
+            "esos"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "those (feminine plural)",
+          "answer": "esas",
+          "answers": [
+            "esas"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "that over there (masculine singular)",
+          "answer": "aquel",
+          "answers": [
+            "aquel"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "that over there (feminine singular)",
+          "answer": "aquella",
+          "answers": [
+            "aquella"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "those over there (masculine plural)",
+          "answer": "aquellos",
+          "answers": [
+            "aquellos"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "those over there (feminine plural)",
+          "answer": "aquellas",
+          "answers": [
+            "aquellas"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "this thing",
+          "answer": "esto",
+          "answers": [
+            "esto"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "that thing",
+          "answer": "eso",
+          "answers": [
+            "eso"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "that thing over there",
+          "answer": "aquello",
+          "answers": [
+            "aquello"
+          ],
+          "index": 15
+        }
+      ]
+    },
+    {
+      "id": "quantifiers",
+      "title": "Quantifiers",
+      "description": "Universal and indefinite quantifier forms commonly taught to beginners.",
+      "count": 57,
+      "items": [
+        {
+          "hint": "all / every (masculine singular)",
+          "answer": "todo",
+          "answers": [
+            "todo"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "all / every (feminine singular)",
+          "answer": "toda",
+          "answers": [
+            "toda"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "all (masculine plural)",
+          "answer": "todos",
+          "answers": [
+            "todos"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "all (feminine plural)",
+          "answer": "todas",
+          "answers": [
+            "todas"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "some / any (masculine singular)",
+          "answer": "alguno",
+          "answers": [
+            "alguno"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "some / any (feminine singular)",
+          "answer": "alguna",
+          "answers": [
+            "alguna"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "some / any (masculine plural)",
+          "answer": "algunos",
+          "answers": [
+            "algunos"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "some / any (feminine plural)",
+          "answer": "algunas",
+          "answers": [
+            "algunas"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "some / any (apocopated masculine)",
+          "answer": "algún",
+          "answers": [
+            "algún"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "none / not any (masculine singular)",
+          "answer": "ninguno",
+          "answers": [
+            "ninguno"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "none / not any (feminine singular)",
+          "answer": "ninguna",
+          "answers": [
+            "ninguna"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "none / not any (apocopated masculine)",
+          "answer": "ningún",
+          "answers": [
+            "ningún"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "much / many (masculine singular)",
+          "answer": "mucho",
+          "answers": [
+            "mucho"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "much / many (feminine singular)",
+          "answer": "mucha",
+          "answers": [
+            "mucha"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "many (masculine plural)",
+          "answer": "muchos",
+          "answers": [
+            "muchos"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "many (feminine plural)",
+          "answer": "muchas",
+          "answers": [
+            "muchas"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "little / few (masculine singular)",
+          "answer": "poco",
+          "answers": [
+            "poco"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "little / few (feminine singular)",
+          "answer": "poca",
+          "answers": [
+            "poca"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "few (masculine plural)",
+          "answer": "pocos",
+          "answers": [
+            "pocos"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "few (feminine plural)",
+          "answer": "pocas",
+          "answers": [
+            "pocas"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "enough / quite a lot (singular)",
+          "answer": "bastante",
+          "answers": [
+            "bastante"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "enough / quite a lot (plural)",
+          "answer": "bastantes",
+          "answers": [
+            "bastantes"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "several (masculine)",
+          "answer": "varios",
+          "answers": [
+            "varios"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "several (feminine)",
+          "answer": "varias",
+          "answers": [
+            "varias"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "each",
+          "answer": "cada",
+          "answers": [
+            "cada"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "other / another (masculine singular)",
+          "answer": "otro",
+          "answers": [
+            "otro"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "other / another (feminine singular)",
+          "answer": "otra",
+          "answers": [
+            "otra"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "other / others (masculine plural)",
+          "answer": "otros",
+          "answers": [
+            "otros"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "other / others (feminine plural)",
+          "answer": "otras",
+          "answers": [
+            "otras"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "so much / so many (masculine singular)",
+          "answer": "tanto",
+          "answers": [
+            "tanto"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "so much / so many (feminine singular)",
+          "answer": "tanta",
+          "answers": [
+            "tanta"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "so many (masculine plural)",
+          "answer": "tantos",
+          "answers": [
+            "tantos"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "so many (feminine plural)",
+          "answer": "tantas",
+          "answers": [
+            "tantas"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "too much / too many (masculine singular)",
+          "answer": "demasiado",
+          "answers": [
+            "demasiado"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "too much / too many (feminine singular)",
+          "answer": "demasiada",
+          "answers": [
+            "demasiada"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "too many (masculine plural)",
+          "answer": "demasiados",
+          "answers": [
+            "demasiados"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "too many (feminine plural)",
+          "answer": "demasiadas",
+          "answers": [
+            "demasiadas"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "any (before noun)",
+          "answer": "cualquier",
+          "answers": [
+            "cualquier"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "anyone / any (singular)",
+          "answer": "cualquiera",
+          "answers": [
+            "cualquiera"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "any (plural)",
+          "answer": "cualesquiera",
+          "answers": [
+            "cualesquiera"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "both (masculine/mixed)",
+          "answer": "ambos",
+          "answers": [
+            "ambos"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "both (feminine)",
+          "answer": "ambas",
+          "answers": [
+            "ambas"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "more",
+          "answer": "más",
+          "answers": [
+            "más"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "less",
+          "answer": "menos",
+          "answers": [
+            "menos"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "something",
+          "answer": "algo",
+          "answers": [
+            "algo"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "nothing",
+          "answer": "nada",
+          "answers": [
+            "nada"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "someone",
+          "answer": "alguien",
+          "answers": [
+            "alguien"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "nobody",
+          "answer": "nadie",
+          "answers": [
+            "nadie"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "one (pronoun, masculine)",
+          "answer": "uno",
+          "answers": [
+            "uno"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "one (pronoun, feminine)",
+          "answer": "una",
+          "answers": [
+            "una"
+          ],
+          "index": 50
+        },
+        {
+          "hint": "ones (pronoun, masculine plural)",
+          "answer": "unos",
+          "answers": [
+            "unos"
+          ],
+          "index": 51
+        },
+        {
+          "hint": "ones (pronoun, feminine plural)",
+          "answer": "unas",
+          "answers": [
+            "unas"
+          ],
+          "index": 52
+        },
+        {
+          "hint": "the rest / others",
+          "answer": "demás",
+          "answers": [
+            "demás"
+          ],
+          "index": 53
+        },
+        {
+          "hint": "such (singular)",
+          "answer": "tal",
+          "answers": [
+            "tal"
+          ],
+          "index": 54
+        },
+        {
+          "hint": "such (plural)",
+          "answer": "tales",
+          "answers": [
+            "tales"
+          ],
+          "index": 55
+        },
+        {
+          "hint": "each one (masculine)",
+          "answer": "cada uno",
+          "answers": [
+            "cada uno"
+          ],
+          "index": 56
+        },
+        {
+          "hint": "each one (feminine)",
+          "answer": "cada una",
+          "answers": [
+            "cada una"
+          ],
+          "index": 57
+        }
+      ]
+    },
+    {
+      "id": "prepositions",
+      "title": "Prepositions",
+      "description": "The canonical set of Spanish prepositions.",
+      "count": 29,
+      "items": [
+        {
+          "hint": "to / at",
+          "answer": "a",
+          "answers": [
+            "a"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "to the / at the (a + el contraction)",
+          "answer": "al",
+          "answers": [
+            "al"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "before / in the presence of",
+          "answer": "ante",
+          "answers": [
+            "ante"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "under",
+          "answer": "bajo",
+          "answers": [
+            "bajo"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "next to (archaic/literary)",
+          "answer": "cabe",
+          "answers": [
+            "cabe"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "with",
+          "answer": "con",
+          "answers": [
+            "con"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "against",
+          "answer": "contra",
+          "answers": [
+            "contra"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "of / from",
+          "answer": "de",
+          "answers": [
+            "de"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "of the / from the (de + el contraction)",
+          "answer": "del",
+          "answers": [
+            "del"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "from / since",
+          "answer": "desde",
+          "answers": [
+            "desde"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "during",
+          "answer": "durante",
+          "answers": [
+            "durante"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "in / on",
+          "answer": "en",
+          "answers": [
+            "en"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "between / among",
+          "answer": "entre",
+          "answers": [
+            "entre"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "except / excluding",
+          "answer": "excepto",
+          "answers": [
+            "excepto"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "toward",
+          "answer": "hacia",
+          "answers": [
+            "hacia"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "until / up to",
+          "answer": "hasta",
+          "answers": [
+            "hasta"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "including / even",
+          "answer": "incluso",
+          "answers": [
+            "incluso"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "by means of",
+          "answer": "mediante",
+          "answers": [
+            "mediante"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "except / minus",
+          "answer": "menos",
+          "answers": [
+            "menos"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "for / in order to",
+          "answer": "para",
+          "answers": [
+            "para"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "for / through / by",
+          "answer": "por",
+          "answers": [
+            "por"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "except / save",
+          "answer": "salvo",
+          "answers": [
+            "salvo"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "according to",
+          "answer": "según",
+          "answers": [
+            "según"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "without",
+          "answer": "sin",
+          "answers": [
+            "sin"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "under (archaic)",
+          "answer": "so",
+          "answers": [
+            "so"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "on / about",
+          "answer": "sobre",
+          "answers": [
+            "sobre"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "after / behind",
+          "answer": "tras",
+          "answers": [
+            "tras"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "versus / against",
+          "answer": "versus",
+          "answers": [
+            "versus"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "via / by way of",
+          "answer": "vía",
+          "answers": [
+            "vía"
+          ],
+          "index": 29
+        }
+      ]
+    },
+    {
+      "id": "conjunctions",
+      "title": "Conjunctions",
+      "description": "Common coordinating and subordinating conjunctions.",
+      "count": 51,
+      "items": [
+        {
+          "hint": "and",
+          "answer": "y",
+          "answers": [
+            "y"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "and (before i/hi)",
+          "answer": "e",
+          "answers": [
+            "e"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "or",
+          "answer": "o",
+          "answers": [
+            "o"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "or (before o/ho)",
+          "answer": "u",
+          "answers": [
+            "u"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "neither / nor",
+          "answer": "ni",
+          "answers": [
+            "ni"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "or else / or rather",
+          "answer": "o bien",
+          "answers": [
+            "o bien"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "but",
+          "answer": "pero",
+          "answers": [
+            "pero"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "but (formal/literary)",
+          "answer": "mas",
+          "answers": [
+            "mas"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "but rather",
+          "answer": "sino",
+          "answers": [
+            "sino"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "but rather that",
+          "answer": "sino que",
+          "answers": [
+            "sino que"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "neither...nor",
+          "answer": "ni...ni",
+          "answers": [
+            "ni...ni"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "either...or",
+          "answer": "o...o",
+          "answers": [
+            "o...o"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "whether...or / either...or",
+          "answer": "ya...ya",
+          "answers": [
+            "ya...ya"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "whether...or (alt correlative)",
+          "answer": "bien...bien",
+          "answers": [
+            "bien...bien"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "be it...be it",
+          "answer": "sea...sea",
+          "answers": [
+            "sea...sea"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "both...and",
+          "answer": "tanto...como",
+          "answers": [
+            "tanto...como"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "that",
+          "answer": "que",
+          "answers": [
+            "que"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "because",
+          "answer": "porque",
+          "answers": [
+            "porque"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "since / because",
+          "answer": "pues",
+          "answers": [
+            "pues"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "since",
+          "answer": "ya que",
+          "answers": [
+            "ya que"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "since / given that",
+          "answer": "puesto que",
+          "answers": [
+            "puesto que"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "given that",
+          "answer": "dado que",
+          "answers": [
+            "dado que"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "like / as",
+          "answer": "como",
+          "answers": [
+            "como"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "if",
+          "answer": "si",
+          "answers": [
+            "si"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "as if",
+          "answer": "como si",
+          "answers": [
+            "como si"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "although",
+          "answer": "aunque",
+          "answers": [
+            "aunque"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "even though",
+          "answer": "a pesar de que",
+          "answers": [
+            "a pesar de que"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "while",
+          "answer": "mientras",
+          "answers": [
+            "mientras"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "while / whereas",
+          "answer": "mientras que",
+          "answers": [
+            "mientras que"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "when",
+          "answer": "cuando",
+          "answers": [
+            "cuando"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "where",
+          "answer": "donde",
+          "answers": [
+            "donde"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "as soon as / as",
+          "answer": "en cuanto",
+          "answers": [
+            "en cuanto"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "as soon as",
+          "answer": "tan pronto como",
+          "answers": [
+            "tan pronto como"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "as soon as / hardly when",
+          "answer": "apenas",
+          "answers": [
+            "apenas"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "before",
+          "answer": "antes de que",
+          "answers": [
+            "antes de que"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "after",
+          "answer": "después de que",
+          "answers": [
+            "después de que"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "since / ever since",
+          "answer": "desde que",
+          "answers": [
+            "desde que"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "until",
+          "answer": "hasta que",
+          "answers": [
+            "hasta que"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "so that / in order that",
+          "answer": "para que",
+          "answers": [
+            "para que"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "so that",
+          "answer": "a fin de que",
+          "answers": [
+            "a fin de que"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "without ...ing / without that",
+          "answer": "sin que",
+          "answers": [
+            "sin que"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "unless",
+          "answer": "a menos que",
+          "answers": [
+            "a menos que"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "provided that",
+          "answer": "con tal de que",
+          "answers": [
+            "con tal de que"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "as long as / whenever",
+          "answer": "siempre que",
+          "answers": [
+            "siempre que"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "in case",
+          "answer": "por si",
+          "answers": [
+            "por si"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "so / therefore",
+          "answer": "conque",
+          "answers": [
+            "conque"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "so / thus",
+          "answer": "así que",
+          "answers": [
+            "así que"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "therefore",
+          "answer": "por lo tanto",
+          "answers": [
+            "por lo tanto"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "consequently",
+          "answer": "por consiguiente",
+          "answers": [
+            "por consiguiente"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "then / afterwards",
+          "answer": "luego",
+          "answers": [
+            "luego"
+          ],
+          "index": 50
+        },
+        {
+          "hint": "then",
+          "answer": "entonces",
+          "answers": [
+            "entonces"
+          ],
+          "index": 51
+        }
+      ]
+    },
+    {
+      "id": "interjections",
+      "title": "Interjections",
+      "description": "Frequent interjections for reactions, emphasis, and exclamations.",
+      "count": 16,
+      "items": [
+        {
+          "hint": "ouch!",
+          "answer": "ay",
+          "answers": [
+            "ay"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "ah!",
+          "answer": "ah",
+          "answers": [
+            "ah"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "hey! / huh?",
+          "answer": "eh",
+          "answers": [
+            "eh"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "oh!",
+          "answer": "oh",
+          "answers": [
+            "oh"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "ugh!",
+          "answer": "uf",
+          "answers": [
+            "uf"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "bah!",
+          "answer": "bah",
+          "answers": [
+            "bah"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "wow / well then!",
+          "answer": "vaya",
+          "answers": [
+            "vaya"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "gosh!",
+          "answer": "caramba",
+          "answers": [
+            "caramba"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "bravo!",
+          "answer": "bravo",
+          "answers": [
+            "bravo"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "come on!",
+          "answer": "anda",
+          "answers": [
+            "anda"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "come on! / wow!",
+          "answer": "hala",
+          "answers": [
+            "hala"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "watch out!",
+          "answer": "ojo",
+          "answers": [
+            "ojo"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "careful!",
+          "answer": "cuidado",
+          "answers": [
+            "cuidado"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "oops!",
+          "answer": "uy",
+          "answers": [
+            "uy"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "yikes!",
+          "answer": "huy",
+          "answers": [
+            "huy"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "phew!",
+          "answer": "puf",
+          "answers": [
+            "puf"
+          ],
+          "index": 16
+        }
+      ]
+    },
+    {
+      "id": "directions-location",
+      "title": "Directions & Location",
+      "description": "Phrases and words for navigating and talking about location.",
+      "count": 39,
+      "items": [
+        {
+          "hint": "to the right",
+          "answer": "a la derecha",
+          "answers": [
+            "a la derecha"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "to the left",
+          "answer": "a la izquierda",
+          "answers": [
+            "a la izquierda"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "straight ahead",
+          "answer": "todo recto",
+          "answers": [
+            "todo recto"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "straight",
+          "answer": "derecho",
+          "answers": [
+            "derecho"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "at the end of the street",
+          "answer": "al final de la calle",
+          "answers": [
+            "al final de la calle"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "on the corner",
+          "answer": "en la esquina",
+          "answers": [
+            "en la esquina"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "next to",
+          "answer": "al lado de",
+          "answers": [
+            "al lado de"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "near",
+          "answer": "cerca de",
+          "answers": [
+            "cerca de"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "far from",
+          "answer": "lejos de",
+          "answers": [
+            "lejos de"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "in front of",
+          "answer": "delante de",
+          "answers": [
+            "delante de"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "behind",
+          "answer": "detrás de",
+          "answers": [
+            "detrás de"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "across from",
+          "answer": "enfrente de",
+          "answers": [
+            "enfrente de"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "up / upstairs",
+          "answer": "arriba",
+          "answers": [
+            "arriba"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "down / downstairs",
+          "answer": "abajo",
+          "answers": [
+            "abajo"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "inside",
+          "answer": "dentro de",
+          "answers": [
+            "dentro de"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "outside",
+          "answer": "fuera de",
+          "answers": [
+            "fuera de"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "north",
+          "answer": "norte",
+          "answers": [
+            "norte"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "south",
+          "answer": "sur",
+          "answers": [
+            "sur"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "west",
+          "answer": "oeste",
+          "answers": [
+            "oeste"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "east",
+          "answer": "oriente",
+          "answers": [
+            "oriente"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "map",
+          "answer": "mapa",
+          "answers": [
+            "mapa"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "street",
+          "answer": "calle",
+          "answers": [
+            "calle"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "avenue",
+          "answer": "avenida",
+          "answers": [
+            "avenida"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "square / plaza",
+          "answer": "plaza",
+          "answers": [
+            "plaza"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "corner",
+          "answer": "esquina",
+          "answers": [
+            "esquina"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "traffic light",
+          "answer": "semáforo",
+          "answers": [
+            "semáforo"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "crosswalk/intersection",
+          "answer": "cruce",
+          "answers": [
+            "cruce"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "bridge",
+          "answer": "puente",
+          "answers": [
+            "puente"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "roundabout",
+          "answer": "rotonda",
+          "answers": [
+            "rotonda"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "entrance",
+          "answer": "entrada",
+          "answers": [
+            "entrada"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "exit",
+          "answer": "salida",
+          "answers": [
+            "salida"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "where is ...?",
+          "answer": "¿dónde está...?",
+          "answers": [
+            "¿dónde está...?"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "how do I get ...?",
+          "answer": "¿cómo llego...?",
+          "answers": [
+            "¿cómo llego...?"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "keep going straight",
+          "answer": "sigue recto",
+          "answers": [
+            "sigue recto"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "turn right",
+          "answer": "gire a la derecha",
+          "answers": [
+            "gire a la derecha"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "turn left",
+          "answer": "gire a la izquierda",
+          "answers": [
+            "gire a la izquierda"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "cross the street",
+          "answer": "cruce la calle",
+          "answers": [
+            "cruce la calle"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "it is here",
+          "answer": "está aquí",
+          "answers": [
+            "está aquí"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "it is there",
+          "answer": "está allí",
+          "answers": [
+            "está allí"
+          ],
+          "index": 39
+        }
+      ]
+    },
+    {
+      "id": "ordering-food",
+      "title": "Ordering Food",
+      "description": "Core restaurant phrases for requesting, ordering, and paying.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "a table for two",
+          "answer": "una mesa para dos",
+          "answers": [
+            "una mesa para dos"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "do you have a table available?",
+          "answer": "¿tiene mesa libre?",
+          "answers": [
+            "¿tiene mesa libre?"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "menu (card)",
+          "answer": "la carta",
+          "answers": [
+            "la carta"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "menu",
+          "answer": "el menú",
+          "answers": [
+            "el menú"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "waiter",
+          "answer": "el mesero",
+          "answers": [
+            "el mesero"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "waitress",
+          "answer": "la mesera",
+          "answers": [
+            "la mesera"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "dish of the day",
+          "answer": "el plato del día",
+          "answers": [
+            "el plato del día"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "what do you recommend?",
+          "answer": "¿qué recomienda?",
+          "answers": [
+            "¿qué recomienda?"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "for me...",
+          "answer": "para mí...",
+          "answers": [
+            "para mí..."
+          ],
+          "index": 9
+        },
+        {
+          "hint": "to share",
+          "answer": "para compartir",
+          "answers": [
+            "para compartir"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "what does it have?",
+          "answer": "¿qué lleva?",
+          "answers": [
+            "¿qué lleva?"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "is it spicy?",
+          "answer": "¿es picante?",
+          "answers": [
+            "¿es picante?"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "not spicy",
+          "answer": "sin picante",
+          "answers": [
+            "sin picante"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "with ice",
+          "answer": "con hielo",
+          "answers": [
+            "con hielo"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "without ice",
+          "answer": "sin hielo",
+          "answers": [
+            "sin hielo"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "still water",
+          "answer": "agua sin gas",
+          "answers": [
+            "agua sin gas"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "sparkling water",
+          "answer": "agua con gas",
+          "answers": [
+            "agua con gas"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "I want to order",
+          "answer": "quiero pedir",
+          "answers": [
+            "quiero pedir"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "I'll have...",
+          "answer": "voy a tomar",
+          "answers": [
+            "voy a tomar"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "for the first course",
+          "answer": "de primero",
+          "answers": [
+            "de primero"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "for the second course",
+          "answer": "de segundo",
+          "answers": [
+            "de segundo"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "for dessert",
+          "answer": "de postre",
+          "answers": [
+            "de postre"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "the check, please",
+          "answer": "la cuenta, por favor",
+          "answers": [
+            "la cuenta, por favor"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "can you bring me the check?",
+          "answer": "¿me trae la cuenta?",
+          "answers": [
+            "¿me trae la cuenta?"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "do you accept card?",
+          "answer": "¿aceptan tarjeta?",
+          "answers": [
+            "¿aceptan tarjeta?"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "I pay in cash",
+          "answer": "pago en efectivo",
+          "answers": [
+            "pago en efectivo"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "I pay by card",
+          "answer": "pago con tarjeta",
+          "answers": [
+            "pago con tarjeta"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "is tip included?",
+          "answer": "¿está incluida la propina?",
+          "answers": [
+            "¿está incluida la propina?"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "tip",
+          "answer": "la propina",
+          "answers": [
+            "la propina"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "I am allergic to...",
+          "answer": "tengo alergia a...",
+          "answers": [
+            "tengo alergia a..."
+          ],
+          "index": 30
+        },
+        {
+          "hint": "gluten-free",
+          "answer": "sin gluten",
+          "answers": [
+            "sin gluten"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "lactose-free",
+          "answer": "sin lactosa",
+          "answers": [
+            "sin lactosa"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "I am vegetarian (masculine speaker)",
+          "answer": "soy vegetariano",
+          "answers": [
+            "soy vegetariano"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "I am vegetarian (feminine speaker)",
+          "answer": "soy vegetariana",
+          "answers": [
+            "soy vegetariana"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "I am vegan (masculine speaker)",
+          "answer": "soy vegano",
+          "answers": [
+            "soy vegano"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "I am vegan (feminine speaker)",
+          "answer": "soy vegana",
+          "answers": [
+            "soy vegana"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "can you repeat?",
+          "answer": "¿puede repetir?",
+          "answers": [
+            "¿puede repetir?"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "can you recommend something?",
+          "answer": "¿me puede recomendar algo?",
+          "answers": [
+            "¿me puede recomendar algo?"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "can you bring me another napkin?",
+          "answer": "¿me trae otra servilleta?",
+          "answers": [
+            "¿me trae otra servilleta?"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "another round",
+          "answer": "otra ronda",
+          "answers": [
+            "otra ronda"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "to go",
+          "answer": "para llevar",
+          "answers": [
+            "para llevar"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "for here",
+          "answer": "para comer aquí",
+          "answers": [
+            "para comer aquí"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "it's delicious",
+          "answer": "está delicioso",
+          "answers": [
+            "está delicioso"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "it's cold",
+          "answer": "está fría",
+          "answers": [
+            "está fría"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "it's hot",
+          "answer": "está caliente",
+          "answers": [
+            "está caliente"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "I would like a reservation",
+          "answer": "quisiera una reserva",
+          "answers": [
+            "quisiera una reserva"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "we have a reservation",
+          "answer": "tenemos reserva",
+          "answers": [
+            "tenemos reserva"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "split check",
+          "answer": "la cuenta separada",
+          "answers": [
+            "la cuenta separada"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "a bottle of water",
+          "answer": "una botella de agua",
+          "answers": [
+            "una botella de agua"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "a black coffee",
+          "answer": "un café solo",
+          "answers": [
+            "un café solo"
+          ],
+          "index": 50
+        }
+      ]
+    },
+    {
+      "id": "common-adjectives-50",
+      "title": "50 Common Adjectives",
+      "description": "A high-utility beginner adjective set.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "good",
+          "answer": "bueno",
+          "answers": [
+            "bueno"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "bad",
+          "answer": "malo",
+          "answers": [
+            "malo"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "big / large",
+          "answer": "grande",
+          "answers": [
+            "grande"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "small",
+          "answer": "pequeño",
+          "answers": [
+            "pequeño"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "tall / high",
+          "answer": "alto",
+          "answers": [
+            "alto"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "wide",
+          "answer": "ancho",
+          "answers": [
+            "ancho"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "long",
+          "answer": "largo",
+          "answers": [
+            "largo"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "short (length)",
+          "answer": "corto",
+          "answers": [
+            "corto"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "new",
+          "answer": "nuevo",
+          "answers": [
+            "nuevo"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "old",
+          "answer": "viejo",
+          "answers": [
+            "viejo"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "young",
+          "answer": "joven",
+          "answers": [
+            "joven"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "pretty / nice",
+          "answer": "bonito",
+          "answers": [
+            "bonito"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "ugly",
+          "answer": "feo",
+          "answers": [
+            "feo"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "easy",
+          "answer": "fácil",
+          "answers": [
+            "fácil"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "difficult",
+          "answer": "difícil",
+          "answers": [
+            "difícil"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "fast",
+          "answer": "rápido",
+          "answers": [
+            "rápido"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "slow",
+          "answer": "lento",
+          "answers": [
+            "lento"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "hot (temperature)",
+          "answer": "caliente",
+          "answers": [
+            "caliente"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "cold",
+          "answer": "frío",
+          "answers": [
+            "frío"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "strong",
+          "answer": "fuerte",
+          "answers": [
+            "fuerte"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "weak",
+          "answer": "débil",
+          "answers": [
+            "débil"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "expensive",
+          "answer": "caro",
+          "answers": [
+            "caro"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "cheap",
+          "answer": "barato",
+          "answers": [
+            "barato"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "clean",
+          "answer": "limpio",
+          "answers": [
+            "limpio"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "dirty",
+          "answer": "sucio",
+          "answers": [
+            "sucio"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "full",
+          "answer": "lleno",
+          "answers": [
+            "lleno"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "empty",
+          "answer": "vacío",
+          "answers": [
+            "vacío"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "happy",
+          "answer": "feliz",
+          "answers": [
+            "feliz"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "sad",
+          "answer": "triste",
+          "answers": [
+            "triste"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "tired",
+          "answer": "cansado",
+          "answers": [
+            "cansado"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "busy",
+          "answer": "ocupado",
+          "answers": [
+            "ocupado"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "free / available",
+          "answer": "libre",
+          "answers": [
+            "libre"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "safe / sure",
+          "answer": "seguro",
+          "answers": [
+            "seguro"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "dangerous",
+          "answer": "peligroso",
+          "answers": [
+            "peligroso"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "important",
+          "answer": "importante",
+          "answers": [
+            "importante"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "possible",
+          "answer": "posible",
+          "answers": [
+            "posible"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "impossible",
+          "answer": "imposible",
+          "answers": [
+            "imposible"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "necessary",
+          "answer": "necesario",
+          "answers": [
+            "necesario"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "useful",
+          "answer": "útil",
+          "answers": [
+            "útil"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "useless",
+          "answer": "inútil",
+          "answers": [
+            "inútil"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "kind",
+          "answer": "amable",
+          "answers": [
+            "amable"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "nice / friendly",
+          "answer": "simpático",
+          "answers": [
+            "simpático"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "unfriendly / unpleasant",
+          "answer": "antipático",
+          "answers": [
+            "antipático"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "serious",
+          "answer": "serio",
+          "answers": [
+            "serio"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "fun",
+          "answer": "divertido",
+          "answers": [
+            "divertido"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "boring",
+          "answer": "aburrido",
+          "answers": [
+            "aburrido"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "intelligent",
+          "answer": "inteligente",
+          "answers": [
+            "inteligente"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "silly / dumb",
+          "answer": "tonto",
+          "answers": [
+            "tonto"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "correct",
+          "answer": "correcto",
+          "answers": [
+            "correcto"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "incorrect / wrong",
+          "answer": "incorrecto",
+          "answers": [
+            "incorrecto"
+          ],
+          "index": 50
+        }
+      ]
+    },
+    {
+      "id": "common-adverbs-50",
+      "title": "50 Common Adverbs",
+      "description": "A high-utility beginner adverb set spanning time, frequency, and manner.",
+      "count": 50,
+      "items": [
+        {
+          "hint": "well",
+          "answer": "bien",
+          "answers": [
+            "bien"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "badly",
+          "answer": "mal",
+          "answers": [
+            "mal"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "very",
+          "answer": "muy",
+          "answers": [
+            "muy"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "almost",
+          "answer": "casi",
+          "answers": [
+            "casi"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "already",
+          "answer": "ya",
+          "answers": [
+            "ya"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "still / yet",
+          "answer": "aún",
+          "answers": [
+            "aún"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "still / yet",
+          "answer": "todavía",
+          "answers": [
+            "todavía"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "always",
+          "answer": "siempre",
+          "answers": [
+            "siempre"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "never",
+          "answer": "nunca",
+          "answers": [
+            "nunca"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "never ever",
+          "answer": "jamás",
+          "answers": [
+            "jamás"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "today",
+          "answer": "hoy",
+          "answers": [
+            "hoy"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "yesterday",
+          "answer": "ayer",
+          "answers": [
+            "ayer"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "tomorrow",
+          "answer": "mañana",
+          "answers": [
+            "mañana"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "now",
+          "answer": "ahora",
+          "answers": [
+            "ahora"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "before",
+          "answer": "antes",
+          "answers": [
+            "antes"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "after",
+          "answer": "después",
+          "answers": [
+            "después"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "soon",
+          "answer": "pronto",
+          "answers": [
+            "pronto"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "late",
+          "answer": "tarde",
+          "answers": [
+            "tarde"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "early",
+          "answer": "temprano",
+          "answers": [
+            "temprano"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "often",
+          "answer": "a menudo",
+          "answers": [
+            "a menudo"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "sometimes",
+          "answer": "a veces",
+          "answers": [
+            "a veces"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "from time to time",
+          "answer": "de vez en cuando",
+          "answers": [
+            "de vez en cuando"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "generally",
+          "answer": "generalmente",
+          "answers": [
+            "generalmente"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "normally",
+          "answer": "normalmente",
+          "answers": [
+            "normalmente"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "frequently",
+          "answer": "frecuentemente",
+          "answers": [
+            "frecuentemente"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "regularly",
+          "answer": "regularmente",
+          "answers": [
+            "regularmente"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "immediately",
+          "answer": "inmediatamente",
+          "answers": [
+            "inmediatamente"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "right away",
+          "answer": "enseguida",
+          "answers": [
+            "enseguida"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "slowly",
+          "answer": "lentamente",
+          "answers": [
+            "lentamente"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "quickly",
+          "answer": "rápidamente",
+          "answers": [
+            "rápidamente"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "easily",
+          "answer": "fácilmente",
+          "answers": [
+            "fácilmente"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "with difficulty",
+          "answer": "difícilmente",
+          "answers": [
+            "difícilmente"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "clearly",
+          "answer": "claramente",
+          "answers": [
+            "claramente"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "exactly",
+          "answer": "exactamente",
+          "answers": [
+            "exactamente"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "approximately",
+          "answer": "aproximadamente",
+          "answers": [
+            "aproximadamente"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "really",
+          "answer": "realmente",
+          "answers": [
+            "realmente"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "simply",
+          "answer": "simplemente",
+          "answers": [
+            "simplemente"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "especially",
+          "answer": "especialmente",
+          "answers": [
+            "especialmente"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "directly",
+          "answer": "directamente",
+          "answers": [
+            "directamente"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "correctly",
+          "answer": "correctamente",
+          "answers": [
+            "correctamente"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "probably",
+          "answer": "probablemente",
+          "answers": [
+            "probablemente"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "surely",
+          "answer": "seguramente",
+          "answers": [
+            "seguramente"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "fortunately",
+          "answer": "afortunadamente",
+          "answers": [
+            "afortunadamente"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "unfortunately",
+          "answer": "desafortunadamente",
+          "answers": [
+            "desafortunadamente"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "carefully",
+          "answer": "cuidadosamente",
+          "answers": [
+            "cuidadosamente"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "quietly",
+          "answer": "silenciosamente",
+          "answers": [
+            "silenciosamente"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "openly",
+          "answer": "abiertamente",
+          "answers": [
+            "abiertamente"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "literally",
+          "answer": "literalmente",
+          "answers": [
+            "literalmente"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "totally",
+          "answer": "totalmente",
+          "answers": [
+            "totalmente"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "partially",
+          "answer": "parcialmente",
+          "answers": [
+            "parcialmente"
+          ],
+          "index": 50
+        }
+      ]
+    },
+    {
+      "id": "numbers-0-100",
+      "title": "Numbers (0-100)",
+      "description": "Cardinal numbers from 0 through 100.",
+      "count": 101,
+      "items": [
+        {
+          "hint": "0 (zero)",
+          "answer": "cero",
+          "answers": [
+            "cero"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "1 (one)",
+          "answer": "uno",
+          "answers": [
+            "uno"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "2 (two)",
+          "answer": "dos",
+          "answers": [
+            "dos"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "3 (three)",
+          "answer": "tres",
+          "answers": [
+            "tres"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "4 (four)",
+          "answer": "cuatro",
+          "answers": [
+            "cuatro"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "5 (five)",
+          "answer": "cinco",
+          "answers": [
+            "cinco"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "6 (six)",
+          "answer": "seis",
+          "answers": [
+            "seis"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "7 (seven)",
+          "answer": "siete",
+          "answers": [
+            "siete"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "8 (eight)",
+          "answer": "ocho",
+          "answers": [
+            "ocho"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "9 (nine)",
+          "answer": "nueve",
+          "answers": [
+            "nueve"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "10 (ten)",
+          "answer": "diez",
+          "answers": [
+            "diez"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "11 (eleven)",
+          "answer": "once",
+          "answers": [
+            "once"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "12 (twelve)",
+          "answer": "doce",
+          "answers": [
+            "doce"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "13 (thirteen)",
+          "answer": "trece",
+          "answers": [
+            "trece"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "14 (fourteen)",
+          "answer": "catorce",
+          "answers": [
+            "catorce"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "15 (fifteen)",
+          "answer": "quince",
+          "answers": [
+            "quince"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "16 (sixteen)",
+          "answer": "dieciséis",
+          "answers": [
+            "dieciséis"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "17 (seventeen)",
+          "answer": "diecisiete",
+          "answers": [
+            "diecisiete"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "18 (eighteen)",
+          "answer": "dieciocho",
+          "answers": [
+            "dieciocho"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "19 (nineteen)",
+          "answer": "diecinueve",
+          "answers": [
+            "diecinueve"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "20 (twenty)",
+          "answer": "veinte",
+          "answers": [
+            "veinte"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "21 (twenty-one)",
+          "answer": "veintiuno",
+          "answers": [
+            "veintiuno"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "22 (twenty-two)",
+          "answer": "veintidós",
+          "answers": [
+            "veintidós"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "23 (twenty-three)",
+          "answer": "veintitrés",
+          "answers": [
+            "veintitrés"
+          ],
+          "index": 24
+        },
+        {
+          "hint": "24 (twenty-four)",
+          "answer": "veinticuatro",
+          "answers": [
+            "veinticuatro"
+          ],
+          "index": 25
+        },
+        {
+          "hint": "25 (twenty-five)",
+          "answer": "veinticinco",
+          "answers": [
+            "veinticinco"
+          ],
+          "index": 26
+        },
+        {
+          "hint": "26 (twenty-six)",
+          "answer": "veintiséis",
+          "answers": [
+            "veintiséis"
+          ],
+          "index": 27
+        },
+        {
+          "hint": "27 (twenty-seven)",
+          "answer": "veintisiete",
+          "answers": [
+            "veintisiete"
+          ],
+          "index": 28
+        },
+        {
+          "hint": "28 (twenty-eight)",
+          "answer": "veintiocho",
+          "answers": [
+            "veintiocho"
+          ],
+          "index": 29
+        },
+        {
+          "hint": "29 (twenty-nine)",
+          "answer": "veintinueve",
+          "answers": [
+            "veintinueve"
+          ],
+          "index": 30
+        },
+        {
+          "hint": "30 (thirty)",
+          "answer": "treinta",
+          "answers": [
+            "treinta"
+          ],
+          "index": 31
+        },
+        {
+          "hint": "31 (thirty-one)",
+          "answer": "treinta y uno",
+          "answers": [
+            "treinta y uno"
+          ],
+          "index": 32
+        },
+        {
+          "hint": "32 (thirty-two)",
+          "answer": "treinta y dos",
+          "answers": [
+            "treinta y dos"
+          ],
+          "index": 33
+        },
+        {
+          "hint": "33 (thirty-three)",
+          "answer": "treinta y tres",
+          "answers": [
+            "treinta y tres"
+          ],
+          "index": 34
+        },
+        {
+          "hint": "34 (thirty-four)",
+          "answer": "treinta y cuatro",
+          "answers": [
+            "treinta y cuatro"
+          ],
+          "index": 35
+        },
+        {
+          "hint": "35 (thirty-five)",
+          "answer": "treinta y cinco",
+          "answers": [
+            "treinta y cinco"
+          ],
+          "index": 36
+        },
+        {
+          "hint": "36 (thirty-six)",
+          "answer": "treinta y seis",
+          "answers": [
+            "treinta y seis"
+          ],
+          "index": 37
+        },
+        {
+          "hint": "37 (thirty-seven)",
+          "answer": "treinta y siete",
+          "answers": [
+            "treinta y siete"
+          ],
+          "index": 38
+        },
+        {
+          "hint": "38 (thirty-eight)",
+          "answer": "treinta y ocho",
+          "answers": [
+            "treinta y ocho"
+          ],
+          "index": 39
+        },
+        {
+          "hint": "39 (thirty-nine)",
+          "answer": "treinta y nueve",
+          "answers": [
+            "treinta y nueve"
+          ],
+          "index": 40
+        },
+        {
+          "hint": "40 (forty)",
+          "answer": "cuarenta",
+          "answers": [
+            "cuarenta"
+          ],
+          "index": 41
+        },
+        {
+          "hint": "41 (forty-one)",
+          "answer": "cuarenta y uno",
+          "answers": [
+            "cuarenta y uno"
+          ],
+          "index": 42
+        },
+        {
+          "hint": "42 (forty-two)",
+          "answer": "cuarenta y dos",
+          "answers": [
+            "cuarenta y dos"
+          ],
+          "index": 43
+        },
+        {
+          "hint": "43 (forty-three)",
+          "answer": "cuarenta y tres",
+          "answers": [
+            "cuarenta y tres"
+          ],
+          "index": 44
+        },
+        {
+          "hint": "44 (forty-four)",
+          "answer": "cuarenta y cuatro",
+          "answers": [
+            "cuarenta y cuatro"
+          ],
+          "index": 45
+        },
+        {
+          "hint": "45 (forty-five)",
+          "answer": "cuarenta y cinco",
+          "answers": [
+            "cuarenta y cinco"
+          ],
+          "index": 46
+        },
+        {
+          "hint": "46 (forty-six)",
+          "answer": "cuarenta y seis",
+          "answers": [
+            "cuarenta y seis"
+          ],
+          "index": 47
+        },
+        {
+          "hint": "47 (forty-seven)",
+          "answer": "cuarenta y siete",
+          "answers": [
+            "cuarenta y siete"
+          ],
+          "index": 48
+        },
+        {
+          "hint": "48 (forty-eight)",
+          "answer": "cuarenta y ocho",
+          "answers": [
+            "cuarenta y ocho"
+          ],
+          "index": 49
+        },
+        {
+          "hint": "49 (forty-nine)",
+          "answer": "cuarenta y nueve",
+          "answers": [
+            "cuarenta y nueve"
+          ],
+          "index": 50
+        },
+        {
+          "hint": "50 (fifty)",
+          "answer": "cincuenta",
+          "answers": [
+            "cincuenta"
+          ],
+          "index": 51
+        },
+        {
+          "hint": "51 (fifty-one)",
+          "answer": "cincuenta y uno",
+          "answers": [
+            "cincuenta y uno"
+          ],
+          "index": 52
+        },
+        {
+          "hint": "52 (fifty-two)",
+          "answer": "cincuenta y dos",
+          "answers": [
+            "cincuenta y dos"
+          ],
+          "index": 53
+        },
+        {
+          "hint": "53 (fifty-three)",
+          "answer": "cincuenta y tres",
+          "answers": [
+            "cincuenta y tres"
+          ],
+          "index": 54
+        },
+        {
+          "hint": "54 (fifty-four)",
+          "answer": "cincuenta y cuatro",
+          "answers": [
+            "cincuenta y cuatro"
+          ],
+          "index": 55
+        },
+        {
+          "hint": "55 (fifty-five)",
+          "answer": "cincuenta y cinco",
+          "answers": [
+            "cincuenta y cinco"
+          ],
+          "index": 56
+        },
+        {
+          "hint": "56 (fifty-six)",
+          "answer": "cincuenta y seis",
+          "answers": [
+            "cincuenta y seis"
+          ],
+          "index": 57
+        },
+        {
+          "hint": "57 (fifty-seven)",
+          "answer": "cincuenta y siete",
+          "answers": [
+            "cincuenta y siete"
+          ],
+          "index": 58
+        },
+        {
+          "hint": "58 (fifty-eight)",
+          "answer": "cincuenta y ocho",
+          "answers": [
+            "cincuenta y ocho"
+          ],
+          "index": 59
+        },
+        {
+          "hint": "59 (fifty-nine)",
+          "answer": "cincuenta y nueve",
+          "answers": [
+            "cincuenta y nueve"
+          ],
+          "index": 60
+        },
+        {
+          "hint": "60 (sixty)",
+          "answer": "sesenta",
+          "answers": [
+            "sesenta"
+          ],
+          "index": 61
+        },
+        {
+          "hint": "61 (sixty-one)",
+          "answer": "sesenta y uno",
+          "answers": [
+            "sesenta y uno"
+          ],
+          "index": 62
+        },
+        {
+          "hint": "62 (sixty-two)",
+          "answer": "sesenta y dos",
+          "answers": [
+            "sesenta y dos"
+          ],
+          "index": 63
+        },
+        {
+          "hint": "63 (sixty-three)",
+          "answer": "sesenta y tres",
+          "answers": [
+            "sesenta y tres"
+          ],
+          "index": 64
+        },
+        {
+          "hint": "64 (sixty-four)",
+          "answer": "sesenta y cuatro",
+          "answers": [
+            "sesenta y cuatro"
+          ],
+          "index": 65
+        },
+        {
+          "hint": "65 (sixty-five)",
+          "answer": "sesenta y cinco",
+          "answers": [
+            "sesenta y cinco"
+          ],
+          "index": 66
+        },
+        {
+          "hint": "66 (sixty-six)",
+          "answer": "sesenta y seis",
+          "answers": [
+            "sesenta y seis"
+          ],
+          "index": 67
+        },
+        {
+          "hint": "67 (sixty-seven)",
+          "answer": "sesenta y siete",
+          "answers": [
+            "sesenta y siete"
+          ],
+          "index": 68
+        },
+        {
+          "hint": "68 (sixty-eight)",
+          "answer": "sesenta y ocho",
+          "answers": [
+            "sesenta y ocho"
+          ],
+          "index": 69
+        },
+        {
+          "hint": "69 (sixty-nine)",
+          "answer": "sesenta y nueve",
+          "answers": [
+            "sesenta y nueve"
+          ],
+          "index": 70
+        },
+        {
+          "hint": "70 (seventy)",
+          "answer": "setenta",
+          "answers": [
+            "setenta"
+          ],
+          "index": 71
+        },
+        {
+          "hint": "71 (seventy-one)",
+          "answer": "setenta y uno",
+          "answers": [
+            "setenta y uno"
+          ],
+          "index": 72
+        },
+        {
+          "hint": "72 (seventy-two)",
+          "answer": "setenta y dos",
+          "answers": [
+            "setenta y dos"
+          ],
+          "index": 73
+        },
+        {
+          "hint": "73 (seventy-three)",
+          "answer": "setenta y tres",
+          "answers": [
+            "setenta y tres"
+          ],
+          "index": 74
+        },
+        {
+          "hint": "74 (seventy-four)",
+          "answer": "setenta y cuatro",
+          "answers": [
+            "setenta y cuatro"
+          ],
+          "index": 75
+        },
+        {
+          "hint": "75 (seventy-five)",
+          "answer": "setenta y cinco",
+          "answers": [
+            "setenta y cinco"
+          ],
+          "index": 76
+        },
+        {
+          "hint": "76 (seventy-six)",
+          "answer": "setenta y seis",
+          "answers": [
+            "setenta y seis"
+          ],
+          "index": 77
+        },
+        {
+          "hint": "77 (seventy-seven)",
+          "answer": "setenta y siete",
+          "answers": [
+            "setenta y siete"
+          ],
+          "index": 78
+        },
+        {
+          "hint": "78 (seventy-eight)",
+          "answer": "setenta y ocho",
+          "answers": [
+            "setenta y ocho"
+          ],
+          "index": 79
+        },
+        {
+          "hint": "79 (seventy-nine)",
+          "answer": "setenta y nueve",
+          "answers": [
+            "setenta y nueve"
+          ],
+          "index": 80
+        },
+        {
+          "hint": "80 (eighty)",
+          "answer": "ochenta",
+          "answers": [
+            "ochenta"
+          ],
+          "index": 81
+        },
+        {
+          "hint": "81 (eighty-one)",
+          "answer": "ochenta y uno",
+          "answers": [
+            "ochenta y uno"
+          ],
+          "index": 82
+        },
+        {
+          "hint": "82 (eighty-two)",
+          "answer": "ochenta y dos",
+          "answers": [
+            "ochenta y dos"
+          ],
+          "index": 83
+        },
+        {
+          "hint": "83 (eighty-three)",
+          "answer": "ochenta y tres",
+          "answers": [
+            "ochenta y tres"
+          ],
+          "index": 84
+        },
+        {
+          "hint": "84 (eighty-four)",
+          "answer": "ochenta y cuatro",
+          "answers": [
+            "ochenta y cuatro"
+          ],
+          "index": 85
+        },
+        {
+          "hint": "85 (eighty-five)",
+          "answer": "ochenta y cinco",
+          "answers": [
+            "ochenta y cinco"
+          ],
+          "index": 86
+        },
+        {
+          "hint": "86 (eighty-six)",
+          "answer": "ochenta y seis",
+          "answers": [
+            "ochenta y seis"
+          ],
+          "index": 87
+        },
+        {
+          "hint": "87 (eighty-seven)",
+          "answer": "ochenta y siete",
+          "answers": [
+            "ochenta y siete"
+          ],
+          "index": 88
+        },
+        {
+          "hint": "88 (eighty-eight)",
+          "answer": "ochenta y ocho",
+          "answers": [
+            "ochenta y ocho"
+          ],
+          "index": 89
+        },
+        {
+          "hint": "89 (eighty-nine)",
+          "answer": "ochenta y nueve",
+          "answers": [
+            "ochenta y nueve"
+          ],
+          "index": 90
+        },
+        {
+          "hint": "90 (ninety)",
+          "answer": "noventa",
+          "answers": [
+            "noventa"
+          ],
+          "index": 91
+        },
+        {
+          "hint": "91 (ninety-one)",
+          "answer": "noventa y uno",
+          "answers": [
+            "noventa y uno"
+          ],
+          "index": 92
+        },
+        {
+          "hint": "92 (ninety-two)",
+          "answer": "noventa y dos",
+          "answers": [
+            "noventa y dos"
+          ],
+          "index": 93
+        },
+        {
+          "hint": "93 (ninety-three)",
+          "answer": "noventa y tres",
+          "answers": [
+            "noventa y tres"
+          ],
+          "index": 94
+        },
+        {
+          "hint": "94 (ninety-four)",
+          "answer": "noventa y cuatro",
+          "answers": [
+            "noventa y cuatro"
+          ],
+          "index": 95
+        },
+        {
+          "hint": "95 (ninety-five)",
+          "answer": "noventa y cinco",
+          "answers": [
+            "noventa y cinco"
+          ],
+          "index": 96
+        },
+        {
+          "hint": "96 (ninety-six)",
+          "answer": "noventa y seis",
+          "answers": [
+            "noventa y seis"
+          ],
+          "index": 97
+        },
+        {
+          "hint": "97 (ninety-seven)",
+          "answer": "noventa y siete",
+          "answers": [
+            "noventa y siete"
+          ],
+          "index": 98
+        },
+        {
+          "hint": "98 (ninety-eight)",
+          "answer": "noventa y ocho",
+          "answers": [
+            "noventa y ocho"
+          ],
+          "index": 99
+        },
+        {
+          "hint": "99 (ninety-nine)",
+          "answer": "noventa y nueve",
+          "answers": [
+            "noventa y nueve"
+          ],
+          "index": 100
+        },
+        {
+          "hint": "100 (one hundred)",
+          "answer": "cien",
+          "answers": [
+            "cien",
+            "ciento"
+          ],
+          "index": 101
+        }
+      ]
+    },
+    {
+      "id": "colours",
+      "title": "Colours",
+      "description": "Common basic and high-frequency colour terms.",
+      "count": 24,
+      "items": [
+        {
+          "hint": "yellow",
+          "answer": "amarillo",
+          "answers": [
+            "amarillo"
+          ],
+          "index": 1
+        },
+        {
+          "hint": "blue",
+          "answer": "azul",
+          "answers": [
+            "azul"
+          ],
+          "index": 2
+        },
+        {
+          "hint": "white",
+          "answer": "blanco",
+          "answers": [
+            "blanco"
+          ],
+          "index": 3
+        },
+        {
+          "hint": "gray",
+          "answer": "gris",
+          "answers": [
+            "gris"
+          ],
+          "index": 4
+        },
+        {
+          "hint": "brown",
+          "answer": "marrón",
+          "answers": [
+            "marrón"
+          ],
+          "index": 5
+        },
+        {
+          "hint": "brown (alt form)",
+          "answer": "café",
+          "answers": [
+            "café"
+          ],
+          "index": 6
+        },
+        {
+          "hint": "purple",
+          "answer": "morado",
+          "answers": [
+            "morado"
+          ],
+          "index": 7
+        },
+        {
+          "hint": "purple (alt form)",
+          "answer": "púrpura",
+          "answers": [
+            "púrpura"
+          ],
+          "index": 8
+        },
+        {
+          "hint": "orange",
+          "answer": "naranja",
+          "answers": [
+            "naranja"
+          ],
+          "index": 9
+        },
+        {
+          "hint": "orange (adjectival)",
+          "answer": "anaranjado",
+          "answers": [
+            "anaranjado"
+          ],
+          "index": 10
+        },
+        {
+          "hint": "black",
+          "answer": "negro",
+          "answers": [
+            "negro"
+          ],
+          "index": 11
+        },
+        {
+          "hint": "red",
+          "answer": "rojo",
+          "answers": [
+            "rojo"
+          ],
+          "index": 12
+        },
+        {
+          "hint": "pink",
+          "answer": "rosado",
+          "answers": [
+            "rosado"
+          ],
+          "index": 13
+        },
+        {
+          "hint": "pink (alt form)",
+          "answer": "rosa",
+          "answers": [
+            "rosa"
+          ],
+          "index": 14
+        },
+        {
+          "hint": "green",
+          "answer": "verde",
+          "answers": [
+            "verde"
+          ],
+          "index": 15
+        },
+        {
+          "hint": "violet",
+          "answer": "violeta",
+          "answers": [
+            "violeta"
+          ],
+          "index": 16
+        },
+        {
+          "hint": "light blue",
+          "answer": "celeste",
+          "answers": [
+            "celeste"
+          ],
+          "index": 17
+        },
+        {
+          "hint": "turquoise",
+          "answer": "turquesa",
+          "answers": [
+            "turquesa"
+          ],
+          "index": 18
+        },
+        {
+          "hint": "beige",
+          "answer": "beige",
+          "answers": [
+            "beige"
+          ],
+          "index": 19
+        },
+        {
+          "hint": "golden",
+          "answer": "dorado",
+          "answers": [
+            "dorado"
+          ],
+          "index": 20
+        },
+        {
+          "hint": "silver",
+          "answer": "plateado",
+          "answers": [
+            "plateado"
+          ],
+          "index": 21
+        },
+        {
+          "hint": "maroon",
+          "answer": "granate",
+          "answers": [
+            "granate"
+          ],
+          "index": 22
+        },
+        {
+          "hint": "lilac",
+          "answer": "lila",
+          "answers": [
+            "lila"
+          ],
+          "index": 23
+        },
+        {
+          "hint": "lavender",
+          "answer": "lavanda",
+          "answers": [
+            "lavanda"
+          ],
+          "index": 24
+        }
+      ]
+    }
+  ]
+}
