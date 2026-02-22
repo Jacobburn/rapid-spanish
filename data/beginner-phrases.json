@@ -3,7 +3,8 @@
     "Imported from /Users/jakeburn/Desktop/Beginner Phrases.xlsx",
     "Each spreadsheet column maps to one quiz deck.",
     "Italic cells are emitted as in-quiz subheadings via kind=subheading.",
-    "Clues mapped to English using legacy beginner-pack mappings plus supplemental translations."
+    "Clues mapped to English using legacy beginner-pack mappings plus supplemental translations.",
+    "Homograph disambiguation pass applied (accent-sensitive/contextual clues validated)."
   ],
   "generatedAt": "2026-02-22T10:37:38.849834+00:00",
   "groupCount": 16,
@@ -111,7 +112,7 @@
           "index": 13
         },
         {
-          "hint": "how?",
+          "hint": "like / as",
           "answer": "como",
           "answers": [
             "como"
@@ -119,7 +120,7 @@
           "index": 14
         },
         {
-          "hint": "when?",
+          "hint": "when",
           "answer": "cuando",
           "answers": [
             "cuando"
@@ -127,7 +128,7 @@
           "index": 15
         },
         {
-          "hint": "where?",
+          "hint": "where",
           "answer": "donde",
           "answers": [
             "donde"
@@ -135,7 +136,7 @@
           "index": 16
         },
         {
-          "hint": "to where?",
+          "hint": "to where",
           "answer": "adonde",
           "answers": [
             "adonde"
@@ -1192,7 +1193,7 @@
           "index": 8
         },
         {
-          "hint": "more",
+          "hint": "but (formal/literary)",
           "answer": "mas",
           "answers": [
             "mas"
@@ -1205,7 +1206,7 @@
           "index": 10
         },
         {
-          "hint": "what?",
+          "hint": "that",
           "answer": "que",
           "answers": [
             "que"
@@ -1213,7 +1214,7 @@
           "index": 11
         },
         {
-          "hint": "yes",
+          "hint": "if",
           "answer": "si",
           "answers": [
             "si"
@@ -1237,7 +1238,7 @@
           "index": 14
         },
         {
-          "hint": "how?",
+          "hint": "like / as",
           "answer": "como",
           "answers": [
             "como"
@@ -1301,7 +1302,7 @@
           "index": 22
         },
         {
-          "hint": "less",
+          "hint": "except / minus",
           "answer": "menos",
           "answers": [
             "menos"
@@ -1330,7 +1331,7 @@
           "index": 26
         },
         {
-          "hint": "what for?",
+          "hint": "so that / in order that",
           "answer": "para que",
           "answers": [
             "para que"
@@ -1593,7 +1594,7 @@
           "index": 26
         },
         {
-          "hint": "me (after preposition)",
+          "hint": "my",
           "answer": "mi",
           "answers": [
             "mi"
@@ -1609,7 +1610,7 @@
           "index": 28
         },
         {
-          "hint": "you (informal singular)",
+          "hint": "your (informal singular)",
           "answer": "tu",
           "answers": [
             "tu"
@@ -2195,7 +2196,7 @@
           "index": 4
         },
         {
-          "hint": "the (masculine singular)",
+          "hint": "he",
           "answer": "él",
           "answers": [
             "él"
@@ -2304,7 +2305,7 @@
           "index": 18
         },
         {
-          "hint": "the (neuter)",
+          "hint": "him/it (direct object, masculine singular)",
           "answer": "lo",
           "answers": [
             "lo"
@@ -2312,7 +2313,7 @@
           "index": 19
         },
         {
-          "hint": "the (feminine singular)",
+          "hint": "her/it (direct object, feminine singular)",
           "answer": "la",
           "answers": [
             "la"
@@ -2352,7 +2353,7 @@
           "index": 24
         },
         {
-          "hint": "the (masculine plural)",
+          "hint": "them (direct object, masculine plural)",
           "answer": "los",
           "answers": [
             "los"
@@ -2360,7 +2361,7 @@
           "index": 25
         },
         {
-          "hint": "the (feminine plural)",
+          "hint": "them (direct object, feminine plural)",
           "answer": "las",
           "answers": [
             "las"
@@ -2397,7 +2398,7 @@
           "index": 30
         },
         {
-          "hint": "yes",
+          "hint": "self (after preposition)",
           "answer": "sí",
           "answers": [
             "sí"
@@ -2553,7 +2554,7 @@
           "index": 19
         },
         {
-          "hint": "what?",
+          "hint": "that",
           "answer": "que",
           "answers": [
             "que"
@@ -2561,7 +2562,7 @@
           "index": 20
         },
         {
-          "hint": "who?",
+          "hint": "who / whoever (singular relative pronoun)",
           "answer": "quien",
           "answers": [
             "quien"
@@ -2569,7 +2570,7 @@
           "index": 21
         },
         {
-          "hint": "who? (plural)",
+          "hint": "who / whoever (plural relative pronoun)",
           "answer": "quienes",
           "answers": [
             "quienes"
@@ -2577,7 +2578,7 @@
           "index": 22
         },
         {
-          "hint": "which?",
+          "hint": "which / who (formal relative pronoun, singular)",
           "answer": "cual",
           "answers": [
             "cual"
@@ -2585,7 +2586,7 @@
           "index": 23
         },
         {
-          "hint": "which ones?",
+          "hint": "which / who (formal relative pronoun, plural)",
           "answer": "cuales",
           "answers": [
             "cuales"
@@ -2715,7 +2716,7 @@
           "index": 1
         },
         {
-          "hint": "one (pronoun, masculine)",
+          "hint": "1 (one)",
           "answer": "uno",
           "answers": [
             "uno"
