@@ -160,7 +160,7 @@ const TRAINING_MODULES = [
   {
     id: "top-500-nouns",
     title: "Top 500 Nouns",
-    subtitle: "10 decks of 50 nouns",
+    subtitle: "20 themed decks (504 items)",
     type: "nouns",
   },
   {

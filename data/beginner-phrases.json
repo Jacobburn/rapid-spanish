@@ -8,13 +8,13 @@
   ],
   "generatedAt": "2026-02-22T10:37:38.849834+00:00",
   "groupCount": 16,
-  "totalItems": 579,
+  "totalItems": 581,
   "groups": [
     {
       "id": "core-words-1",
       "title": "Core Words 1",
       "description": "Imported from Beginner Phrases.xlsx. Italic rows are in-quiz subheadings.",
-      "count": 32,
+      "count": 33,
       "items": [
         {
           "kind": "subheading",
@@ -165,12 +165,20 @@
           "index": 20
         },
         {
+          "hint": "please",
+          "answer": "por favor",
+          "answers": [
+            "por favor"
+          ],
+          "index": 21
+        },
+        {
           "hint": "you're welcome",
           "answer": "de nada",
           "answers": [
             "de nada"
           ],
-          "index": 21
+          "index": 22
         },
         {
           "hint": "sorry / pardon",
@@ -178,7 +186,7 @@
           "answers": [
             "perdón"
           ],
-          "index": 22
+          "index": 23
         },
         {
           "hint": "sorry / pardon me (informal)",
@@ -186,7 +194,7 @@
           "answers": [
             "perdona"
           ],
-          "index": 23
+          "index": 24
         },
         {
           "hint": "excuse me (informal apology)",
@@ -194,7 +202,7 @@
           "answers": [
             "disculpa"
           ],
-          "index": 24
+          "index": 25
         },
         {
           "hint": "excuse me (formal apology)",
@@ -202,7 +210,7 @@
           "answers": [
             "disculpe"
           ],
-          "index": 25
+          "index": 26
         },
         {
           "hint": "I'm sorry",
@@ -210,7 +218,7 @@
           "answers": [
             "lo siento"
           ],
-          "index": 26
+          "index": 27
         },
         {
           "hint": "excuse me (with permission)",
@@ -218,7 +226,7 @@
           "answers": [
             "con permiso"
           ],
-          "index": 27
+          "index": 28
         },
         {
           "hint": "excuse me (passing by)",
@@ -226,7 +234,7 @@
           "answers": [
             "permiso"
           ],
-          "index": 28
+          "index": 29
         },
         {
           "hint": "enjoy your meal",
@@ -234,7 +242,7 @@
           "answers": [
             "buen provecho"
           ],
-          "index": 29
+          "index": 30
         },
         {
           "hint": "bless you / cheers",
@@ -242,12 +250,12 @@
           "answers": [
             "salud"
           ],
-          "index": 30
+          "index": 31
         },
         {
           "kind": "subheading",
           "hint": "Discourse Markers",
-          "index": 31
+          "index": 32
         },
         {
           "hint": "okay / all right",
@@ -255,7 +263,7 @@
           "answers": [
             "vale"
           ],
-          "index": 32
+          "index": 33
         },
         {
           "hint": "of course",
@@ -263,7 +271,7 @@
           "answers": [
             "claro"
           ],
-          "index": 33
+          "index": 34
         },
         {
           "hint": "that is / I mean",
@@ -271,7 +279,7 @@
           "answers": [
             "o sea"
           ],
-          "index": 34
+          "index": 35
         },
         {
           "hint": "anyway / in the end",
@@ -279,7 +287,7 @@
           "answers": [
             "en fin"
           ],
-          "index": 35
+          "index": 36
         },
         {
           "hint": "let's see",
@@ -287,7 +295,7 @@
           "answers": [
             "a ver"
           ],
-          "index": 36
+          "index": 37
         },
         {
           "hint": "look",
@@ -295,7 +303,7 @@
           "answers": [
             "mira"
           ],
-          "index": 37
+          "index": 38
         }
       ]
     },
@@ -1129,7 +1137,7 @@
       "id": "conjunctions",
       "title": "Conjunctions",
       "description": "Imported from Beginner Phrases.xlsx. Italic rows are in-quiz subheadings.",
-      "count": 30,
+      "count": 31,
       "items": [
         {
           "kind": "subheading",
@@ -1214,12 +1222,20 @@
           "index": 11
         },
         {
+          "hint": "what / that which",
+          "answer": "lo que",
+          "answers": [
+            "lo que"
+          ],
+          "index": 12
+        },
+        {
           "hint": "if",
           "answer": "si",
           "answers": [
             "si"
           ],
-          "index": 12
+          "index": 13
         },
         {
           "hint": "because",
@@ -1227,7 +1243,7 @@
           "answers": [
             "porque"
           ],
-          "index": 13
+          "index": 14
         },
         {
           "hint": "although",
@@ -1235,7 +1251,7 @@
           "answers": [
             "aunque"
           ],
-          "index": 14
+          "index": 15
         },
         {
           "hint": "like / as",
@@ -1243,7 +1259,7 @@
           "answers": [
             "como"
           ],
-          "index": 15
+          "index": 16
         },
         {
           "hint": "then / afterwards",
@@ -1251,7 +1267,7 @@
           "answers": [
             "luego"
           ],
-          "index": 16
+          "index": 17
         },
         {
           "hint": "so / therefore",
@@ -1259,7 +1275,7 @@
           "answers": [
             "conque"
           ],
-          "index": 17
+          "index": 18
         },
         {
           "hint": "except / save",
@@ -1267,7 +1283,7 @@
           "answers": [
             "salvo"
           ],
-          "index": 18
+          "index": 19
         },
         {
           "hint": "since / because",
@@ -1275,7 +1291,7 @@
           "answers": [
             "pues"
           ],
-          "index": 19
+          "index": 20
         },
         {
           "hint": "while",
@@ -1283,7 +1299,7 @@
           "answers": [
             "mientras"
           ],
-          "index": 20
+          "index": 21
         },
         {
           "hint": "even / at least",
@@ -1291,7 +1307,7 @@
           "answers": [
             "siquiera"
           ],
-          "index": 21
+          "index": 22
         },
         {
           "hint": "except / excluding",
@@ -1299,7 +1315,7 @@
           "answers": [
             "excepto"
           ],
-          "index": 22
+          "index": 23
         },
         {
           "hint": "except / minus",
@@ -1307,12 +1323,12 @@
           "answers": [
             "menos"
           ],
-          "index": 23
+          "index": 24
         },
         {
           "kind": "subheading",
           "hint": "Multi-word Fixed Forms",
-          "index": 24
+          "index": 25
         },
         {
           "hint": "since",
@@ -1320,7 +1336,7 @@
           "answers": [
             "ya que"
           ],
-          "index": 25
+          "index": 26
         },
         {
           "hint": "since / given that",
@@ -1328,7 +1344,7 @@
           "answers": [
             "puesto que"
           ],
-          "index": 26
+          "index": 27
         },
         {
           "hint": "so that / in order that",
@@ -1336,7 +1352,7 @@
           "answers": [
             "para que"
           ],
-          "index": 27
+          "index": 28
         },
         {
           "hint": "before",
@@ -1344,7 +1360,7 @@
           "answers": [
             "antes de que"
           ],
-          "index": 28
+          "index": 29
         },
         {
           "hint": "after",
@@ -1352,7 +1368,7 @@
           "answers": [
             "después de que"
           ],
-          "index": 29
+          "index": 30
         },
         {
           "hint": "so that",
@@ -1360,7 +1376,7 @@
           "answers": [
             "a fin de que"
           ],
-          "index": 30
+          "index": 31
         },
         {
           "hint": "provided that",
@@ -1368,7 +1384,7 @@
           "answers": [
             "con tal que"
           ],
-          "index": 31
+          "index": 32
         },
         {
           "hint": "as soon as / as",
@@ -1376,7 +1392,7 @@
           "answers": [
             "en cuanto"
           ],
-          "index": 32
+          "index": 33
         },
         {
           "hint": "as soon as",
@@ -1384,7 +1400,7 @@
           "answers": [
             "tan pronto como"
           ],
-          "index": 33
+          "index": 34
         }
       ]
     },
