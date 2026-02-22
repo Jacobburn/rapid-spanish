@@ -27,6 +27,42 @@ const LANGUAGE_STORAGE_KEY = "rapid-spanish-language-v1";
 const ADMIN_MODE_USERNAME = "jake";
 const DEFAULT_LANGUAGE = "es";
 const SUPPORTED_LANGUAGES = ["es", "it"];
+const LEGACY_BEGINNER_DECK_COUNTS_ES = {
+  "core-functional-words": 31,
+  "greetings-social-phrases": 36,
+  articles: 9,
+  pronouns: 51,
+  possessives: 26,
+  demonstratives: 15,
+  quantifiers: 57,
+  prepositions: 29,
+  conjunctions: 51,
+  interjections: 16,
+  "directions-location": 39,
+  "ordering-food": 50,
+  "common-adjectives-50": 50,
+  "common-adverbs-50": 50,
+  "numbers-0-100": 101,
+  colours: 24,
+};
+const LEGACY_BEGINNER_DECK_MIGRATIONS_ES = [
+  { to: "core-words-1", from: ["core-functional-words"] },
+  { to: "core-words-2", from: ["common-adverbs-50"] },
+  { to: "core-words-3", from: ["interjections"] },
+  { to: "prepositions", from: ["prepositions"] },
+  { to: "conjunctions", from: ["conjunctions"] },
+  { to: "determiners-1", from: ["articles", "possessives", "demonstratives"] },
+  { to: "determiners-2", from: ["quantifiers"] },
+  { to: "pronouns-1", from: ["pronouns"] },
+  { to: "pronouns-2", from: ["pronouns"] },
+  { to: "numbers-0-49", from: ["numbers-0-100"] },
+  { to: "numbers-50-100", from: ["numbers-0-100"] },
+  { to: "colours", from: ["colours"] },
+  { to: "common-adjectives", from: ["common-adjectives-50"] },
+  { to: "greetings", from: ["greetings-social-phrases"] },
+  { to: "ordering-food", from: ["ordering-food"] },
+  { to: "directions", from: ["directions-location"] },
+];
 const STORY_UNLOCK_THRESHOLDS = [2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 const QUIZ_TIMER_DURATION_MS = 5 * 60 * 1000;
 const TRACK_UNLOCK_THRESHOLD_PERCENT = 90;
@@ -2111,6 +2147,14 @@ async function setCurrentUser(userOrUsername) {
     state.srsData = loadSrsData();
   }
 
+  let migratedLegacyBeginnerScores = false;
+  if (state.dataLoaded) {
+    migratedLegacyBeginnerScores = migrateLegacyBeginnerBestScoresIfNeeded();
+    if (migratedLegacyBeginnerScores) {
+      saveBestScores();
+    }
+  }
+
   refreshStreakStatusForToday();
   if (state.dataLoaded) {
     syncSrsDataToCatalog();
@@ -3442,6 +3486,71 @@ function getNounCombinedBestScore(deck) {
 
 function getBeginnerBestScore(group) {
   return getBestScore("beginner", group.id, group.count);
+}
+
+function migrateLegacyBeginnerBestScoresIfNeeded() {
+  if (getCurrentLanguage() !== "es") {
+    return false;
+  }
+  if (!Array.isArray(state.beginnerGroups) || state.beginnerGroups.length === 0) {
+    return false;
+  }
+  if (!state.bestScores || typeof state.bestScores !== "object") {
+    return false;
+  }
+
+  const beginnerScores = state.bestScores.beginner;
+  if (!beginnerScores || typeof beginnerScores !== "object") {
+    return false;
+  }
+
+  const legacyIds = Object.keys(LEGACY_BEGINNER_DECK_COUNTS_ES);
+  const hasLegacyScoreData = legacyIds.some((id) => {
+    const score = Number(beginnerScores[id]);
+    return Number.isFinite(score) && score > 0;
+  });
+  if (!hasLegacyScoreData) {
+    return false;
+  }
+
+  const groupById = new Map(state.beginnerGroups.map((group) => [group.id, group]));
+  let changed = false;
+
+  LEGACY_BEGINNER_DECK_MIGRATIONS_ES.forEach((entry) => {
+    const targetGroup = groupById.get(entry.to);
+    if (!targetGroup) {
+      return;
+    }
+
+    const currentScore = Number(beginnerScores[entry.to]);
+    if (Number.isFinite(currentScore) && currentScore > 0) {
+      return;
+    }
+
+    let bestCandidate = 0;
+    entry.from.forEach((legacyId) => {
+      const legacyScore = Number(beginnerScores[legacyId]);
+      if (!Number.isFinite(legacyScore) || legacyScore <= 0) {
+        return;
+      }
+      const legacyTotal = Math.max(1, Number(LEGACY_BEGINNER_DECK_COUNTS_ES[legacyId]) || 1);
+      const percent = Math.max(0, Math.min(1, legacyScore / legacyTotal));
+      const projected = Math.round(percent * targetGroup.count);
+      bestCandidate = Math.max(bestCandidate, projected);
+    });
+
+    if (bestCandidate <= 0) {
+      return;
+    }
+
+    beginnerScores[entry.to] = Math.max(
+      0,
+      Math.min(targetGroup.count, bestCandidate),
+    );
+    changed = true;
+  });
+
+  return changed;
 }
 
 function getDiscourseBestScore(group) {
@@ -7492,6 +7601,9 @@ async function loadData() {
       state.bestScores = loadBestScores();
       state.srsData = loadSrsData();
       state.gamificationData = loadGamificationData();
+    }
+    if (migrateLegacyBeginnerBestScoresIfNeeded()) {
+      saveBestScores();
     }
     rebuildSrsCatalog();
     evaluateAchievementsAndSync({ source: "init", save: true });
