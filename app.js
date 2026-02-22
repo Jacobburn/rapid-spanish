@@ -717,6 +717,8 @@ const state = {
   attemptStats: null,
   gamificationData: null,
   srsData: null,
+  remoteLanguageState: createEmptyRemoteLanguageState(),
+  remoteStateLoadFailed: false,
   supabaseSession: null,
   remoteLeaderboardRows: [],
   srsDeckCatalog: [],
@@ -1012,6 +1014,98 @@ function getTrainingModuleByType(type, language = getCurrentLanguage()) {
 
 function getLanguageScopedStorageKey(baseKey) {
   return `${baseKey}::${getCurrentLanguage()}`;
+}
+
+function createEmptyRemoteLanguageState() {
+  const scoped = {
+    best_scores: {},
+    attempt_stats: {},
+    activity_entries: {},
+    srs_state: {},
+    gamification_state: {},
+  };
+
+  SUPPORTED_LANGUAGES.forEach((language) => {
+    scoped.best_scores[language] = createEmptyBestScores();
+    scoped.attempt_stats[language] = createEmptyAttemptStats();
+    scoped.activity_entries[language] = [];
+    scoped.srs_state[language] = createEmptySrsData();
+    scoped.gamification_state[language] = createEmptyGamificationData();
+  });
+
+  return scoped;
+}
+
+function hasLanguageBuckets(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return false;
+  }
+  return SUPPORTED_LANGUAGES.some((language) =>
+    Object.prototype.hasOwnProperty.call(value, language),
+  );
+}
+
+function normalizeRemoteLanguageBuckets(rawValue, normalizeEntry) {
+  const buckets = {};
+  SUPPORTED_LANGUAGES.forEach((language) => {
+    buckets[language] = normalizeEntry(undefined);
+  });
+
+  if (hasLanguageBuckets(rawValue)) {
+    SUPPORTED_LANGUAGES.forEach((language) => {
+      buckets[language] = normalizeEntry(rawValue?.[language]);
+    });
+    return buckets;
+  }
+
+  // Migration: any existing unscoped state is treated as Spanish.
+  buckets[DEFAULT_LANGUAGE] = normalizeEntry(rawValue);
+  return buckets;
+}
+
+function normalizeRemoteUserState(row) {
+  const safe = createEmptyRemoteLanguageState();
+  if (!row || typeof row !== "object") {
+    return safe;
+  }
+
+  safe.best_scores = normalizeRemoteLanguageBuckets(row.best_scores, normalizeBestScores);
+  safe.attempt_stats = normalizeRemoteLanguageBuckets(row.attempt_stats, normalizeAttemptStats);
+  safe.activity_entries = normalizeRemoteLanguageBuckets(
+    row.activity_entries,
+    normalizeActivityEntries,
+  );
+  safe.srs_state = normalizeRemoteLanguageBuckets(row.srs_state, normalizeSrsData);
+  safe.gamification_state = normalizeRemoteLanguageBuckets(
+    row.gamification_state,
+    normalizeGamificationData,
+  );
+  return safe;
+}
+
+function applyRemoteLanguageState(username, language = getCurrentLanguage()) {
+  const normalizedLanguage = normalizeLanguageCode(language);
+  const normalizedUsername = normalizeUsername(username || "");
+
+  state.bestScores = normalizeBestScores(
+    state.remoteLanguageState?.best_scores?.[normalizedLanguage],
+  );
+  state.attemptStats = normalizeAttemptStats(
+    state.remoteLanguageState?.attempt_stats?.[normalizedLanguage],
+  );
+  state.srsData = normalizeSrsData(state.remoteLanguageState?.srs_state?.[normalizedLanguage]);
+  state.gamificationData = normalizeGamificationData(
+    state.remoteLanguageState?.gamification_state?.[normalizedLanguage],
+  );
+
+  if (!state.activityMap || typeof state.activityMap !== "object") {
+    state.activityMap = {};
+  }
+  if (normalizedUsername) {
+    state.activityMap[normalizedUsername] = normalizeActivityEntries(
+      state.remoteLanguageState?.activity_entries?.[normalizedLanguage],
+    );
+  }
 }
 
 function applyLanguageUiText() {
@@ -1387,16 +1481,29 @@ async function upsertRemoteUserState(userId) {
   if (!state.currentUser?.username) {
     return;
   }
+  const language = getCurrentLanguage();
   const username = normalizeUsername(state.currentUser.username);
   const profileName = state.currentUser.name || username;
   const userEntries = Array.isArray(state.activityMap[username]) ? state.activityMap[username] : [];
+
+  if (!state.remoteLanguageState || typeof state.remoteLanguageState !== "object") {
+    state.remoteLanguageState = createEmptyRemoteLanguageState();
+  }
+  state.remoteLanguageState.best_scores[language] = normalizeBestScores(state.bestScores);
+  state.remoteLanguageState.attempt_stats[language] = normalizeAttemptStats(state.attemptStats);
+  state.remoteLanguageState.activity_entries[language] = normalizeActivityEntries(userEntries);
+  state.remoteLanguageState.srs_state[language] = normalizeSrsData(state.srsData);
+  state.remoteLanguageState.gamification_state[language] = normalizeGamificationData(
+    state.gamificationData,
+  );
+
   const payload = {
     user_id: userId,
-    best_scores: normalizeBestScores(state.bestScores),
-    attempt_stats: normalizeAttemptStats(state.attemptStats),
-    activity_entries: normalizeActivityEntries(userEntries),
-    srs_state: normalizeSrsData(state.srsData),
-    gamification_state: normalizeGamificationData(state.gamificationData),
+    best_scores: state.remoteLanguageState.best_scores,
+    attempt_stats: state.remoteLanguageState.attempt_stats,
+    activity_entries: state.remoteLanguageState.activity_entries,
+    srs_state: state.remoteLanguageState.srs_state,
+    gamification_state: state.remoteLanguageState.gamification_state,
   };
 
   await supabaseRequest("/rest/v1/user_state", {
@@ -1467,15 +1574,8 @@ function normalizeActivityEntries(entries) {
 }
 
 function applyRemoteUserState(row, username) {
-  const normalized = normalizeUsername(username);
-  state.bestScores = normalizeBestScores(row?.best_scores);
-  state.attemptStats = normalizeAttemptStats(row?.attempt_stats);
-  state.srsData = normalizeSrsData(row?.srs_state);
-  state.gamificationData = normalizeGamificationData(row?.gamification_state);
-  if (!state.activityMap || typeof state.activityMap !== "object") {
-    state.activityMap = {};
-  }
-  state.activityMap[normalized] = normalizeActivityEntries(row?.activity_entries);
+  state.remoteLanguageState = normalizeRemoteUserState(row);
+  applyRemoteLanguageState(username, getCurrentLanguage());
 }
 
 async function resolveSupabaseIdentity() {
@@ -1514,7 +1614,12 @@ async function resolveSupabaseIdentity() {
 }
 
 function scheduleRemoteStateSync() {
-  if (!hasSupabaseConfig() || !state.currentUser?.user_id || !state.dataLoaded) {
+  if (
+    !hasSupabaseConfig() ||
+    !state.currentUser?.user_id ||
+    !state.dataLoaded ||
+    state.remoteStateLoadFailed
+  ) {
     return;
   }
   if (remoteStateSyncTimer) {
@@ -1960,6 +2065,10 @@ function normalizeCurrentUserRecord(userOrUsername) {
 async function setCurrentUser(userOrUsername) {
   const normalizedRecord = normalizeCurrentUserRecord(userOrUsername);
   state.currentUser = normalizedRecord;
+  if (!state.currentUser) {
+    state.remoteLanguageState = createEmptyRemoteLanguageState();
+    state.remoteStateLoadFailed = false;
+  }
   if (state.currentUser) {
     state.users[state.currentUser.username] = {
       username: state.currentUser.username,
@@ -1973,12 +2082,20 @@ async function setCurrentUser(userOrUsername) {
 
   if (hasSupabaseConfig() && state.currentUser?.user_id) {
     let remoteState = null;
+    let remoteStateFetchFailed = false;
     try {
       remoteState = await fetchRemoteUserState(state.currentUser.user_id);
     } catch (error) {
+      remoteStateFetchFailed = true;
       console.error("Could not load remote user state:", error);
     }
     applyRemoteUserState(remoteState, state.currentUser.username);
+    state.remoteStateLoadFailed = remoteStateFetchFailed;
+    if (state.remoteStateLoadFailed) {
+      console.warn(
+        "Cloud progress load failed. Sync is paused to prevent overwriting saved progress.",
+      );
+    }
     try {
       await fetchRemoteLeaderboardRows();
     } catch (error) {
@@ -1986,6 +2103,8 @@ async function setCurrentUser(userOrUsername) {
       state.remoteLeaderboardRows = [];
     }
   } else {
+    state.remoteLanguageState = createEmptyRemoteLanguageState();
+    state.remoteStateLoadFailed = false;
     state.bestScores = loadBestScores();
     state.attemptStats = loadAttemptStats();
     state.gamificationData = loadGamificationData();
@@ -2014,9 +2133,7 @@ async function ensureDataLoaded() {
 
 function reloadLanguageScopedLocalState() {
   if (hasSupabaseConfig() && state.currentUser?.user_id) {
-    if (!state.activityMap || typeof state.activityMap !== "object") {
-      state.activityMap = {};
-    }
+    applyRemoteLanguageState(state.currentUser?.username || "", getCurrentLanguage());
   } else {
     state.activityMap = loadActivityMap();
   }
@@ -7246,6 +7363,8 @@ async function logoutCurrentUser() {
   state.srsSessionCorrect = 0;
   state.gamificationData = createEmptyGamificationData();
   state.srsData = createEmptySrsData();
+  state.remoteLanguageState = createEmptyRemoteLanguageState();
+  state.remoteStateLoadFailed = false;
   state.adminMode = false;
   refreshCurrentUserLabel();
   refreshAdminModeAccess();
