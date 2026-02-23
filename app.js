@@ -3267,12 +3267,6 @@ function normalizeStoryManualTranslation(rawValue) {
     .trim();
 }
 
-function normalizeStoryManualTranslation(rawValue) {
-  return String(rawValue || "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
 function extractStoryEnglishGlossCandidates(rawValue) {
   const normalized = normalizeStoryEnglishGloss(rawValue);
   if (!normalized) {
