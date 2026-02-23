@@ -12,6 +12,11 @@
   --brand-strong: #104f41;
   --good: #147d64;
   --danger: #ab4935;
+  --story-pos-noun: #2f67ad;
+  --story-pos-adjective: #1b7f5a;
+  --story-pos-verb: #b34b2f;
+  --story-pos-adverb: #9b6a1f;
+  --story-pos-core: #415654;
   --shadow: 0 12px 28px rgba(65, 49, 19, 0.12);
   --radius: 18px;
 }
@@ -1172,6 +1177,211 @@ h2 {
 
 .story-content p {
   margin: 0;
+}
+
+.story-sentence {
+  border-radius: 5px;
+}
+
+.story-sentence--translatable {
+  cursor: help;
+  transition: background-color 120ms ease;
+}
+
+.story-sentence--translatable:hover {
+  background: rgba(22, 104, 87, 0.08);
+}
+
+.story-translation-popup {
+  position: fixed;
+  z-index: 1200;
+  max-width: min(560px, calc(100vw - 20px));
+  background: #fff9ef;
+  border: 1px solid #d6c3a4;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(31, 47, 45, 0.22);
+  padding: 0.55rem 0.62rem;
+  display: grid;
+  gap: 0.35rem;
+  pointer-events: none;
+}
+
+.story-translation-english {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  font-size: 0.84rem;
+}
+
+.story-translation-token {
+  font-weight: 700;
+}
+
+.story-admin-override-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  background: rgba(15, 23, 42, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.story-admin-override-dialog {
+  width: min(560px, calc(100vw - 24px));
+  background: #fffdf9;
+  border: 1px solid #dbc8aa;
+  border-radius: 12px;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.24);
+  padding: 0.9rem;
+}
+
+.story-admin-override-title {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.story-admin-override-meta {
+  margin: 0.5rem 0 0;
+  color: var(--ink-muted);
+  font-size: 0.84rem;
+  line-height: 1.4;
+  white-space: pre-line;
+}
+
+.story-admin-override-form {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.7rem;
+}
+
+.story-admin-override-field {
+  display: grid;
+  gap: 0.25rem;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--ink);
+}
+
+.story-admin-override-input {
+  width: 100%;
+  border: 1px solid #c6b594;
+  border-radius: 8px;
+  padding: 0.46rem 0.55rem;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+}
+
+.story-admin-override-input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.story-admin-override-help {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.76rem;
+}
+
+.story-admin-override-error {
+  margin: 0;
+  min-height: 1.05rem;
+  color: #b91c1c;
+  font-size: 0.78rem;
+}
+
+.story-admin-override-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
+.story-word-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.1rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px dashed #e2d2b8;
+}
+
+.story-word-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #fff7e8;
+  border: 1px solid #ead8bc;
+  border-radius: 999px;
+  padding: 0.15rem 0.48rem;
+}
+
+.story-word-legend-swatch {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.story-word-legend-item--noun {
+  color: var(--story-pos-noun);
+}
+
+.story-word-legend-item--adjective {
+  color: var(--story-pos-adjective);
+}
+
+.story-word-legend-item--verb {
+  color: var(--story-pos-verb);
+}
+
+.story-word-legend-item--adverb {
+  color: var(--story-pos-adverb);
+}
+
+.story-word-legend-item--core {
+  color: var(--story-pos-core);
+}
+
+.story-token {
+  font-weight: 700;
+}
+
+.story-token--admin-editable {
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 120ms ease, box-shadow 120ms ease;
+}
+
+.story-token--admin-editable:hover {
+  background: rgba(15, 23, 42, 0.08);
+}
+
+.story-token--manual {
+  box-shadow: inset 0 -0.22em 0 rgba(15, 23, 42, 0.12);
+}
+
+.story-token--noun {
+  color: var(--story-pos-noun);
+}
+
+.story-token--adjective {
+  color: var(--story-pos-adjective);
+}
+
+.story-token--verb {
+  color: var(--story-pos-verb);
+}
+
+.story-token--adverb {
+  color: var(--story-pos-adverb);
+}
+
+.story-token--core {
+  color: var(--story-pos-core);
 }
 
 .feedback {

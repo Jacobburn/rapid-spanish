@@ -24,6 +24,8 @@ const SRS_STORAGE_KEY = "rapid-spanish-srs-v1";
 const GAMIFICATION_STORAGE_KEY = "rapid-spanish-gamification-v1";
 const SUPABASE_SESSION_STORAGE_KEY = "rapid-spanish-supabase-session-v1";
 const LANGUAGE_STORAGE_KEY = "rapid-spanish-language-v1";
+const STORY_WORD_OVERRIDES_STORAGE_KEY = "rapid-spanish-story-word-overrides-v1";
+const STORY_TRANSLATION_OVERRIDES_STORAGE_KEY = "rapid-spanish-story-translation-overrides-v1";
 const ADMIN_MODE_USERNAME = "jake";
 const DEFAULT_LANGUAGE = "es";
 const SUPPORTED_LANGUAGES = ["es", "it"];
@@ -351,6 +353,707 @@ const DISCOURSE_GROUPS = [
   },
 ];
 
+const STORY_WORD_TOKEN_PATTERN = /[\p{L}\p{M}\p{N}]+(?:['\u2019][\p{L}\p{M}\p{N}]+)*/gu;
+const STORY_SENTENCE_BREAK_PATTERN = /[.!?¡¿]/;
+const STORY_WORD_TYPES = Object.freeze({
+  noun: "noun",
+  adjective: "adjective",
+  verb: "verb",
+  adverb: "adverb",
+  core: "core",
+});
+const STORY_WORD_TYPE_VALUES = new Set(Object.values(STORY_WORD_TYPES));
+const STORY_WORD_TYPE_LABELS = Object.freeze({
+  [STORY_WORD_TYPES.noun]: "Noun",
+  [STORY_WORD_TYPES.adjective]: "Adjective",
+  [STORY_WORD_TYPES.verb]: "Verb",
+  [STORY_WORD_TYPES.adverb]: "Adverb",
+  [STORY_WORD_TYPES.core]: "Core Word",
+});
+const STORY_WORD_TYPE_LEGEND_ORDER = [
+  STORY_WORD_TYPES.noun,
+  STORY_WORD_TYPES.adjective,
+  STORY_WORD_TYPES.verb,
+  STORY_WORD_TYPES.adverb,
+  STORY_WORD_TYPES.core,
+];
+const STORY_ADJECTIVE_GROUP_ID_PATTERN = /adjective|colou?r/i;
+const STORY_ADVERB_GROUP_ID_PATTERN = /adverb/i;
+const STORY_CORE_GROUP_ID_PATTERN =
+  /core|preposition|conjunction|pronoun|determiner|article|possessive|demonstrative|quantifier|interjection|number/i;
+const STORY_ADVERB_GROUP_ID_OVERRIDES = {
+  es: new Set(["core-words-2", "core-words-3"]),
+  it: new Set(),
+};
+const STORY_NOUN_EXCLUDED_TOKENS_BY_LANGUAGE = {
+  es: new Set([
+    "el",
+    "la",
+    "los",
+    "las",
+    "lo",
+    "un",
+    "una",
+    "unos",
+    "unas",
+    "al",
+    "del",
+    "de",
+  ]),
+  it: new Set([
+    "il",
+    "lo",
+    "la",
+    "i",
+    "gli",
+    "le",
+    "un",
+    "uno",
+    "una",
+    "l",
+    "di",
+    "del",
+    "dello",
+    "della",
+    "dei",
+    "degli",
+    "delle",
+    "d",
+  ]),
+};
+const STORY_MULTIWORD_SKIP_TOKENS_BY_LANGUAGE = {
+  es: new Set(["a", "de", "del", "al", "con", "en", "por", "para", "y", "o", "u"]),
+  it: new Set(["a", "di", "del", "della", "delle", "con", "in", "e", "o"]),
+};
+const STORY_POS_CONTEXT_BY_LANGUAGE = {
+  es: {
+    subjectPronouns: new Set([
+      "yo",
+      "tu",
+      "el",
+      "ella",
+      "usted",
+      "nosotros",
+      "nosotras",
+      "vosotros",
+      "vosotras",
+      "ellos",
+      "ellas",
+      "ustedes",
+    ]),
+    cliticPronouns: new Set(["me", "te", "se", "nos", "os", "lo", "la", "los", "las", "le", "les"]),
+    determiners: new Set([
+      "el",
+      "la",
+      "los",
+      "las",
+      "lo",
+      "un",
+      "una",
+      "unos",
+      "unas",
+      "mi",
+      "mis",
+      "tu",
+      "tus",
+      "su",
+      "sus",
+      "nuestro",
+      "nuestra",
+      "nuestros",
+      "nuestras",
+      "vuestro",
+      "vuestra",
+      "vuestros",
+      "vuestras",
+      "este",
+      "esta",
+      "estos",
+      "estas",
+      "ese",
+      "esa",
+      "esos",
+      "esas",
+      "aquel",
+      "aquella",
+      "aquellos",
+      "aquellas",
+      "otro",
+      "otra",
+      "otros",
+      "otras",
+      "cada",
+      "algun",
+      "alguna",
+      "ningun",
+      "ninguna",
+      "todo",
+      "toda",
+      "todos",
+      "todas",
+    ]),
+    prepositions: new Set([
+      "a",
+      "ante",
+      "bajo",
+      "con",
+      "contra",
+      "de",
+      "desde",
+      "durante",
+      "en",
+      "entre",
+      "hacia",
+      "hasta",
+      "para",
+      "por",
+      "segun",
+      "sin",
+      "sobre",
+      "tras",
+    ]),
+    copulaForms: new Set([
+      "soy",
+      "eres",
+      "es",
+      "somos",
+      "sois",
+      "son",
+      "era",
+      "eras",
+      "eramos",
+      "eran",
+      "fui",
+      "fue",
+      "fueron",
+      "estoy",
+      "estas",
+      "esta",
+      "estamos",
+      "estan",
+      "estaba",
+      "estaban",
+      "parece",
+      "parecen",
+      "resulta",
+      "queda",
+      "quedo",
+      "quedan",
+    ]),
+    commonAdverbs: new Set([
+      "hoy",
+      "ayer",
+      "manana",
+      "siempre",
+      "nunca",
+      "jamas",
+      "ya",
+      "todavia",
+      "aun",
+      "luego",
+      "entonces",
+      "asi",
+      "bien",
+      "mal",
+      "aqui",
+      "aca",
+      "ahi",
+      "alli",
+      "alla",
+      "casi",
+      "apenas",
+      "bastante",
+      "demasiado",
+      "poco",
+      "mucho",
+      "mas",
+      "menos",
+      "temprano",
+      "tarde",
+      "pronto",
+      "despacio",
+      "rapido",
+      "lentamente",
+      "cerca",
+      "lejos",
+      "dentro",
+      "fuera",
+    ]),
+    coreFunctionWords: new Set([
+      "y",
+      "o",
+      "pero",
+      "porque",
+      "que",
+      "si",
+      "no",
+      "ni",
+      "como",
+      "cuando",
+      "donde",
+      "quien",
+      "cual",
+      "cuales",
+      "de",
+      "a",
+      "en",
+      "con",
+      "por",
+      "para",
+      "del",
+      "al",
+    ]),
+  },
+  it: {
+    subjectPronouns: new Set(["io", "tu", "lui", "lei", "noi", "voi", "loro"]),
+    cliticPronouns: new Set(["mi", "ti", "si", "ci", "vi", "lo", "la", "li", "le", "gli"]),
+    determiners: new Set([
+      "il",
+      "lo",
+      "la",
+      "i",
+      "gli",
+      "le",
+      "un",
+      "uno",
+      "una",
+      "l",
+      "mio",
+      "mia",
+      "miei",
+      "mie",
+      "tuo",
+      "tua",
+      "tuoi",
+      "tue",
+      "suo",
+      "sua",
+      "suoi",
+      "sue",
+      "questo",
+      "questa",
+      "questi",
+      "queste",
+      "quello",
+      "quella",
+      "quelli",
+      "quelle",
+      "ogni",
+      "altro",
+      "altra",
+      "altri",
+      "altre",
+    ]),
+    prepositions: new Set([
+      "a",
+      "di",
+      "da",
+      "in",
+      "con",
+      "su",
+      "per",
+      "tra",
+      "fra",
+      "del",
+      "dello",
+      "della",
+      "dei",
+      "degli",
+      "delle",
+      "al",
+      "alla",
+      "ai",
+      "agli",
+      "alle",
+    ]),
+    copulaForms: new Set([
+      "sono",
+      "sei",
+      "e",
+      "siamo",
+      "siete",
+      "era",
+      "erano",
+      "stato",
+      "stata",
+      "stati",
+      "state",
+      "sembra",
+      "sembrano",
+    ]),
+    commonAdverbs: new Set([
+      "oggi",
+      "ieri",
+      "domani",
+      "sempre",
+      "mai",
+      "gia",
+      "ancora",
+      "poi",
+      "adesso",
+      "ora",
+      "bene",
+      "male",
+      "cosi",
+      "qui",
+      "li",
+      "la",
+      "presto",
+      "tardi",
+      "lentamente",
+      "rapidamente",
+    ]),
+    coreFunctionWords: new Set([
+      "e",
+      "o",
+      "ma",
+      "che",
+      "se",
+      "non",
+      "ne",
+      "di",
+      "a",
+      "in",
+      "con",
+      "per",
+      "su",
+      "tra",
+      "fra",
+    ]),
+  },
+};
+
+const STORY_TRANSLATION_ENGLISH_STOPWORDS = new Set([
+  "a",
+  "an",
+  "the",
+  "and",
+  "or",
+  "but",
+  "if",
+  "then",
+  "of",
+  "in",
+  "on",
+  "at",
+  "for",
+  "from",
+  "with",
+  "to",
+  "is",
+  "are",
+  "am",
+  "was",
+  "were",
+  "be",
+  "been",
+  "being",
+  "i",
+  "you",
+  "he",
+  "she",
+  "it",
+  "we",
+  "they",
+  "me",
+  "him",
+  "her",
+  "us",
+  "them",
+  "my",
+  "your",
+  "his",
+  "their",
+  "our",
+  "its",
+  "do",
+  "does",
+  "did",
+  "have",
+  "has",
+  "had",
+  "can",
+  "could",
+  "will",
+  "would",
+  "should",
+  "may",
+  "might",
+  "as",
+  "so",
+  "than",
+  "too",
+  "very",
+  "not",
+  "no",
+  "yes",
+  "this",
+  "that",
+  "these",
+  "those",
+]);
+
+const STORY_TRANSLATION_OVERRIDES_BY_LANGUAGE = {
+  es: {
+    phrases: {
+      "me llamo": "my name is",
+      "por la manana": "in the morning",
+      "de nada": "you are welcome",
+      "un momento": "one moment",
+    },
+    words: {
+      no: "not",
+      mi: "my",
+      tu: "your",
+      su: "their",
+      el: "the",
+      la: "the",
+      los: "the",
+      las: "the",
+      un: "a",
+      una: "a",
+      unos: "some",
+      unas: "some",
+      de: "of",
+      del: "of the",
+      al: "to the",
+      en: "in",
+      con: "with",
+      sin: "without",
+      para: "for",
+      por: "by",
+      y: "and",
+      o: "or",
+      pero: "but",
+      tranquilo: "calm",
+      tranquila: "calm",
+      temprano: "early",
+      despacio: "slowly",
+      bonito: "pretty",
+      bonita: "pretty",
+      suave: "soft",
+      fresco: "fresh",
+      barrio: "neighborhood",
+      faro: "lighthouse",
+      cocina: "kitchen",
+      senora: "lady",
+      frase: "phrase",
+      frases: "phrases",
+      lluvia: "rain",
+      manos: "hands",
+      flores: "flowers",
+      anos: "years",
+      primera: "first",
+      pasillo: "hallway",
+      tomates: "tomatoes",
+      puertas: "doors",
+      relojero: "watchmaker",
+      objetos: "objects",
+      sonido: "sound",
+      suspiro: "sigh",
+      hombros: "shoulders",
+      sorbo: "sip",
+      empieza: "begins",
+      calma: "calm",
+      mojado: "wet",
+      ojos: "eyes",
+      vendedor: "seller",
+      lleno: "full",
+      quieto: "still",
+      mayor: "older",
+      cuaderno: "notebook",
+      termo: "thermos",
+      minutos: "minutes",
+      tablero: "board",
+      vacio: "empty",
+      espuma: "foam",
+      platos: "dishes",
+      grietas: "cracks",
+      regreso: "return",
+      cerrada: "closed",
+      alfeizar: "windowsill",
+      escalon: "step",
+      rojos: "red",
+      antigua: "old",
+      pajaro: "bird",
+      movil: "phone",
+      metal: "metal",
+      menta: "mint",
+      lugares: "places",
+      recuerdos: "memories",
+      senales: "signs",
+      oscuro: "dark",
+      personas: "people",
+      alta: "high",
+      meses: "months",
+      plantas: "plants",
+      planes: "plans",
+      cierra: "closes",
+      toc: "knock",
+    },
+    verbInfinitives: {
+      llamar: "call",
+      levantar: "get up",
+      abrir: "open",
+      entrar: "enter",
+      mirar: "look",
+      preguntar: "ask",
+      responder: "answer",
+      dejar: "leave",
+      esperar: "wait",
+      sentar: "sit",
+      sentarse: "sit",
+      probar: "try",
+      asentir: "nod",
+      recordar: "remember",
+      escribir: "write",
+      llegar: "arrive",
+      caminar: "walk",
+      escuchar: "listen",
+      comprar: "buy",
+      existir: "exist",
+      parecer: "seem",
+      quedar: "stay",
+      cambiar: "change",
+      aparecer: "appear",
+      cerrar: "close",
+      lavar: "wash",
+      olvidar: "forget",
+      secar: "dry",
+      sonreir: "smile",
+      volver: "return",
+      sacar: "take out",
+      encoger: "shrug",
+      pensar: "think",
+      tomar: "take",
+      vivir: "live",
+      tener: "have",
+      ser: "be",
+      estar: "be",
+      hacer: "do",
+      poder: "can",
+      ir: "go",
+      ver: "see",
+      decir: "say",
+      venir: "come",
+      leer: "read",
+      dormir: "sleep",
+      buscar: "search",
+      conocer: "know",
+      ofrecer: "offer",
+      subir: "climb",
+      hablar: "speak",
+      sentir: "feel",
+      romper: "break",
+      creer: "believe",
+      saber: "know",
+      llevar: "carry",
+      tratar: "treat",
+      tocar: "touch",
+      mentir: "lie",
+      barrer: "sweep",
+      confesar: "confess",
+      guardar: "keep",
+      discutir: "argue",
+      ensenar: "teach",
+      saludar: "greet",
+      viajar: "travel",
+    },
+    irregularVerbForms: {
+      fui: "ir",
+      fue: "ir",
+      fueron: "ir",
+      voy: "ir",
+      va: "ir",
+      vamos: "ir",
+      es: "ser",
+      soy: "ser",
+      eres: "ser",
+      somos: "ser",
+      son: "ser",
+      era: "ser",
+      eran: "ser",
+      estoy: "estar",
+      esta: "estar",
+      estan: "estar",
+      estaba: "estar",
+      estaban: "estar",
+      tengo: "tener",
+      tiene: "tener",
+      tenia: "tener",
+      hago: "hacer",
+      hace: "hacer",
+      hacia: "hacer",
+      puedo: "poder",
+      puede: "poder",
+      pude: "poder",
+      veo: "ver",
+      vi: "ver",
+      vio: "ver",
+      digo: "decir",
+      dice: "decir",
+      dije: "decir",
+      dijo: "decir",
+      viene: "venir",
+      vino: "venir",
+      ven: "venir",
+      puse: "poner",
+      puso: "poner",
+      pone: "poner",
+      sali: "salir",
+      salio: "salir",
+      sale: "salir",
+      supe: "saber",
+      sabe: "saber",
+    },
+  },
+  it: {
+    phrases: {},
+    words: {},
+    verbInfinitives: {},
+    irregularVerbForms: {},
+  },
+};
+
+const STORY_SPANISH_VERB_SUFFIX_RULES = [
+  { suffix: "ariamos", endings: ["ar"] },
+  { suffix: "aremos", endings: ["ar"] },
+  { suffix: "arian", endings: ["ar"] },
+  { suffix: "arias", endings: ["ar"] },
+  { suffix: "aria", endings: ["ar"] },
+  { suffix: "abamos", endings: ["ar"] },
+  { suffix: "aban", endings: ["ar"] },
+  { suffix: "abas", endings: ["ar"] },
+  { suffix: "aba", endings: ["ar"] },
+  { suffix: "aron", endings: ["ar"] },
+  { suffix: "aste", endings: ["ar"] },
+  { suffix: "ando", endings: ["ar"] },
+  { suffix: "ados", endings: ["ar"] },
+  { suffix: "adas", endings: ["ar"] },
+  { suffix: "ado", endings: ["ar"] },
+  { suffix: "iamos", endings: ["er", "ir"] },
+  { suffix: "ian", endings: ["er", "ir"] },
+  { suffix: "ias", endings: ["er", "ir"] },
+  { suffix: "ia", endings: ["er", "ir"] },
+  { suffix: "ieron", endings: ["er", "ir"] },
+  { suffix: "iste", endings: ["er", "ir"] },
+  { suffix: "iendo", endings: ["er", "ir"] },
+  { suffix: "idos", endings: ["er", "ir"] },
+  { suffix: "idas", endings: ["er", "ir"] },
+  { suffix: "ido", endings: ["er", "ir"] },
+  { suffix: "amos", endings: ["ar", "er", "ir"] },
+  { suffix: "imos", endings: ["er", "ir"] },
+  { suffix: "as", endings: ["ar"] },
+  { suffix: "an", endings: ["ar", "er", "ir"] },
+  { suffix: "es", endings: ["er", "ir"] },
+  { suffix: "en", endings: ["er", "ir"] },
+  { suffix: "a", endings: ["ar", "er", "ir"] },
+  { suffix: "e", endings: ["ar", "er", "ir"] },
+  { suffix: "o", endings: ["ar", "er", "ir"] },
+  { suffix: "io", endings: ["er", "ir"] },
+  { suffix: "i", endings: ["er", "ir"] },
+];
+
 const authView = document.getElementById("authView");
 const appContent = document.getElementById("appContent");
 const trainingHubView = document.getElementById("trainingHubView");
@@ -671,6 +1374,34 @@ function createEmptyBestScores() {
   };
 }
 
+function createEmptyStoryWordTypes() {
+  return {
+    nouns: new Set(),
+    adjectives: new Set(),
+    verbs: new Set(),
+    adverbs: new Set(),
+    corePreferred: new Set(),
+  };
+}
+
+function createEmptyStoryWordTypeOverrides() {
+  return {};
+}
+
+function createEmptyStoryTranslationOverrides() {
+  return {};
+}
+
+function createEmptyStoryTranslationResources() {
+  return {
+    phraseMap: new Map(),
+    wordMap: new Map(),
+    infinitiveMap: new Map(),
+    alignmentScores: new Map(),
+    maxPhraseTokens: 1,
+  };
+}
+
 function normalizeBestScores(rawScores) {
   const safe = createEmptyBestScores();
   if (!rawScores || typeof rawScores !== "object") {
@@ -703,6 +1434,10 @@ const state = {
   grammarGroups: [],
   slangGroups: [],
   stories: [],
+  storyWordTypes: createEmptyStoryWordTypes(),
+  storyWordTypeOverrides: createEmptyStoryWordTypeOverrides(),
+  storyTranslationOverrides: createEmptyStoryTranslationOverrides(),
+  storyTranslationResources: createEmptyStoryTranslationResources(),
   activeLanguage: loadPreferredLanguage(),
   nounMode: "singular",
   activeVerbTrack: "core",
@@ -770,6 +1505,17 @@ const state = {
   currentUser: null,
   dataLoaded: false,
 };
+
+let storyTranslationPopupEl = null;
+let storyTranslationPopupEnglishEl = null;
+let storyTranslationPopupSentence = "";
+let storyWordOverrideModalEl = null;
+let storyWordOverrideModalTitleEl = null;
+let storyWordOverrideModalMetaEl = null;
+let storyWordOverrideModalPosInputEl = null;
+let storyWordOverrideModalTranslationInputEl = null;
+let storyWordOverrideModalErrorEl = null;
+let storyWordOverrideModalResolve = null;
 
 const textEncoder = new TextEncoder();
 
@@ -1052,6 +1798,40 @@ function getLanguageScopedStorageKey(baseKey) {
   return `${baseKey}::${getCurrentLanguage()}`;
 }
 
+function normalizeStoryWordTypeOverrides(rawValue) {
+  if (!rawValue || typeof rawValue !== "object" || Array.isArray(rawValue)) {
+    return createEmptyStoryWordTypeOverrides();
+  }
+
+  const safe = {};
+  Object.entries(rawValue).forEach(([rawWord, rawType]) => {
+    const word = normalize(rawWord || "");
+    const wordType = normalize(rawType || "");
+    if (!word || !STORY_WORD_TYPE_VALUES.has(wordType)) {
+      return;
+    }
+    safe[word] = wordType;
+  });
+  return safe;
+}
+
+function normalizeStoryTranslationOverrides(rawValue) {
+  if (!rawValue || typeof rawValue !== "object" || Array.isArray(rawValue)) {
+    return createEmptyStoryTranslationOverrides();
+  }
+
+  const safe = {};
+  Object.entries(rawValue).forEach(([rawWord, rawTranslation]) => {
+    const word = normalize(rawWord || "");
+    const translation = normalizeStoryEnglishGloss(rawTranslation || "");
+    if (!word || !translation) {
+      return;
+    }
+    safe[word] = translation;
+  });
+  return safe;
+}
+
 function createEmptyRemoteLanguageState() {
   const scoped = {
     best_scores: {},
@@ -1206,6 +1986,14 @@ function refreshAdminModeAccess() {
   if (adminModeControl) {
     adminModeControl.hidden = !isAllowed;
   }
+
+  if (state.adminMode) {
+    hideStoryTranslationPopup();
+  }
+
+  if (!storyView.hidden && state.currentStory) {
+    renderStoryBodyForStory(state.currentStory);
+  }
 }
 
 function getBestScoresStorageKey() {
@@ -1238,6 +2026,68 @@ function getGamificationStorageKey() {
 
 function getActivityStorageKey() {
   return getLanguageScopedStorageKey(ACTIVITY_STORAGE_KEY);
+}
+
+function getStoryWordOverridesStorageKey() {
+  if (!state.currentUser?.username) {
+    return `${getLanguageScopedStorageKey(STORY_WORD_OVERRIDES_STORAGE_KEY)}::guest`;
+  }
+  return `${getLanguageScopedStorageKey(STORY_WORD_OVERRIDES_STORAGE_KEY)}::${state.currentUser.username}`;
+}
+
+function getStoryTranslationOverridesStorageKey() {
+  if (!state.currentUser?.username) {
+    return `${getLanguageScopedStorageKey(STORY_TRANSLATION_OVERRIDES_STORAGE_KEY)}::guest`;
+  }
+  return `${getLanguageScopedStorageKey(STORY_TRANSLATION_OVERRIDES_STORAGE_KEY)}::${state.currentUser.username}`;
+}
+
+function loadStoryWordTypeOverrides() {
+  try {
+    const raw = localStorage.getItem(getStoryWordOverridesStorageKey());
+    if (!raw) {
+      return createEmptyStoryWordTypeOverrides();
+    }
+    return normalizeStoryWordTypeOverrides(JSON.parse(raw));
+  } catch (error) {
+    console.error("Could not load story word overrides:", error);
+    return createEmptyStoryWordTypeOverrides();
+  }
+}
+
+function loadStoryTranslationOverrides() {
+  try {
+    const raw = localStorage.getItem(getStoryTranslationOverridesStorageKey());
+    if (!raw) {
+      return createEmptyStoryTranslationOverrides();
+    }
+    return normalizeStoryTranslationOverrides(JSON.parse(raw));
+  } catch (error) {
+    console.error("Could not load story translation overrides:", error);
+    return createEmptyStoryTranslationOverrides();
+  }
+}
+
+function saveStoryWordTypeOverrides() {
+  try {
+    localStorage.setItem(
+      getStoryWordOverridesStorageKey(),
+      JSON.stringify(normalizeStoryWordTypeOverrides(state.storyWordTypeOverrides)),
+    );
+  } catch (error) {
+    console.error("Could not save story word overrides:", error);
+  }
+}
+
+function saveStoryTranslationOverrides() {
+  try {
+    localStorage.setItem(
+      getStoryTranslationOverridesStorageKey(),
+      JSON.stringify(normalizeStoryTranslationOverrides(state.storyTranslationOverrides)),
+    );
+  } catch (error) {
+    console.error("Could not save story translation overrides:", error);
+  }
 }
 
 let remoteStateSyncTimer = null;
@@ -2047,6 +2897,7 @@ function clearAuthForms() {
 
 function showAuthScreen() {
   stopQuizTimer();
+  hideStoryTranslationPopup();
   document.body.classList.remove("quiz-screen-active");
   authView.hidden = false;
   appContent.hidden = true;
@@ -2101,6 +2952,8 @@ function normalizeCurrentUserRecord(userOrUsername) {
 async function setCurrentUser(userOrUsername) {
   const normalizedRecord = normalizeCurrentUserRecord(userOrUsername);
   state.currentUser = normalizedRecord;
+  state.storyWordTypeOverrides = loadStoryWordTypeOverrides();
+  state.storyTranslationOverrides = loadStoryTranslationOverrides();
   if (!state.currentUser) {
     state.remoteLanguageState = createEmptyRemoteLanguageState();
     state.remoteStateLoadFailed = false;
@@ -2176,6 +3029,8 @@ async function ensureDataLoaded() {
 }
 
 function reloadLanguageScopedLocalState() {
+  state.storyWordTypeOverrides = loadStoryWordTypeOverrides();
+  state.storyTranslationOverrides = loadStoryTranslationOverrides();
   if (hasSupabaseConfig() && state.currentUser?.user_id) {
     applyRemoteLanguageState(state.currentUser?.username || "", getCurrentLanguage());
   } else {
@@ -2263,6 +3118,9 @@ function saveAdminMode(enabled) {
 
 function setAdminMode(enabled) {
   state.adminMode = canUseAdminMode() ? Boolean(enabled) : false;
+  if (!state.adminMode) {
+    cancelStoryWordOverrideModalIfOpen();
+  }
   if (adminModeToggle) {
     adminModeToggle.checked = state.adminMode;
   }
@@ -2271,6 +3129,9 @@ function setAdminMode(enabled) {
   }
   refreshAdminModeAccess();
   refreshProgressViews();
+  if (!storyView.hidden && state.currentStory) {
+    renderStoryBodyForStory(state.currentStory);
+  }
 }
 
 function isStoryUnlocked(story, studyProgress = getOverallStudyProgress()) {
@@ -2285,6 +3146,8 @@ state.activityMap = loadActivityMap();
 state.attemptStats = loadAttemptStats();
 state.gamificationData = loadGamificationData();
 state.srsData = loadSrsData();
+state.storyWordTypeOverrides = loadStoryWordTypeOverrides();
+state.storyTranslationOverrides = loadStoryTranslationOverrides();
 state.adminMode = loadAdminMode();
 if (languageToggle) {
   languageToggle.value = state.activeLanguage;
@@ -2309,6 +3172,10 @@ function showView(activeView) {
   if (!isQuizScreen) {
     stopQuizTimer();
   }
+  if (activeView !== storyView) {
+    hideStoryTranslationPopup();
+    cancelStoryWordOverrideModalIfOpen();
+  }
   appViews.forEach((view) => {
     view.hidden = view !== activeView;
   });
@@ -2322,6 +3189,1736 @@ function normalize(value) {
     .replace(/[^\p{L}\p{N}\s]/gu, "")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function createStoryWordTokenRegex() {
+  return new RegExp(STORY_WORD_TOKEN_PATTERN.source, STORY_WORD_TOKEN_PATTERN.flags);
+}
+
+function collectStoryWordEntries(paragraphText) {
+  const entries = [];
+  const regex = createStoryWordTokenRegex();
+  let match;
+  while ((match = regex.exec(paragraphText)) !== null) {
+    const token = match[0];
+    entries.push({
+      token,
+      normalized: normalize(token),
+      start: match.index,
+      end: match.index + token.length,
+    });
+  }
+  return entries;
+}
+
+function extractNormalizedStoryWords(rawValue) {
+  if (!rawValue) {
+    return [];
+  }
+  const words = String(rawValue).match(createStoryWordTokenRegex()) || [];
+  return words.map((word) => normalize(word)).filter(Boolean);
+}
+
+function extractLexemeVariants(rawValue) {
+  if (rawValue === null || rawValue === undefined) {
+    return [];
+  }
+  return String(rawValue)
+    .replace(/\([^)]*\)/g, " ")
+    .split(/\s-\s|\/|,|;|\|/g)
+    .map((variant) => variant.trim())
+    .filter(Boolean);
+}
+
+function addStoryWordsToSet(targetSet, rawValue, options = {}) {
+  const { excludeTokens = null, skipShortInPhrase = false } = options;
+  const words = extractNormalizedStoryWords(rawValue);
+  if (!words.length) {
+    return;
+  }
+  words.forEach((word) => {
+    if (excludeTokens?.has(word)) {
+      return;
+    }
+    if (skipShortInPhrase && words.length > 1 && word.length < 3) {
+      return;
+    }
+    targetSet.add(word);
+  });
+}
+
+function addStoryLexemeVariantsToSet(targetSet, rawValue, options = {}) {
+  extractLexemeVariants(rawValue).forEach((variant) => {
+    addStoryWordsToSet(targetSet, variant, options);
+  });
+}
+
+function normalizeStoryEnglishGloss(rawValue) {
+  return String(rawValue || "")
+    .replace(/\([^)]*\)/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function extractStoryEnglishGlossCandidates(rawValue) {
+  const normalized = normalizeStoryEnglishGloss(rawValue);
+  if (!normalized) {
+    return [];
+  }
+  return normalized
+    .split(/\/|;|\|/g)
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+}
+
+function normalizeStoryVerbGloss(rawValue) {
+  const normalized = normalizeStoryEnglishGloss(rawValue).replace(/^to\s+/i, "").trim();
+  return normalized;
+}
+
+function isStoryInfinitiveCandidate(word, language = getCurrentLanguage()) {
+  if (!word) {
+    return false;
+  }
+  if (language === "es") {
+    return /(ar|er|ir|arse|erse|irse)$/.test(word);
+  }
+  if (language === "it") {
+    return /(are|ere|ire)$/.test(word);
+  }
+  return false;
+}
+
+function setStoryInfinitiveTranslationEntry(resources, infinitive, englishRaw, priority) {
+  const normalizedInfinitive = normalize(infinitive || "");
+  if (!normalizedInfinitive || !isStoryInfinitiveCandidate(normalizedInfinitive)) {
+    return;
+  }
+  const normalizedVerbGloss = normalizeStoryVerbGloss(englishRaw);
+  if (!normalizedVerbGloss) {
+    return;
+  }
+  setStoryTranslationEntry(resources.infinitiveMap, normalizedInfinitive, normalizedVerbGloss, priority);
+}
+
+function extractStoryEnglishWords(rawValue) {
+  if (!rawValue) {
+    return [];
+  }
+  const words = String(rawValue).match(createStoryWordTokenRegex()) || [];
+  return words.map((word) => normalize(word)).filter(Boolean);
+}
+
+function addStoryTranslationPairScore(resources, sourceWord, englishWord, score) {
+  if (!sourceWord || !englishWord || !Number.isFinite(score) || score <= 0) {
+    return;
+  }
+  if (!resources.alignmentScores.has(sourceWord)) {
+    resources.alignmentScores.set(sourceWord, new Map());
+  }
+  const sourceScores = resources.alignmentScores.get(sourceWord);
+  sourceScores.set(englishWord, (sourceScores.get(englishWord) || 0) + score);
+}
+
+function addStoryTranslationWordPairEvidence(resources, targetPhrase, englishGloss, priority = 1) {
+  const sourceWords = extractNormalizedStoryWords(targetPhrase);
+  const englishWords = extractStoryEnglishWords(englishGloss);
+  if (!sourceWords.length || !englishWords.length) {
+    return;
+  }
+
+  const contentEnglishWords = englishWords.filter(
+    (word) => !STORY_TRANSLATION_ENGLISH_STOPWORDS.has(word),
+  );
+  const targetEnglishWords = contentEnglishWords.length ? contentEnglishWords : englishWords;
+  const weight = Math.max(1, Number(priority) || 1);
+
+  if (sourceWords.length === targetEnglishWords.length) {
+    sourceWords.forEach((sourceWord, index) => {
+      addStoryTranslationPairScore(resources, sourceWord, targetEnglishWords[index], weight * 4);
+    });
+  }
+
+  if (sourceWords.length === 1) {
+    targetEnglishWords.forEach((englishWord, index) => {
+      addStoryTranslationPairScore(resources, sourceWords[0], englishWord, weight * (index === 0 ? 2 : 1));
+    });
+    return;
+  }
+
+  const denseWeight = weight / (sourceWords.length * targetEnglishWords.length);
+  sourceWords.forEach((sourceWord) => {
+    targetEnglishWords.forEach((englishWord) => {
+      addStoryTranslationPairScore(resources, sourceWord, englishWord, denseWeight);
+    });
+  });
+  addStoryTranslationPairScore(
+    resources,
+    sourceWords[sourceWords.length - 1],
+    targetEnglishWords[targetEnglishWords.length - 1],
+    weight * 2,
+  );
+}
+
+function addStoryLanguageTranslationOverrides(resources, language = getCurrentLanguage()) {
+  const overrides = STORY_TRANSLATION_OVERRIDES_BY_LANGUAGE[language];
+  if (!overrides) {
+    return;
+  }
+
+  Object.entries(overrides.phrases || {}).forEach(([targetPhrase, englishGloss]) => {
+    const normalizedTarget = normalize(targetPhrase);
+    const normalizedGloss = normalizeStoryEnglishGloss(englishGloss);
+    if (!normalizedTarget || !normalizedGloss) {
+      return;
+    }
+    const tokenCount = normalizedTarget.split(/\s+/).filter(Boolean).length;
+    resources.maxPhraseTokens = Math.max(resources.maxPhraseTokens, tokenCount);
+    setStoryTranslationEntry(resources.phraseMap, normalizedTarget, normalizedGloss, 10);
+  });
+
+  Object.entries(overrides.words || {}).forEach(([targetWord, englishGloss]) => {
+    const normalizedTarget = normalize(targetWord);
+    const normalizedGloss = normalizeStoryEnglishGloss(englishGloss);
+    if (!normalizedTarget || !normalizedGloss) {
+      return;
+    }
+    setStoryTranslationEntry(resources.wordMap, normalizedTarget, normalizedGloss, 9);
+  });
+
+  Object.entries(overrides.verbInfinitives || {}).forEach(([infinitive, englishGloss]) => {
+    setStoryInfinitiveTranslationEntry(resources, infinitive, englishGloss, 9);
+  });
+}
+
+function promoteStoryWordAlignmentFallbacks(resources) {
+  resources.alignmentScores.forEach((englishScores, sourceWord) => {
+    if (resources.wordMap.has(sourceWord) || sourceWord.length < 3) {
+      return;
+    }
+    const ranked = [...englishScores.entries()]
+      .filter(([englishWord]) => englishWord.length > 1 && !STORY_TRANSLATION_ENGLISH_STOPWORDS.has(englishWord))
+      .sort((left, right) => right[1] - left[1]);
+    const best = ranked[0];
+    if (!best) {
+      return;
+    }
+    const bestScore = Number(best[1]) || 0;
+    const secondScore = Number(ranked[1]?.[1]) || 0;
+    if (bestScore < 3.2) {
+      return;
+    }
+    if (secondScore > 0 && bestScore / secondScore < 1.12) {
+      return;
+    }
+    setStoryTranslationEntry(resources.wordMap, sourceWord, best[0], 1);
+  });
+}
+
+function setStoryTranslationEntry(targetMap, key, text, priority) {
+  if (!key || !text) {
+    return;
+  }
+  const existing = targetMap.get(key);
+  if (existing && existing.priority >= priority) {
+    return;
+  }
+  targetMap.set(key, { text, priority });
+}
+
+function addStoryTranslationMapping(resources, targetRaw, englishRaw, priority = 1) {
+  const englishGloss = extractStoryEnglishGlossCandidates(englishRaw)[0];
+  if (!englishGloss) {
+    return;
+  }
+  const language = getCurrentLanguage();
+
+  extractLexemeVariants(targetRaw).forEach((variant) => {
+    const normalizedTarget = normalize(variant);
+    if (!normalizedTarget) {
+      return;
+    }
+    const targetTokens = normalizedTarget.split(" ").filter(Boolean);
+    if (!targetTokens.length) {
+      return;
+    }
+
+    resources.maxPhraseTokens = Math.max(resources.maxPhraseTokens, targetTokens.length);
+    setStoryTranslationEntry(resources.phraseMap, normalizedTarget, englishGloss, priority);
+    addStoryTranslationWordPairEvidence(resources, normalizedTarget, englishGloss, priority);
+    setStoryInfinitiveTranslationEntry(
+      resources,
+      targetTokens[targetTokens.length - 1],
+      englishGloss,
+      Math.max(1, priority - 1),
+    );
+
+    if (targetTokens.length === 1) {
+      setStoryTranslationEntry(resources.wordMap, targetTokens[0], englishGloss, priority);
+      if (isStoryInfinitiveCandidate(targetTokens[0], language)) {
+        setStoryInfinitiveTranslationEntry(resources, targetTokens[0], englishGloss, priority);
+      }
+      return;
+    }
+
+    const englishWordCount = englishGloss.split(/\s+/).filter(Boolean).length;
+    if (englishWordCount === 1) {
+      setStoryTranslationEntry(
+        resources.wordMap,
+        targetTokens[targetTokens.length - 1],
+        englishGloss,
+        Math.max(1, priority - 1),
+      );
+    }
+  });
+}
+
+function buildStoryTranslationResources() {
+  const resources = createEmptyStoryTranslationResources();
+  const language = getCurrentLanguage();
+
+  const addFromGroups = (groups, priority = 3) => {
+    groups.forEach((group) => {
+      (group.items || []).forEach((item) => {
+        if (item.kind === "subheading") {
+          return;
+        }
+        const answers = Array.isArray(item.answers) && item.answers.length ? item.answers : [item.answer];
+        const englishHint = item.hint || "";
+        answers.forEach((answer) => {
+          addStoryTranslationMapping(resources, answer, englishHint, priority);
+        });
+      });
+    });
+  };
+
+  [...state.nounDecks, ...state.nounDecksAdvanced].forEach((deck) => {
+    (deck.items || []).forEach((item) => {
+      const answers = Array.isArray(item.answers) && item.answers.length ? item.answers : [item.answer];
+      const pluralAnswers = Array.isArray(item.pluralAnswers) ? item.pluralAnswers : [];
+      answers.forEach((answer) => addStoryTranslationMapping(resources, answer, item.hint, 2));
+      pluralAnswers.forEach((answer) => addStoryTranslationMapping(resources, answer, item.hint, 2));
+      if (item.source) {
+        addStoryTranslationMapping(resources, item.source, item.hint, 2);
+      }
+    });
+  });
+
+  [...state.verbs, ...state.verbsAdditional].forEach((verb) => {
+    if (verb.translation) {
+      addStoryTranslationMapping(resources, verb.infinitive, verb.translation, 4);
+      (verb.forms || []).forEach((form) => {
+        addStoryTranslationMapping(resources, form.answer, verb.translation, 4);
+      });
+    }
+  });
+
+  addFromGroups(state.beginnerGroups, 5);
+  addFromGroups(state.discourseGroups, 5);
+  addFromGroups(state.conversionGroups, 4);
+  addFromGroups(state.grammarGroups, 3);
+  addFromGroups(state.slangGroups, 1);
+
+  addStoryLanguageTranslationOverrides(resources, language);
+  promoteStoryWordAlignmentFallbacks(resources);
+
+  return resources;
+}
+
+function buildAdjectiveVariants(word, language) {
+  const variants = new Set([word]);
+  if (!word) {
+    return variants;
+  }
+
+  if (language === "es") {
+    if (word.endsWith("o")) {
+      const root = word.slice(0, -1);
+      variants.add(`${root}a`);
+      variants.add(`${root}os`);
+      variants.add(`${root}as`);
+    } else if (word.endsWith("a")) {
+      const root = word.slice(0, -1);
+      variants.add(`${root}o`);
+      variants.add(`${root}os`);
+      variants.add(`${root}as`);
+    } else if (word.endsWith("or")) {
+      variants.add(`${word}a`);
+      variants.add(`${word}es`);
+      variants.add(`${word}as`);
+    } else if (word.endsWith("on")) {
+      variants.add(`${word}a`);
+      variants.add(`${word}es`);
+      variants.add(`${word}as`);
+    } else if (word.endsWith("z")) {
+      variants.add(`${word.slice(0, -1)}ces`);
+    } else if (word.endsWith("e")) {
+      variants.add(`${word}s`);
+    } else if (/[aeiou]$/.test(word)) {
+      variants.add(`${word}s`);
+    } else {
+      variants.add(`${word}es`);
+    }
+  } else if (language === "it") {
+    if (word.endsWith("o")) {
+      const root = word.slice(0, -1);
+      variants.add(`${root}a`);
+      variants.add(`${root}i`);
+      variants.add(`${root}e`);
+    } else if (word.endsWith("a")) {
+      const root = word.slice(0, -1);
+      variants.add(`${root}e`);
+      variants.add(`${root}o`);
+      variants.add(`${root}i`);
+    } else if (word.endsWith("e")) {
+      variants.add(`${word.slice(0, -1)}i`);
+    }
+  }
+
+  return variants;
+}
+
+function pluralizeItalianStoryWord(word) {
+  if (word.endsWith("a")) {
+    return `${word.slice(0, -1)}e`;
+  }
+  if (word.endsWith("o") || word.endsWith("e")) {
+    return `${word.slice(0, -1)}i`;
+  }
+  return word;
+}
+
+function pluralizeStoryAnswerWithArticle(answer, language) {
+  if (!answer) {
+    return "";
+  }
+  if (language === "es") {
+    return pluralizeAnswerWithArticle(answer);
+  }
+
+  if (language !== "it") {
+    return answer;
+  }
+
+  const parts = String(answer).split(/\s+/).filter(Boolean);
+  if (parts.length < 2) {
+    return answer;
+  }
+
+  const article = normalize(parts[0]);
+  const pluralArticle =
+    article === "il" || article === "un"
+      ? "i"
+      : article === "lo" || article === "uno"
+        ? "gli"
+        : article === "la" || article === "una"
+          ? "le"
+          : article === "l"
+            ? "i"
+            : parts[0];
+  const nounPhrase = parts.slice(1).join(" ");
+  const nounParts = nounPhrase.split(/\s+/).filter(Boolean);
+  if (!nounParts.length) {
+    return `${pluralArticle} ${nounPhrase}`.trim();
+  }
+  nounParts[0] = pluralizeItalianStoryWord(normalize(nounParts[0]));
+  return `${pluralArticle} ${nounParts.join(" ")}`;
+}
+
+function buildStoryWordTypes() {
+  const lookup = createEmptyStoryWordTypes();
+  const language = getCurrentLanguage();
+  const nounExcludedTokens = STORY_NOUN_EXCLUDED_TOKENS_BY_LANGUAGE[language] || new Set();
+  const multiwordSkipTokens = STORY_MULTIWORD_SKIP_TOKENS_BY_LANGUAGE[language] || new Set();
+  const adverbGroupOverrides = STORY_ADVERB_GROUP_ID_OVERRIDES[language] || new Set();
+
+  [...state.nounDecks, ...state.nounDecksAdvanced].forEach((deck) => {
+    (deck.items || []).forEach((item) => {
+      const answers = Array.isArray(item.answers) && item.answers.length ? item.answers : [item.answer];
+      const pluralAnswers =
+        Array.isArray(item.pluralAnswers) && item.pluralAnswers.length
+          ? item.pluralAnswers
+          : answers.map((answer) => pluralizeStoryAnswerWithArticle(answer, language));
+
+      answers.forEach((answer) => {
+        addStoryLexemeVariantsToSet(lookup.nouns, answer, { excludeTokens: nounExcludedTokens });
+      });
+      pluralAnswers.forEach((answer) => {
+        addStoryLexemeVariantsToSet(lookup.nouns, answer, { excludeTokens: nounExcludedTokens });
+      });
+      if (language === "es" && item.source) {
+        addStoryLexemeVariantsToSet(lookup.nouns, item.source, {
+          excludeTokens: nounExcludedTokens,
+        });
+      }
+    });
+  });
+
+  [...state.verbs, ...state.verbsAdditional].forEach((verb) => {
+    addStoryWordsToSet(lookup.verbs, verb.infinitive);
+    (verb.forms || []).forEach((form) => {
+      addStoryWordsToSet(lookup.verbs, form.answer);
+    });
+  });
+
+  state.beginnerGroups.forEach((group) => {
+    const groupId = String(group?.id || "").toLowerCase();
+    const isCoreGroup = STORY_CORE_GROUP_ID_PATTERN.test(groupId);
+    const isAdjectiveGroup = STORY_ADJECTIVE_GROUP_ID_PATTERN.test(groupId);
+    const isAdverbGroup = STORY_ADVERB_GROUP_ID_PATTERN.test(groupId) || adverbGroupOverrides.has(groupId);
+    if (!isCoreGroup && !isAdjectiveGroup && !isAdverbGroup) {
+      return;
+    }
+    (group.items || []).forEach((item) => {
+      if (item.kind === "subheading") {
+        return;
+      }
+      const answers = Array.isArray(item.answers) && item.answers.length ? item.answers : [item.answer];
+      answers.forEach((answer) => {
+        const variants = extractLexemeVariants(answer);
+        if (isCoreGroup) {
+          variants.forEach((variant) => {
+            addStoryWordsToSet(lookup.corePreferred, variant);
+          });
+        }
+        if (isAdjectiveGroup || isAdverbGroup) {
+          const targetSet = isAdverbGroup ? lookup.adverbs : lookup.adjectives;
+          variants.forEach((variant) => {
+            addStoryWordsToSet(targetSet, variant, {
+              excludeTokens: multiwordSkipTokens,
+              skipShortInPhrase: true,
+            });
+            if (isAdjectiveGroup) {
+              extractNormalizedStoryWords(variant).forEach((word) => {
+                buildAdjectiveVariants(word, language).forEach((variantWord) => {
+                  targetSet.add(variantWord);
+                });
+              });
+            }
+          });
+        }
+      });
+    });
+  });
+
+  return lookup;
+}
+
+function getStoryPosContextConfig(language = getCurrentLanguage()) {
+  return STORY_POS_CONTEXT_BY_LANGUAGE[language] || STORY_POS_CONTEXT_BY_LANGUAGE.es;
+}
+
+function looksLikeStoryVerbWord(word, language) {
+  if (!word || word.length < 3) {
+    return false;
+  }
+
+  if (language === "it") {
+    return /(?:ando|endo|ato|uta|uto|ito|avo|avi|ava|avamo|avano|evo|evi|eva|evamo|evano|ivo|ivi|iva|ivamo|ivano|ero|arono|erono|irono|erei|eresti|erebbe|eremmo|ereste|erebbero|iamo|ate|ano|ono|i|a|o)$/i.test(
+      word,
+    );
+  }
+
+  return /(?:ando|iendo|ado|ido|aba|abas|abamos|aban|ia|ias|iamos|ian|aste|aron|iste|ieron|are|aras|ara|aremos|aran|aria|arias|ariamos|arian|amos|emos|imos|ais|an|en|as|es|a|e|o)$/i.test(
+    word,
+  );
+}
+
+function looksLikeStoryAdjectiveWord(word, language) {
+  if (!word || word.length < 3) {
+    return false;
+  }
+  if (language === "it") {
+    return /(?:o|a|i|e|ale|ali|ibile|ibili|oso|osa|osi|ose)$/i.test(word);
+  }
+  return /(?:o|a|os|as|al|ales|il|iles|ble|bles|nte|ntes|ivo|iva|ivos|ivas|ico|ica|icos|icas|oso|osa|osos|osas|ario|aria|arios|arias|ero|era|eros|eras|ado|ada|ados|adas|ido|ida|idos|idas)$/i.test(
+    word,
+  );
+}
+
+function looksLikeStoryAdverbWord(word, language, config = getStoryPosContextConfig(language)) {
+  if (!word) {
+    return false;
+  }
+  return word.endsWith("mente") || config.commonAdverbs.has(word);
+}
+
+function getStoryGapText(paragraphText, wordEntries, leftWordIndex, rightWordIndex) {
+  const start = leftWordIndex >= 0 ? wordEntries[leftWordIndex].end : 0;
+  const end = rightWordIndex < wordEntries.length ? wordEntries[rightWordIndex].start : paragraphText.length;
+  return paragraphText.slice(start, end);
+}
+
+function pickStoryWordTypeFromScores(scores) {
+  const tieBreakOrder = [
+    STORY_WORD_TYPES.verb,
+    STORY_WORD_TYPES.adjective,
+    STORY_WORD_TYPES.adverb,
+    STORY_WORD_TYPES.noun,
+    STORY_WORD_TYPES.core,
+  ];
+  let bestType = STORY_WORD_TYPES.core;
+  let bestScore = Number.NEGATIVE_INFINITY;
+
+  tieBreakOrder.forEach((wordType) => {
+    const score = Number(scores[wordType]) || 0;
+    if (score > bestScore) {
+      bestScore = score;
+      bestType = wordType;
+    }
+  });
+
+  return bestScore <= 0 ? STORY_WORD_TYPES.core : bestType;
+}
+
+function classifyStoryWordWithContext(context) {
+  const {
+    token,
+    word,
+    language,
+    prevWord,
+    prevPrevWord,
+    nextWord,
+    prevType,
+    isSentenceStart,
+    isSentenceEnd,
+  } = context;
+
+  if (!word) {
+    return STORY_WORD_TYPES.core;
+  }
+
+  const manualOverrideType = state.storyWordTypeOverrides[word];
+  if (STORY_WORD_TYPE_VALUES.has(manualOverrideType)) {
+    return manualOverrideType;
+  }
+
+  const config = getStoryPosContextConfig(language);
+  const inNoun = state.storyWordTypes.nouns.has(word);
+  const inVerb = state.storyWordTypes.verbs.has(word);
+  const inAdjective = state.storyWordTypes.adjectives.has(word);
+  const inAdverb = state.storyWordTypes.adverbs.has(word);
+  const inCore = state.storyWordTypes.corePreferred.has(word);
+
+  const scores = {
+    [STORY_WORD_TYPES.noun]: inNoun ? 5 : 0,
+    [STORY_WORD_TYPES.adjective]: inAdjective ? 5 : 0,
+    [STORY_WORD_TYPES.verb]: inVerb ? 5 : 0,
+    [STORY_WORD_TYPES.adverb]: inAdverb ? 5 : 0,
+    [STORY_WORD_TYPES.core]: inCore ? 5 : 0,
+  };
+
+  const verbLike = looksLikeStoryVerbWord(word, language);
+  const adjectiveLike = looksLikeStoryAdjectiveWord(word, language);
+  const adverbLike = looksLikeStoryAdverbWord(word, language, config);
+  if (adverbLike) {
+    scores[STORY_WORD_TYPES.adverb] += 4;
+  }
+
+  const prevIsDeterminer = config.determiners.has(prevWord);
+  const prevIsSubjectPronoun = config.subjectPronouns.has(prevWord);
+  const prevIsCliticPronoun = config.cliticPronouns.has(prevWord);
+  const prevIsPreposition = config.prepositions.has(prevWord);
+  const prevIsCopula =
+    config.copulaForms.has(prevWord) ||
+    (config.cliticPronouns.has(prevWord) && config.copulaForms.has(prevPrevWord));
+  const nextIsDeterminer = config.determiners.has(nextWord);
+  const nextIsPreposition = config.prepositions.has(nextWord);
+
+  const isFunctionWord =
+    config.subjectPronouns.has(word) ||
+    config.cliticPronouns.has(word) ||
+    config.determiners.has(word) ||
+    config.prepositions.has(word) ||
+    config.coreFunctionWords.has(word);
+  if (isFunctionWord) {
+    scores[STORY_WORD_TYPES.core] += 8;
+    scores[STORY_WORD_TYPES.verb] -= 2;
+    scores[STORY_WORD_TYPES.noun] -= 1;
+  }
+  if (prevIsDeterminer) {
+    scores[STORY_WORD_TYPES.noun] += 5;
+    if (adjectiveLike || inAdjective) {
+      scores[STORY_WORD_TYPES.adjective] += 2;
+    }
+  }
+  if (prevIsPreposition) {
+    scores[STORY_WORD_TYPES.noun] += 3;
+  }
+  if (prevIsSubjectPronoun || prevIsCliticPronoun) {
+    if (verbLike || inVerb) {
+      scores[STORY_WORD_TYPES.verb] += 6;
+    }
+  }
+  if (prevIsCopula) {
+    if (adjectiveLike || inAdjective || !inNoun) {
+      scores[STORY_WORD_TYPES.adjective] += 6;
+    }
+  }
+  if (!isSentenceStart && prevType === STORY_WORD_TYPES.noun && (adjectiveLike || inAdjective)) {
+    scores[STORY_WORD_TYPES.adjective] += 6;
+  }
+  if (prevType === STORY_WORD_TYPES.verb && (adverbLike || inAdverb)) {
+    scores[STORY_WORD_TYPES.adverb] += 3;
+  }
+  if (isSentenceStart && (inVerb || verbLike)) {
+    scores[STORY_WORD_TYPES.verb] += 4;
+  }
+  if (isSentenceStart && nextIsDeterminer && (inVerb || verbLike)) {
+    scores[STORY_WORD_TYPES.verb] += 4;
+  }
+  if (nextIsPreposition && (inVerb || verbLike)) {
+    scores[STORY_WORD_TYPES.verb] += 2;
+  }
+  if (isSentenceEnd && prevType === STORY_WORD_TYPES.verb && !inNoun && (adverbLike || inAdverb)) {
+    scores[STORY_WORD_TYPES.adverb] += 2;
+  }
+
+  if (inNoun && inVerb) {
+    if (prevIsDeterminer || prevIsPreposition) {
+      scores[STORY_WORD_TYPES.noun] += 6;
+    }
+    if (prevIsSubjectPronoun || prevIsCliticPronoun || isSentenceStart) {
+      scores[STORY_WORD_TYPES.verb] += 6;
+    }
+  }
+  if (!isSentenceStart && /^[A-ZÁÉÍÓÚÜÑ]/.test(token || "")) {
+    scores[STORY_WORD_TYPES.noun] += 4;
+  }
+
+  if (
+    !inNoun &&
+    !inVerb &&
+    !inAdjective &&
+    !inAdverb &&
+    !verbLike &&
+    !adjectiveLike &&
+    !adverbLike
+  ) {
+    scores[STORY_WORD_TYPES.core] += 1;
+  }
+
+  return pickStoryWordTypeFromScores(scores);
+}
+
+function parseStoryWordTypeSelection(rawValue) {
+  if (rawValue === null || rawValue === undefined) {
+    return { cancelled: true, wordType: null };
+  }
+
+  const normalized = normalize(rawValue).replace(/\s+/g, "");
+  if (!normalized) {
+    return { cancelled: false, wordType: null, invalid: true };
+  }
+
+  const mapping = {
+    "1": STORY_WORD_TYPES.noun,
+    noun: STORY_WORD_TYPES.noun,
+    n: STORY_WORD_TYPES.noun,
+    "2": STORY_WORD_TYPES.adjective,
+    adjective: STORY_WORD_TYPES.adjective,
+    adj: STORY_WORD_TYPES.adjective,
+    "3": STORY_WORD_TYPES.verb,
+    verb: STORY_WORD_TYPES.verb,
+    v: STORY_WORD_TYPES.verb,
+    "4": STORY_WORD_TYPES.adverb,
+    adverb: STORY_WORD_TYPES.adverb,
+    adv: STORY_WORD_TYPES.adverb,
+    "5": STORY_WORD_TYPES.core,
+    core: STORY_WORD_TYPES.core,
+    coreword: STORY_WORD_TYPES.core,
+    "0": null,
+    clear: null,
+    reset: null,
+    auto: null,
+    default: null,
+    none: null,
+  };
+
+  if (!Object.prototype.hasOwnProperty.call(mapping, normalized)) {
+    return { cancelled: false, wordType: null, invalid: true };
+  }
+
+  return {
+    cancelled: false,
+    wordType: mapping[normalized],
+    invalid: false,
+  };
+}
+
+function parseStoryOptionalWordTypeInput(rawValue) {
+  const trimmedValue = String(rawValue || "").trim();
+  if (!trimmedValue) {
+    return {
+      changed: false,
+      invalid: false,
+      wordType: null,
+    };
+  }
+
+  const parsed = parseStoryWordTypeSelection(trimmedValue);
+  if (parsed.cancelled || parsed.invalid) {
+    return {
+      changed: false,
+      invalid: true,
+      wordType: null,
+    };
+  }
+
+  return {
+    changed: true,
+    invalid: false,
+    wordType: parsed.wordType,
+  };
+}
+
+function parseStoryOptionalTranslationInput(rawValue) {
+  const rawText = String(rawValue || "");
+  const trimmedValue = rawText.trim();
+  if (!trimmedValue) {
+    return {
+      changed: false,
+      invalid: false,
+      translation: null,
+    };
+  }
+
+  const normalizedCommand = normalize(trimmedValue).replace(/\s+/g, "");
+  if (["0", "clear", "reset", "auto", "default", "none"].includes(normalizedCommand)) {
+    return {
+      changed: true,
+      invalid: false,
+      translation: null,
+    };
+  }
+
+  const normalizedTranslation = normalizeStoryEnglishGloss(rawText);
+  if (!normalizedTranslation) {
+    return {
+      changed: false,
+      invalid: true,
+      translation: null,
+    };
+  }
+
+  return {
+    changed: true,
+    invalid: false,
+    translation: normalizedTranslation,
+  };
+}
+
+function closeStoryWordOverrideModal(result) {
+  if (!storyWordOverrideModalResolve) {
+    return;
+  }
+
+  const resolve = storyWordOverrideModalResolve;
+  storyWordOverrideModalResolve = null;
+  if (storyWordOverrideModalEl) {
+    storyWordOverrideModalEl.hidden = true;
+  }
+  if (storyWordOverrideModalErrorEl) {
+    storyWordOverrideModalErrorEl.textContent = "";
+  }
+  resolve(result);
+}
+
+function cancelStoryWordOverrideModalIfOpen() {
+  if (!storyWordOverrideModalEl || storyWordOverrideModalEl.hidden) {
+    return;
+  }
+  closeStoryWordOverrideModal({
+    cancelled: true,
+    invalid: false,
+    posChanged: false,
+    wordType: null,
+    translationChanged: false,
+    translation: null,
+  });
+}
+
+function ensureStoryWordOverrideModal() {
+  if (storyWordOverrideModalEl) {
+    return storyWordOverrideModalEl;
+  }
+
+  const overlay = document.createElement("div");
+  overlay.className = "story-admin-override-modal";
+  overlay.hidden = true;
+
+  const dialog = document.createElement("div");
+  dialog.className = "story-admin-override-dialog";
+  dialog.setAttribute("role", "dialog");
+  dialog.setAttribute("aria-modal", "true");
+
+  const title = document.createElement("h3");
+  title.className = "story-admin-override-title";
+
+  const meta = document.createElement("p");
+  meta.className = "story-admin-override-meta";
+
+  const form = document.createElement("form");
+  form.className = "story-admin-override-form";
+
+  const posField = document.createElement("label");
+  posField.className = "story-admin-override-field";
+  posField.textContent = "Word type";
+  const posInput = document.createElement("input");
+  posInput.className = "story-admin-override-input";
+  posInput.type = "text";
+  posInput.autocomplete = "off";
+  posInput.spellcheck = false;
+  posInput.placeholder = 'e.g. "3", "verb", "0"';
+  posField.appendChild(posInput);
+
+  const translationField = document.createElement("label");
+  translationField.className = "story-admin-override-field";
+  translationField.textContent = "Translation";
+  const translationInput = document.createElement("input");
+  translationInput.className = "story-admin-override-input";
+  translationInput.type = "text";
+  translationInput.autocomplete = "off";
+  translationInput.spellcheck = false;
+  translationInput.placeholder = 'e.g. "call", "get up", "auto"';
+  translationField.appendChild(translationInput);
+
+  const help = document.createElement("p");
+  help.className = "story-admin-override-help";
+  help.textContent =
+    "Word type codes: 1 noun, 2 adjective, 3 verb, 4 adverb, 5 core, 0 clear. " +
+    "Leave a field empty to keep it unchanged. Use 0/auto/clear to remove an override.";
+
+  const error = document.createElement("p");
+  error.className = "story-admin-override-error";
+  error.setAttribute("aria-live", "polite");
+
+  const actions = document.createElement("div");
+  actions.className = "story-admin-override-actions";
+  const cancelButton = document.createElement("button");
+  cancelButton.type = "button";
+  cancelButton.className = "ghost-button";
+  cancelButton.textContent = "Cancel";
+  const saveButton = document.createElement("button");
+  saveButton.type = "submit";
+  saveButton.className = "primary-button";
+  saveButton.textContent = "Save";
+  actions.append(cancelButton, saveButton);
+
+  form.append(posField, translationField, help, error, actions);
+  dialog.append(title, meta, form);
+  overlay.appendChild(dialog);
+  document.body.appendChild(overlay);
+
+  cancelButton.addEventListener("click", () => {
+    closeStoryWordOverrideModal({
+      cancelled: true,
+      invalid: false,
+      posChanged: false,
+      wordType: null,
+      translationChanged: false,
+      translation: null,
+    });
+  });
+
+  overlay.addEventListener("click", (event) => {
+    if (event.target !== overlay) {
+      return;
+    }
+    closeStoryWordOverrideModal({
+      cancelled: true,
+      invalid: false,
+      posChanged: false,
+      wordType: null,
+      translationChanged: false,
+      translation: null,
+    });
+  });
+
+  overlay.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
+      return;
+    }
+    event.preventDefault();
+    closeStoryWordOverrideModal({
+      cancelled: true,
+      invalid: false,
+      posChanged: false,
+      wordType: null,
+      translationChanged: false,
+      translation: null,
+    });
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!storyWordOverrideModalResolve) {
+      return;
+    }
+
+    const posSelection = parseStoryOptionalWordTypeInput(posInput.value);
+    if (posSelection.invalid) {
+      error.textContent = 'Invalid word type. Use 1-5, noun/adjective/verb/adverb/core, or 0/auto.';
+      posInput.focus();
+      return;
+    }
+
+    const translationSelection = parseStoryOptionalTranslationInput(translationInput.value);
+    if (translationSelection.invalid) {
+      error.textContent = "Invalid translation input.";
+      translationInput.focus();
+      return;
+    }
+
+    closeStoryWordOverrideModal({
+      cancelled: false,
+      invalid: false,
+      posChanged: posSelection.changed,
+      wordType: posSelection.wordType,
+      translationChanged: translationSelection.changed,
+      translation: translationSelection.translation,
+    });
+  });
+
+  storyWordOverrideModalEl = overlay;
+  storyWordOverrideModalTitleEl = title;
+  storyWordOverrideModalMetaEl = meta;
+  storyWordOverrideModalPosInputEl = posInput;
+  storyWordOverrideModalTranslationInputEl = translationInput;
+  storyWordOverrideModalErrorEl = error;
+  return overlay;
+}
+
+function promptStoryWordOverrides({ displayWord, normalizedWord, currentType }) {
+  const modal = ensureStoryWordOverrideModal();
+
+  if (storyWordOverrideModalResolve) {
+    closeStoryWordOverrideModal({
+      cancelled: true,
+      invalid: false,
+      posChanged: false,
+      wordType: null,
+      translationChanged: false,
+      translation: null,
+    });
+  }
+
+  const currentOverrideType = state.storyWordTypeOverrides[normalizedWord] || null;
+  const currentPosLabel = STORY_WORD_TYPE_LABELS[currentType] || STORY_WORD_TYPE_LABELS[STORY_WORD_TYPES.core];
+  const manualPosLabel = currentOverrideType ? STORY_WORD_TYPE_LABELS[currentOverrideType] : "none";
+  const currentOverrideTranslation = state.storyTranslationOverrides[normalizedWord] || "";
+  const autoTranslation = resolveStoryWordGloss({
+    normalizedWord,
+    wordType: currentType || STORY_WORD_TYPES.core,
+    resources: state.storyTranslationResources,
+    includeManualOverride: false,
+  });
+  const manualTranslationLabel = currentOverrideTranslation || "none";
+  const autoTranslationLabel = autoTranslation || "(none)";
+
+  storyWordOverrideModalTitleEl.textContent = `Admin override for "${displayWord}"`;
+  storyWordOverrideModalMetaEl.textContent = [
+    `Detected POS: ${currentPosLabel}`,
+    `Manual POS: ${manualPosLabel}`,
+    `Auto translation: ${autoTranslationLabel}`,
+    `Manual translation: ${manualTranslationLabel}`,
+  ].join("\n");
+
+  storyWordOverrideModalPosInputEl.value = currentOverrideType || "";
+  storyWordOverrideModalTranslationInputEl.value = currentOverrideTranslation || "";
+  storyWordOverrideModalErrorEl.textContent = "";
+
+  modal.hidden = false;
+  requestAnimationFrame(() => {
+    storyWordOverrideModalPosInputEl.focus();
+    storyWordOverrideModalPosInputEl.select();
+  });
+
+  return new Promise((resolve) => {
+    storyWordOverrideModalResolve = resolve;
+  });
+}
+
+function classifyStoryWordEntries(paragraphText, wordEntries) {
+  const language = getCurrentLanguage();
+  const types = [];
+
+  wordEntries.forEach((entry, index) => {
+    const prevEntry = wordEntries[index - 1] || null;
+    const prevPrevEntry = wordEntries[index - 2] || null;
+    const nextEntry = wordEntries[index + 1] || null;
+    const beforeGap = getStoryGapText(paragraphText, wordEntries, index - 1, index);
+    const afterGap = getStoryGapText(paragraphText, wordEntries, index, index + 1);
+    const isSentenceStart =
+      index === 0 || STORY_SENTENCE_BREAK_PATTERN.test(beforeGap) || beforeGap.includes("\n");
+    const isSentenceEnd =
+      index === wordEntries.length - 1 ||
+      /^[\s"'“”‘’)\]]*[.!?¡¿;,]/.test(afterGap);
+
+    types.push(
+      classifyStoryWordWithContext({
+        token: entry.token,
+        word: entry.normalized,
+        language,
+        prevWord: prevEntry?.normalized || "",
+        prevPrevWord: prevPrevEntry?.normalized || "",
+        nextWord: nextEntry?.normalized || "",
+        prevType: index > 0 ? types[index - 1] : STORY_WORD_TYPES.core,
+        isSentenceStart,
+        isSentenceEnd,
+      }),
+    );
+  });
+
+  return types;
+}
+
+function collectStorySentenceRanges(paragraphText) {
+  const ranges = [];
+  const sentenceRegex = /[^.!?]+(?:[.!?]+["'”’)\]]*)?|[.!?]+/g;
+  let match;
+
+  while ((match = sentenceRegex.exec(paragraphText)) !== null) {
+    const segment = match[0];
+    if (!segment.trim()) {
+      continue;
+    }
+    ranges.push({
+      start: match.index,
+      end: match.index + segment.length,
+    });
+  }
+
+  if (!ranges.length && paragraphText.trim()) {
+    ranges.push({ start: 0, end: paragraphText.length });
+  }
+
+  return ranges;
+}
+
+function getDominantStoryWordType(wordTypes, startIndex, length) {
+  const counts = {
+    [STORY_WORD_TYPES.noun]: 0,
+    [STORY_WORD_TYPES.adjective]: 0,
+    [STORY_WORD_TYPES.verb]: 0,
+    [STORY_WORD_TYPES.adverb]: 0,
+    [STORY_WORD_TYPES.core]: 0,
+  };
+
+  for (let index = startIndex; index < startIndex + length; index += 1) {
+    const wordType = wordTypes[index] || STORY_WORD_TYPES.core;
+    counts[wordType] += 1;
+  }
+
+  return pickStoryWordTypeFromScores(counts);
+}
+
+function guessStoryEnglishGloss(word, wordType) {
+  if (!word) {
+    return "";
+  }
+  if (wordType === STORY_WORD_TYPES.adverb && word.endsWith("mente")) {
+    const stem = word.slice(0, -5);
+    if (stem.endsWith("a")) {
+      return `${stem.slice(0, -1)}ly`;
+    }
+    return `${stem}ly`;
+  }
+  return word;
+}
+
+function collectSpanishVerbAttachedPronounBaseForms(word) {
+  const bases = new Set();
+  const pronounSuffixes = ["me", "te", "se", "nos", "os", "lo", "la", "los", "las", "le", "les"];
+  let current = normalize(word || "");
+  if (!current) {
+    return [];
+  }
+  bases.add(current);
+
+  let keepStripping = true;
+  while (keepStripping && current.length > 4) {
+    keepStripping = false;
+    for (const suffix of pronounSuffixes) {
+      if (current.endsWith(suffix) && current.length > suffix.length + 2) {
+        current = current.slice(0, -suffix.length);
+        bases.add(current);
+        keepStripping = true;
+        break;
+      }
+    }
+  }
+
+  return [...bases];
+}
+
+function collectSpanishVerbInfinitiveCandidates(word) {
+  const normalizedWord = normalize(word || "");
+  if (!normalizedWord) {
+    return [];
+  }
+  const overrides = STORY_TRANSLATION_OVERRIDES_BY_LANGUAGE.es?.irregularVerbForms || {};
+  const candidates = [];
+  const seen = new Set();
+  const addCandidate = (candidate) => {
+    const normalizedCandidate = normalize(candidate || "");
+    if (!normalizedCandidate || seen.has(normalizedCandidate)) {
+      return;
+    }
+    seen.add(normalizedCandidate);
+    candidates.push(normalizedCandidate);
+  };
+
+  collectSpanishVerbAttachedPronounBaseForms(normalizedWord).forEach((baseWord) => {
+    addCandidate(baseWord);
+    if (isStoryInfinitiveCandidate(baseWord, "es")) {
+      addCandidate(baseWord);
+    }
+    if (overrides[baseWord]) {
+      addCandidate(overrides[baseWord]);
+    }
+
+    STORY_SPANISH_VERB_SUFFIX_RULES.forEach((rule) => {
+      if (!baseWord.endsWith(rule.suffix) || baseWord.length <= rule.suffix.length + 1) {
+        return;
+      }
+      const stem = baseWord.slice(0, -rule.suffix.length);
+      rule.endings.forEach((ending) => {
+        addCandidate(`${stem}${ending}`);
+      });
+    });
+  });
+
+  return candidates;
+}
+
+function resolveStoryVerbGlossFromInfinitive(word, resources, language = getCurrentLanguage()) {
+  const normalizedWord = normalize(word || "");
+  if (!normalizedWord) {
+    return "";
+  }
+
+  const directInfinitiveEntry = resources.infinitiveMap.get(normalizedWord);
+  if (directInfinitiveEntry?.text) {
+    return directInfinitiveEntry.text;
+  }
+
+  if (language === "es") {
+    const candidates = collectSpanishVerbInfinitiveCandidates(normalizedWord);
+    for (const candidate of candidates) {
+      const entry = resources.infinitiveMap.get(candidate);
+      if (entry?.text) {
+        return entry.text;
+      }
+    }
+  }
+
+  return "";
+}
+
+function collectStoryWordVariantCandidates(word, language = getCurrentLanguage()) {
+  const normalizedWord = normalize(word || "");
+  if (!normalizedWord || language !== "es") {
+    return [];
+  }
+  const candidates = [];
+  const seen = new Set();
+  const addCandidate = (candidate) => {
+    const normalizedCandidate = normalize(candidate || "");
+    if (!normalizedCandidate || normalizedCandidate === normalizedWord || seen.has(normalizedCandidate)) {
+      return;
+    }
+    seen.add(normalizedCandidate);
+    candidates.push(normalizedCandidate);
+  };
+
+  if (normalizedWord.endsWith("es") && normalizedWord.length > 4) {
+    addCandidate(normalizedWord.slice(0, -2));
+  }
+  if (normalizedWord.endsWith("s") && normalizedWord.length > 3) {
+    addCandidate(normalizedWord.slice(0, -1));
+  }
+  if (normalizedWord.endsWith("as") && normalizedWord.length > 4) {
+    const root = normalizedWord.slice(0, -2);
+    addCandidate(`${root}a`);
+    addCandidate(`${root}o`);
+  }
+  if (normalizedWord.endsWith("os") && normalizedWord.length > 4) {
+    const root = normalizedWord.slice(0, -2);
+    addCandidate(`${root}o`);
+    addCandidate(`${root}a`);
+  }
+  if (normalizedWord.endsWith("a") && normalizedWord.length > 3) {
+    addCandidate(`${normalizedWord.slice(0, -1)}o`);
+  }
+  if (normalizedWord.endsWith("o") && normalizedWord.length > 3) {
+    addCandidate(`${normalizedWord.slice(0, -1)}a`);
+  }
+
+  return candidates;
+}
+
+function looksLikeSpanishPluralWord(word) {
+  return typeof word === "string" && word.length > 3 && /(?:s|es)$/.test(word);
+}
+
+function pluralizeStoryEnglishNoun(gloss) {
+  const normalizedGloss = String(gloss || "").trim();
+  if (!normalizedGloss || /\s/.test(normalizedGloss) || normalizedGloss.endsWith("s")) {
+    return normalizedGloss;
+  }
+  if (/[sxz]$/.test(normalizedGloss) || /(ch|sh)$/.test(normalizedGloss)) {
+    return `${normalizedGloss}es`;
+  }
+  if (/[bcdfghjklmnpqrstvwxyz]y$/i.test(normalizedGloss)) {
+    return `${normalizedGloss.slice(0, -1)}ies`;
+  }
+  return `${normalizedGloss}s`;
+}
+
+function resolveStoryWordGloss({
+  normalizedWord,
+  wordType,
+  resources,
+  language = getCurrentLanguage(),
+  includeManualOverride = true,
+}) {
+  if (includeManualOverride) {
+    const manualTranslationOverride = state.storyTranslationOverrides[normalizedWord];
+    if (manualTranslationOverride) {
+      return manualTranslationOverride;
+    }
+  }
+
+  const directEntry = resources.wordMap.get(normalizedWord);
+  if (directEntry?.text) {
+    if (wordType === STORY_WORD_TYPES.verb) {
+      const normalizedVerbGloss = normalizeStoryVerbGloss(directEntry.text);
+      if (normalizedVerbGloss) {
+        return normalizedVerbGloss;
+      }
+    }
+    return directEntry.text;
+  }
+
+  if (wordType === STORY_WORD_TYPES.verb) {
+    const verbGloss = resolveStoryVerbGlossFromInfinitive(normalizedWord, resources, language);
+    if (verbGloss) {
+      return verbGloss;
+    }
+  }
+
+  const variantCandidates = collectStoryWordVariantCandidates(normalizedWord, language);
+  for (const candidate of variantCandidates) {
+    const variantEntry = resources.wordMap.get(candidate);
+    if (!variantEntry?.text) {
+      continue;
+    }
+    if (wordType === STORY_WORD_TYPES.noun && language === "es" && looksLikeSpanishPluralWord(normalizedWord)) {
+      return pluralizeStoryEnglishNoun(variantEntry.text);
+    }
+    return variantEntry.text;
+  }
+
+  return guessStoryEnglishGloss(normalizedWord, wordType);
+}
+
+function isStoryTranslationPunctuation(text) {
+  return /^[.,!?;:]+$/.test(text);
+}
+
+function buildStorySentenceTranslation(sentenceText) {
+  const resources = state.storyTranslationResources;
+  const wordEntries = collectStoryWordEntries(sentenceText);
+  if (!wordEntries.length) {
+    return [];
+  }
+
+  const wordTypes = classifyStoryWordEntries(sentenceText, wordEntries);
+  const normalizedWords = wordEntries.map((entry) => entry.normalized);
+  const segments = [];
+  const maxPhraseTokens = Math.max(1, Number(resources.maxPhraseTokens) || 1);
+
+  let index = 0;
+  while (index < normalizedWords.length) {
+    let matchedLength = 0;
+    let matchedGloss = "";
+
+    for (let length = Math.min(maxPhraseTokens, normalizedWords.length - index); length > 1; length -= 1) {
+      const phraseKey = normalizedWords.slice(index, index + length).join(" ");
+      const phraseEntry = resources.phraseMap.get(phraseKey);
+      if (!phraseEntry?.text) {
+        continue;
+      }
+      matchedLength = length;
+      matchedGloss = phraseEntry.text;
+      break;
+    }
+
+    if (matchedLength > 0) {
+      const phraseType = getDominantStoryWordType(wordTypes, index, matchedLength);
+      matchedGloss
+        .split(/\s+/)
+        .filter(Boolean)
+        .forEach((word) => {
+          segments.push({
+            text: word,
+            wordType: phraseType,
+            punctuation: false,
+          });
+        });
+      index += matchedLength;
+      continue;
+    }
+
+    const normalizedWord = normalizedWords[index];
+    const wordType = wordTypes[index] || STORY_WORD_TYPES.core;
+    const englishGloss = resolveStoryWordGloss({ normalizedWord, wordType, resources });
+
+    segments.push({
+      text: englishGloss,
+      wordType,
+      punctuation: false,
+    });
+    index += 1;
+  }
+
+  const trailingPunctuation = sentenceText.trim().match(/[.!?]+["'”’)\]]*$/)?.[0] || "";
+  if (trailingPunctuation) {
+    segments.push({
+      text: trailingPunctuation,
+      wordType: STORY_WORD_TYPES.core,
+      punctuation: true,
+    });
+  }
+
+  return segments;
+}
+
+function renderStorySentenceTranslation(container, segments) {
+  container.textContent = "";
+  let first = true;
+
+  segments.forEach((segment) => {
+    const text = String(segment.text || "").trim();
+    if (!text) {
+      return;
+    }
+
+    if (!first && !segment.punctuation && !isStoryTranslationPunctuation(text)) {
+      container.appendChild(document.createTextNode(" "));
+    }
+
+    if (segment.punctuation || isStoryTranslationPunctuation(text)) {
+      container.appendChild(document.createTextNode(text));
+    } else {
+      const token = document.createElement("span");
+      token.className = `story-translation-token story-token--${segment.wordType || STORY_WORD_TYPES.core}`;
+      token.textContent = text;
+      container.appendChild(token);
+    }
+    first = false;
+  });
+}
+
+function ensureStoryTranslationPopup() {
+  if (storyTranslationPopupEl) {
+    return storyTranslationPopupEl;
+  }
+
+  const popup = document.createElement("div");
+  popup.className = "story-translation-popup";
+  popup.hidden = true;
+
+  const english = document.createElement("p");
+  english.className = "story-translation-english";
+
+  popup.append(english);
+  document.body.appendChild(popup);
+
+  storyTranslationPopupEl = popup;
+  storyTranslationPopupEnglishEl = english;
+  return popup;
+}
+
+function positionStoryTranslationPopup(clientX, clientY) {
+  const popup = ensureStoryTranslationPopup();
+  const offset = 14;
+  const padding = 8;
+
+  popup.style.left = `${clientX + offset}px`;
+  popup.style.top = `${clientY + offset}px`;
+  const rect = popup.getBoundingClientRect();
+
+  let left = clientX + offset;
+  let top = clientY + offset;
+
+  if (left + rect.width > window.innerWidth - padding) {
+    left = clientX - rect.width - offset;
+  }
+  if (top + rect.height > window.innerHeight - padding) {
+    top = clientY - rect.height - offset;
+  }
+
+  popup.style.left = `${Math.max(padding, left)}px`;
+  popup.style.top = `${Math.max(padding, top)}px`;
+}
+
+function showStoryTranslationPopup(sentenceText, clientX, clientY) {
+  const popup = ensureStoryTranslationPopup();
+  const normalizedSentence = String(sentenceText || "").trim();
+  if (!normalizedSentence) {
+    hideStoryTranslationPopup();
+    return;
+  }
+
+  if (storyTranslationPopupSentence !== normalizedSentence) {
+    const translationSegments = buildStorySentenceTranslation(normalizedSentence);
+    if (!translationSegments.length) {
+      translationSegments.push({
+        text: normalizedSentence.toLowerCase(),
+        wordType: STORY_WORD_TYPES.core,
+        punctuation: false,
+      });
+    }
+    renderStorySentenceTranslation(storyTranslationPopupEnglishEl, translationSegments);
+    storyTranslationPopupSentence = normalizedSentence;
+  }
+
+  popup.hidden = false;
+  positionStoryTranslationPopup(clientX, clientY);
+}
+
+function hideStoryTranslationPopup() {
+  if (!storyTranslationPopupEl) {
+    return;
+  }
+  storyTranslationPopupEl.hidden = true;
+  storyTranslationPopupSentence = "";
+}
+
+function handleStorySentenceHover(event) {
+  if (state.adminMode || !state.currentStory) {
+    hideStoryTranslationPopup();
+    return;
+  }
+
+  const sentenceEl = event.target.closest(".story-sentence");
+  if (!sentenceEl || !storyBody.contains(sentenceEl)) {
+    hideStoryTranslationPopup();
+    return;
+  }
+
+  const sentenceText = sentenceEl.dataset.storySentence || sentenceEl.textContent || "";
+  showStoryTranslationPopup(sentenceText, event.clientX, event.clientY);
+}
+
+function createStoryWordLegend() {
+  const legend = document.createElement("div");
+  legend.className = "story-word-legend";
+  STORY_WORD_TYPE_LEGEND_ORDER.forEach((wordType) => {
+    const item = document.createElement("span");
+    item.className = `story-word-legend-item story-word-legend-item--${wordType}`;
+
+    const swatch = document.createElement("span");
+    swatch.className = "story-word-legend-swatch";
+    swatch.setAttribute("aria-hidden", "true");
+
+    const label = document.createElement("span");
+    label.textContent = STORY_WORD_TYPE_LABELS[wordType];
+
+    item.append(swatch, label);
+    legend.appendChild(item);
+  });
+  return legend;
+}
+
+function renderStoryBodyForStory(story) {
+  if (!storyBody || !story) {
+    return;
+  }
+
+  storyBody.innerHTML = "";
+  storyBody.appendChild(createStoryWordLegend());
+  story.paragraphs.forEach((paragraph) => {
+    storyBody.appendChild(renderStoryParagraph(paragraph));
+  });
+}
+
+function renderStoryParagraph(paragraphText) {
+  const p = document.createElement("p");
+  const wordEntries = collectStoryWordEntries(paragraphText);
+  const wordTypes = classifyStoryWordEntries(paragraphText, wordEntries);
+  const sentenceRanges = collectStorySentenceRanges(paragraphText);
+  let wordIndex = 0;
+  let cursor = 0;
+
+  sentenceRanges.forEach((sentenceRange) => {
+    const { start, end } = sentenceRange;
+    if (start > cursor) {
+      p.appendChild(document.createTextNode(paragraphText.slice(cursor, start)));
+    }
+
+    const sentenceSpan = document.createElement("span");
+    sentenceSpan.className = "story-sentence";
+    if (!state.adminMode) {
+      sentenceSpan.classList.add("story-sentence--translatable");
+    }
+    sentenceSpan.dataset.storySentence = paragraphText.slice(start, end).trim();
+
+    let sentenceCursor = start;
+    while (wordIndex < wordEntries.length && wordEntries[wordIndex].start < end) {
+      const entry = wordEntries[wordIndex];
+      if (entry.end <= start) {
+        wordIndex += 1;
+        continue;
+      }
+      const { token, start: tokenStart, end: tokenEnd } = entry;
+      if (tokenStart > sentenceCursor) {
+        sentenceSpan.appendChild(document.createTextNode(paragraphText.slice(sentenceCursor, tokenStart)));
+      }
+
+      const wordType = wordTypes[wordIndex] || STORY_WORD_TYPES.core;
+      const wordSpan = document.createElement("span");
+      wordSpan.className = `story-token story-token--${wordType}`;
+      if (state.adminMode) {
+        wordSpan.classList.add("story-token--admin-editable");
+        const hasManualTypeOverride = Boolean(state.storyWordTypeOverrides[entry.normalized]);
+        const hasManualTranslationOverride = Boolean(state.storyTranslationOverrides[entry.normalized]);
+        if (hasManualTypeOverride || hasManualTranslationOverride) {
+          wordSpan.classList.add("story-token--manual");
+        }
+      }
+      wordSpan.dataset.storyWord = entry.normalized;
+      wordSpan.dataset.storyWordType = wordType;
+      wordSpan.textContent = token;
+      if (state.adminMode) {
+        const manualType = state.storyWordTypeOverrides[entry.normalized];
+        const manualTranslation = state.storyTranslationOverrides[entry.normalized] || "";
+        const manualSummary = [];
+        if (manualType) {
+          manualSummary.push(`POS ${STORY_WORD_TYPE_LABELS[manualType]}`);
+        }
+        if (manualTranslation) {
+          manualSummary.push(`translation "${manualTranslation}"`);
+        }
+        wordSpan.title = manualSummary.length
+          ? `Manual: ${manualSummary.join(" • ")} • Click to edit`
+          : `Auto: ${STORY_WORD_TYPE_LABELS[wordType]} • Click to set POS and translation override`;
+      }
+      sentenceSpan.appendChild(wordSpan);
+      sentenceCursor = tokenEnd;
+      wordIndex += 1;
+    }
+
+    if (sentenceCursor < end) {
+      sentenceSpan.appendChild(document.createTextNode(paragraphText.slice(sentenceCursor, end)));
+    }
+
+    p.appendChild(sentenceSpan);
+    cursor = end;
+  });
+
+  if (cursor < paragraphText.length) {
+    p.appendChild(document.createTextNode(paragraphText.slice(cursor)));
+  }
+
+  if (!p.childNodes.length) {
+    p.textContent = paragraphText;
+  }
+
+  return p;
+}
+
+function applyStoryWordTypeOverride(normalizedWord, nextWordType) {
+  if (!normalizedWord) {
+    return;
+  }
+
+  if (nextWordType === null) {
+    delete state.storyWordTypeOverrides[normalizedWord];
+  } else if (STORY_WORD_TYPE_VALUES.has(nextWordType)) {
+    state.storyWordTypeOverrides[normalizedWord] = nextWordType;
+  } else {
+    return;
+  }
+
+  saveStoryWordTypeOverrides();
+  if (state.currentStory) {
+    renderStoryBodyForStory(state.currentStory);
+  }
+}
+
+function applyStoryTranslationOverride(normalizedWord, nextTranslation) {
+  if (!normalizedWord) {
+    return;
+  }
+
+  if (!nextTranslation) {
+    delete state.storyTranslationOverrides[normalizedWord];
+  } else {
+    const normalizedTranslation = normalizeStoryEnglishGloss(nextTranslation);
+    if (!normalizedTranslation) {
+      return;
+    }
+    state.storyTranslationOverrides[normalizedWord] = normalizedTranslation;
+  }
+
+  saveStoryTranslationOverrides();
+  if (state.currentStory) {
+    renderStoryBodyForStory(state.currentStory);
+  }
+}
+
+async function handleAdminStoryWordClick(event) {
+  if (!state.adminMode || !state.currentStory) {
+    return;
+  }
+  const tokenEl = event.target.closest(".story-token");
+  if (!tokenEl || !storyBody.contains(tokenEl)) {
+    return;
+  }
+
+  const normalizedWord = normalize(tokenEl.dataset.storyWord || tokenEl.textContent || "");
+  if (!normalizedWord) {
+    return;
+  }
+  const currentType = tokenEl.dataset.storyWordType || STORY_WORD_TYPES.core;
+  const selection = await promptStoryWordOverrides({
+    displayWord: tokenEl.textContent || normalizedWord,
+    normalizedWord,
+    currentType,
+  });
+  if (selection.cancelled) {
+    return;
+  }
+  if (selection.invalid) {
+    setStatus("Invalid override input.", true);
+    return;
+  }
+
+  let posStatus = "POS unchanged";
+  if (selection.posChanged) {
+    applyStoryWordTypeOverride(normalizedWord, selection.wordType);
+    posStatus = selection.wordType
+      ? `POS: ${STORY_WORD_TYPE_LABELS[selection.wordType].toLowerCase()}`
+      : "POS: auto";
+  }
+
+  if (selection.translationChanged) {
+    applyStoryTranslationOverride(normalizedWord, selection.translation);
+  }
+
+  const statusParts = [posStatus];
+  if (!selection.translationChanged) {
+    statusParts.push("translation unchanged");
+  } else if (selection.translation) {
+    statusParts.push(`translation: "${selection.translation}"`);
+  } else {
+    statusParts.push("translation: auto");
+  }
+  setStatus(`Updated "${normalizedWord}" (${statusParts.join(" • ")}).`);
 }
 
 function isSubjuntivoOrImperativoForm(form) {
@@ -4317,13 +6914,11 @@ function openStory(storyId) {
   const unlockMeta = naturallyUnlocked
     ? `Unlock target: ${story.unlockPercent}% overall progress`
     : `Unlocked by Admin mode (normal unlock: ${story.unlockPercent}%)`;
-  storyMeta.textContent = `Level ${story.level} • ${unlockMeta}`;
-  storyBody.innerHTML = "";
-  story.paragraphs.forEach((paragraph) => {
-    const p = document.createElement("p");
-    p.textContent = paragraph;
-    storyBody.appendChild(p);
-  });
+  const interactionHint = state.adminMode
+    ? " • Admin: click a word to assign POS and translation"
+    : " • Hover a sentence for translation";
+  storyMeta.textContent = `Level ${story.level} • ${unlockMeta}${interactionHint}`;
+  renderStoryBodyForStory(story);
   markStoryRead(story.id);
   renderAchievementsPanel();
   showView(storyView);
@@ -7602,6 +10197,8 @@ async function logoutCurrentUser() {
   state.srsSessionCorrect = 0;
   state.gamificationData = createEmptyGamificationData();
   state.srsData = createEmptySrsData();
+  state.storyWordTypeOverrides = loadStoryWordTypeOverrides();
+  state.storyTranslationOverrides = loadStoryTranslationOverrides();
   state.remoteLanguageState = createEmptyRemoteLanguageState();
   state.remoteStateLoadFailed = false;
   state.adminMode = false;
@@ -7689,6 +10286,8 @@ async function loadData() {
     state.grammarGroups = buildGrammarGroups(grammar);
     state.slangGroups = buildSlangGroups(slang);
     state.stories = buildStories(stories);
+    state.storyWordTypes = buildStoryWordTypes();
+    state.storyTranslationResources = buildStoryTranslationResources();
     if (!(hasSupabaseConfig() && state.currentUser?.user_id)) {
       state.bestScores = loadBestScores();
       state.srsData = loadSrsData();
@@ -7851,6 +10450,18 @@ backToTrainingFromLeaderboardButton.addEventListener("click", () => {
 storyBackButton.addEventListener("click", () => {
   openTrainingHub();
 });
+
+if (storyBody) {
+  storyBody.addEventListener("click", (event) => {
+    void handleAdminStoryWordClick(event);
+  });
+  storyBody.addEventListener("mousemove", (event) => {
+    handleStorySentenceHover(event);
+  });
+  storyBody.addEventListener("mouseleave", () => {
+    hideStoryTranslationPopup();
+  });
+}
 
 if (srsStartButton) {
   srsStartButton.addEventListener("click", () => {
