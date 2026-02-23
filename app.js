@@ -4552,7 +4552,11 @@ function buildStorySentenceTranslation(sentenceText) {
     let matchedGloss = "";
 
     for (let length = Math.min(maxPhraseTokens, normalizedWords.length - index); length > 1; length -= 1) {
-      const phraseKey = normalizedWords.slice(index, index + length).join(" ");
+      const phraseSlice = normalizedWords.slice(index, index + length);
+      if (phraseSlice.some((word) => Boolean(state.storyTranslationOverrides[word]))) {
+        continue;
+      }
+      const phraseKey = phraseSlice.join(" ");
       const phraseEntry = resources.phraseMap.get(phraseKey);
       if (!phraseEntry?.text) {
         continue;
