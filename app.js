@@ -198,7 +198,7 @@ const TRAINING_MODULES = [
   {
     id: "top-nouns-501-2000",
     title: "Top Nouns 501 - 2000",
-    subtitle: "30 decks of 50 nouns",
+    subtitle: "60 decks of 25 nouns",
     type: "nouns-advanced",
   },
 ];
@@ -3267,6 +3267,12 @@ function normalizeStoryManualTranslation(rawValue) {
     .trim();
 }
 
+function normalizeStoryManualTranslation(rawValue) {
+  return String(rawValue || "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function extractStoryEnglishGlossCandidates(rawValue) {
   const normalized = normalizeStoryEnglishGloss(rawValue);
   if (!normalized) {
@@ -4551,19 +4557,22 @@ function buildStorySentenceTranslation(sentenceText) {
     let matchedLength = 0;
     let matchedGloss = "";
 
-    for (let length = Math.min(maxPhraseTokens, normalizedWords.length - index); length > 1; length -= 1) {
-      const phraseSlice = normalizedWords.slice(index, index + length);
-      if (phraseSlice.some((word) => Boolean(state.storyTranslationOverrides[word]))) {
-        continue;
+    const wordOverride = state.storyTranslationOverrides[normalizedWords[index]];
+    if (!wordOverride) {
+      for (let length = Math.min(maxPhraseTokens, normalizedWords.length - index); length > 1; length -= 1) {
+        const phraseSlice = normalizedWords.slice(index, index + length);
+        if (phraseSlice.some((word) => Boolean(state.storyTranslationOverrides[word]))) {
+          continue;
+        }
+        const phraseKey = phraseSlice.join(" ");
+        const phraseEntry = resources.phraseMap.get(phraseKey);
+        if (!phraseEntry?.text) {
+          continue;
+        }
+        matchedLength = length;
+        matchedGloss = phraseEntry.text;
+        break;
       }
-      const phraseKey = phraseSlice.join(" ");
-      const phraseEntry = resources.phraseMap.get(phraseKey);
-      if (!phraseEntry?.text) {
-        continue;
-      }
-      matchedLength = length;
-      matchedGloss = phraseEntry.text;
-      break;
     }
 
     if (matchedLength > 0) {
@@ -8327,7 +8336,7 @@ function getPluralAnswersFromItem(item, singularAnswers) {
 function makeNounQuizItem(item) {
   const singularAnswers = item.answers && item.answers.length ? item.answers : [item.answer];
   const singularUnique = [...new Set(singularAnswers)];
-  const baseHint = addEnglishArticle(item.hint);
+  const baseHint = item.hintLanguage === "es" ? item.hint : addEnglishArticle(item.hint);
 
   if (state.nounMode === "plural") {
     const pluralAnswers = getPluralAnswersFromItem(item, singularUnique);
