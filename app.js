@@ -1823,7 +1823,7 @@ function normalizeStoryTranslationOverrides(rawValue) {
   const safe = {};
   Object.entries(rawValue).forEach(([rawWord, rawTranslation]) => {
     const word = normalize(rawWord || "");
-    const translation = normalizeStoryEnglishGloss(rawTranslation || "");
+    const translation = normalizeStoryManualTranslation(rawTranslation || "");
     if (!word || !translation) {
       return;
     }
@@ -3261,6 +3261,12 @@ function normalizeStoryEnglishGloss(rawValue) {
     .toLowerCase();
 }
 
+function normalizeStoryManualTranslation(rawValue) {
+  return String(rawValue || "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function extractStoryEnglishGlossCandidates(rawValue) {
   const normalized = normalizeStoryEnglishGloss(rawValue);
   if (!normalized) {
@@ -3984,7 +3990,7 @@ function parseStoryOptionalTranslationInput(rawValue) {
     };
   }
 
-  const normalizedCommand = normalize(trimmedValue).replace(/\s+/g, "");
+  const normalizedCommand = trimmedValue.replace(/\s+/g, "").toLowerCase();
   if (["0", "clear", "reset", "auto", "default", "none"].includes(normalizedCommand)) {
     return {
       changed: true,
@@ -3993,7 +3999,7 @@ function parseStoryOptionalTranslationInput(rawValue) {
     };
   }
 
-  const normalizedTranslation = normalizeStoryEnglishGloss(rawText);
+  const normalizedTranslation = normalizeStoryManualTranslation(rawText);
   if (!normalizedTranslation) {
     return {
       changed: false,
@@ -4858,7 +4864,7 @@ function applyStoryTranslationOverride(normalizedWord, nextTranslation) {
   if (!nextTranslation) {
     delete state.storyTranslationOverrides[normalizedWord];
   } else {
-    const normalizedTranslation = normalizeStoryEnglishGloss(nextTranslation);
+    const normalizedTranslation = normalizeStoryManualTranslation(nextTranslation);
     if (!normalizedTranslation) {
       return;
     }
@@ -4866,6 +4872,8 @@ function applyStoryTranslationOverride(normalizedWord, nextTranslation) {
   }
 
   saveStoryTranslationOverrides();
+  storyTranslationPopupSentence = "";
+  hideStoryTranslationPopup();
   if (state.currentStory) {
     renderStoryBodyForStory(state.currentStory);
   }
