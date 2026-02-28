@@ -1217,6 +1217,7 @@ const giveUpButton = document.getElementById("giveUpButton");
 const quizVerbTitle = document.getElementById("quizVerbTitle");
 const quizMeta = document.getElementById("quizMeta");
 const answerInput = document.getElementById("answerInput");
+const verbAnswerLabel = quizView?.querySelector('label[for="answerInput"]');
 const feedback = document.getElementById("feedback");
 const progressText = document.getElementById("progressText");
 const progressFill = document.getElementById("progressFill");
@@ -1497,6 +1498,7 @@ const state = {
   activeNounTrack: "core",
   bestScores: createEmptyBestScores(),
   currentVerb: null,
+  currentVerbItems: [],
   foundIndexes: new Set(),
   answerLookup: new Map(),
   quizEnded: false,
@@ -9017,7 +9019,38 @@ function getVerbAdditionalSectionKey(form) {
   return "";
 }
 
-function renderVerbForms(forms) {
+function makeVerbQuizItem(verb, form, formIndex, forms, mode = state.switchMode) {
+  const clue = getVerbEnglishClue(verb, form, formIndex, forms);
+  if (mode === "switch") {
+    const englishAnswers = getRawEnglishHintAnswers(clue);
+    const uniqueAnswers = [...new Set(englishAnswers.filter(Boolean))];
+    return {
+      ...form,
+      hint: form.answer || "",
+      displayAnswer: uniqueAnswers[0] || clue,
+      answers: uniqueAnswers.length ? uniqueAnswers : clue ? [clue] : [],
+    };
+  }
+  return {
+    ...form,
+    hint: clue,
+    displayAnswer: form.answer,
+    answers: [form.answer],
+  };
+}
+
+function updateVerbAnswerPrompt() {
+  if (verbAnswerLabel) {
+    if (state.switchMode === "switch") {
+      verbAnswerLabel.textContent = "Type English conjugation";
+    } else {
+      verbAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} conjugation`;
+    }
+  }
+  answerInput.placeholder = "Press Enter to submit...";
+}
+
+function renderVerbForms(items) {
   formsList.innerHTML = "";
   const showVerbSections =
     getCurrentLanguage() === "es" &&
@@ -9031,9 +9064,9 @@ function renderVerbForms(forms) {
       ? getVerbAdditionalSectionKey
       : getVerbCoreSectionKey;
   let previousSection = "";
-  forms.forEach((form, index) => {
+  items.forEach((item, index) => {
     if (showVerbSections) {
-      const sectionKey = sectionKeyForForm(form);
+      const sectionKey = sectionKeyForForm(item);
       if (sectionKey && sectionKey !== previousSection) {
         const headingRow = document.createElement("li");
         headingRow.className = "form-row form-subheading";
@@ -9049,8 +9082,8 @@ function renderVerbForms(forms) {
     row.className = "form-row";
     row.dataset.index = index.toString();
     row.innerHTML = `
-      <span class="form-label">${getVerbEnglishClue(state.currentVerb, form, index, forms)}</span>
-      <span class="form-answer">${placeholder(form.answer)}</span>
+      <span class="form-label">${item.hint}</span>
+      <span class="form-answer">${placeholder(item.displayAnswer)}</span>
     `;
     formsList.appendChild(row);
   });
@@ -9061,14 +9094,15 @@ function updateVerbQuizMeta() {
     quizMeta.textContent = "";
     return;
   }
-  const total = state.currentVerb.formCount;
+  const total = state.currentVerbItems.length;
   const best = getVerbBestScore(state.currentVerb, state.activeVerbTrack);
+  const directionLabel = state.switchMode === "switch" ? "switch mode" : "normal mode";
   const timerMeta = state.quizEnded ? "" : ` • ${getQuizTimerText()}`;
-  quizMeta.textContent = `${total} total forms • Best: ${formatScore(best, total)}${timerMeta}`;
+  quizMeta.textContent = `${total} total forms • ${directionLabel} • Best: ${formatScore(best, total)}${timerMeta}`;
 }
 
 function updateVerbProgress() {
-  const total = state.currentVerb.forms.length;
+  const total = state.currentVerbItems.length;
   const found = state.foundIndexes.size;
   const percent = total === 0 ? 0 : Math.round((found / total) * 100);
 
@@ -9095,13 +9129,13 @@ function markVerbMatches(indices) {
     }
     row.classList.add("found");
     row.querySelector(".form-answer").textContent =
-      state.currentVerb.forms[index].answer;
+      state.currentVerbItems[index].displayAnswer;
   });
   return added;
 }
 
 function revealAllVerbAnswers() {
-  state.currentVerb.forms.forEach((form, index) => {
+  state.currentVerbItems.forEach((item, index) => {
     const row = formsList.querySelector(`[data-index="${index}"]`);
     if (!row) {
       return;
@@ -9109,7 +9143,7 @@ function revealAllVerbAnswers() {
     if (!state.foundIndexes.has(index)) {
       row.classList.add("revealed");
     }
-    row.querySelector(".form-answer").textContent = form.answer;
+    row.querySelector(".form-answer").textContent = item.displayAnswer;
   });
 }
 
@@ -9120,7 +9154,7 @@ function endVerbQuiz(reason) {
 
   state.quizEnded = true;
   stopQuizTimer();
-  const total = state.currentVerb.forms.length;
+  const total = state.currentVerbItems.length;
   const score = state.foundIndexes.size;
   const changed = recordBestScore(
     "verbs",
@@ -9179,7 +9213,7 @@ function attemptVerbAnswer(rawValue, strict = false) {
   const added = markVerbMatches(matches);
   if (added > 0) {
     feedback.className = "feedback ok";
-    feedback.textContent = `✓ ${state.currentVerb.forms[matches[0]].answer}`;
+    feedback.textContent = `✓ ${state.currentVerbItems[matches[0]].displayAnswer}`;
     answerInput.value = "";
     updateVerbProgress();
     if (strict) {
@@ -9201,8 +9235,11 @@ function openVerbQuiz(infinitive) {
   }
 
   state.currentVerb = verb;
+  state.currentVerbItems = verb.forms.map((form, index) =>
+    makeVerbQuizItem(verb, form, index, verb.forms, state.switchMode),
+  );
   state.foundIndexes = new Set();
-  state.answerLookup = buildAnswerLookup(verb.forms, (form) => [form.answer]);
+  state.answerLookup = buildAnswerLookup(state.currentVerbItems, (item) => item.answers);
   state.quizEnded = false;
 
   quizVerbTitle.textContent = verb.infinitive;
@@ -9217,13 +9254,14 @@ function openVerbQuiz(infinitive) {
     },
   });
   updateVerbQuizMeta();
+  updateVerbAnswerPrompt();
   feedback.className = "feedback";
   feedback.textContent = "";
   answerInput.value = "";
   answerInput.disabled = false;
   setQuizActionButton(giveUpButton, false);
 
-  renderVerbForms(verb.forms);
+  renderVerbForms(state.currentVerbItems);
   updateVerbProgress();
 
   showView(quizView);
@@ -9238,7 +9276,7 @@ function returnToVerbDashboard() {
       "verbs",
       verbScoreKey(state.currentVerb.infinitive, state.activeVerbTrack),
       state.foundIndexes.size,
-      state.currentVerb.forms.length,
+      state.currentVerbItems.length,
     );
     if (changed) {
       refreshProgressViews();
@@ -9246,6 +9284,7 @@ function returnToVerbDashboard() {
   }
 
   state.currentVerb = null;
+  state.currentVerbItems = [];
   state.foundIndexes = new Set();
   state.answerLookup = new Map();
   state.quizEnded = false;
@@ -10447,6 +10486,23 @@ function makeConversionQuizItem(item, mode = state.switchMode) {
   };
 }
 
+function updateConversionRuleDescription() {
+  if (!conversionRuleDescription) {
+    return;
+  }
+  if (!state.currentConversionGroup) {
+    conversionRuleDescription.textContent = "";
+    return;
+  }
+  const modeHelp =
+    state.switchMode === "switch"
+      ? `Switch mode: ${getTargetLanguageAdjective()} clue to English answer.`
+      : `Normal mode: English clue to ${getTargetLanguageAdjective()} answer.`;
+  conversionRuleDescription.textContent = [state.currentConversionGroup.description, modeHelp, "(* = not a perfect match)"]
+    .filter(Boolean)
+    .join(" ");
+}
+
 function updateConversionAnswerPrompt() {
   if (state.switchMode === "switch") {
     conversionAnswerLabel.textContent = "Type English answer";
@@ -10656,13 +10712,7 @@ function openConversionQuiz(groupId) {
   state.conversionQuizEnded = false;
 
   conversionQuizTitle.textContent = group.title;
-  const modeHelp =
-    state.switchMode === "switch"
-      ? `Switch mode: ${getTargetLanguageAdjective()} clue to English answer.`
-      : `Normal mode: English clue to ${getTargetLanguageAdjective()} answer.`;
-  conversionRuleDescription.textContent = [group.description, modeHelp, "(* = not a perfect match)"]
-    .filter(Boolean)
-    .join(" ");
+  updateConversionRuleDescription();
   startQuizTimer({
     onTick: () => {
       updateConversionQuizMeta();
@@ -11272,6 +11322,135 @@ function returnToSlangDashboard() {
   openSlangDashboard();
 }
 
+function rebuildActiveQuizItemsForSwitchMode() {
+  if (!quizView.hidden && state.currentVerb) {
+    const nextItems = state.currentVerb.forms.map((form, index) =>
+      makeVerbQuizItem(state.currentVerb, form, index, state.currentVerb.forms, state.switchMode),
+    );
+    const foundIndexes = [...state.foundIndexes].filter((index) => index >= 0 && index < nextItems.length);
+    state.currentVerbItems = nextItems;
+    state.answerLookup = buildAnswerLookup(nextItems, (item) => item.answers);
+    state.foundIndexes = new Set();
+    renderVerbForms(nextItems);
+    if (foundIndexes.length) {
+      markVerbMatches(foundIndexes);
+    }
+    if (state.quizEnded) {
+      revealAllVerbAnswers();
+    }
+    updateVerbProgress();
+    updateVerbQuizMeta();
+  }
+
+  if (!nounsQuizView.hidden && state.currentNounDeck) {
+    const nextItems = state.currentNounDeck.items.map(makeNounQuizItem);
+    const foundIndexes = [...state.nounFoundIndexes].filter((index) => index >= 0 && index < nextItems.length);
+    state.currentNounItems = nextItems;
+    state.nounAnswerLookup = buildAnswerLookup(nextItems, (item) => item.answers);
+    state.nounFoundIndexes = new Set();
+    renderNounsQuizItems(nextItems);
+    if (foundIndexes.length) {
+      markNounMatches(foundIndexes);
+    }
+    if (state.nounQuizEnded) {
+      revealAllNounAnswers();
+    }
+    updateNounProgress();
+    updateNounsQuizMeta();
+  }
+
+  if (!beginnerQuizView.hidden && state.currentBeginnerGroup) {
+    const nextItems = state.currentBeginnerGroup.items.map(makeBeginnerQuizItem);
+    const foundIndexes = [...state.beginnerFoundIndexes].filter((index) => index >= 0 && index < nextItems.length);
+    state.currentBeginnerItems = nextItems;
+    state.beginnerAnswerLookup = buildAnswerLookup(
+      nextItems,
+      (item) => (isBeginnerAnswerableItem(item) ? item.answers : []),
+    );
+    state.beginnerFoundIndexes = new Set();
+    renderBeginnerQuizItems(nextItems);
+    if (foundIndexes.length) {
+      markBeginnerMatches(foundIndexes);
+    }
+    if (state.beginnerQuizEnded) {
+      revealAllBeginnerAnswers();
+    }
+    updateBeginnerProgress();
+    updateBeginnerQuizMeta();
+  }
+
+  if (!discourseQuizView.hidden && state.currentDiscourseGroup) {
+    const nextItems = state.currentDiscourseGroup.items.map(makeDiscourseQuizItem);
+    const foundIndexes = [...state.discourseFoundIndexes].filter((index) => index >= 0 && index < nextItems.length);
+    state.currentDiscourseItems = nextItems;
+    state.discourseAnswerLookup = buildAnswerLookup(nextItems, (item) => item.answers);
+    state.discourseFoundIndexes = new Set();
+    renderDiscourseQuizItems(nextItems);
+    if (foundIndexes.length) {
+      markDiscourseMatches(foundIndexes);
+    }
+    if (state.discourseQuizEnded) {
+      revealAllDiscourseAnswers();
+    }
+    updateDiscourseProgress();
+    updateDiscourseQuizMeta();
+  }
+
+  if (!conversionQuizView.hidden && state.currentConversionGroup) {
+    const nextItems = state.currentConversionGroup.items.map((item) =>
+      makeConversionQuizItem(item, state.switchMode),
+    );
+    const foundIndexes = [...state.conversionFoundIndexes].filter((index) => index >= 0 && index < nextItems.length);
+    state.currentConversionItems = nextItems;
+    state.conversionAnswerLookup = buildAnswerLookup(nextItems, (item) => item.answers);
+    state.conversionFoundIndexes = new Set();
+    renderConversionQuizItems(nextItems);
+    if (foundIndexes.length) {
+      markConversionMatches(foundIndexes);
+    }
+    if (state.conversionQuizEnded) {
+      revealAllConversionAnswers();
+    }
+    updateConversionRuleDescription();
+    updateConversionProgress();
+    updateConversionQuizMeta();
+  }
+
+  if (!grammarQuizView.hidden && state.currentGrammarGroup) {
+    const nextItems = state.currentGrammarGroup.items.map(makeGrammarQuizItem);
+    const foundIndexes = [...state.grammarFoundIndexes].filter((index) => index >= 0 && index < nextItems.length);
+    state.currentGrammarItems = nextItems;
+    state.grammarAnswerLookup = buildAnswerLookup(nextItems, (item) => item.answers);
+    state.grammarFoundIndexes = new Set();
+    renderGrammarQuizItems(nextItems);
+    if (foundIndexes.length) {
+      markGrammarMatches(foundIndexes);
+    }
+    if (state.grammarQuizEnded) {
+      revealAllGrammarAnswers();
+    }
+    updateGrammarProgress();
+    updateGrammarQuizMeta();
+  }
+
+  if (!slangQuizView.hidden && state.currentSlangGroup) {
+    const nextItems = state.currentSlangGroup.items.map(makeSlangQuizItem);
+    const foundIndexes = [...state.slangFoundIndexes].filter((index) => index >= 0 && index < nextItems.length);
+    state.currentSlangItems = nextItems;
+    state.slangAnswerLookup = buildAnswerLookup(nextItems, (item) => item.answers);
+    state.slangFoundIndexes = new Set();
+    renderSlangQuizItems(nextItems);
+    if (foundIndexes.length) {
+      markSlangMatches(foundIndexes);
+    }
+    if (state.slangQuizEnded) {
+      revealAllSlangAnswers();
+    }
+    updateSlangProgress();
+    updateSlangQuizMeta();
+  }
+}
+
 function setNounMode(mode) {
   if (mode !== "singular" && mode !== "plural") {
     return;
@@ -11290,12 +11469,14 @@ function setSwitchMode(mode) {
   if (switchModeToggle) {
     switchModeToggle.checked = mode === "switch";
   }
+  updateVerbAnswerPrompt();
   updateNounsAnswerPrompt();
   updateBeginnerAnswerPrompt();
   updateDiscourseAnswerPrompt();
   updateConversionAnswerPrompt();
   updateGrammarAnswerPrompt();
   updateSlangAnswerPrompt();
+  rebuildActiveQuizItemsForSwitchMode();
   rebuildSrsCatalog();
   refreshProgressViews();
 }
@@ -11694,6 +11875,7 @@ async function loadData() {
     if (switchModeToggle) {
       switchModeToggle.checked = state.switchMode === "switch";
     }
+    updateVerbAnswerPrompt();
     updateNounsAnswerPrompt();
     updateBeginnerAnswerPrompt();
     updateDiscourseAnswerPrompt();
