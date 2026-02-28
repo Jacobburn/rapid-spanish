@@ -132,6 +132,20 @@
               </button>
             </div>
           </section>
+          <section id="aiConversationHubPanel" class="panel ai-conversation-hub-panel" hidden>
+            <div class="panel-header">
+              <h2>AI Conversation Lab</h2>
+              <p class="meta panel-status-pill">Admin preview</p>
+            </div>
+            <p id="aiConversationHubMeta" class="meta">
+              Admin mode only. Open the lab to test in-app voice conversation.
+            </p>
+            <div class="quiz-actions">
+              <button id="aiConversationHubOpenButton" class="ghost-button" type="button">
+                Open AI Conversation Lab
+              </button>
+            </div>
+          </section>
         </div>
         <aside class="hub-side-stack">
           <section class="panel leaderboard-hub-panel">
@@ -222,7 +236,95 @@
               <ol id="achievementsList" class="stats-list achievements-list"></ol>
             </section>
           </section>
+
         </aside>
+      </section>
+
+      <section id="aiConversationView" class="panel" hidden>
+        <div class="panel-header">
+          <div class="stack-title">
+            <button id="backToTrainingFromAiButton" class="ghost-button" type="button">
+              ← Back to training
+            </button>
+            <h2>AI Conversation Lab</h2>
+          </div>
+          <p class="meta panel-status-pill">Admin preview</p>
+        </div>
+        <p id="aiConversationMeta" class="meta">
+          Admin preview only. Enter an OpenAI API key to run in-app conversation.
+        </p>
+        <div class="ai-conversation-settings">
+          <label class="search-field" for="aiConversationApiKey">
+            <span>OpenAI API key</span>
+            <input
+              id="aiConversationApiKey"
+              type="password"
+              placeholder="sk-..."
+              autocomplete="off"
+            />
+          </label>
+          <label class="search-field" for="aiConversationModel">
+            <span>Model</span>
+            <select id="aiConversationModel" aria-label="AI model">
+              <option value="gpt-4o-mini">gpt-4o-mini</option>
+              <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+            </select>
+          </label>
+          <label class="search-field" for="aiConversationTtsVoice">
+            <span>Assistant voice</span>
+            <select id="aiConversationTtsVoice" aria-label="Assistant voice">
+              <option value="marin">marin</option>
+              <option value="cedar">cedar</option>
+            </select>
+          </label>
+          <label class="search-field" for="aiConversationTtsSpeed">
+            <span>Speech speed</span>
+            <select id="aiConversationTtsSpeed" aria-label="Speech speed">
+              <option value="beginner">beginner</option>
+              <option value="intermediate">intermediate</option>
+              <option value="advanced">advanced</option>
+              <option value="fluent">fluent</option>
+            </select>
+          </label>
+          <label class="search-field" for="aiConversationTtsAccent">
+            <span>Accent region</span>
+            <select id="aiConversationTtsAccent" aria-label="Accent region"></select>
+          </label>
+          <label class="mode-toggle" for="aiConversationSpeakToggle">
+            <input id="aiConversationSpeakToggle" type="checkbox" checked />
+            <span>Speak assistant replies</span>
+          </label>
+        </div>
+        <div class="ai-conversation-actions">
+          <button id="aiConversationCopyButton" class="ghost-button" type="button">
+            Copy Coach Prompt
+          </button>
+          <button id="aiConversationClearButton" class="ghost-button" type="button">
+            Clear Chat
+          </button>
+          <button id="aiConversationVoiceButton" class="ghost-button" type="button">
+            Start Voice Input
+          </button>
+        </div>
+        <label class="search-field ai-conversation-prompt-field" for="aiConversationPrompt">
+          <span>Coach prompt</span>
+          <textarea id="aiConversationPrompt" rows="8" readonly></textarea>
+        </label>
+        <section class="stats-block">
+          <h3>Conversation</h3>
+          <ol id="aiConversationLog" class="stats-list ai-conversation-log"></ol>
+        </section>
+        <label class="search-field ai-conversation-input-field" for="aiConversationInput">
+          <span>Your message</span>
+          <textarea
+            id="aiConversationInput"
+            rows="3"
+            placeholder="Type a message or use voice input..."
+          ></textarea>
+        </label>
+        <div class="quiz-actions">
+          <button id="aiConversationSendButton" class="ghost-button" type="button">Send</button>
+        </div>
       </section>
 
       <section id="dashboardView" class="panel" hidden>

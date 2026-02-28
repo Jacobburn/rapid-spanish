@@ -466,6 +466,99 @@ h2 {
   box-shadow: 0 9px 22px rgba(97, 75, 35, 0.12);
 }
 
+.ai-conversation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.ai-conversation-settings {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: end;
+}
+
+.ai-conversation-prompt-field textarea {
+  width: 100%;
+  min-height: 10.5rem;
+  border-radius: 10px;
+  border: 1px solid #b8c5df;
+  background: #fafdff;
+  color: #2b3d5f;
+  font: inherit;
+  line-height: 1.4;
+  padding: 0.62rem 0.72rem;
+  resize: vertical;
+}
+
+.ai-conversation-prompt-field textarea:focus {
+  outline: none;
+  border-color: #4876bf;
+  box-shadow: 0 0 0 3px rgba(72, 118, 191, 0.18);
+}
+
+.ai-conversation-input-field textarea {
+  width: 100%;
+  min-height: 6rem;
+  border-radius: 10px;
+  border: 1px solid #cab695;
+  background: var(--panel-strong);
+  color: var(--ink);
+  font: inherit;
+  line-height: 1.45;
+  padding: 0.66rem 0.8rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+  resize: vertical;
+}
+
+.ai-conversation-input-field textarea:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(22, 104, 87, 0.2);
+}
+
+.ai-conversation-log {
+  max-height: 18rem;
+  overflow: auto;
+}
+
+.ai-conversation-log-item {
+  border: 1px solid #d5dfec;
+  border-radius: 10px;
+  background: #f7fbff;
+  padding: 0.5rem 0.62rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.ai-conversation-log-item.user {
+  border-color: #d7ceb8;
+  background: #fffaf1;
+}
+
+.ai-conversation-log-role {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #45627e;
+}
+
+.ai-conversation-log-item.user .ai-conversation-log-role {
+  color: #7b5f3c;
+}
+
+.ai-conversation-log-text {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: #2f3f55;
+  white-space: pre-wrap;
+}
+
+.ai-conversation-log-item.user .ai-conversation-log-text {
+  color: #4b3c28;
+}
+
 .stats-summary-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -709,6 +802,15 @@ h2 {
   border: 1px solid #d7c4a2;
   border-radius: 12px;
   background: linear-gradient(145deg, #fff6e5 0%, #f7ecdb 100%);
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.ai-conversation-hub-panel {
+  border: 1px solid #c6d2e8;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #f5f9ff 0%, #edf3ff 100%);
   padding: 0.75rem;
   display: grid;
   gap: 0.55rem;
@@ -967,6 +1069,7 @@ h2 {
 }
 
 .search-field input,
+.search-field select,
 .quiz-entry input,
 .auth-card input {
   width: min(360px, 100%);
@@ -980,6 +1083,7 @@ h2 {
 }
 
 .search-field input:focus,
+.search-field select:focus,
 .quiz-entry input:focus,
 .auth-card input:focus {
   outline: none;

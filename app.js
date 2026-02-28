@@ -27,6 +27,11 @@ const LANGUAGE_STORAGE_KEY = "rapid-spanish-language-v1";
 const AUDIO_ENABLED_STORAGE_KEY = "rapid-spanish-audio-enabled-v1";
 const STORY_WORD_OVERRIDES_STORAGE_KEY = "rapid-spanish-story-word-overrides-v1";
 const STORY_TRANSLATION_OVERRIDES_STORAGE_KEY = "rapid-spanish-story-translation-overrides-v1";
+const AI_CONVERSATION_API_KEY_STORAGE_KEY = "rapid-spanish-ai-conversation-api-key-v1";
+const AI_CONVERSATION_MODEL_STORAGE_KEY = "rapid-spanish-ai-conversation-model-v1";
+const AI_CONVERSATION_TTS_VOICE_STORAGE_KEY = "rapid-spanish-ai-conversation-tts-voice-v1";
+const AI_CONVERSATION_TTS_SPEED_STORAGE_KEY = "rapid-spanish-ai-conversation-tts-speed-v1";
+const AI_CONVERSATION_TTS_ACCENT_STORAGE_KEY = "rapid-spanish-ai-conversation-tts-accent-v1";
 const ADMIN_MODE_USERNAME = "jake";
 const DEFAULT_LANGUAGE = "es";
 const SUPPORTED_LANGUAGES = ["es", "it"];
@@ -104,6 +109,93 @@ const PERFECT_QUIZ_CONFETTI_COLORS = [
   "#f97316",
   "#10b981",
 ];
+const AI_CONVERSATION_CHAT_COMPLETIONS_URL = "https://api.openai.com/v1/chat/completions";
+const AI_CONVERSATION_AUDIO_SPEECH_URL = "https://api.openai.com/v1/audio/speech";
+const AI_CONVERSATION_TTS_MODEL = "gpt-4o-mini-tts";
+const AI_CONVERSATION_TTS_DEFAULT_VOICE = "marin";
+const AI_CONVERSATION_TTS_VOICE_OPTIONS = ["marin", "cedar"];
+const AI_CONVERSATION_TTS_DEFAULT_SPEED = "intermediate";
+const AI_CONVERSATION_TTS_SPEED_OPTIONS = ["beginner", "intermediate", "advanced", "fluent"];
+const AI_CONVERSATION_TTS_SPEED_MAP = {
+  beginner: 0.85,
+  intermediate: 1,
+  advanced: 1.15,
+  fluent: 1.3,
+};
+const AI_CONVERSATION_TTS_ACCENT_PROFILES = {
+  es: [
+    {
+      id: "latam-neutral",
+      label: "Latin America (Neutral)",
+      locale: "es-US",
+      conversationHint: "neutral Latin American Spanish",
+      ttsInstruction: "Use a neutral Latin American Spanish accent.",
+    },
+    {
+      id: "mexico",
+      label: "Mexico",
+      locale: "es-MX",
+      conversationHint: "Mexican Spanish",
+      ttsInstruction: "Use a natural Mexican Spanish accent.",
+    },
+    {
+      id: "spain",
+      label: "Spain",
+      locale: "es-ES",
+      conversationHint: "Spain Spanish",
+      ttsInstruction: "Use a natural Castilian Spain Spanish accent.",
+    },
+    {
+      id: "argentina",
+      label: "Argentina",
+      locale: "es-AR",
+      conversationHint: "Rioplatense Argentine Spanish",
+      ttsInstruction: "Use a natural Argentine Rioplatense Spanish accent.",
+    },
+    {
+      id: "colombia",
+      label: "Colombia",
+      locale: "es-CO",
+      conversationHint: "Colombian Spanish",
+      ttsInstruction: "Use a natural Colombian Spanish accent.",
+    },
+  ],
+  it: [
+    {
+      id: "italy-standard",
+      label: "Italy (Standard)",
+      locale: "it-IT",
+      conversationHint: "standard Italian from Italy",
+      ttsInstruction: "Use a neutral contemporary Italian accent from Italy.",
+    },
+    {
+      id: "italy-north",
+      label: "Italy (Northern)",
+      locale: "it-IT",
+      conversationHint: "Northern Italian accent",
+      ttsInstruction: "Use a light Northern Italian accent while keeping pronunciation clear.",
+    },
+    {
+      id: "italy-central",
+      label: "Italy (Central)",
+      locale: "it-IT",
+      conversationHint: "Central Italian accent",
+      ttsInstruction: "Use a light Central Italian accent while keeping pronunciation clear.",
+    },
+    {
+      id: "italy-south",
+      label: "Italy (Southern)",
+      locale: "it-IT",
+      conversationHint: "Southern Italian accent",
+      ttsInstruction: "Use a light Southern Italian accent while keeping pronunciation clear.",
+    },
+  ],
+};
+const AI_CONVERSATION_VOCAB_LIMIT = 8000;
+const AI_CONVERSATION_PROMPT_VOCAB_LIMIT = 8000;
+const AI_CONVERSATION_FALLBACK_MIN_TERMS = 40;
+const AI_CONVERSATION_HISTORY_LIMIT = 6;
+const AI_CONVERSATION_OUTPUT_TOKEN_LIMIT = 220;
 
 const SUPABASE_CONFIG = window.RAPID_SPANISH_SUPABASE_CONFIG || {};
 const SUPABASE_ENABLED = Boolean(SUPABASE_CONFIG.url && SUPABASE_CONFIG.anonKey);
@@ -338,7 +430,13 @@ const TRACK_UNLOCK_TIERS = [
   ["grammar", "slang"],
   ["kofi-additional", "nouns-advanced"],
 ];
-const TRACK_TIER_LABELS = ["Start", "First Unlock", "Second Unlock", "Third Unlock", "Forth Unlock"];
+const TRACK_TIER_LABELS = [
+  "Start",
+  "First Unlock",
+  "Second Unlock",
+  "Third Unlock",
+  "Fourth Unlock",
+];
 const STATS_TRACKS = [
   { id: "kofi", label: "KOFI Verbs" },
   { id: "nouns", label: "Top 500 Nouns" },
@@ -1102,6 +1200,7 @@ const accountView = document.getElementById("accountView");
 const storyView = document.getElementById("storyView");
 const srsReviewView = document.getElementById("srsReviewView");
 const srsManageView = document.getElementById("srsManageView");
+const aiConversationView = document.getElementById("aiConversationView");
 const moduleView = document.getElementById("moduleView");
 const statusPanel = document.getElementById("statusPanel");
 
@@ -1126,6 +1225,7 @@ const appViews = [
   storyView,
   srsReviewView,
   srsManageView,
+  aiConversationView,
   moduleView,
 ];
 
@@ -1149,6 +1249,9 @@ const srsDueNow = document.getElementById("srsDueNow");
 const srsNewToday = document.getElementById("srsNewToday");
 const srsStartButton = document.getElementById("srsStartButton");
 const srsManageButton = document.getElementById("srsManageButton");
+const aiConversationHubPanel = document.getElementById("aiConversationHubPanel");
+const aiConversationHubMeta = document.getElementById("aiConversationHubMeta");
+const aiConversationHubOpenButton = document.getElementById("aiConversationHubOpenButton");
 const leaderboardHubGlobalList = document.getElementById("leaderboardHubGlobalList");
 const leaderboardHubWeeklyList = document.getElementById("leaderboardHubWeeklyList");
 const statsOverallAccuracy = document.getElementById("statsOverallAccuracy");
@@ -1164,6 +1267,20 @@ const streakBestValue = document.getElementById("streakBestValue");
 const achievementsUnlockedValue = document.getElementById("achievementsUnlockedValue");
 const streakLastActiveValue = document.getElementById("streakLastActiveValue");
 const achievementsList = document.getElementById("achievementsList");
+const aiConversationMeta = document.getElementById("aiConversationMeta");
+const aiConversationApiKeyInput = document.getElementById("aiConversationApiKey");
+const aiConversationModelSelect = document.getElementById("aiConversationModel");
+const aiConversationTtsVoiceSelect = document.getElementById("aiConversationTtsVoice");
+const aiConversationTtsSpeedSelect = document.getElementById("aiConversationTtsSpeed");
+const aiConversationTtsAccentSelect = document.getElementById("aiConversationTtsAccent");
+const aiConversationSpeakToggle = document.getElementById("aiConversationSpeakToggle");
+const aiConversationPrompt = document.getElementById("aiConversationPrompt");
+const aiConversationCopyButton = document.getElementById("aiConversationCopyButton");
+const aiConversationClearButton = document.getElementById("aiConversationClearButton");
+const aiConversationVoiceButton = document.getElementById("aiConversationVoiceButton");
+const aiConversationLog = document.getElementById("aiConversationLog");
+const aiConversationInput = document.getElementById("aiConversationInput");
+const aiConversationSendButton = document.getElementById("aiConversationSendButton");
 const globalLeaderboardList = document.getElementById("globalLeaderboardList");
 const weeklyLeaderboardList = document.getElementById("weeklyLeaderboardList");
 const currentUserLabel = document.getElementById("currentUserLabel");
@@ -1212,6 +1329,7 @@ const backToTrainingFromSlangButton = document.getElementById(
 const backToTrainingFromLeaderboardButton = document.getElementById(
   "backToTrainingFromLeaderboardButton",
 );
+const backToTrainingFromAiButton = document.getElementById("backToTrainingFromAiButton");
 const moduleBackButton = document.getElementById("moduleBackButton");
 const moduleTitle = document.getElementById("moduleTitle");
 const moduleBody = document.getElementById("moduleBody");
@@ -1574,6 +1692,12 @@ const state = {
   srsCurrentRecommendedGrade: "good",
   srsSessionReviewed: 0,
   srsSessionCorrect: 0,
+  aiConversationMessages: [],
+  aiConversationRequestsInFlight: 0,
+  aiConversationListening: false,
+  aiConversationSpeakReplies: true,
+  aiConversationSessionCount: 0,
+  aiConversationMessageCount: 0,
   currentUser: null,
   dataLoaded: false,
 };
@@ -1594,6 +1718,10 @@ let lastWrongAudioAt = 0;
 let lastPerfectCelebrationAt = 0;
 let activePerfectConfettiContainer = null;
 let activePerfectConfettiCleanupId = 0;
+let aiConversationRecognition = null;
+let aiConversationSpeechAudio = null;
+let aiConversationSpeechObjectUrl = "";
+let aiConversationSpeechAbortController = null;
 
 const textEncoder = new TextEncoder();
 
@@ -2465,6 +2593,14 @@ function refreshAdminModeAccess() {
 
   if (state.adminMode) {
     hideStoryTranslationPopup();
+  }
+
+  renderAiConversationHubTile();
+  renderAiConversationPanel();
+  updateAiConversationControlState();
+
+  if (!canAccessAiConversation() && aiConversationView && !aiConversationView.hidden) {
+    showView(trainingHubView);
   }
 
   if (!storyView.hidden && state.currentStory) {
@@ -3562,6 +3698,7 @@ async function switchActiveLanguage(language) {
 
   try {
     applyLanguageUiText();
+    renderAiConversationAccentOptions(nextLanguage);
     refreshLanguageModuleTitles();
     reloadLanguageScopedLocalState();
     state.dataLoaded = false;
@@ -3583,6 +3720,7 @@ async function switchActiveLanguage(language) {
       languageToggle.value = previousLanguage;
     }
     applyLanguageUiText();
+    renderAiConversationAccentOptions(previousLanguage);
     refreshLanguageModuleTitles();
     reloadLanguageScopedLocalState();
     state.dataLoaded = false;
@@ -3687,6 +3825,25 @@ if (switchModeToggle) {
 if (audioEnabledToggle) {
   audioEnabledToggle.checked = state.audioEnabled;
 }
+if (aiConversationApiKeyInput) {
+  aiConversationApiKeyInput.value = loadAiConversationApiKey();
+}
+if (aiConversationModelSelect) {
+  const savedModel = loadAiConversationModel();
+  aiConversationModelSelect.value = savedModel;
+}
+if (aiConversationTtsVoiceSelect) {
+  const savedVoice = loadAiConversationTtsVoice();
+  aiConversationTtsVoiceSelect.value = savedVoice;
+}
+if (aiConversationTtsSpeedSelect) {
+  const savedSpeed = loadAiConversationTtsSpeed();
+  aiConversationTtsSpeedSelect.value = savedSpeed;
+}
+renderAiConversationAccentOptions(state.activeLanguage);
+if (aiConversationSpeakToggle) {
+  state.aiConversationSpeakReplies = Boolean(aiConversationSpeakToggle.checked);
+}
 refreshAdminModeAccess();
 
 function showView(activeView) {
@@ -3705,6 +3862,10 @@ function showView(activeView) {
   if (activeView !== storyView) {
     hideStoryTranslationPopup();
     cancelStoryWordOverrideModalIfOpen();
+  }
+  if (activeView !== aiConversationView) {
+    stopAiConversationVoiceInput();
+    stopAiConversationSpeechPlayback();
   }
   appViews.forEach((view) => {
     view.hidden = view !== activeView;
@@ -7200,6 +7361,9 @@ function getOverallStudyStaleRatio() {
 }
 
 function getModuleStaleRatio(moduleType) {
+  if (moduleType === "ai-conversation") {
+    return 0;
+  }
   if (moduleType === "beginner") {
     return getBeginnerCombinedStaleRatio();
   }
@@ -7374,7 +7538,983 @@ function clearStatus() {
   statusPanel.textContent = "";
 }
 
+function extractAiConversationTerms(rawValue) {
+  if (rawValue === null || rawValue === undefined) {
+    return [];
+  }
+  const baseText = String(rawValue).replace(/\s+/g, " ").trim();
+  if (!baseText) {
+    return [];
+  }
+  const variants = extractLexemeVariants(baseText);
+  const candidates = variants.length ? variants : [baseText];
+  const terms = [];
+  const seen = new Set();
+
+  candidates.forEach((variant) => {
+    const cleaned = String(variant).replace(/\s+/g, " ").trim();
+    if (!cleaned) {
+      return;
+    }
+    const key = normalize(cleaned);
+    if (!key || seen.has(key)) {
+      return;
+    }
+    seen.add(key);
+    terms.push(cleaned);
+  });
+
+  return terms.length ? terms : [baseText];
+}
+
+function addAiConversationTerm(vocabularyMap, rawValue) {
+  let added = 0;
+  extractAiConversationTerms(rawValue).forEach((term) => {
+    const key = normalize(term);
+    if (!key || key.length < 2 || vocabularyMap.has(key)) {
+      return;
+    }
+    vocabularyMap.set(key, term);
+    added += 1;
+  });
+  return added;
+}
+
+function getAnswerValuesFromDeckItem(item) {
+  if (!item || item.kind === "subheading") {
+    return [];
+  }
+  const values = [];
+  if (Array.isArray(item.answers)) {
+    values.push(...item.answers);
+  }
+  if (item.answer) {
+    values.push(item.answer);
+  }
+  if (item.displayAnswer) {
+    values.push(item.displayAnswer);
+  }
+  return [...new Set(values.map((value) => String(value || "").trim()).filter(Boolean))];
+}
+
+function addLearnedItemsFromCollection(vocabularyMap, items, learnedCount, answerResolver, limit) {
+  if (!Array.isArray(items) || items.length === 0 || vocabularyMap.size >= limit) {
+    return;
+  }
+  const targetCount = Math.max(0, Math.min(items.length, Math.floor(Number(learnedCount) || 0)));
+  for (let index = 0; index < targetCount && vocabularyMap.size < limit; index += 1) {
+    const answers = answerResolver(items[index]) || [];
+    for (const answer of answers) {
+      addAiConversationTerm(vocabularyMap, answer);
+      if (vocabularyMap.size >= limit) {
+        break;
+      }
+    }
+  }
+}
+
+function collectAiVocabularyFromSrs(vocabularyMap, limit) {
+  if (!state.srsData || !state.srsCardMap || state.srsCardMap.size === 0) {
+    return;
+  }
+  const reviewedEntries = Object.entries(state.srsData.cardStates || {})
+    .map(([cardId, rawState]) => ({
+      cardId,
+      seen: Math.max(0, Number(rawState?.seen) || 0),
+      reviewedAt: Math.max(0, Number(rawState?.lastReviewedAt) || 0),
+    }))
+    .filter((entry) => entry.seen > 0 && state.srsCardMap.has(entry.cardId))
+    .sort(
+      (left, right) =>
+        right.reviewedAt - left.reviewedAt ||
+        right.seen - left.seen ||
+        left.cardId.localeCompare(right.cardId),
+    );
+
+  for (const entry of reviewedEntries) {
+    if (vocabularyMap.size >= limit) {
+      break;
+    }
+    const card = state.srsCardMap.get(entry.cardId);
+    if (!card) {
+      continue;
+    }
+    const values = [card.displayAnswer, ...(Array.isArray(card.answers) ? card.answers : [])];
+    for (const value of values) {
+      addAiConversationTerm(vocabularyMap, value);
+      if (vocabularyMap.size >= limit) {
+        break;
+      }
+    }
+  }
+}
+
+function collectAiVocabularyFromBestScores(vocabularyMap, limit) {
+  const addVerbTrack = (verbs, trackMode) => {
+    for (const verb of verbs) {
+      if (vocabularyMap.size >= limit) {
+        return;
+      }
+      const learnedCount = getVerbBestScore(verb, trackMode);
+      if (learnedCount <= 0) {
+        continue;
+      }
+      addAiConversationTerm(vocabularyMap, verb.infinitive);
+      addLearnedItemsFromCollection(
+        vocabularyMap,
+        verb.forms,
+        learnedCount,
+        (form) => [form?.answer],
+        limit,
+      );
+    }
+  };
+
+  const addNounTrack = (decks) => {
+    for (const deck of decks) {
+      if (vocabularyMap.size >= limit) {
+        return;
+      }
+      const learnedCount = getNounCombinedBestScore(deck);
+      if (learnedCount <= 0) {
+        continue;
+      }
+      addLearnedItemsFromCollection(
+        vocabularyMap,
+        deck.items,
+        learnedCount,
+        (item) => {
+          const singularAnswers =
+            item?.answers && item.answers.length ? item.answers : item?.answer ? [item.answer] : [];
+          const singularUnique = [...new Set(singularAnswers)];
+          const pluralUnique = getPluralAnswersFromItem(item, singularUnique);
+          return [...singularUnique, ...pluralUnique];
+        },
+        limit,
+      );
+    }
+  };
+
+  const addGroupTrack = (groups, scoreResolver) => {
+    for (const group of groups) {
+      if (vocabularyMap.size >= limit) {
+        return;
+      }
+      const learnedCount = scoreResolver(group);
+      if (learnedCount <= 0) {
+        continue;
+      }
+      addLearnedItemsFromCollection(
+        vocabularyMap,
+        group.items,
+        learnedCount,
+        getAnswerValuesFromDeckItem,
+        limit,
+      );
+    }
+  };
+
+  addVerbTrack(state.verbs, "core");
+  addNounTrack(state.nounDecks);
+  addGroupTrack(state.beginnerGroups, getBeginnerCombinedBestScore);
+  addGroupTrack(state.discourseGroups, getDiscourseCombinedBestScore);
+  addGroupTrack(state.conversionGroups, getConversionCombinedBestScore);
+  addGroupTrack(state.grammarGroups, getGrammarCombinedBestScore);
+  addGroupTrack(state.slangGroups, getSlangCombinedBestScore);
+  addVerbTrack(state.verbsAdditional, "additional");
+  addNounTrack(state.nounDecksAdvanced);
+}
+
+function collectLearnedVocabularyForAiConversation(limit = AI_CONVERSATION_VOCAB_LIMIT) {
+  const maxTerms = Math.max(1, Number(limit) || AI_CONVERSATION_VOCAB_LIMIT);
+  const vocabularyMap = new Map();
+  collectAiVocabularyFromSrs(vocabularyMap, maxTerms);
+
+  if (vocabularyMap.size < Math.min(AI_CONVERSATION_FALLBACK_MIN_TERMS, maxTerms)) {
+    collectAiVocabularyFromBestScores(vocabularyMap, maxTerms);
+  }
+
+  return Array.from(vocabularyMap.values()).slice(0, maxTerms);
+}
+
+function buildAiConversationPrompt(vocabularyTerms = []) {
+  const languageName = getLanguageUiCopy().targetLanguageName || "Spanish";
+  const accentHint =
+    getAiConversationTtsAccentProfile(getCurrentLanguage())?.conversationHint || `${languageName}`;
+  const promptTerms = vocabularyTerms.slice(0, AI_CONVERSATION_PROMPT_VOCAB_LIMIT);
+  const listHeadingSuffix =
+    vocabularyTerms.length > promptTerms.length
+      ? ` (${promptTerms.length} shown of ${vocabularyTerms.length})`
+      : ` (${promptTerms.length})`;
+  const learnedList = promptTerms.length ? promptTerms.join(", ") : "(No learned vocabulary yet)";
+
+  return [
+    `You are my ${languageName} conversation coach for Rapid ${languageName}.`,
+    "Have a short, natural voice conversation with me.",
+    `Rules: Keep responses to 1-2 sentences and speak mostly in ${languageName}.`,
+    `Use ${accentHint} pronunciation and regional phrasing when natural.`,
+    "Prefer vocabulary from my learned list whenever possible.",
+    `If I make a mistake, give a brief correction in English first, then continue in ${languageName}.`,
+    "Ask one follow-up question at a time so I can answer by voice.",
+    `Learned vocabulary list${listHeadingSuffix}:`,
+    learnedList,
+    "Start by greeting me and asking a simple daily-life question.",
+  ].join("\n");
+}
+
+async function copyTextToClipboard(text) {
+  const value = String(text || "");
+  if (!value) {
+    return false;
+  }
+  if (navigator?.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(value);
+      return true;
+    } catch (_error) {
+      // Fallback to execCommand below.
+    }
+  }
+
+  const helper = document.createElement("textarea");
+  helper.value = value;
+  helper.setAttribute("readonly", "readonly");
+  helper.style.position = "fixed";
+  helper.style.opacity = "0";
+  helper.style.pointerEvents = "none";
+  document.body.appendChild(helper);
+  helper.focus();
+  helper.select();
+  let copied = false;
+  try {
+    copied = document.execCommand("copy");
+  } catch (_error) {
+    copied = false;
+  }
+  helper.remove();
+  return copied;
+}
+
+function loadAiConversationApiKey() {
+  try {
+    return localStorage.getItem(AI_CONVERSATION_API_KEY_STORAGE_KEY) || "";
+  } catch (_error) {
+    return "";
+  }
+}
+
+function saveAiConversationApiKey(value) {
+  try {
+    const trimmed = String(value || "").trim();
+    if (trimmed) {
+      localStorage.setItem(AI_CONVERSATION_API_KEY_STORAGE_KEY, trimmed);
+      return;
+    }
+    localStorage.removeItem(AI_CONVERSATION_API_KEY_STORAGE_KEY);
+  } catch (_error) {
+    // Ignore persistence errors on unsupported/private contexts.
+  }
+}
+
+function loadAiConversationModel() {
+  try {
+    const model = String(localStorage.getItem(AI_CONVERSATION_MODEL_STORAGE_KEY) || "").trim();
+    return model || "gpt-4o-mini";
+  } catch (_error) {
+    return "gpt-4o-mini";
+  }
+}
+
+function saveAiConversationModel(model) {
+  try {
+    const normalized = String(model || "").trim() || "gpt-4o-mini";
+    localStorage.setItem(AI_CONVERSATION_MODEL_STORAGE_KEY, normalized);
+  } catch (_error) {
+    // Ignore persistence errors on unsupported/private contexts.
+  }
+}
+
+function normalizeAiConversationTtsVoice(voice) {
+  const normalized = String(voice || "")
+    .trim()
+    .toLowerCase();
+  return AI_CONVERSATION_TTS_VOICE_OPTIONS.includes(normalized)
+    ? normalized
+    : AI_CONVERSATION_TTS_DEFAULT_VOICE;
+}
+
+function normalizeAiConversationTtsSpeed(speed) {
+  const normalized = String(speed || "")
+    .trim()
+    .toLowerCase();
+  return AI_CONVERSATION_TTS_SPEED_OPTIONS.includes(normalized)
+    ? normalized
+    : AI_CONVERSATION_TTS_DEFAULT_SPEED;
+}
+
+function getAiConversationAccentProfiles(language = getCurrentLanguage()) {
+  const normalizedLanguage = normalizeLanguageCode(language);
+  return (
+    AI_CONVERSATION_TTS_ACCENT_PROFILES[normalizedLanguage] ||
+    AI_CONVERSATION_TTS_ACCENT_PROFILES[DEFAULT_LANGUAGE] ||
+    []
+  );
+}
+
+function normalizeAiConversationTtsAccent(accent, language = getCurrentLanguage()) {
+  const normalizedAccent = String(accent || "")
+    .trim()
+    .toLowerCase();
+  const profiles = getAiConversationAccentProfiles(language);
+  if (!profiles.length) {
+    return "";
+  }
+  return profiles.some((profile) => profile.id === normalizedAccent)
+    ? normalizedAccent
+    : profiles[0].id;
+}
+
+function getAiConversationTtsAccentStorageKey(language = getCurrentLanguage()) {
+  return `${AI_CONVERSATION_TTS_ACCENT_STORAGE_KEY}::${normalizeLanguageCode(language)}`;
+}
+
+function loadAiConversationTtsVoice() {
+  try {
+    const voice = localStorage.getItem(AI_CONVERSATION_TTS_VOICE_STORAGE_KEY) || "";
+    return normalizeAiConversationTtsVoice(voice);
+  } catch (_error) {
+    return AI_CONVERSATION_TTS_DEFAULT_VOICE;
+  }
+}
+
+function loadAiConversationTtsSpeed() {
+  try {
+    const speed = localStorage.getItem(AI_CONVERSATION_TTS_SPEED_STORAGE_KEY) || "";
+    return normalizeAiConversationTtsSpeed(speed);
+  } catch (_error) {
+    return AI_CONVERSATION_TTS_DEFAULT_SPEED;
+  }
+}
+
+function loadAiConversationTtsAccent(language = getCurrentLanguage()) {
+  try {
+    const stored =
+      localStorage.getItem(getAiConversationTtsAccentStorageKey(language)) ||
+      normalizeAiConversationTtsAccent("", language);
+    return normalizeAiConversationTtsAccent(stored, language);
+  } catch (_error) {
+    return normalizeAiConversationTtsAccent("", language);
+  }
+}
+
+function saveAiConversationTtsVoice(voice) {
+  try {
+    const normalized = normalizeAiConversationTtsVoice(voice);
+    localStorage.setItem(AI_CONVERSATION_TTS_VOICE_STORAGE_KEY, normalized);
+  } catch (_error) {
+    // Ignore persistence errors on unsupported/private contexts.
+  }
+}
+
+function saveAiConversationTtsSpeed(speed) {
+  try {
+    const normalized = normalizeAiConversationTtsSpeed(speed);
+    localStorage.setItem(AI_CONVERSATION_TTS_SPEED_STORAGE_KEY, normalized);
+  } catch (_error) {
+    // Ignore persistence errors on unsupported/private contexts.
+  }
+}
+
+function saveAiConversationTtsAccent(accent, language = getCurrentLanguage()) {
+  try {
+    const normalized = normalizeAiConversationTtsAccent(accent, language);
+    localStorage.setItem(getAiConversationTtsAccentStorageKey(language), normalized);
+  } catch (_error) {
+    // Ignore persistence errors on unsupported/private contexts.
+  }
+}
+
+function getAiConversationModel() {
+  const selected = String(aiConversationModelSelect?.value || "").trim();
+  return selected || "gpt-4o-mini";
+}
+
+function getAiConversationTtsVoice() {
+  return normalizeAiConversationTtsVoice(aiConversationTtsVoiceSelect?.value || "");
+}
+
+function getAiConversationTtsSpeed() {
+  return normalizeAiConversationTtsSpeed(aiConversationTtsSpeedSelect?.value || "");
+}
+
+function getAiConversationTtsAccent(language = getCurrentLanguage()) {
+  if (!aiConversationTtsAccentSelect || normalizeLanguageCode(language) !== getCurrentLanguage()) {
+    return loadAiConversationTtsAccent(language);
+  }
+  return normalizeAiConversationTtsAccent(aiConversationTtsAccentSelect.value || "", language);
+}
+
+function getAiConversationTtsAccentProfile(language = getCurrentLanguage()) {
+  const profiles = getAiConversationAccentProfiles(language);
+  if (!profiles.length) {
+    return null;
+  }
+  const accentId = getAiConversationTtsAccent(language);
+  return profiles.find((profile) => profile.id === accentId) || profiles[0];
+}
+
+function renderAiConversationAccentOptions(language = getCurrentLanguage()) {
+  if (!aiConversationTtsAccentSelect) {
+    return;
+  }
+  const normalizedLanguage = normalizeLanguageCode(language);
+  const profiles = getAiConversationAccentProfiles(normalizedLanguage);
+  aiConversationTtsAccentSelect.innerHTML = "";
+  if (!profiles.length) {
+    aiConversationTtsAccentSelect.disabled = true;
+    return;
+  }
+  profiles.forEach((profile) => {
+    const option = document.createElement("option");
+    option.value = profile.id;
+    option.textContent = profile.label;
+    aiConversationTtsAccentSelect.appendChild(option);
+  });
+  const savedAccent = loadAiConversationTtsAccent(normalizedLanguage);
+  aiConversationTtsAccentSelect.value = savedAccent;
+  aiConversationTtsAccentSelect.disabled = false;
+}
+
+function getAiConversationTtsSpeedValue() {
+  const speedLevel = getAiConversationTtsSpeed();
+  return AI_CONVERSATION_TTS_SPEED_MAP[speedLevel] || AI_CONVERSATION_TTS_SPEED_MAP.intermediate;
+}
+
+function canAccessAiConversation() {
+  return Boolean(state.currentUser && canUseAdminMode() && state.adminMode);
+}
+
+function renderAiConversationHubTile() {
+  if (!aiConversationHubPanel || !aiConversationHubMeta || !aiConversationHubOpenButton) {
+    return;
+  }
+
+  const canUseLab = Boolean(state.currentUser && canUseAdminMode());
+  aiConversationHubPanel.hidden = !canUseLab;
+  if (!canUseLab) {
+    return;
+  }
+
+  if (!state.dataLoaded) {
+    aiConversationHubMeta.textContent = "Loading vocabulary and conversation settings...";
+    aiConversationHubOpenButton.disabled = true;
+    return;
+  }
+
+  const canAccess = canAccessAiConversation();
+  aiConversationHubOpenButton.disabled = !canAccess;
+
+  if (!canAccess) {
+    aiConversationHubMeta.textContent = "Enable admin mode to open AI Conversation Lab.";
+    return;
+  }
+
+  const vocabularyCount = collectLearnedVocabularyForAiConversation().length;
+  const messageCount = state.aiConversationMessageCount;
+  aiConversationHubMeta.textContent =
+    vocabularyCount > 0
+      ? `${vocabularyCount} learned terms ready. ${messageCount} messages in this session.`
+      : "No learned vocabulary yet. You can still open the lab and start simple practice.";
+}
+
+function normalizeAiConversationLogMessage(message) {
+  const role = message?.role === "assistant" ? "assistant" : "user";
+  const text = String(message?.text || "").trim();
+  if (!text) {
+    return null;
+  }
+  return {
+    role,
+    text,
+    ts: Number(message?.ts) || Date.now(),
+  };
+}
+
+function appendAiConversationMessage(role, text) {
+  const normalized = normalizeAiConversationLogMessage({ role, text, ts: Date.now() });
+  if (!normalized) {
+    return;
+  }
+  state.aiConversationMessages.push(normalized);
+  const maxMessages = AI_CONVERSATION_HISTORY_LIMIT * 4;
+  if (state.aiConversationMessages.length > maxMessages) {
+    state.aiConversationMessages = state.aiConversationMessages.slice(-maxMessages);
+  }
+  state.aiConversationMessageCount += 1;
+}
+
+function renderAiConversationLog() {
+  if (!aiConversationLog) {
+    return;
+  }
+  aiConversationLog.innerHTML = "";
+  if (!state.aiConversationMessages.length) {
+    const empty = document.createElement("li");
+    empty.className = "stats-empty";
+    empty.textContent = "No messages yet. Send a message or start voice input.";
+    aiConversationLog.appendChild(empty);
+    return;
+  }
+  state.aiConversationMessages.forEach((message) => {
+    const item = document.createElement("li");
+    item.className = `ai-conversation-log-item ${message.role}`;
+
+    const role = document.createElement("span");
+    role.className = "ai-conversation-log-role";
+    role.textContent = message.role === "assistant" ? "Coach" : "You";
+
+    const text = document.createElement("p");
+    text.className = "ai-conversation-log-text";
+    text.textContent = message.text;
+
+    item.append(role, text);
+    aiConversationLog.appendChild(item);
+  });
+  aiConversationLog.scrollTop = aiConversationLog.scrollHeight;
+}
+
+function getAiConversationSpeechRecognitionCtor() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+  return window.SpeechRecognition || window.webkitSpeechRecognition || null;
+}
+
+function stopAiConversationVoiceInput() {
+  if (aiConversationRecognition) {
+    try {
+      aiConversationRecognition.stop();
+    } catch (_error) {
+      // Ignore stop errors when already stopped.
+    }
+    aiConversationRecognition = null;
+  }
+  state.aiConversationListening = false;
+  if (aiConversationVoiceButton) {
+    aiConversationVoiceButton.textContent = "Start Voice Input";
+  }
+}
+
+function stopAiConversationSpeechPlayback() {
+  if (aiConversationSpeechAbortController) {
+    aiConversationSpeechAbortController.abort();
+    aiConversationSpeechAbortController = null;
+  }
+  if (aiConversationSpeechAudio) {
+    try {
+      aiConversationSpeechAudio.pause();
+    } catch (_error) {
+      // Ignore pause errors during teardown.
+    }
+    aiConversationSpeechAudio.src = "";
+    aiConversationSpeechAudio = null;
+  }
+  if (aiConversationSpeechObjectUrl && typeof URL !== "undefined" && URL.revokeObjectURL) {
+    URL.revokeObjectURL(aiConversationSpeechObjectUrl);
+    aiConversationSpeechObjectUrl = "";
+  }
+  if (typeof window !== "undefined" && window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+  }
+}
+
+function speakAiConversationWithBrowserSpeech(text) {
+  if (typeof window === "undefined" || !window.speechSynthesis) {
+    return;
+  }
+  const content = String(text || "").trim();
+  if (!content) {
+    return;
+  }
+  const accentProfile = getAiConversationTtsAccentProfile(getCurrentLanguage());
+  const utterance = new SpeechSynthesisUtterance(content);
+  utterance.lang = accentProfile?.locale || (getCurrentLanguage() === "it" ? "it-IT" : "es-ES");
+  utterance.rate = getAiConversationTtsSpeedValue();
+  utterance.pitch = 1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utterance);
+}
+
+async function requestAiConversationSpeechAudio(text, apiKey, signal) {
+  const content = String(text || "").trim();
+  if (!content) {
+    throw new Error("Voice input was empty.");
+  }
+
+  const response = await fetch(AI_CONVERSATION_AUDIO_SPEECH_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: AI_CONVERSATION_TTS_MODEL,
+      voice: getAiConversationTtsVoice(),
+      speed: getAiConversationTtsSpeedValue(),
+      response_format: "mp3",
+      input: content,
+      instructions: (() => {
+        const language = getCurrentLanguage();
+        const accentProfile = getAiConversationTtsAccentProfile(language);
+        const baseInstruction =
+          language === "it"
+            ? "Use a warm tutor tone. Speak Italian naturally."
+            : "Use a warm tutor tone. Speak Spanish naturally.";
+        const accentInstruction = accentProfile?.ttsInstruction ? ` ${accentProfile.ttsInstruction}` : "";
+        const bilingualInstruction =
+          " If the text includes English corrections, switch to natural English pronunciation for those parts.";
+        return `${baseInstruction}${accentInstruction}${bilingualInstruction}`;
+      })(),
+    }),
+    signal,
+  });
+
+  if (!response.ok) {
+    const payload = await response.json().catch(() => ({}));
+    const apiMessage =
+      payload?.error?.message || payload?.message || `OpenAI speech request failed (${response.status}).`;
+    throw new Error(apiMessage);
+  }
+
+  const audioBlob = await response.blob();
+  if (!audioBlob || audioBlob.size <= 0) {
+    throw new Error("OpenAI speech response was empty.");
+  }
+  return audioBlob;
+}
+
+async function speakAiConversationText(text) {
+  if (!state.aiConversationSpeakReplies) {
+    return;
+  }
+
+  const content = String(text || "").trim();
+  if (!content) {
+    return;
+  }
+
+  const apiKey = String(aiConversationApiKeyInput?.value || "").trim();
+  stopAiConversationSpeechPlayback();
+
+  if (!apiKey || typeof Audio === "undefined" || typeof URL === "undefined" || !URL.createObjectURL) {
+    speakAiConversationWithBrowserSpeech(content);
+    return;
+  }
+
+  const controller = typeof AbortController === "function" ? new AbortController() : null;
+  if (controller) {
+    aiConversationSpeechAbortController = controller;
+  }
+
+  try {
+    const audioBlob = await requestAiConversationSpeechAudio(content, apiKey, controller?.signal);
+    if (controller && aiConversationSpeechAbortController !== controller) {
+      return;
+    }
+    aiConversationSpeechAbortController = null;
+
+    if (!state.aiConversationSpeakReplies) {
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(audioBlob);
+    aiConversationSpeechObjectUrl = objectUrl;
+    const audio = new Audio(objectUrl);
+    aiConversationSpeechAudio = audio;
+    audio.onended = () => {
+      if (aiConversationSpeechAudio === audio) {
+        aiConversationSpeechAudio = null;
+      }
+      if (aiConversationSpeechObjectUrl === objectUrl) {
+        URL.revokeObjectURL(objectUrl);
+        aiConversationSpeechObjectUrl = "";
+      }
+    };
+    audio.onerror = () => {
+      if (aiConversationSpeechAudio === audio) {
+        aiConversationSpeechAudio = null;
+      }
+      if (aiConversationSpeechObjectUrl === objectUrl) {
+        URL.revokeObjectURL(objectUrl);
+        aiConversationSpeechObjectUrl = "";
+      }
+    };
+    await audio.play();
+  } catch (error) {
+    if (error instanceof Error && error.name === "AbortError") {
+      return;
+    }
+    aiConversationSpeechAbortController = null;
+    speakAiConversationWithBrowserSpeech(content);
+    console.warn("Falling back to browser speech synthesis:", error);
+  }
+}
+
+function renderAiConversationPanel() {
+  if (!aiConversationMeta || !aiConversationPrompt) {
+    return;
+  }
+
+  if (!state.currentUser) {
+    aiConversationMeta.textContent = "Sign in and enable admin mode to use AI Conversation Lab.";
+    aiConversationPrompt.value = "";
+    renderAiConversationLog();
+    updateAiConversationControlState();
+    return;
+  }
+
+  const vocabulary = state.dataLoaded ? collectLearnedVocabularyForAiConversation() : [];
+  aiConversationPrompt.value = buildAiConversationPrompt(vocabulary);
+
+  if (!canAccessAiConversation()) {
+    aiConversationMeta.textContent = "Admin mode is required for AI Conversation Lab.";
+    renderAiConversationLog();
+    updateAiConversationControlState();
+    return;
+  }
+
+  if (!state.dataLoaded) {
+    aiConversationMeta.textContent = "Loading progress and vocabulary...";
+    renderAiConversationLog();
+    updateAiConversationControlState();
+    return;
+  }
+
+  const summary =
+    vocabulary.length > AI_CONVERSATION_PROMPT_VOCAB_LIMIT
+      ? `${vocabulary.length} learned terms detected. Prompt includes the first ${AI_CONVERSATION_PROMPT_VOCAB_LIMIT}.`
+      : vocabulary.length > 0
+        ? `${vocabulary.length} learned terms ready. Session messages: ${state.aiConversationMessageCount}.`
+        : "No learned vocabulary detected yet. Complete quizzes or SRS first.";
+  aiConversationMeta.textContent = summary;
+  renderAiConversationLog();
+  updateAiConversationControlState();
+}
+
+function extractAssistantReplyFromChatCompletion(payload) {
+  const rawContent = payload?.choices?.[0]?.message?.content;
+  if (typeof rawContent === "string") {
+    return rawContent.trim();
+  }
+  if (Array.isArray(rawContent)) {
+    return rawContent
+      .map((part) => {
+        if (typeof part === "string") {
+          return part;
+        }
+        if (part?.type === "text" && typeof part.text === "string") {
+          return part.text;
+        }
+        return "";
+      })
+      .join(" ")
+      .trim();
+  }
+  return "";
+}
+
+function updateAiConversationControlState() {
+  const canAccess = canAccessAiConversation();
+  const hasInput = Boolean(String(aiConversationInput?.value || "").trim());
+  const isBusy = state.aiConversationRequestsInFlight > 0;
+
+  if (aiConversationSendButton) {
+    aiConversationSendButton.disabled = !canAccess || !state.dataLoaded || isBusy || !hasInput;
+    aiConversationSendButton.textContent = isBusy ? "Sending..." : "Send";
+  }
+  if (aiConversationVoiceButton) {
+    aiConversationVoiceButton.disabled = !canAccess || !state.dataLoaded || isBusy;
+    aiConversationVoiceButton.textContent = state.aiConversationListening
+      ? "Stop Voice Input"
+      : "Start Voice Input";
+  }
+  if (aiConversationClearButton) {
+    aiConversationClearButton.disabled = isBusy || state.aiConversationMessages.length === 0;
+  }
+}
+
+function clearAiConversationSession() {
+  stopAiConversationVoiceInput();
+  stopAiConversationSpeechPlayback();
+  state.aiConversationMessages = [];
+  state.aiConversationRequestsInFlight = 0;
+  state.aiConversationMessageCount = 0;
+  renderAiConversationPanel();
+  updateAiConversationControlState();
+}
+
+async function requestAiConversationReply(userText) {
+  const apiKey = String(aiConversationApiKeyInput?.value || "").trim();
+  if (!apiKey) {
+    throw new Error("Enter an OpenAI API key first.");
+  }
+  const model = getAiConversationModel();
+  const coachPrompt = String(aiConversationPrompt?.value || "").trim() || buildAiConversationPrompt([]);
+  const history = state.aiConversationMessages
+    .slice(-AI_CONVERSATION_HISTORY_LIMIT * 2)
+    .map((message) => ({
+      role: message.role,
+      content: message.text,
+    }));
+
+  const response = await fetch(AI_CONVERSATION_CHAT_COMPLETIONS_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model,
+      temperature: 0.7,
+      max_tokens: AI_CONVERSATION_OUTPUT_TOKEN_LIMIT,
+      messages: [
+        { role: "system", content: coachPrompt },
+        ...history,
+        { role: "user", content: userText },
+      ],
+    }),
+  });
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const apiMessage =
+      payload?.error?.message || payload?.message || `OpenAI request failed (${response.status}).`;
+    throw new Error(apiMessage);
+  }
+
+  const assistantReply = extractAssistantReplyFromChatCompletion(payload);
+  if (!assistantReply) {
+    throw new Error("AI response was empty.");
+  }
+  return assistantReply;
+}
+
+async function sendAiConversationMessage(rawValue) {
+  const text = String(rawValue || "").trim();
+  if (!text) {
+    return;
+  }
+  if (!canAccessAiConversation()) {
+    setStatus("AI Conversation Lab is available only in admin mode.", true);
+    return;
+  }
+  if (!state.dataLoaded) {
+    setStatus("Load data first before using AI Conversation Lab.", true);
+    return;
+  }
+  if (state.aiConversationRequestsInFlight > 0) {
+    return;
+  }
+
+  appendAiConversationMessage("user", text);
+  if (aiConversationInput) {
+    aiConversationInput.value = "";
+  }
+  state.aiConversationRequestsInFlight += 1;
+  renderAiConversationPanel();
+  updateAiConversationControlState();
+
+  try {
+    const reply = await requestAiConversationReply(text);
+    appendAiConversationMessage("assistant", reply);
+    void speakAiConversationText(reply);
+    clearStatus();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Could not get AI response.";
+    setStatus(message, true);
+  } finally {
+    state.aiConversationRequestsInFlight = Math.max(0, state.aiConversationRequestsInFlight - 1);
+    renderAiConversationPanel();
+    updateAiConversationControlState();
+  }
+}
+
+function startAiConversationVoiceInput() {
+  if (state.aiConversationListening) {
+    stopAiConversationVoiceInput();
+    return;
+  }
+  if (!canAccessAiConversation()) {
+    setStatus("AI Conversation Lab is available only in admin mode.", true);
+    return;
+  }
+  if (!state.dataLoaded) {
+    setStatus("Load data first before using voice input.", true);
+    return;
+  }
+
+  const SpeechRecognitionCtor = getAiConversationSpeechRecognitionCtor();
+  if (!SpeechRecognitionCtor) {
+    setStatus("Speech recognition is not supported in this browser.", true);
+    return;
+  }
+
+  const recognition = new SpeechRecognitionCtor();
+  recognition.lang =
+    getAiConversationTtsAccentProfile(getCurrentLanguage())?.locale ||
+    (getCurrentLanguage() === "it" ? "it-IT" : "es-ES");
+  recognition.interimResults = true;
+  recognition.continuous = false;
+  let transcript = "";
+
+  recognition.onresult = (event) => {
+    let finalText = transcript;
+    let interimText = "";
+    for (let index = event.resultIndex; index < event.results.length; index += 1) {
+      const chunk = String(event.results[index][0]?.transcript || "").trim();
+      if (!chunk) {
+        continue;
+      }
+      if (event.results[index].isFinal) {
+        finalText = `${finalText} ${chunk}`.trim();
+      } else {
+        interimText = `${interimText} ${chunk}`.trim();
+      }
+    }
+    transcript = finalText;
+    if (aiConversationInput) {
+      aiConversationInput.value = `${finalText} ${interimText}`.trim();
+      updateAiConversationControlState();
+    }
+  };
+
+  recognition.onerror = (event) => {
+    if (event?.error && event.error !== "no-speech" && event.error !== "aborted") {
+      setStatus(`Voice input error: ${event.error}.`, true);
+    }
+  };
+
+  recognition.onend = () => {
+    aiConversationRecognition = null;
+    state.aiConversationListening = false;
+    updateAiConversationControlState();
+    const finalMessage = String(aiConversationInput?.value || "").trim();
+    if (finalMessage) {
+      void sendAiConversationMessage(finalMessage);
+    }
+  };
+
+  aiConversationRecognition = recognition;
+  state.aiConversationListening = true;
+  updateAiConversationControlState();
+  recognition.start();
+}
+
 function getModuleProgress(moduleType) {
+  if (moduleType === "ai-conversation") {
+    const hasUsedLab = state.aiConversationSessionCount > 0 || state.aiConversationMessageCount > 0;
+    return { current: hasUsedLab ? 1 : 0, total: 1 };
+  }
   if (moduleType === "beginner") {
     return getBeginnerAggregateCombinedProgress();
   }
@@ -7432,6 +8572,22 @@ function getSequentialUnlockInfo(previousTitle, previousScore, previousTotal, th
 }
 
 function getTrackUnlockInfo(moduleType) {
+  if (moduleType === "ai-conversation") {
+    if (state.adminMode && canUseAdminMode()) {
+      return {
+        unlocked: true,
+        previousTitle: "",
+        previousPercent: 100,
+        message: "",
+      };
+    }
+    return {
+      unlocked: false,
+      previousTitle: "Admin mode",
+      previousPercent: 0,
+      message: "Locked. AI Conversation Lab is currently admin mode only.",
+    };
+  }
   if (state.adminMode) {
     return {
       unlocked: true,
@@ -7592,6 +8748,10 @@ function getTrackTierLabel(index) {
 }
 
 function openTrackByType(type) {
+  if (type === "ai-conversation") {
+    openAiConversationView();
+    return;
+  }
   if (type === "beginner") {
     openBeginnerDashboard();
     return;
@@ -7626,6 +8786,7 @@ function openTrackByType(type) {
   }
   if (type === "slang") {
     openSlangDashboard();
+    return;
   }
 }
 
@@ -7755,6 +8916,8 @@ function refreshProgressViews() {
   renderLeaderboards();
   renderStoriesGrid();
   renderSrsHubTile();
+  renderAiConversationHubTile();
+  renderAiConversationPanel();
   if (!srsManageView.hidden) {
     renderSrsManageView();
   }
@@ -7795,6 +8958,8 @@ function openTrainingHub() {
   renderAchievementsPanel();
   renderStoriesGrid();
   renderSrsHubTile();
+  renderAiConversationHubTile();
+  renderAiConversationPanel();
   showView(trainingHubView);
 }
 
@@ -7897,6 +9062,23 @@ function openSlangDashboard() {
   renderSlangDeckGrid();
   clearStatus();
   showView(slangDashboardView);
+}
+
+function openAiConversationView() {
+  const unlockInfo = getTrackUnlockInfo("ai-conversation");
+  if (!unlockInfo.unlocked) {
+    setStatus(unlockInfo.message, true);
+    showView(trainingHubView);
+    return;
+  }
+  state.aiConversationSessionCount += 1;
+  renderAiConversationPanel();
+  updateAiConversationControlState();
+  clearStatus();
+  showView(aiConversationView);
+  if (aiConversationInput) {
+    aiConversationInput.focus();
+  }
 }
 
 function openLeaderboardView() {
@@ -12211,6 +13393,8 @@ async function logoutCurrentUser() {
   if (hasSupabaseConfig()) {
     await supabaseSignOut();
   }
+  stopAiConversationVoiceInput();
+  stopAiConversationSpeechPlayback();
   if (remoteStateSyncTimer) {
     clearTimeout(remoteStateSyncTimer);
     remoteStateSyncTimer = null;
@@ -12227,6 +13411,11 @@ async function logoutCurrentUser() {
   state.srsCurrentCorrect = false;
   state.srsSessionReviewed = 0;
   state.srsSessionCorrect = 0;
+  state.aiConversationMessages = [];
+  state.aiConversationRequestsInFlight = 0;
+  state.aiConversationListening = false;
+  state.aiConversationSessionCount = 0;
+  state.aiConversationMessageCount = 0;
   state.gamificationData = createEmptyGamificationData();
   state.srsData = createEmptySrsData();
   state.storyWordTypeOverrides = loadStoryWordTypeOverrides();
@@ -12235,6 +13424,9 @@ async function logoutCurrentUser() {
   state.remoteStateLoadFailed = false;
   state.adminMode = false;
   setAudioEnabled(loadAudioEnabled(), { persist: false });
+  if (aiConversationInput) {
+    aiConversationInput.value = "";
+  }
   refreshCurrentUserLabel();
   refreshAdminModeAccess();
   showAuthScreen();
@@ -12346,6 +13538,8 @@ async function loadData() {
     renderSlangDeckGrid();
     renderStoriesGrid();
     renderSrsHubTile();
+    renderAiConversationHubTile();
+    renderAiConversationPanel();
     renderAchievementsPanel();
     updateDashboardProgressBars();
     renderTrainingGrid();
@@ -12498,6 +13692,12 @@ backToTrainingFromLeaderboardButton.addEventListener("click", () => {
   openTrainingHub();
 });
 
+if (backToTrainingFromAiButton) {
+  backToTrainingFromAiButton.addEventListener("click", () => {
+    openTrainingHub();
+  });
+}
+
 storyBackButton.addEventListener("click", () => {
   openTrainingHub();
 });
@@ -12523,6 +13723,95 @@ if (srsStartButton) {
 if (srsManageButton) {
   srsManageButton.addEventListener("click", () => {
     openSrsManageView();
+  });
+}
+
+if (aiConversationHubOpenButton) {
+  aiConversationHubOpenButton.addEventListener("click", () => {
+    openAiConversationView();
+  });
+}
+
+if (aiConversationCopyButton) {
+  aiConversationCopyButton.addEventListener("click", async () => {
+    renderAiConversationPanel();
+    const copied = await copyTextToClipboard(aiConversationPrompt?.value || "");
+    if (!copied) {
+      setStatus("Could not copy coach prompt. Copy it manually from the prompt box.", true);
+      return;
+    }
+    setStatus("Coach prompt copied to clipboard.");
+  });
+}
+
+if (aiConversationClearButton) {
+  aiConversationClearButton.addEventListener("click", () => {
+    clearAiConversationSession();
+  });
+}
+
+if (aiConversationVoiceButton) {
+  aiConversationVoiceButton.addEventListener("click", () => {
+    startAiConversationVoiceInput();
+  });
+}
+
+if (aiConversationSendButton) {
+  aiConversationSendButton.addEventListener("click", () => {
+    void sendAiConversationMessage(aiConversationInput?.value || "");
+  });
+}
+
+if (aiConversationInput) {
+  aiConversationInput.addEventListener("input", () => {
+    updateAiConversationControlState();
+  });
+  aiConversationInput.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" || event.shiftKey) {
+      return;
+    }
+    event.preventDefault();
+    void sendAiConversationMessage(aiConversationInput.value);
+  });
+}
+
+if (aiConversationApiKeyInput) {
+  aiConversationApiKeyInput.addEventListener("change", () => {
+    saveAiConversationApiKey(aiConversationApiKeyInput.value);
+  });
+}
+
+if (aiConversationModelSelect) {
+  aiConversationModelSelect.addEventListener("change", () => {
+    saveAiConversationModel(getAiConversationModel());
+  });
+}
+
+if (aiConversationTtsVoiceSelect) {
+  aiConversationTtsVoiceSelect.addEventListener("change", () => {
+    saveAiConversationTtsVoice(getAiConversationTtsVoice());
+  });
+}
+
+if (aiConversationTtsSpeedSelect) {
+  aiConversationTtsSpeedSelect.addEventListener("change", () => {
+    saveAiConversationTtsSpeed(getAiConversationTtsSpeed());
+  });
+}
+
+if (aiConversationTtsAccentSelect) {
+  aiConversationTtsAccentSelect.addEventListener("change", () => {
+    saveAiConversationTtsAccent(getAiConversationTtsAccent(), getCurrentLanguage());
+    renderAiConversationPanel();
+  });
+}
+
+if (aiConversationSpeakToggle) {
+  aiConversationSpeakToggle.addEventListener("change", () => {
+    state.aiConversationSpeakReplies = Boolean(aiConversationSpeakToggle.checked);
+    if (!state.aiConversationSpeakReplies) {
+      stopAiConversationSpeechPlayback();
+    }
   });
 }
 
