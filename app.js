@@ -32,7 +32,7 @@ const AI_CONVERSATION_MODEL_STORAGE_KEY = "rapid-spanish-ai-conversation-model-v
 const AI_CONVERSATION_TTS_VOICE_STORAGE_KEY = "rapid-spanish-ai-conversation-tts-voice-v1";
 const AI_CONVERSATION_TTS_SPEED_STORAGE_KEY = "rapid-spanish-ai-conversation-tts-speed-v1";
 const AI_CONVERSATION_TTS_ACCENT_STORAGE_KEY = "rapid-spanish-ai-conversation-tts-accent-v1";
-const ADMIN_MODE_USERNAME = "jake";
+const ADMIN_MODE_USERNAMES = new Set(["jake", "jacob"]);
 const DEFAULT_LANGUAGE = "es";
 const SUPPORTED_LANGUAGES = ["es", "it"];
 const LEGACY_BEGINNER_DECK_COUNTS_ES = {
@@ -2571,7 +2571,7 @@ function refreshLanguageModuleTitles() {
 }
 
 function canUseAdminMode(user = state.currentUser) {
-  return normalizeUsername(user?.username || "") === ADMIN_MODE_USERNAME;
+  return ADMIN_MODE_USERNAMES.has(normalizeUsername(user?.username || ""));
 }
 
 function refreshAdminModeAccess() {
