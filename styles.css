@@ -37,6 +37,11 @@ body {
   min-height: 100%;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   font-family: "Chivo", sans-serif;
   color: var(--ink);
@@ -156,6 +161,86 @@ body {
 
 .admin-mode-toggle input {
   accent-color: var(--brand);
+}
+
+.switch-mode-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.switch-mode-toggle input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.switch-mode-pill {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-width: 14.5rem;
+  border: 1px solid #ccb791;
+  border-radius: 999px;
+  background: #fff6e6;
+  padding: 0.12rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.switch-mode-pill::before {
+  content: "";
+  position: absolute;
+  top: 0.12rem;
+  right: 50%;
+  bottom: 0.12rem;
+  left: 0.12rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 100%);
+  box-shadow: 0 3px 10px rgba(16, 79, 65, 0.25);
+  transition: transform 200ms ease;
+}
+
+.switch-mode-pill-option {
+  position: relative;
+  z-index: 1;
+  padding: 0.3rem 0.62rem;
+  text-align: center;
+  font-size: 0.71rem;
+  font-weight: 700;
+  line-height: 1.12;
+  white-space: nowrap;
+  color: #6e5e41;
+  transition: color 180ms ease;
+}
+
+.switch-mode-toggle input:not(:checked) + .switch-mode-pill .switch-mode-pill-option:first-child {
+  color: #f7fff9;
+}
+
+.switch-mode-toggle input:checked + .switch-mode-pill::before {
+  transform: translateX(100%);
+}
+
+.switch-mode-toggle input:checked + .switch-mode-pill .switch-mode-pill-option:first-child {
+  color: #6e5e41;
+}
+
+.switch-mode-toggle input:checked + .switch-mode-pill .switch-mode-pill-option:last-child {
+  color: #f7fff9;
+}
+
+.switch-mode-toggle input:focus-visible + .switch-mode-pill {
+  outline: 2px solid rgba(62, 106, 78, 0.32);
+  outline-offset: 2px;
 }
 
 .eyebrow {
@@ -861,10 +946,17 @@ h2 {
 }
 
 .mini-progress-fill {
+  --stale-ratio: 0;
+  --progress-start-hue: calc(160 - (108 * var(--stale-ratio)));
+  --progress-end-hue: calc(155 - (112 * var(--stale-ratio)));
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, #1ea17e 0%, #156c58 100%);
-  transition: width 180ms ease;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--progress-start-hue) 72% 41%) 0%,
+    hsl(var(--progress-end-hue) 78% 34%) 100%
+  );
+  transition: width 180ms ease, background 220ms ease;
 }
 
 .search-field {
@@ -1414,10 +1506,17 @@ h2 {
 }
 
 .progress-fill {
+  --stale-ratio: 0;
+  --progress-start-hue: calc(160 - (108 * var(--stale-ratio)));
+  --progress-end-hue: calc(155 - (112 * var(--stale-ratio)));
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #1ea17e 0%, #156c58 100%);
-  transition: width 180ms ease;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--progress-start-hue) 72% 41%) 0%,
+    hsl(var(--progress-end-hue) 78% 34%) 100%
+  );
+  transition: width 180ms ease, background 220ms ease;
 }
 
 .forms-list {
@@ -1793,6 +1892,12 @@ h2 {
     padding: 0.54rem 0.68rem;
   }
 
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
   .quiz-entry label {
     font-size: 0.82rem;
   }
@@ -1943,6 +2048,16 @@ h2 {
   .admin-mode-toggle {
     padding: 0.22rem 0.38rem;
     font-size: 0.66rem;
+  }
+
+  .switch-mode-pill {
+    min-width: 12.3rem;
+    padding: 0.1rem;
+  }
+
+  .switch-mode-pill-option {
+    padding: 0.24rem 0.45rem;
+    font-size: 0.61rem;
   }
 
   :is(

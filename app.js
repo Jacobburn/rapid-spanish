@@ -69,6 +69,17 @@ const STORY_UNLOCK_THRESHOLDS = [2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 const QUIZ_TIMER_DURATION_MS = 5 * 60 * 1000;
 const TRACK_UNLOCK_THRESHOLD_PERCENT = 90;
 const QUIZ_UNLOCK_THRESHOLD_PERCENT = 50;
+const QUIZ_STALE_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
+const QUIZ_STALE_RESET_MIN_RATIO = 0.8;
+const BEST_SCORE_BUCKET_KEYS = [
+  "verbs",
+  "nouns",
+  "beginner",
+  "discourse",
+  "conversion",
+  "grammar",
+  "slang",
+];
 const SRS_VERSION = 1;
 const SRS_DAILY_NEW_LIMIT = 20;
 const SRS_LEARNING_STEPS_MINUTES = [1, 10];
@@ -1110,6 +1121,9 @@ const progressMap = document.getElementById("progressMap");
 const trainingHubProgressText = document.getElementById("trainingHubProgressText");
 const trainingHubProgressFill = document.getElementById("trainingHubProgressFill");
 const adminModeToggle = document.getElementById("adminModeToggle");
+const switchModeToggle = document.getElementById("switchModeToggle");
+const switchModeForwardLabel = document.getElementById("switchModeForwardLabel");
+const switchModeReverseLabel = document.getElementById("switchModeReverseLabel");
 const adminModeControl = adminModeToggle?.closest(".admin-mode-toggle");
 const storiesUnlockMeta = document.getElementById("storiesUnlockMeta");
 const storiesIntroText = document.getElementById("storiesIntroText");
@@ -1371,7 +1385,43 @@ function createEmptyBestScores() {
     conversion: {},
     grammar: {},
     slang: {},
+    freshness: createEmptyBestScoreFreshness(),
   };
+}
+
+function createEmptyBestScoreFreshness() {
+  return {
+    verbs: {},
+    nouns: {},
+    beginner: {},
+    discourse: {},
+    conversion: {},
+    grammar: {},
+    slang: {},
+  };
+}
+
+function normalizeBestScoreFreshness(rawFreshness) {
+  const safe = createEmptyBestScoreFreshness();
+  if (!rawFreshness || typeof rawFreshness !== "object" || Array.isArray(rawFreshness)) {
+    return safe;
+  }
+
+  BEST_SCORE_BUCKET_KEYS.forEach((bucket) => {
+    const rawBucket = rawFreshness[bucket];
+    if (!rawBucket || typeof rawBucket !== "object" || Array.isArray(rawBucket)) {
+      return;
+    }
+    Object.entries(rawBucket).forEach(([key, value]) => {
+      const timestamp = Number(value);
+      if (!Number.isFinite(timestamp) || timestamp <= 0) {
+        return;
+      }
+      safe[bucket][key] = timestamp;
+    });
+  });
+
+  return safe;
 }
 
 function createEmptyStoryWordTypes() {
@@ -1416,10 +1466,12 @@ function normalizeBestScores(rawScores) {
     safe.conversion = rawScores.conversion || {};
     safe.grammar = rawScores.grammar || {};
     safe.slang = rawScores.slang || {};
+    safe.freshness = normalizeBestScoreFreshness(rawScores.freshness);
     return safe;
   }
 
   safe.verbs = rawScores;
+  safe.freshness = createEmptyBestScoreFreshness();
   return safe;
 }
 
@@ -1440,6 +1492,7 @@ const state = {
   storyTranslationResources: createEmptyStoryTranslationResources(),
   activeLanguage: loadPreferredLanguage(),
   nounMode: "singular",
+  switchMode: "normal",
   activeVerbTrack: "core",
   activeNounTrack: "core",
   bestScores: createEmptyBestScores(),
@@ -1939,6 +1992,24 @@ function applyLanguageUiText() {
   if (srsAnswerLabel) {
     srsAnswerLabel.textContent = `Type ${copy.targetLanguageAdjective} answer`;
   }
+  syncSwitchModeToggleLabels();
+}
+
+function getSwitchModeLanguageName() {
+  const selectedLabel = languageToggle?.selectedOptions?.[0]?.textContent?.trim();
+  if (selectedLabel) {
+    return selectedLabel;
+  }
+  return getTargetLanguageName();
+}
+
+function syncSwitchModeToggleLabels() {
+  if (!switchModeForwardLabel || !switchModeReverseLabel) {
+    return;
+  }
+  const languageName = getSwitchModeLanguageName();
+  switchModeForwardLabel.textContent = `English → ${languageName}`;
+  switchModeReverseLabel.textContent = `${languageName} → English`;
 }
 
 function refreshLanguageModuleTitles() {
@@ -3000,12 +3071,12 @@ async function setCurrentUser(userOrUsername) {
     state.srsData = loadSrsData();
   }
 
-  let migratedLegacyBeginnerScores = false;
+  let shouldPersistBestScores = backfillBestScoreFreshnessTimestamps(state.bestScores);
   if (state.dataLoaded) {
-    migratedLegacyBeginnerScores = migrateLegacyBeginnerBestScoresIfNeeded();
-    if (migratedLegacyBeginnerScores) {
-      saveBestScores();
-    }
+    shouldPersistBestScores = migrateLegacyBeginnerBestScoresIfNeeded() || shouldPersistBestScores;
+  }
+  if (shouldPersistBestScores) {
+    saveBestScores();
   }
 
   refreshStreakStatusForToday();
@@ -3048,12 +3119,18 @@ function reloadLanguageScopedLocalState() {
     state.attemptStats = normalizeAttemptStats(state.attemptStats);
     state.gamificationData = normalizeGamificationData(state.gamificationData);
     state.srsData = normalizeSrsData(state.srsData);
+    if (backfillBestScoreFreshnessTimestamps(state.bestScores)) {
+      saveBestScores();
+    }
     return;
   }
   state.bestScores = loadBestScores();
   state.attemptStats = loadAttemptStats();
   state.gamificationData = loadGamificationData();
   state.srsData = loadSrsData();
+  if (backfillBestScoreFreshnessTimestamps(state.bestScores)) {
+    saveBestScores();
+  }
 }
 
 async function switchActiveLanguage(language) {
@@ -3156,6 +3233,9 @@ applyLanguageUiText();
 refreshLanguageModuleTitles();
 if (adminModeToggle) {
   adminModeToggle.checked = state.adminMode;
+}
+if (switchModeToggle) {
+  switchModeToggle.checked = state.switchMode === "switch";
 }
 refreshAdminModeAccess();
 
@@ -5099,12 +5179,25 @@ function setQuizActionButton(buttonEl, ended) {
   }
 }
 
-function setProgressBar(textEl, fillEl, label, current, total) {
+function setProgressFillStaleRatio(fillEl, staleRatio = 0) {
+  if (!fillEl) {
+    return;
+  }
+  fillEl.style.setProperty("--stale-ratio", clampUnit(staleRatio).toFixed(4));
+}
+
+function renderMiniProgressFill(percent, staleRatio = 0) {
+  const safePercent = Math.max(0, Math.min(100, Number(percent) || 0));
+  return `<div class="mini-progress-fill" style="width:${safePercent}%;--stale-ratio:${clampUnit(staleRatio).toFixed(4)}"></div>`;
+}
+
+function setProgressBar(textEl, fillEl, label, current, total, staleRatio = 0) {
   const safeTotal = Math.max(0, total);
   const safeCurrent = Math.max(0, Math.min(current, safeTotal));
   const percent = safeTotal === 0 ? 0 : Math.round((safeCurrent / safeTotal) * 100);
   textEl.textContent = `${label}: ${safeCurrent}/${safeTotal} (${percent}%)`;
   fillEl.style.width = `${percent}%`;
+  setProgressFillStaleRatio(fillEl, staleRatio);
 }
 
 function loadBestScores() {
@@ -5157,6 +5250,103 @@ function getScoreFromStore(scoreStore, bucket, key, total) {
   return 0;
 }
 
+function clampUnit(value) {
+  if (!Number.isFinite(value)) {
+    return 0;
+  }
+  return Math.max(0, Math.min(1, value));
+}
+
+function getBestScoreFreshnessTimestampFromStore(scoreStore, bucket, key) {
+  const timestamp = Number(scoreStore?.freshness?.[bucket]?.[key]);
+  if (Number.isFinite(timestamp) && timestamp > 0) {
+    return timestamp;
+  }
+  return 0;
+}
+
+function getBestScoreStaleRatioFromStore(scoreStore, bucket, key, total) {
+  const bestScore = getScoreFromStore(scoreStore, bucket, key, total);
+  if (bestScore <= 0) {
+    return 0;
+  }
+  const reviewedAt = getBestScoreFreshnessTimestampFromStore(scoreStore, bucket, key);
+  if (!reviewedAt) {
+    return 0;
+  }
+  return clampUnit((Date.now() - reviewedAt) / QUIZ_STALE_WINDOW_MS);
+}
+
+function getBestScoreStaleRatio(bucket, key, total) {
+  return getBestScoreStaleRatioFromStore(state.bestScores, bucket, key, total);
+}
+
+function setBestScoreFreshnessTimestamp(bucket, key, timestamp = Date.now()) {
+  const safeTimestamp = Number(timestamp);
+  if (!Number.isFinite(safeTimestamp) || safeTimestamp <= 0 || !bucket || !key) {
+    return false;
+  }
+  if (!state.bestScores?.freshness || typeof state.bestScores.freshness !== "object") {
+    state.bestScores.freshness = createEmptyBestScoreFreshness();
+  }
+  if (
+    !state.bestScores.freshness[bucket] ||
+    typeof state.bestScores.freshness[bucket] !== "object" ||
+    Array.isArray(state.bestScores.freshness[bucket])
+  ) {
+    state.bestScores.freshness[bucket] = {};
+  }
+  const existing = Number(state.bestScores.freshness[bucket][key]);
+  if (Number.isFinite(existing) && Math.abs(existing - safeTimestamp) < 1) {
+    return false;
+  }
+  state.bestScores.freshness[bucket][key] = safeTimestamp;
+  return true;
+}
+
+function backfillBestScoreFreshnessTimestamps(scoreStore, timestamp = Date.now()) {
+  if (!scoreStore || typeof scoreStore !== "object") {
+    return false;
+  }
+  if (!scoreStore.freshness || typeof scoreStore.freshness !== "object") {
+    scoreStore.freshness = createEmptyBestScoreFreshness();
+  }
+
+  const safeTimestamp = Number(timestamp);
+  const fallbackTimestamp =
+    Number.isFinite(safeTimestamp) && safeTimestamp > 0 ? safeTimestamp : Date.now();
+  let changed = false;
+
+  BEST_SCORE_BUCKET_KEYS.forEach((bucket) => {
+    const scoreBucket = scoreStore[bucket];
+    if (!scoreBucket || typeof scoreBucket !== "object" || Array.isArray(scoreBucket)) {
+      return;
+    }
+    if (
+      !scoreStore.freshness[bucket] ||
+      typeof scoreStore.freshness[bucket] !== "object" ||
+      Array.isArray(scoreStore.freshness[bucket])
+    ) {
+      scoreStore.freshness[bucket] = {};
+      changed = true;
+    }
+    Object.entries(scoreBucket).forEach(([key, rawScore]) => {
+      const score = Number(rawScore);
+      if (!Number.isFinite(score) || score <= 0) {
+        return;
+      }
+      const existing = Number(scoreStore.freshness[bucket][key]);
+      if (Number.isFinite(existing) && existing > 0) {
+        return;
+      }
+      scoreStore.freshness[bucket][key] = fallbackTimestamp;
+      changed = true;
+    });
+  });
+
+  return changed;
+}
+
 function loadBestScoresForUser(username) {
   if (hasSupabaseConfig()) {
     return createEmptyBestScores();
@@ -5193,46 +5383,59 @@ function getProgressSnapshotFromScores(scoreStore) {
 
   const nounTotal = state.nounDecks.reduce((acc, deck) => acc + deck.count, 0);
   const nounCurrent = state.nounDecks.reduce((acc, deck) => {
-    const singular = getScoreFromStore(scoreStore, "nouns", deck.id, deck.count);
-    const plural = getScoreFromStore(scoreStore, "nouns", `${deck.id}::plural`, deck.count);
-    return acc + Math.max(singular, plural);
+    const best = Math.max(
+      getScoreFromStore(scoreStore, "nouns", deck.id, deck.count),
+      getScoreFromStore(scoreStore, "nouns", `${deck.id}::plural`, deck.count),
+      getScoreFromStore(scoreStore, "nouns", `${deck.id}::switch`, deck.count),
+      getScoreFromStore(scoreStore, "nouns", `${deck.id}::plural::switch`, deck.count),
+    );
+    return acc + best;
   }, 0);
   const advancedNounTotal = state.nounDecksAdvanced.reduce((acc, deck) => acc + deck.count, 0);
   const advancedNounCurrent = state.nounDecksAdvanced.reduce((acc, deck) => {
-    const singular = getScoreFromStore(scoreStore, "nouns", deck.id, deck.count);
-    const plural = getScoreFromStore(scoreStore, "nouns", `${deck.id}::plural`, deck.count);
-    return acc + Math.max(singular, plural);
+    const best = Math.max(
+      getScoreFromStore(scoreStore, "nouns", deck.id, deck.count),
+      getScoreFromStore(scoreStore, "nouns", `${deck.id}::plural`, deck.count),
+      getScoreFromStore(scoreStore, "nouns", `${deck.id}::switch`, deck.count),
+      getScoreFromStore(scoreStore, "nouns", `${deck.id}::plural::switch`, deck.count),
+    );
+    return acc + best;
   }, 0);
 
   const beginnerTotal = state.beginnerGroups.reduce((acc, group) => acc + group.count, 0);
-  const beginnerCurrent = state.beginnerGroups.reduce(
-    (acc, group) => acc + getScoreFromStore(scoreStore, "beginner", group.id, group.count),
-    0,
-  );
+  const beginnerCurrent = state.beginnerGroups.reduce((acc, group) => {
+    const normal = getScoreFromStore(scoreStore, "beginner", group.id, group.count);
+    const switched = getScoreFromStore(scoreStore, "beginner", `${group.id}::switch`, group.count);
+    return acc + Math.max(normal, switched);
+  }, 0);
 
   const discourseTotal = state.discourseGroups.reduce((acc, group) => acc + group.count, 0);
-  const discourseCurrent = state.discourseGroups.reduce(
-    (acc, group) => acc + getScoreFromStore(scoreStore, "discourse", group.id, group.count),
-    0,
-  );
+  const discourseCurrent = state.discourseGroups.reduce((acc, group) => {
+    const normal = getScoreFromStore(scoreStore, "discourse", group.id, group.count);
+    const switched = getScoreFromStore(scoreStore, "discourse", `${group.id}::switch`, group.count);
+    return acc + Math.max(normal, switched);
+  }, 0);
 
   const conversionTotal = state.conversionGroups.reduce((acc, group) => acc + group.count, 0);
-  const conversionCurrent = state.conversionGroups.reduce(
-    (acc, group) => acc + getScoreFromStore(scoreStore, "conversion", group.id, group.count),
-    0,
-  );
+  const conversionCurrent = state.conversionGroups.reduce((acc, group) => {
+    const normal = getScoreFromStore(scoreStore, "conversion", group.id, group.count);
+    const switched = getScoreFromStore(scoreStore, "conversion", `${group.id}::switch`, group.count);
+    return acc + Math.max(normal, switched);
+  }, 0);
 
   const grammarTotal = state.grammarGroups.reduce((acc, group) => acc + group.count, 0);
-  const grammarCurrent = state.grammarGroups.reduce(
-    (acc, group) => acc + getScoreFromStore(scoreStore, "grammar", group.id, group.count),
-    0,
-  );
+  const grammarCurrent = state.grammarGroups.reduce((acc, group) => {
+    const normal = getScoreFromStore(scoreStore, "grammar", group.id, group.count);
+    const switched = getScoreFromStore(scoreStore, "grammar", `${group.id}::switch`, group.count);
+    return acc + Math.max(normal, switched);
+  }, 0);
 
   const slangTotal = state.slangGroups.reduce((acc, group) => acc + group.count, 0);
-  const slangCurrent = state.slangGroups.reduce(
-    (acc, group) => acc + getScoreFromStore(scoreStore, "slang", group.id, group.count),
-    0,
-  );
+  const slangCurrent = state.slangGroups.reduce((acc, group) => {
+    const normal = getScoreFromStore(scoreStore, "slang", group.id, group.count);
+    const switched = getScoreFromStore(scoreStore, "slang", `${group.id}::switch`, group.count);
+    return acc + Math.max(normal, switched);
+  }, 0);
 
   const current =
     verbCurrent +
@@ -5548,7 +5751,7 @@ function buildHardestDeckRows(limit = 3) {
   });
 
   state.beginnerGroups.forEach((group) => {
-    const current = getBeginnerBestScore(group);
+    const current = getBeginnerCombinedBestScore(group);
     rows.push({
       label: `Beginner: ${group.title}`,
       current,
@@ -5559,7 +5762,7 @@ function buildHardestDeckRows(limit = 3) {
   });
 
   state.discourseGroups.forEach((group) => {
-    const current = getDiscourseBestScore(group);
+    const current = getDiscourseCombinedBestScore(group);
     rows.push({
       label: `Discourse: ${group.title}`,
       current,
@@ -5570,7 +5773,7 @@ function buildHardestDeckRows(limit = 3) {
   });
 
   state.conversionGroups.forEach((group) => {
-    const current = getConversionBestScore(group);
+    const current = getConversionCombinedBestScore(group);
     rows.push({
       label: `Conversion: ${group.title}`,
       current,
@@ -5581,7 +5784,7 @@ function buildHardestDeckRows(limit = 3) {
   });
 
   state.grammarGroups.forEach((group) => {
-    const current = getGrammarBestScore(group);
+    const current = getGrammarCombinedBestScore(group);
     rows.push({
       label: `Grammar: ${group.title}`,
       current,
@@ -5592,7 +5795,7 @@ function buildHardestDeckRows(limit = 3) {
   });
 
   state.slangGroups.forEach((group) => {
-    const current = getSlangBestScore(group);
+    const current = getSlangCombinedBestScore(group);
     rows.push({
       label: `Slang: ${group.title}`,
       current,
@@ -5802,31 +6005,31 @@ function hasAnyPerfectBestScore() {
   });
   state.beginnerGroups.forEach((group) => {
     checkPairs.push({
-      score: getBeginnerBestScore(group),
+      score: getBeginnerCombinedBestScore(group),
       total: group.count,
     });
   });
   state.discourseGroups.forEach((group) => {
     checkPairs.push({
-      score: getDiscourseBestScore(group),
+      score: getDiscourseCombinedBestScore(group),
       total: group.count,
     });
   });
   state.conversionGroups.forEach((group) => {
     checkPairs.push({
-      score: getConversionBestScore(group),
+      score: getConversionCombinedBestScore(group),
       total: group.count,
     });
   });
   state.grammarGroups.forEach((group) => {
     checkPairs.push({
-      score: getGrammarBestScore(group),
+      score: getGrammarCombinedBestScore(group),
       total: group.count,
     });
   });
   state.slangGroups.forEach((group) => {
     checkPairs.push({
-      score: getSlangBestScore(group),
+      score: getSlangCombinedBestScore(group),
       total: group.count,
     });
   });
@@ -6073,8 +6276,17 @@ function renderLeaderboards() {
 function recordBestScore(bucket, key, score, total) {
   const normalizedScore = Math.max(0, Math.min(score, total));
   const currentBest = getBestScore(bucket, key, total);
+  const bestAfterAttempt = Math.max(currentBest, normalizedScore);
+  const qualifiesForStaleReset =
+    bestAfterAttempt > 0 && normalizedScore >= bestAfterAttempt * QUIZ_STALE_RESET_MIN_RATIO;
+  const refreshed = qualifiesForStaleReset
+    ? setBestScoreFreshnessTimestamp(bucket, key, Date.now())
+    : false;
   if (normalizedScore <= currentBest) {
-    return false;
+    if (refreshed) {
+      saveBestScores();
+    }
+    return refreshed;
   }
   const delta = normalizedScore - currentBest;
   state.bestScores[bucket][key] = normalizedScore;
@@ -6084,20 +6296,54 @@ function recordBestScore(bucket, key, score, total) {
   return true;
 }
 
-function nounScoreKey(deckId, mode = state.nounMode) {
-  return mode === "plural" ? `${deckId}::plural` : deckId;
+function switchScoreKey(baseKey, mode = state.switchMode) {
+  return mode === "switch" ? `${baseKey}::switch` : baseKey;
 }
 
-function getNounBestScore(deck, mode = state.nounMode) {
-  return getBestScore("nouns", nounScoreKey(deck.id, mode), deck.count);
+function nounScoreKey(deckId, mode = state.nounMode, switchMode = state.switchMode) {
+  const baseKey = mode === "plural" ? `${deckId}::plural` : deckId;
+  return switchScoreKey(baseKey, switchMode);
+}
+
+function beginnerScoreKey(groupId, switchMode = state.switchMode) {
+  return switchScoreKey(groupId, switchMode);
+}
+
+function discourseScoreKey(groupId, switchMode = state.switchMode) {
+  return switchScoreKey(groupId, switchMode);
+}
+
+function conversionScoreKey(groupId, switchMode = state.switchMode) {
+  return switchScoreKey(groupId, switchMode);
+}
+
+function grammarScoreKey(groupId, switchMode = state.switchMode) {
+  return switchScoreKey(groupId, switchMode);
+}
+
+function slangScoreKey(groupId, switchMode = state.switchMode) {
+  return switchScoreKey(groupId, switchMode);
+}
+
+function getNounBestScore(deck, mode = state.nounMode, switchMode = state.switchMode) {
+  return getBestScore("nouns", nounScoreKey(deck.id, mode, switchMode), deck.count);
 }
 
 function getNounCombinedBestScore(deck) {
-  return Math.max(getNounBestScore(deck, "singular"), getNounBestScore(deck, "plural"));
+  return Math.max(
+    getNounBestScore(deck, "singular", "normal"),
+    getNounBestScore(deck, "plural", "normal"),
+    getNounBestScore(deck, "singular", "switch"),
+    getNounBestScore(deck, "plural", "switch"),
+  );
 }
 
-function getBeginnerBestScore(group) {
-  return getBestScore("beginner", group.id, group.count);
+function getBeginnerBestScore(group, switchMode = state.switchMode) {
+  return getBestScore("beginner", beginnerScoreKey(group.id, switchMode), group.count);
+}
+
+function getBeginnerCombinedBestScore(group) {
+  return Math.max(getBeginnerBestScore(group, "normal"), getBeginnerBestScore(group, "switch"));
 }
 
 function migrateLegacyBeginnerBestScoresIfNeeded() {
@@ -6165,20 +6411,36 @@ function migrateLegacyBeginnerBestScoresIfNeeded() {
   return changed;
 }
 
-function getDiscourseBestScore(group) {
-  return getBestScore("discourse", group.id, group.count);
+function getDiscourseBestScore(group, switchMode = state.switchMode) {
+  return getBestScore("discourse", discourseScoreKey(group.id, switchMode), group.count);
 }
 
-function getConversionBestScore(group) {
-  return getBestScore("conversion", group.id, group.count);
+function getDiscourseCombinedBestScore(group) {
+  return Math.max(getDiscourseBestScore(group, "normal"), getDiscourseBestScore(group, "switch"));
 }
 
-function getGrammarBestScore(group) {
-  return getBestScore("grammar", group.id, group.count);
+function getConversionBestScore(group, switchMode = state.switchMode) {
+  return getBestScore("conversion", conversionScoreKey(group.id, switchMode), group.count);
 }
 
-function getSlangBestScore(group) {
-  return getBestScore("slang", group.id, group.count);
+function getConversionCombinedBestScore(group) {
+  return Math.max(getConversionBestScore(group, "normal"), getConversionBestScore(group, "switch"));
+}
+
+function getGrammarBestScore(group, switchMode = state.switchMode) {
+  return getBestScore("grammar", grammarScoreKey(group.id, switchMode), group.count);
+}
+
+function getGrammarCombinedBestScore(group) {
+  return Math.max(getGrammarBestScore(group, "normal"), getGrammarBestScore(group, "switch"));
+}
+
+function getSlangBestScore(group, switchMode = state.switchMode) {
+  return getBestScore("slang", slangScoreKey(group.id, switchMode), group.count);
+}
+
+function getSlangCombinedBestScore(group) {
+  return Math.max(getSlangBestScore(group, "normal"), getSlangBestScore(group, "switch"));
 }
 
 function getVerbAggregateProgress(trackMode = "core") {
@@ -6188,10 +6450,14 @@ function getVerbAggregateProgress(trackMode = "core") {
   return { current, total };
 }
 
-function getNounAggregateProgress(mode = state.nounMode, trackMode = "core") {
+function getNounAggregateProgress(
+  mode = state.nounMode,
+  trackMode = "core",
+  switchMode = state.switchMode,
+) {
   const decks = getActiveNounDecks(trackMode);
   const total = decks.reduce((acc, deck) => acc + deck.count, 0);
-  const current = decks.reduce((acc, deck) => acc + getNounBestScore(deck, mode), 0);
+  const current = decks.reduce((acc, deck) => acc + getNounBestScore(deck, mode, switchMode), 0);
   return { current, total };
 }
 
@@ -6202,46 +6468,316 @@ function getNounAggregateCombinedProgress(trackMode = "core") {
   return { current, total };
 }
 
-function getBeginnerAggregateProgress() {
+function getBeginnerAggregateProgress(switchMode = state.switchMode) {
   const total = state.beginnerGroups.reduce((acc, group) => acc + group.count, 0);
   const current = state.beginnerGroups.reduce(
-    (acc, group) => acc + getBeginnerBestScore(group),
+    (acc, group) => acc + getBeginnerBestScore(group, switchMode),
     0,
   );
   return { current, total };
 }
 
-function getDiscourseAggregateProgress() {
+function getBeginnerAggregateCombinedProgress() {
+  const total = state.beginnerGroups.reduce((acc, group) => acc + group.count, 0);
+  const current = state.beginnerGroups.reduce(
+    (acc, group) => acc + getBeginnerCombinedBestScore(group),
+    0,
+  );
+  return { current, total };
+}
+
+function getDiscourseAggregateProgress(switchMode = state.switchMode) {
   const total = state.discourseGroups.reduce((acc, group) => acc + group.count, 0);
   const current = state.discourseGroups.reduce(
-    (acc, group) => acc + getDiscourseBestScore(group),
+    (acc, group) => acc + getDiscourseBestScore(group, switchMode),
     0,
   );
   return { current, total };
 }
 
-function getConversionAggregateProgress() {
+function getDiscourseAggregateCombinedProgress() {
+  const total = state.discourseGroups.reduce((acc, group) => acc + group.count, 0);
+  const current = state.discourseGroups.reduce(
+    (acc, group) => acc + getDiscourseCombinedBestScore(group),
+    0,
+  );
+  return { current, total };
+}
+
+function getConversionAggregateProgress(switchMode = state.switchMode) {
   const total = state.conversionGroups.reduce((acc, group) => acc + group.count, 0);
   const current = state.conversionGroups.reduce(
-    (acc, group) => acc + getConversionBestScore(group),
+    (acc, group) => acc + getConversionBestScore(group, switchMode),
     0,
   );
   return { current, total };
 }
 
-function getGrammarAggregateProgress() {
+function getConversionAggregateCombinedProgress() {
+  const total = state.conversionGroups.reduce((acc, group) => acc + group.count, 0);
+  const current = state.conversionGroups.reduce(
+    (acc, group) => acc + getConversionCombinedBestScore(group),
+    0,
+  );
+  return { current, total };
+}
+
+function getGrammarAggregateProgress(switchMode = state.switchMode) {
   const total = state.grammarGroups.reduce((acc, group) => acc + group.count, 0);
   const current = state.grammarGroups.reduce(
-    (acc, group) => acc + getGrammarBestScore(group),
+    (acc, group) => acc + getGrammarBestScore(group, switchMode),
     0,
   );
   return { current, total };
 }
 
-function getSlangAggregateProgress() {
-  const total = state.slangGroups.reduce((acc, group) => acc + group.count, 0);
-  const current = state.slangGroups.reduce((acc, group) => acc + getSlangBestScore(group), 0);
+function getGrammarAggregateCombinedProgress() {
+  const total = state.grammarGroups.reduce((acc, group) => acc + group.count, 0);
+  const current = state.grammarGroups.reduce(
+    (acc, group) => acc + getGrammarCombinedBestScore(group),
+    0,
+  );
   return { current, total };
+}
+
+function getSlangAggregateProgress(switchMode = state.switchMode) {
+  const total = state.slangGroups.reduce((acc, group) => acc + group.count, 0);
+  const current = state.slangGroups.reduce(
+    (acc, group) => acc + getSlangBestScore(group, switchMode),
+    0,
+  );
+  return { current, total };
+}
+
+function getSlangAggregateCombinedProgress() {
+  const total = state.slangGroups.reduce((acc, group) => acc + group.count, 0);
+  const current = state.slangGroups.reduce((acc, group) => acc + getSlangCombinedBestScore(group), 0);
+  return { current, total };
+}
+
+function makeScoreEntry(bucket, key, total) {
+  return {
+    bucket,
+    key,
+    total: Math.max(0, Number(total) || 0),
+  };
+}
+
+function pickBestScoreEntry(bucket, keys, total) {
+  const candidates = keys.filter(Boolean);
+  const fallback = candidates[0] || "";
+  if (!fallback) {
+    return makeScoreEntry(bucket, "", total);
+  }
+  let selectedKey = fallback;
+  let selectedScore = getBestScore(bucket, selectedKey, total);
+  let selectedStale = getBestScoreStaleRatio(bucket, selectedKey, total);
+  candidates.slice(1).forEach((key) => {
+    const score = getBestScore(bucket, key, total);
+    const stale = getBestScoreStaleRatio(bucket, key, total);
+    if (score > selectedScore || (score === selectedScore && stale < selectedStale)) {
+      selectedKey = key;
+      selectedScore = score;
+      selectedStale = stale;
+    }
+  });
+  return makeScoreEntry(bucket, selectedKey, total);
+}
+
+function getNounCombinedScoreEntry(deck) {
+  return pickBestScoreEntry(
+    "nouns",
+    [
+      nounScoreKey(deck.id, "singular", "normal"),
+      nounScoreKey(deck.id, "plural", "normal"),
+      nounScoreKey(deck.id, "singular", "switch"),
+      nounScoreKey(deck.id, "plural", "switch"),
+    ],
+    deck.count,
+  );
+}
+
+function getBeginnerCombinedScoreEntry(group) {
+  return pickBestScoreEntry(
+    "beginner",
+    [beginnerScoreKey(group.id, "normal"), beginnerScoreKey(group.id, "switch")],
+    group.count,
+  );
+}
+
+function getDiscourseCombinedScoreEntry(group) {
+  return pickBestScoreEntry(
+    "discourse",
+    [discourseScoreKey(group.id, "normal"), discourseScoreKey(group.id, "switch")],
+    group.count,
+  );
+}
+
+function getConversionCombinedScoreEntry(group) {
+  return pickBestScoreEntry(
+    "conversion",
+    [conversionScoreKey(group.id, "normal"), conversionScoreKey(group.id, "switch")],
+    group.count,
+  );
+}
+
+function getGrammarCombinedScoreEntry(group) {
+  return pickBestScoreEntry(
+    "grammar",
+    [grammarScoreKey(group.id, "normal"), grammarScoreKey(group.id, "switch")],
+    group.count,
+  );
+}
+
+function getSlangCombinedScoreEntry(group) {
+  return pickBestScoreEntry(
+    "slang",
+    [slangScoreKey(group.id, "normal"), slangScoreKey(group.id, "switch")],
+    group.count,
+  );
+}
+
+function getWeightedStaleRatio(entries) {
+  let weightedStale = 0;
+  let totalWeight = 0;
+
+  entries.forEach((entry) => {
+    const weight = Math.max(0, Number(entry?.total) || 0);
+    if (!entry || !entry.bucket || !entry.key || weight <= 0) {
+      return;
+    }
+    weightedStale += getBestScoreStaleRatio(entry.bucket, entry.key, entry.total) * weight;
+    totalWeight += weight;
+  });
+
+  return totalWeight > 0 ? weightedStale / totalWeight : 0;
+}
+
+function getVerbTrackStaleRatio(trackMode = "core") {
+  const entries = getActiveVerbList(trackMode).map((verb) =>
+    makeScoreEntry("verbs", verbScoreKey(verb.infinitive, trackMode), verb.formCount)
+  );
+  return getWeightedStaleRatio(entries);
+}
+
+function getNounTrackStaleRatio(trackMode = "core", mode = state.nounMode, switchMode = state.switchMode) {
+  const entries = getActiveNounDecks(trackMode).map((deck) =>
+    makeScoreEntry("nouns", nounScoreKey(deck.id, mode, switchMode), deck.count)
+  );
+  return getWeightedStaleRatio(entries);
+}
+
+function getNounTrackCombinedStaleRatio(trackMode = "core") {
+  const entries = getActiveNounDecks(trackMode).map((deck) => getNounCombinedScoreEntry(deck));
+  return getWeightedStaleRatio(entries);
+}
+
+function getBeginnerStaleRatio(switchMode = state.switchMode) {
+  const entries = state.beginnerGroups.map((group) =>
+    makeScoreEntry("beginner", beginnerScoreKey(group.id, switchMode), group.count)
+  );
+  return getWeightedStaleRatio(entries);
+}
+
+function getBeginnerCombinedStaleRatio() {
+  const entries = state.beginnerGroups.map((group) => getBeginnerCombinedScoreEntry(group));
+  return getWeightedStaleRatio(entries);
+}
+
+function getDiscourseStaleRatio(switchMode = state.switchMode) {
+  const entries = state.discourseGroups.map((group) =>
+    makeScoreEntry("discourse", discourseScoreKey(group.id, switchMode), group.count)
+  );
+  return getWeightedStaleRatio(entries);
+}
+
+function getDiscourseCombinedStaleRatio() {
+  const entries = state.discourseGroups.map((group) => getDiscourseCombinedScoreEntry(group));
+  return getWeightedStaleRatio(entries);
+}
+
+function getConversionStaleRatio(mode = state.switchMode) {
+  const entries = state.conversionGroups.map((group) =>
+    makeScoreEntry("conversion", conversionScoreKey(group.id, mode), group.count)
+  );
+  return getWeightedStaleRatio(entries);
+}
+
+function getConversionCombinedStaleRatio() {
+  const entries = state.conversionGroups.map((group) => getConversionCombinedScoreEntry(group));
+  return getWeightedStaleRatio(entries);
+}
+
+function getGrammarStaleRatio(switchMode = state.switchMode) {
+  const entries = state.grammarGroups.map((group) =>
+    makeScoreEntry("grammar", grammarScoreKey(group.id, switchMode), group.count)
+  );
+  return getWeightedStaleRatio(entries);
+}
+
+function getGrammarCombinedStaleRatio() {
+  const entries = state.grammarGroups.map((group) => getGrammarCombinedScoreEntry(group));
+  return getWeightedStaleRatio(entries);
+}
+
+function getSlangStaleRatio(switchMode = state.switchMode) {
+  const entries = state.slangGroups.map((group) =>
+    makeScoreEntry("slang", slangScoreKey(group.id, switchMode), group.count)
+  );
+  return getWeightedStaleRatio(entries);
+}
+
+function getSlangCombinedStaleRatio() {
+  const entries = state.slangGroups.map((group) => getSlangCombinedScoreEntry(group));
+  return getWeightedStaleRatio(entries);
+}
+
+function getOverallStudyStaleRatio() {
+  const entries = [
+    ...state.verbs.map((verb) => makeScoreEntry("verbs", verbScoreKey(verb.infinitive, "core"), verb.formCount)),
+    ...state.verbsAdditional.map((verb) =>
+      makeScoreEntry("verbs", verbScoreKey(verb.infinitive, "additional"), verb.formCount)
+    ),
+    ...state.nounDecks.map((deck) => getNounCombinedScoreEntry(deck)),
+    ...state.nounDecksAdvanced.map((deck) => getNounCombinedScoreEntry(deck)),
+    ...state.beginnerGroups.map((group) => getBeginnerCombinedScoreEntry(group)),
+    ...state.discourseGroups.map((group) => getDiscourseCombinedScoreEntry(group)),
+    ...state.conversionGroups.map((group) => getConversionCombinedScoreEntry(group)),
+    ...state.grammarGroups.map((group) => getGrammarCombinedScoreEntry(group)),
+    ...state.slangGroups.map((group) => getSlangCombinedScoreEntry(group)),
+  ];
+  return getWeightedStaleRatio(entries);
+}
+
+function getModuleStaleRatio(moduleType) {
+  if (moduleType === "beginner") {
+    return getBeginnerCombinedStaleRatio();
+  }
+  if (moduleType === "discourse") {
+    return getDiscourseCombinedStaleRatio();
+  }
+  if (moduleType === "conversion") {
+    return getConversionCombinedStaleRatio();
+  }
+  if (moduleType === "grammar") {
+    return getGrammarCombinedStaleRatio();
+  }
+  if (moduleType === "slang") {
+    return getSlangCombinedStaleRatio();
+  }
+  if (moduleType === "kofi") {
+    return getVerbTrackStaleRatio("core");
+  }
+  if (moduleType === "nouns") {
+    return getNounTrackCombinedStaleRatio("core");
+  }
+  if (moduleType === "kofi-additional") {
+    return getVerbTrackStaleRatio("additional");
+  }
+  if (moduleType === "nouns-advanced") {
+    return getNounTrackCombinedStaleRatio("advanced");
+  }
+  return 0;
 }
 
 function getOverallStudyProgress() {
@@ -6249,11 +6785,11 @@ function getOverallStudyProgress() {
   const verbAdditional = getVerbAggregateProgress("additional");
   const noun = getNounAggregateCombinedProgress("core");
   const nounAdvanced = getNounAggregateCombinedProgress("advanced");
-  const beginner = getBeginnerAggregateProgress();
-  const discourse = getDiscourseAggregateProgress();
-  const conversion = getConversionAggregateProgress();
-  const grammar = getGrammarAggregateProgress();
-  const slang = getSlangAggregateProgress();
+  const beginner = getBeginnerAggregateCombinedProgress();
+  const discourse = getDiscourseAggregateCombinedProgress();
+  const conversion = getConversionAggregateCombinedProgress();
+  const grammar = getGrammarAggregateCombinedProgress();
+  const slang = getSlangAggregateCombinedProgress();
   const current =
     verb.current +
     verbAdditional.current +
@@ -6279,6 +6815,7 @@ function getOverallStudyProgress() {
 }
 
 function updateDashboardProgressBars() {
+  const switchModeSuffix = state.switchMode === "switch" ? " (switch mode)" : "";
   const verb = getVerbAggregateProgress(state.activeVerbTrack);
   const nounModeLabel =
     state.nounMode === "plural"
@@ -6286,13 +6823,21 @@ function updateDashboardProgressBars() {
       : state.activeNounTrack === "advanced"
         ? "Nouns 501-2000 progress"
         : "Top 500 noun progress";
-  const noun = getNounAggregateProgress(state.nounMode, state.activeNounTrack);
+  const noun = getNounAggregateProgress(state.nounMode, state.activeNounTrack, state.switchMode);
   const overall = getOverallStudyProgress();
-  const beginner = getBeginnerAggregateProgress();
-  const discourse = getDiscourseAggregateProgress();
-  const conversion = getConversionAggregateProgress();
-  const grammar = getGrammarAggregateProgress();
-  const slang = getSlangAggregateProgress();
+  const beginner = getBeginnerAggregateProgress(state.switchMode);
+  const discourse = getDiscourseAggregateProgress(state.switchMode);
+  const conversion = getConversionAggregateProgress(state.switchMode);
+  const grammar = getGrammarAggregateProgress(state.switchMode);
+  const slang = getSlangAggregateProgress(state.switchMode);
+  const overallStale = getOverallStudyStaleRatio();
+  const verbStale = getVerbTrackStaleRatio(state.activeVerbTrack);
+  const nounStale = getNounTrackStaleRatio(state.activeNounTrack, state.nounMode, state.switchMode);
+  const beginnerStale = getBeginnerStaleRatio(state.switchMode);
+  const discourseStale = getDiscourseStaleRatio(state.switchMode);
+  const conversionStale = getConversionStaleRatio(state.switchMode);
+  const grammarStale = getGrammarStaleRatio(state.switchMode);
+  const slangStale = getSlangStaleRatio(state.switchMode);
 
   setProgressBar(
     trainingHubProgressText,
@@ -6300,6 +6845,7 @@ function updateDashboardProgressBars() {
     "Overall progress",
     overall.current,
     overall.total,
+    overallStale,
   );
   setProgressBar(
     verbDashboardProgressText,
@@ -6307,48 +6853,55 @@ function updateDashboardProgressBars() {
     state.activeVerbTrack === "additional" ? "Additional tense progress" : "Verb progress",
     verb.current,
     verb.total,
+    verbStale,
   );
   setProgressBar(
     nounsDashboardProgressText,
     nounsDashboardProgressFill,
-    nounModeLabel,
+    `${nounModeLabel}${switchModeSuffix}`,
     noun.current,
     noun.total,
+    nounStale,
   );
   setProgressBar(
     beginnerDashboardProgressText,
     beginnerDashboardProgressFill,
-    "Beginner progress",
+    `Beginner progress${switchModeSuffix}`,
     beginner.current,
     beginner.total,
+    beginnerStale,
   );
   setProgressBar(
     discourseDashboardProgressText,
     discourseDashboardProgressFill,
-    "Discourse progress",
+    `Discourse progress${switchModeSuffix}`,
     discourse.current,
     discourse.total,
+    discourseStale,
   );
   setProgressBar(
     conversionDashboardProgressText,
     conversionDashboardProgressFill,
-    "Conversion progress",
+    `Conversion progress${switchModeSuffix}`,
     conversion.current,
     conversion.total,
+    conversionStale,
   );
   setProgressBar(
     grammarDashboardProgressText,
     grammarDashboardProgressFill,
-    "Grammar progress",
+    `Grammar progress${switchModeSuffix}`,
     grammar.current,
     grammar.total,
+    grammarStale,
   );
   setProgressBar(
     slangDashboardProgressText,
     slangDashboardProgressFill,
-    "Slang progress",
+    `Slang progress${switchModeSuffix}`,
     slang.current,
     slang.total,
+    slangStale,
   );
   setProgressBar(
     moduleDashboardProgressText,
@@ -6356,6 +6909,7 @@ function updateDashboardProgressBars() {
     "Module progress",
     0,
     1,
+    0,
   );
 }
 
@@ -6372,19 +6926,19 @@ function clearStatus() {
 
 function getModuleProgress(moduleType) {
   if (moduleType === "beginner") {
-    return getBeginnerAggregateProgress();
+    return getBeginnerAggregateCombinedProgress();
   }
   if (moduleType === "discourse") {
-    return getDiscourseAggregateProgress();
+    return getDiscourseAggregateCombinedProgress();
   }
   if (moduleType === "conversion") {
-    return getConversionAggregateProgress();
+    return getConversionAggregateCombinedProgress();
   }
   if (moduleType === "grammar") {
-    return getGrammarAggregateProgress();
+    return getGrammarAggregateCombinedProgress();
   }
   if (moduleType === "slang") {
-    return getSlangAggregateProgress();
+    return getSlangAggregateCombinedProgress();
   }
   if (moduleType === "kofi") {
     return getVerbAggregateProgress("core");
@@ -6660,6 +7214,7 @@ function renderProgressMap() {
 
       const moduleProgress = getModuleProgress(type);
       const modulePercent = calculatePercent(moduleProgress.current, moduleProgress.total);
+      const staleRatio = getModuleStaleRatio(type);
       const unlockInfo = getTrackUnlockInfo(type);
       const completed = modulePercent >= TRACK_UNLOCK_THRESHOLD_PERCENT;
       const nodeStateClass = completed ? "completed" : unlockInfo.unlocked ? "unlocked" : "locked";
@@ -6674,7 +7229,7 @@ function renderProgressMap() {
         <span class="map-node-meta">${moduleProgress.current}/${moduleProgress.total} (${modulePercent}%)</span>
         <span class="map-node-status">${completed ? "Tier complete" : unlockInfo.unlocked ? "Unlocked" : "Locked"}</span>
         <div class="mini-progress-track">
-          <div class="mini-progress-fill" style="width:${modulePercent}%"></div>
+          ${renderMiniProgressFill(modulePercent, staleRatio)}
         </div>
       `;
 
@@ -6703,6 +7258,7 @@ function renderTrainingGrid() {
   getTrainingModules().forEach((module, index) => {
     const moduleProgress = getModuleProgress(module.type);
     const percent = calculatePercent(moduleProgress.current, moduleProgress.total);
+    const staleRatio = getModuleStaleRatio(module.type);
     const unlockInfo = getTrackUnlockInfo(module.type);
 
     const tile = document.createElement("button");
@@ -6718,7 +7274,7 @@ function renderTrainingGrid() {
       <span class="tile-subtitle">${module.subtitle}</span>
       ${unlockInfo.unlocked ? "" : `<span class="tile-lock-text">${unlockInfo.message}</span>`}
       <div class="mini-progress-track">
-        <div class="mini-progress-fill" style="width:${percent}%"></div>
+        ${renderMiniProgressFill(percent, staleRatio)}
       </div>
       <span class="tile-progress-text">${moduleProgress.current}/${moduleProgress.total}</span>
     `;
@@ -6985,7 +7541,7 @@ function buildSrsDeckCatalog() {
         .map((form, index) =>
           makeSrsCardFromAnswers({
             id: `${deckId}::${index + 1}`,
-            prompt: `${form.label} of ${verb.infinitive}${verb.translation ? ` (${verb.translation})` : ""}`,
+            prompt: `${getVerbEnglishClue(verb, form, index, verb.forms)} (${verb.infinitive})`,
             displayAnswer: form.answer,
             answers: [form.answer],
           }),
@@ -7772,6 +8328,19 @@ function buildAnswerLookup(items, answerSelector) {
   return lookup;
 }
 
+function mapItemSwitchOverrides(rawItem) {
+  const mapped = {};
+  const switchHint = getSwitchHintOverride(rawItem);
+  if (switchHint) {
+    mapped.switchHint = switchHint;
+  }
+  const switchAnswers = getSwitchAnswerOverrides(rawItem);
+  if (switchAnswers.length) {
+    mapped.switchAnswers = switchAnswers;
+  }
+  return mapped;
+}
+
 function buildDiscourseGroups(rawData) {
   const languagePrefix = getCurrentLanguage() === "es" ? "" : `${getCurrentLanguage()}-`;
   return DISCOURSE_GROUPS.map((group) => {
@@ -7781,6 +8350,7 @@ function buildDiscourseGroups(rawData) {
       answer: row.it || row.es || row.target || "",
       answers: [row.it || row.es || row.target || ""],
       index: index + 1,
+      ...mapItemSwitchOverrides(row),
     }));
     return {
       id: `${languagePrefix}${group.id}`,
@@ -7806,6 +8376,7 @@ function buildConversionGroups(rawData) {
           answers: Array.isArray(item.answers) && item.answers.length ? item.answers : [item.answer || ""],
           imperfect: Boolean(item.imperfect),
           index: index + 1,
+          ...mapItemSwitchOverrides(item),
         }))
       : [],
   }));
@@ -7826,6 +8397,7 @@ function buildGrammarGroups(rawData) {
           answers: Array.isArray(item.answers) && item.answers.length ? item.answers : [item.answer || ""],
           imperfect: Boolean(item.imperfect),
           index: index + 1,
+          ...mapItemSwitchOverrides(item),
         }))
       : [],
   }));
@@ -7845,6 +8417,7 @@ function buildSlangGroups(rawData) {
           answer: item.answer || "",
           answers: Array.isArray(item.answers) && item.answers.length ? item.answers : [item.answer || ""],
           index: index + 1,
+          ...mapItemSwitchOverrides(item),
         }))
       : [],
   }));
@@ -7926,8 +8499,10 @@ function renderVerbGrid(items) {
   }
 
   items.forEach((verb, index) => {
+    const scoreKey = verbScoreKey(verb.infinitive, state.activeVerbTrack);
     const best = getVerbBestScore(verb, state.activeVerbTrack);
     const percent = calculatePercent(best, verb.formCount);
+    const staleRatio = getBestScoreStaleRatio("verbs", scoreKey, verb.formCount);
     const unlockInfo = getVerbUnlockInfo(verb.infinitive, state.activeVerbTrack);
 
     const card = document.createElement("button");
@@ -7943,7 +8518,7 @@ function renderVerbGrid(items) {
       ${unlockInfo.unlocked ? "" : `<span class="tile-lock-text">${unlockInfo.message}</span>`}
       <span class="best">Best: ${formatScore(best, verb.formCount)}</span>
       <div class="mini-progress-track">
-        <div class="mini-progress-fill" style="width:${percent}%"></div>
+        ${renderMiniProgressFill(percent, staleRatio)}
       </div>
     `;
     card.addEventListener("click", () => openVerbQuiz(verb.infinitive));
@@ -7962,19 +8537,434 @@ function filterAndRenderVerbs() {
 
 const VERB_CORE_SECTION_LABELS = {
   general: "General",
-  presente: "presente",
-  imperfecto: "imperfecto",
-  indefinido: "indefinido",
-  futuro: "futuro",
-  condicional: "condicional",
+  presente: "Present",
+  imperfecto: "Imperfect",
+  indefinido: "Preterite",
+  futuro: "Future",
+  condicional: "Conditional",
 };
 const VERB_ADDITIONAL_SECTION_LABELS = {
-  infinitivo: "infinitivo",
-  "subjuntivo-presente": "subjuntivo presente",
-  "subjuntivo-pasado": "subjuntivo pasado",
-  "imperativo-positivo": "imperativo positivo",
-  "subjuntivo-futuro": "subjuntivo futuro",
+  infinitivo: "Infinitive",
+  "subjuntivo-presente": "Present Subjunctive",
+  "subjuntivo-pasado": "Past Subjunctive",
+  "imperativo-positivo": "Positive Imperative",
+  "subjuntivo-futuro": "Future Subjunctive",
 };
+
+const VERB_CLUE_TENSE_TRANSLATIONS = {
+  infinitivo: "infinitive",
+  infinito: "infinitive",
+  gerundio: "gerund",
+  participio: "past participle",
+  participiopassato: "past participle",
+  participiopresente: "present participle",
+  presente: "present",
+  imperfecto: "imperfect",
+  imperfetto: "imperfect",
+  indefinido: "preterite",
+  passatoremoto: "remote past",
+  futuro: "future",
+  condicional: "conditional",
+  condizionale: "conditional",
+  subjuntivopresente: "present subjunctive",
+  subjuntivopasado: "past subjunctive",
+  subjuntivofuturo: "future subjunctive",
+  subgiuntivopresente: "present subjunctive",
+  subgiuntivoimperfetto: "imperfect subjunctive",
+  imperativopositivo: "positive imperative",
+  imperativo: "imperative",
+};
+
+const VERB_CLUE_PERSON_TRANSLATIONS = {
+  yo: "I",
+  tu: "you (informal)",
+  vos: "you (vos)",
+  elellausted: "he/she/you (formal)",
+  nosotros: "we",
+  vosotros: "you all (Spain)",
+  ellosellasustedes: "they/you all",
+  io: "I",
+  luilei: "he/she",
+  noi: "we",
+  voi: "you all",
+  loro: "they",
+};
+
+function getVerbClueLabel(form) {
+  const rawLabel = String(form?.label || "").trim();
+  if (!rawLabel) {
+    return "";
+  }
+  const parts = rawLabel.split(/\s+-\s+/, 2);
+  const tenseLabel = parts[0] || rawLabel;
+  const personLabel = parts[1] || "";
+  const tenseLookupKey = normalize(tenseLabel).replace(/\s+/g, "");
+  const translatedTense = VERB_CLUE_TENSE_TRANSLATIONS[tenseLookupKey] || tenseLabel;
+  if (!personLabel) {
+    return translatedTense;
+  }
+  const personLookupKey = normalize(personLabel).replace(/\s+/g, "");
+  const translatedPerson = VERB_CLUE_PERSON_TRANSLATIONS[personLookupKey] || personLabel;
+  return `${translatedTense} - ${translatedPerson}`;
+}
+
+const VERB_CLUE_PERSON_FROM_LABEL = {
+  yo: "yo",
+  tu: "tu",
+  vos: "vos",
+  tuvos: "tuvos",
+  elellausted: "elellausted",
+  nosotros: "nosotros",
+  vosotros: "vosotros",
+  ellosellasustedes: "ellosellasustedes",
+  io: "io",
+  luilei: "luilei",
+  noi: "noi",
+  voi: "voi",
+  loro: "loro",
+};
+
+const VERB_CLUE_PERSON_PROFILES = {
+  yo: { subject: "I", number: "1s" },
+  tu: { subject: "you", number: "2s" },
+  vos: { subject: "you", number: "2s", note: " (vos)" },
+  tuvos: { subject: "you", number: "2s" },
+  elellausted: { subject: "he/she", number: "3s" },
+  nosotros: { subject: "we", number: "1p" },
+  vosotros: { subject: "you all", number: "2p", note: " (Spain)" },
+  ellosellasustedes: { subject: "they", number: "3p" },
+  io: { subject: "I", number: "1s" },
+  luilei: { subject: "he/she", number: "3s" },
+  noi: { subject: "we", number: "1p" },
+  voi: { subject: "you all", number: "2p" },
+  loro: { subject: "they", number: "3p" },
+  impersonal: { subject: "there", number: "3s" },
+};
+
+const VERB_CLUE_SPANISH_SIX_PERSON_TENSES = new Set([
+  "imperfecto",
+  "indefinido",
+  "futuro",
+  "condicional",
+  "subjuntivopresente",
+  "subjuntivopasado",
+  "subjuntivofuturo",
+]);
+
+const VERB_CLUE_ITALIAN_SIX_PERSON_TENSES = new Set([
+  "imperfetto",
+  "passatoremoto",
+  "futuro",
+  "condizionale",
+  "subgiuntivopresente",
+  "subgiuntivoimperfetto",
+]);
+
+const ENGLISH_IRREGULAR_VERB_FORMS = {
+  be: {
+    present: { "1s": "am", "2s": "are", "3s": "is", "1p": "are", "2p": "are", "3p": "are" },
+    past: { "1s": "was", "2s": "were", "3s": "was", "1p": "were", "2p": "were", "3p": "were" },
+    pastParticiple: "been",
+    gerund: "being",
+    subjunctive: "be",
+    pastSubjunctive: "were",
+  },
+  have: { present3s: "has", past: "had", pastParticiple: "had", gerund: "having" },
+  do: { present3s: "does", past: "did", pastParticiple: "done", gerund: "doing" },
+  go: { present3s: "goes", past: "went", pastParticiple: "gone" },
+  say: { present3s: "says", past: "said", pastParticiple: "said" },
+  make: { present3s: "makes", past: "made", pastParticiple: "made" },
+  know: { present3s: "knows", past: "knew", pastParticiple: "known" },
+  see: { present3s: "sees", past: "saw", pastParticiple: "seen" },
+  come: { present3s: "comes", past: "came", pastParticiple: "come" },
+  find: { present3s: "finds", past: "found", pastParticiple: "found" },
+  think: { present3s: "thinks", past: "thought", pastParticiple: "thought" },
+  feel: { present3s: "feels", past: "felt", pastParticiple: "felt" },
+  bring: { present3s: "brings", past: "brought", pastParticiple: "brought" },
+  hear: { present3s: "hears", past: "heard", pastParticiple: "heard" },
+  choose: { present3s: "chooses", past: "chose", pastParticiple: "chosen" },
+  forbid: { present3s: "forbids", past: "forbade", pastParticiple: "forbidden" },
+  fall: { present3s: "falls", past: "fell", pastParticiple: "fallen" },
+  give: { present3s: "gives", past: "gave", pastParticiple: "given" },
+  hold: { present3s: "holds", past: "held", pastParticiple: "held" },
+  hurt: { present3s: "hurts", past: "hurt", pastParticiple: "hurt" },
+  leave: { present3s: "leaves", past: "left", pastParticiple: "left" },
+  lose: { present3s: "loses", past: "lost", pastParticiple: "lost" },
+  read: { present3s: "reads", past: "read", pastParticiple: "read" },
+  run: { present3s: "runs", past: "ran", pastParticiple: "run" },
+  sit: { present3s: "sits", past: "sat", pastParticiple: "sat" },
+  speak: { present3s: "speaks", past: "spoke", pastParticiple: "spoken" },
+  spend: { present3s: "spends", past: "spent", pastParticiple: "spent" },
+  take: { present3s: "takes", past: "took", pastParticiple: "taken" },
+  understand: { present3s: "understands", past: "understood", pastParticiple: "understood" },
+  win: { present3s: "wins", past: "won", pastParticiple: "won" },
+  write: { present3s: "writes", past: "wrote", pastParticiple: "written" },
+  eat: { present3s: "eats", past: "ate", pastParticiple: "eaten" },
+  drink: { present3s: "drinks", past: "drank", pastParticiple: "drunk" },
+  drive: { present3s: "drives", past: "drove", pastParticiple: "driven" },
+  lie: { present3s: "lies", past: "lay", pastParticiple: "lain" },
+  lay: { present3s: "lays", past: "laid", pastParticiple: "laid" },
+  break: { present3s: "breaks", past: "broke", pastParticiple: "broken" },
+  grow: { present3s: "grows", past: "grew", pastParticiple: "grown" },
+};
+
+function splitEnglishVerbTranslation(translation) {
+  const raw = String(translation || "").trim();
+  if (!raw) {
+    return null;
+  }
+  const basePhrase = raw.toLowerCase().startsWith("to ") ? raw.slice(3).trim() : raw;
+  if (!basePhrase) {
+    return null;
+  }
+  const parts = basePhrase.split(/\s+/);
+  return {
+    basePhrase,
+    head: parts[0].toLowerCase(),
+    tail: parts.slice(1).join(" "),
+  };
+}
+
+function normalizeVerbPersonTag(value) {
+  const key = normalize(value || "").replace(/\s+/g, "");
+  return VERB_CLUE_PERSON_FROM_LABEL[key] || null;
+}
+
+function getVerbPersonFromLabel(label) {
+  const parts = String(label || "").split(/\s+-\s+/, 2);
+  if (parts.length < 2) {
+    return null;
+  }
+  return normalizeVerbPersonTag(parts[1]);
+}
+
+function resolveVerbPersonTag(form, formIndex, forms) {
+  const explicitTag = normalizeVerbPersonTag(form?.personTag);
+  if (explicitTag) {
+    return explicitTag;
+  }
+  const labelTag = getVerbPersonFromLabel(form?.label);
+  if (labelTag) {
+    return labelTag;
+  }
+
+  const tenseKey = normalize(form?.tenseTag || "").replace(/\s+/g, "");
+  if (!tenseKey || !Array.isArray(forms) || formIndex < 0) {
+    return null;
+  }
+
+  const sameTenseForms = [];
+  forms.forEach((entry, index) => {
+    if (normalize(entry?.tenseTag || "").replace(/\s+/g, "") === tenseKey) {
+      sameTenseForms.push({ entry, index });
+    }
+  });
+  const tensePosition = sameTenseForms.findIndex((entry) => entry.index === formIndex);
+  if (tensePosition < 0) {
+    return null;
+  }
+
+  if (tenseKey === "presente" && normalize(form?.answer || "") === "hay") {
+    return "impersonal";
+  }
+
+  const isItalianTenseSet = sameTenseForms.some(({ entry }) => {
+    const personTag = normalizeVerbPersonTag(entry?.personTag);
+    return Boolean(personTag && ["io", "luilei", "noi", "voi", "loro"].includes(personTag));
+  });
+  if (isItalianTenseSet) {
+    return ["io", "tu", "luilei", "noi", "voi", "loro"][tensePosition] || null;
+  }
+
+  if (tenseKey === "imperativo") {
+    if (sameTenseForms.length >= 7 && tensePosition === 2) {
+      return "tuvos";
+    }
+    return ["tu", "vos", "elellausted", "nosotros", "vosotros", "ellosellasustedes"][tensePosition] || null;
+  }
+
+  if (tenseKey === "presente" && sameTenseForms.length >= 7) {
+    return ["yo", "tu", "vos", "elellausted", "nosotros", "vosotros", "ellosellasustedes"][tensePosition] || null;
+  }
+  if (VERB_CLUE_SPANISH_SIX_PERSON_TENSES.has(tenseKey)) {
+    return ["yo", "tu", "elellausted", "nosotros", "vosotros", "ellosellasustedes"][tensePosition] || null;
+  }
+  if (VERB_CLUE_ITALIAN_SIX_PERSON_TENSES.has(tenseKey)) {
+    return ["io", "tu", "luilei", "noi", "voi", "loro"][tensePosition] || null;
+  }
+  return null;
+}
+
+function conjugateEnglishRegularPresent3s(verb) {
+  if (/(s|sh|ch|x|z|o)$/i.test(verb)) {
+    return `${verb}es`;
+  }
+  if (/[^aeiou]y$/i.test(verb)) {
+    return `${verb.slice(0, -1)}ies`;
+  }
+  return `${verb}s`;
+}
+
+function conjugateEnglishRegularPast(verb) {
+  if (verb.endsWith("e")) {
+    return `${verb}d`;
+  }
+  if (/[^aeiou]y$/i.test(verb)) {
+    return `${verb.slice(0, -1)}ied`;
+  }
+  return `${verb}ed`;
+}
+
+function conjugateEnglishRegularGerund(verb) {
+  if (verb.endsWith("ie")) {
+    return `${verb.slice(0, -2)}ying`;
+  }
+  if (verb.endsWith("e") && !/(ee|oe|ye)$/i.test(verb)) {
+    return `${verb.slice(0, -1)}ing`;
+  }
+  return `${verb}ing`;
+}
+
+function conjugateEnglishHead(verbHead, mode, personNumber = "3s") {
+  const lowerHead = verbHead.toLowerCase();
+  const irregular = ENGLISH_IRREGULAR_VERB_FORMS[lowerHead];
+
+  if (mode === "present") {
+    if (irregular?.present?.[personNumber]) {
+      return irregular.present[personNumber];
+    }
+    if (personNumber === "3s") {
+      return irregular?.present3s || conjugateEnglishRegularPresent3s(lowerHead);
+    }
+    return lowerHead;
+  }
+  if (mode === "past") {
+    if (typeof irregular?.past === "string") {
+      return irregular.past;
+    }
+    if (irregular?.past?.[personNumber]) {
+      return irregular.past[personNumber];
+    }
+    return conjugateEnglishRegularPast(lowerHead);
+  }
+  if (mode === "pastParticiple") {
+    return irregular?.pastParticiple || conjugateEnglishRegularPast(lowerHead);
+  }
+  if (mode === "gerund") {
+    return irregular?.gerund || conjugateEnglishRegularGerund(lowerHead);
+  }
+  if (mode === "subjunctivePresent") {
+    return irregular?.subjunctive || lowerHead;
+  }
+  if (mode === "subjunctivePast") {
+    if (irregular?.pastSubjunctive) {
+      return irregular.pastSubjunctive;
+    }
+    return conjugateEnglishHead(lowerHead, "past", personNumber);
+  }
+  return lowerHead;
+}
+
+function formatVerbSubject(profile) {
+  if (!profile) {
+    return "";
+  }
+  return `${profile.subject}${profile.note || ""}`;
+}
+
+function joinEnglishVerbHeadAndTail(headForm, tail) {
+  return tail ? `${headForm} ${tail}` : headForm;
+}
+
+function getVerbEnglishClue(verb, form, formIndex, forms) {
+  const translation = splitEnglishVerbTranslation(verb?.translation || "");
+  if (!translation) {
+    return getVerbClueLabel(form);
+  }
+
+  const tenseKey = normalize(form?.tenseTag || "").replace(/\s+/g, "");
+  const personTag = resolveVerbPersonTag(form, formIndex, forms);
+  const personProfile = personTag ? VERB_CLUE_PERSON_PROFILES[personTag] || null : null;
+  const personNumber = personProfile?.number || "3s";
+  const subject = formatVerbSubject(personProfile);
+  const basePhrase = translation.basePhrase;
+
+  if (tenseKey === "infinitivo" || tenseKey === "infinito" || tenseKey === "infinitive") {
+    return `to ${basePhrase}`;
+  }
+  if (tenseKey === "gerundio" || tenseKey === "participiopresente") {
+    return joinEnglishVerbHeadAndTail(conjugateEnglishHead(translation.head, "gerund"), translation.tail);
+  }
+  if (tenseKey === "participio" || tenseKey === "participiopassato") {
+    return joinEnglishVerbHeadAndTail(
+      conjugateEnglishHead(translation.head, "pastParticiple"),
+      translation.tail,
+    );
+  }
+  if (tenseKey === "presente") {
+    if (personTag === "impersonal") {
+      return "there is";
+    }
+    const phrase = joinEnglishVerbHeadAndTail(
+      conjugateEnglishHead(translation.head, "present", personNumber),
+      translation.tail,
+    );
+    return subject ? `${subject} ${phrase}` : phrase;
+  }
+  if (tenseKey === "imperfecto" || tenseKey === "imperfetto") {
+    return subject ? `${subject} used to ${basePhrase}` : `used to ${basePhrase}`;
+  }
+  if (tenseKey === "indefinido" || tenseKey === "passatoremoto") {
+    const phrase = joinEnglishVerbHeadAndTail(
+      conjugateEnglishHead(translation.head, "past", personNumber),
+      translation.tail,
+    );
+    return subject ? `${subject} ${phrase}` : phrase;
+  }
+  if (tenseKey === "futuro") {
+    return subject ? `${subject} will ${basePhrase}` : `will ${basePhrase}`;
+  }
+  if (tenseKey === "condicional" || tenseKey === "condizionale") {
+    return subject ? `${subject} would ${basePhrase}` : `would ${basePhrase}`;
+  }
+  if (tenseKey === "subjuntivopresente" || tenseKey === "subgiuntivopresente") {
+    const phrase = joinEnglishVerbHeadAndTail(
+      conjugateEnglishHead(translation.head, "subjunctivePresent", personNumber),
+      translation.tail,
+    );
+    return subject ? `that ${subject} ${phrase}` : `that ${phrase}`;
+  }
+  if (tenseKey === "subjuntivopasado" || tenseKey === "subgiuntivoimperfetto") {
+    const phrase = joinEnglishVerbHeadAndTail(
+      conjugateEnglishHead(translation.head, "subjunctivePast", personNumber),
+      translation.tail,
+    );
+    return subject ? `if ${subject} ${phrase}` : `if ${phrase}`;
+  }
+  if (tenseKey === "subjuntivofuturo") {
+    return subject ? `if ${subject} should ${basePhrase}` : `if someone should ${basePhrase}`;
+  }
+  if (tenseKey === "imperativo" || tenseKey === "negativeimperativo") {
+    if (personTag === "tuvos") {
+      return `don't ${basePhrase}`;
+    }
+    if (personTag === "nosotros" || personTag === "noi") {
+      return `let's ${basePhrase}`;
+    }
+    if (personTag === "elellausted" || personTag === "luilei") {
+      return `let him/her ${basePhrase}`;
+    }
+    if (personTag === "ellosellasustedes" || personTag === "loro") {
+      return `let them ${basePhrase}`;
+    }
+    if (personTag === "vos") {
+      return `${basePhrase}! (vos)`;
+    }
+    return `${basePhrase}!`;
+  }
+
+  return getVerbClueLabel(form);
+}
 
 function getVerbCoreSectionKey(form) {
   const tenseTag = normalize(form?.tenseTag || "");
@@ -8059,7 +9049,7 @@ function renderVerbForms(forms) {
     row.className = "form-row";
     row.dataset.index = index.toString();
     row.innerHTML = `
-      <span class="form-label">${form.label}</span>
+      <span class="form-label">${getVerbEnglishClue(state.currentVerb, form, index, forms)}</span>
       <span class="form-answer">${placeholder(form.answer)}</span>
     `;
     formsList.appendChild(row);
@@ -8268,7 +9258,7 @@ function returnToVerbDashboard() {
 }
 
 function addEnglishArticle(hint) {
-  const cleaned = hint.trim();
+  const cleaned = cleanEnglishHintText(hint);
   if (!cleaned) {
     return "the";
   }
@@ -8276,6 +9266,175 @@ function addEnglishArticle(hint) {
     return cleaned;
   }
   return `the ${cleaned}`;
+}
+
+function cleanEnglishHintText(value) {
+  return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function splitEnglishHintAlternatives(rawHint) {
+  const cleaned = cleanEnglishHintText(rawHint);
+  if (!cleaned) {
+    return [];
+  }
+  const segments = [];
+  let currentSegment = "";
+  let parenDepth = 0;
+  let bracketDepth = 0;
+  for (const character of cleaned) {
+    if (character === "(") {
+      parenDepth += 1;
+    } else if (character === ")" && parenDepth > 0) {
+      parenDepth -= 1;
+    } else if (character === "[") {
+      bracketDepth += 1;
+    } else if (character === "]" && bracketDepth > 0) {
+      bracketDepth -= 1;
+    }
+
+    if ((character === "/" || character === ";") && parenDepth === 0 && bracketDepth === 0) {
+      const segment = cleanEnglishHintText(currentSegment);
+      if (segment) {
+        segments.push(segment);
+      }
+      currentSegment = "";
+      continue;
+    }
+
+    currentSegment += character;
+  }
+
+  const tail = cleanEnglishHintText(currentSegment);
+  if (tail) {
+    segments.push(tail);
+  }
+
+  if (!segments.length) {
+    return [cleaned];
+  }
+  return segments;
+}
+
+function simplifyEnglishHintVariant(rawVariant) {
+  return cleanEnglishHintText(
+    String(rawVariant || "")
+      .replace(/\([^)]*\)/g, " ")
+      .replace(/\[[^\]]*\]/g, " "),
+  );
+}
+
+function stripPlaceholderContextVariant(rawVariant) {
+  const cleaned = cleanEnglishHintText(rawVariant);
+  if (!cleaned) {
+    return "";
+  }
+  if (!/\((?:[^)]*)(someone|somebody|something|sb|sth)(?:[^)]*)\)\s*to$/i.test(cleaned)) {
+    return "";
+  }
+  return cleanEnglishHintText(
+    cleaned.replace(/\((?:[^)]*)(someone|somebody|something|sb|sth)(?:[^)]*)\)\s*to$/i, ""),
+  );
+}
+
+function getSwitchHintOverride(item) {
+  const candidates = [item?.switchHint, item?.switch_hint];
+  for (const candidate of candidates) {
+    const cleaned = cleanEnglishHintText(candidate);
+    if (cleaned) {
+      return cleaned;
+    }
+  }
+  return "";
+}
+
+function collectSwitchOverrideValues(rawValue, target) {
+  if (Array.isArray(rawValue)) {
+    rawValue.forEach((entry) => collectSwitchOverrideValues(entry, target));
+    return;
+  }
+  if (typeof rawValue !== "string" && typeof rawValue !== "number") {
+    return;
+  }
+  const cleaned = cleanEnglishHintText(rawValue);
+  if (cleaned) {
+    target.push(cleaned);
+  }
+}
+
+function getSwitchAnswerOverrides(item) {
+  const candidates = [];
+  collectSwitchOverrideValues(item?.switchAnswers, candidates);
+  collectSwitchOverrideValues(item?.switch_answers, candidates);
+  collectSwitchOverrideValues(item?.switchAnswer, candidates);
+  collectSwitchOverrideValues(item?.switch_answer, candidates);
+  return [...new Set(candidates)];
+}
+
+function getRawEnglishHintAnswers(hint) {
+  const rawEntries = Array.isArray(hint) ? hint : [hint];
+  const variants = new Set();
+
+  rawEntries.forEach((entry) => {
+    splitEnglishHintAlternatives(entry).forEach((segment) => {
+      const cleaned = cleanEnglishHintText(segment);
+      if (!cleaned) {
+        return;
+      }
+      const simplified = simplifyEnglishHintVariant(cleaned);
+      if (simplified) {
+        variants.add(simplified);
+      }
+      const contextStripped = stripPlaceholderContextVariant(cleaned);
+      if (contextStripped) {
+        variants.add(contextStripped);
+      }
+      if (cleaned !== simplified) {
+        variants.add(cleaned);
+      }
+    });
+  });
+
+  if (!variants.size) {
+    const cleaned = cleanEnglishHintText(hint);
+    if (cleaned) {
+      variants.add(cleaned);
+    }
+  }
+
+  return [...variants];
+}
+
+function getSwitchEnglishHintAnswers(item) {
+  const switchOverrides = getSwitchAnswerOverrides(item);
+  if (switchOverrides.length) {
+    return getRawEnglishHintAnswers(switchOverrides);
+  }
+  return getRawEnglishHintAnswers(item?.hint || "");
+}
+
+function getNounEnglishHintAnswers(hint) {
+  const variants = getRawEnglishHintAnswers(hint);
+  if (!variants.length) {
+    return [];
+  }
+  const answers = new Set();
+  variants.forEach((variant) => {
+    answers.add(variant);
+    if (/^the\s+/i.test(variant)) {
+      answers.add(variant.replace(/^the\s+/i, "").trim());
+    } else {
+      answers.add(addEnglishArticle(variant));
+    }
+  });
+  return [...answers].filter(Boolean);
+}
+
+function getSwitchNounEnglishHintAnswers(item) {
+  const switchOverrides = getSwitchAnswerOverrides(item);
+  if (switchOverrides.length) {
+    return getNounEnglishHintAnswers(switchOverrides);
+  }
+  return getNounEnglishHintAnswers(item?.hint || "");
 }
 
 function pluralizeSpanishWord(word) {
@@ -8331,13 +9490,40 @@ function makeNounQuizItem(item) {
   const singularAnswers = item.answers && item.answers.length ? item.answers : [item.answer];
   const singularUnique = [...new Set(singularAnswers)];
   const baseHint = item.hintLanguage === "es" ? item.hint : addEnglishArticle(item.hint);
+  const englishHintFallback = cleanEnglishHintText(item?.hint || "");
+  const englishAnswerVariants = getSwitchNounEnglishHintAnswers(item);
+  const switchHint = getSwitchHintOverride(item);
+  const isSwitchMode = state.switchMode === "switch";
 
   if (state.nounMode === "plural") {
     const pluralAnswers = getPluralAnswersFromItem(item, singularUnique);
+    if (isSwitchMode) {
+      return {
+        hint: `${switchHint || pluralAnswers[0]} (plural)`,
+        displayAnswer: englishAnswerVariants[0] || englishHintFallback,
+        answers: englishAnswerVariants.length
+          ? englishAnswerVariants
+          : englishHintFallback
+            ? [englishHintFallback]
+            : [],
+      };
+    }
     return {
       hint: `${baseHint} (plural)`,
       displayAnswer: pluralAnswers[0],
       answers: pluralAnswers,
+    };
+  }
+
+  if (isSwitchMode) {
+    return {
+      hint: switchHint || singularUnique[0],
+      displayAnswer: englishAnswerVariants[0] || englishHintFallback,
+      answers: englishAnswerVariants.length
+        ? englishAnswerVariants
+        : englishHintFallback
+          ? [englishHintFallback]
+          : [],
     };
   }
 
@@ -8354,6 +9540,14 @@ function updateNounsAnswerPrompt() {
     getCurrentLanguage() === "it"
       ? { singular: "Example: il libro", plural: "Example: i libri" }
       : { singular: "Example: el libro", plural: "Example: los libros" };
+  if (state.switchMode === "switch") {
+    nounsAnswerLabel.textContent =
+      state.nounMode === "plural"
+        ? "Type English noun meaning (plural clue)"
+        : "Type English noun meaning";
+    nounsAnswerInput.placeholder = "Example: book";
+    return;
+  }
   if (state.nounMode === "plural") {
     nounsAnswerLabel.textContent = `Type ${target} noun with article (plural)`;
     nounsAnswerInput.placeholder = examples.plural;
@@ -8370,8 +9564,10 @@ function renderNounsDeckGrid() {
   nounModeToggle.checked = state.nounMode === "plural";
 
   decks.forEach((deck, index) => {
-    const best = getNounBestScore(deck, state.nounMode);
+    const scoreKey = nounScoreKey(deck.id, state.nounMode, state.switchMode);
+    const best = getNounBestScore(deck, state.nounMode, state.switchMode);
     const percent = calculatePercent(best, deck.count);
+    const staleRatio = getBestScoreStaleRatio("nouns", scoreKey, deck.count);
     const unlockInfo = getNounDeckUnlockInfo(deck.id, state.activeNounTrack);
 
     const card = document.createElement("button");
@@ -8386,7 +9582,7 @@ function renderNounsDeckGrid() {
       ${unlockInfo.unlocked ? "" : `<span class="tile-lock-text">${unlockInfo.message}</span>`}
       <span class="best deck-best">Best: ${formatScore(best, deck.count)}</span>
       <div class="mini-progress-track">
-        <div class="mini-progress-fill" style="width:${percent}%"></div>
+        ${renderMiniProgressFill(percent, staleRatio)}
       </div>
     `;
     card.addEventListener("click", () => openNounQuiz(deck.id));
@@ -8414,9 +9610,11 @@ function updateNounsQuizMeta() {
     return;
   }
   const total = state.currentNounDeck.count;
-  const best = getNounBestScore(state.currentNounDeck, state.nounMode);
+  const best = getNounBestScore(state.currentNounDeck, state.nounMode, state.switchMode);
+  const directionLabel = state.switchMode === "switch" ? "switch mode" : "normal mode";
   const timerMeta = state.nounQuizEnded ? "" : ` • ${getQuizTimerText()}`;
-  nounsQuizMeta.textContent = `${total} nouns • ${state.nounMode} mode • Best: ${formatScore(best, total)}${timerMeta}`;
+  nounsQuizMeta.textContent =
+    `${total} nouns • ${state.nounMode} mode • ${directionLabel} • Best: ${formatScore(best, total)}${timerMeta}`;
 }
 
 function updateNounProgress() {
@@ -8475,7 +9673,7 @@ function endNounQuiz(reason) {
   const score = state.nounFoundIndexes.size;
   const changed = recordBestScore(
     "nouns",
-    nounScoreKey(state.currentNounDeck.id),
+    nounScoreKey(state.currentNounDeck.id, state.nounMode, state.switchMode),
     score,
     total,
   );
@@ -8589,7 +9787,7 @@ function returnToNounsDashboard() {
   if (state.currentNounDeck && !state.nounQuizEnded) {
     const changed = recordBestScore(
       "nouns",
-      nounScoreKey(state.currentNounDeck.id),
+      nounScoreKey(state.currentNounDeck.id, state.nounMode, state.switchMode),
       state.nounFoundIndexes.size,
       state.currentNounItems.length,
     );
@@ -8622,6 +9820,17 @@ function makeBeginnerQuizItem(item) {
   }
   const answers = item.answers && item.answers.length ? item.answers : [item.answer];
   const uniqueAnswers = [...new Set(answers)];
+  if (state.switchMode === "switch") {
+    const englishHintFallback = cleanEnglishHintText(item?.hint || "");
+    const englishAnswers = getSwitchEnglishHintAnswers(item);
+    const switchHint = getSwitchHintOverride(item);
+    return {
+      kind: "quiz",
+      hint: switchHint || uniqueAnswers[0] || "",
+      displayAnswer: englishAnswers[0] || englishHintFallback,
+      answers: englishAnswers.length ? englishAnswers : englishHintFallback ? [englishHintFallback] : [],
+    };
+  }
   return {
     kind: "quiz",
     hint: item.hint,
@@ -8650,8 +9859,10 @@ function renderBeginnerDeckGrid() {
   beginnerDeckCount.textContent = `${state.beginnerGroups.length} decks`;
 
   state.beginnerGroups.forEach((group, index) => {
-    const best = getBeginnerBestScore(group);
+    const scoreKey = beginnerScoreKey(group.id, state.switchMode);
+    const best = getBeginnerBestScore(group, state.switchMode);
     const percent = calculatePercent(best, group.count);
+    const staleRatio = getBestScoreStaleRatio("beginner", scoreKey, group.count);
     const unlockInfo = getBeginnerDeckUnlockInfo(group.id);
 
     const card = document.createElement("button");
@@ -8666,7 +9877,7 @@ function renderBeginnerDeckGrid() {
       ${unlockInfo.unlocked ? "" : `<span class="tile-lock-text">${unlockInfo.message}</span>`}
       <span class="best deck-best">Best: ${formatScore(best, group.count)}</span>
       <div class="mini-progress-track">
-        <div class="mini-progress-fill" style="width:${percent}%"></div>
+        ${renderMiniProgressFill(percent, staleRatio)}
       </div>
     `;
     card.addEventListener("click", () => openBeginnerQuiz(group.id));
@@ -8700,9 +9911,10 @@ function updateBeginnerQuizMeta() {
     return;
   }
   const total = getBeginnerQuizTotal();
-  const best = getBeginnerBestScore(state.currentBeginnerGroup);
+  const best = getBeginnerBestScore(state.currentBeginnerGroup, state.switchMode);
+  const directionLabel = state.switchMode === "switch" ? "switch mode" : "normal mode";
   const timerMeta = state.beginnerQuizEnded ? "" : ` • ${getQuizTimerText()}`;
-  beginnerQuizMeta.textContent = `${total} items • Best: ${formatScore(best, total)}${timerMeta}`;
+  beginnerQuizMeta.textContent = `${total} items • ${directionLabel} • Best: ${formatScore(best, total)}${timerMeta}`;
 }
 
 function updateBeginnerProgress() {
@@ -8768,7 +9980,12 @@ function endBeginnerQuiz(reason) {
   stopQuizTimer();
   const total = getBeginnerQuizTotal();
   const score = state.beginnerFoundIndexes.size;
-  const changed = recordBestScore("beginner", state.currentBeginnerGroup.id, score, total);
+  const changed = recordBestScore(
+    "beginner",
+    beginnerScoreKey(state.currentBeginnerGroup.id, state.switchMode),
+    score,
+    total,
+  );
   updateBeginnerQuizMeta();
 
   if (reason === "gave-up") {
@@ -8828,6 +10045,15 @@ function attemptBeginnerAnswer(rawValue, strict = false) {
   }
 }
 
+function updateBeginnerAnswerPrompt() {
+  if (state.switchMode === "switch") {
+    beginnerAnswerLabel.textContent = "Type English answer";
+  } else {
+    beginnerAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} answer`;
+  }
+  beginnerAnswerInput.placeholder = "Press Enter to submit...";
+}
+
 function openBeginnerQuiz(groupId) {
   const group = state.beginnerGroups.find((item) => item.id === groupId);
   if (!group) {
@@ -8860,8 +10086,7 @@ function openBeginnerQuiz(groupId) {
     },
   });
   updateBeginnerQuizMeta();
-  beginnerAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} answer`;
-  beginnerAnswerInput.placeholder = "Press Enter to submit...";
+  updateBeginnerAnswerPrompt();
   beginnerFeedback.className = "feedback";
   beginnerFeedback.textContent = "";
   beginnerAnswerInput.value = "";
@@ -8881,7 +10106,7 @@ function returnToBeginnerDashboard() {
   if (state.currentBeginnerGroup && !state.beginnerQuizEnded) {
     const changed = recordBestScore(
       "beginner",
-      state.currentBeginnerGroup.id,
+      beginnerScoreKey(state.currentBeginnerGroup.id, state.switchMode),
       state.beginnerFoundIndexes.size,
       getBeginnerQuizTotal(),
     );
@@ -8920,6 +10145,16 @@ function makeDiscourseQuizItem(item) {
   const sourceAnswers = item.answers && item.answers.length ? item.answers : [item.answer];
   const expanded = sourceAnswers.flatMap(expandDiscourseAnswerVariants);
   const uniqueAnswers = [...new Set(expanded)];
+  if (state.switchMode === "switch") {
+    const englishHintFallback = cleanEnglishHintText(item?.hint || "");
+    const englishAnswers = getSwitchEnglishHintAnswers(item);
+    const switchHint = getSwitchHintOverride(item);
+    return {
+      hint: switchHint || uniqueAnswers[0] || "",
+      displayAnswer: englishAnswers[0] || englishHintFallback,
+      answers: englishAnswers.length ? englishAnswers : englishHintFallback ? [englishHintFallback] : [],
+    };
+  }
   return {
     hint: item.hint,
     displayAnswer: uniqueAnswers[0],
@@ -8932,8 +10167,10 @@ function renderDiscourseDeckGrid() {
   discourseDeckCount.textContent = `${state.discourseGroups.length} decks`;
 
   state.discourseGroups.forEach((group, index) => {
-    const best = getDiscourseBestScore(group);
+    const scoreKey = discourseScoreKey(group.id, state.switchMode);
+    const best = getDiscourseBestScore(group, state.switchMode);
     const percent = calculatePercent(best, group.count);
+    const staleRatio = getBestScoreStaleRatio("discourse", scoreKey, group.count);
     const unlockInfo = getDiscourseDeckUnlockInfo(group.id);
 
     const card = document.createElement("button");
@@ -8948,7 +10185,7 @@ function renderDiscourseDeckGrid() {
       ${unlockInfo.unlocked ? "" : `<span class="tile-lock-text">${unlockInfo.message}</span>`}
       <span class="best deck-best">Best: ${formatScore(best, group.count)}</span>
       <div class="mini-progress-track">
-        <div class="mini-progress-fill" style="width:${percent}%"></div>
+        ${renderMiniProgressFill(percent, staleRatio)}
       </div>
     `;
     card.addEventListener("click", () => openDiscourseQuiz(group.id));
@@ -8976,9 +10213,11 @@ function updateDiscourseQuizMeta() {
     return;
   }
   const total = state.currentDiscourseGroup.count;
-  const best = getDiscourseBestScore(state.currentDiscourseGroup);
+  const best = getDiscourseBestScore(state.currentDiscourseGroup, state.switchMode);
+  const directionLabel = state.switchMode === "switch" ? "switch mode" : "normal mode";
   const timerMeta = state.discourseQuizEnded ? "" : ` • ${getQuizTimerText()}`;
-  discourseQuizMeta.textContent = `${total} items • Best: ${formatScore(best, total)}${timerMeta}`;
+  discourseQuizMeta.textContent =
+    `${total} items • ${directionLabel} • Best: ${formatScore(best, total)}${timerMeta}`;
 }
 
 function updateDiscourseProgress() {
@@ -9036,7 +10275,12 @@ function endDiscourseQuiz(reason) {
   stopQuizTimer();
   const total = state.currentDiscourseItems.length;
   const score = state.discourseFoundIndexes.size;
-  const changed = recordBestScore("discourse", state.currentDiscourseGroup.id, score, total);
+  const changed = recordBestScore(
+    "discourse",
+    discourseScoreKey(state.currentDiscourseGroup.id, state.switchMode),
+    score,
+    total,
+  );
   updateDiscourseQuizMeta();
 
   if (reason === "gave-up") {
@@ -9096,6 +10340,15 @@ function attemptDiscourseAnswer(rawValue, strict = false) {
   }
 }
 
+function updateDiscourseAnswerPrompt() {
+  if (state.switchMode === "switch") {
+    discourseAnswerLabel.textContent = "Type English chunk";
+  } else {
+    discourseAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} chunk`;
+  }
+  discourseAnswerInput.placeholder = "Press Enter to submit...";
+}
+
 function openDiscourseQuiz(groupId) {
   const group = state.discourseGroups.find((item) => item.id === groupId);
   if (!group) {
@@ -9128,8 +10381,7 @@ function openDiscourseQuiz(groupId) {
     },
   });
   updateDiscourseQuizMeta();
-  discourseAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} chunk`;
-  discourseAnswerInput.placeholder = "Press Enter to submit...";
+  updateDiscourseAnswerPrompt();
   discourseFeedback.className = "feedback";
   discourseFeedback.textContent = "";
   discourseAnswerInput.value = "";
@@ -9149,7 +10401,7 @@ function returnToDiscourseDashboard() {
   if (state.currentDiscourseGroup && !state.discourseQuizEnded) {
     const changed = recordBestScore(
       "discourse",
-      state.currentDiscourseGroup.id,
+      discourseScoreKey(state.currentDiscourseGroup.id, state.switchMode),
       state.discourseFoundIndexes.size,
       state.currentDiscourseItems.length,
     );
@@ -9171,15 +10423,37 @@ function returnToDiscourseDashboard() {
   openDiscourseDashboard();
 }
 
-function makeConversionQuizItem(item) {
-  const answers = item.answers && item.answers.length ? item.answers : [item.answer];
-  const uniqueAnswers = [...new Set(answers)];
+function makeConversionQuizItem(item, mode = state.switchMode) {
+  const targetAnswers = item.answers && item.answers.length ? item.answers : [item.answer];
+  const uniqueTargetAnswers = [...new Set(targetAnswers)];
+  const englishHint = cleanEnglishHintText(item?.hint || "");
+  const switchEnglishAnswers = getSwitchEnglishHintAnswers(item);
+  const switchHint = getSwitchHintOverride(item) || uniqueTargetAnswers[0] || item.answer || "";
+  const clue = mode === "switch" ? switchHint : englishHint;
+  const answers =
+    mode === "switch"
+      ? switchEnglishAnswers.length
+        ? switchEnglishAnswers
+        : englishHint
+          ? [englishHint]
+          : []
+      : uniqueTargetAnswers;
+  const uniqueAnswers = [...new Set(answers.filter(Boolean))];
   return {
-    hint: item.imperfect ? `${item.hint} *` : item.hint,
-    displayAnswer: uniqueAnswers[0],
+    hint: item.imperfect ? `${clue} *` : clue,
+    displayAnswer: uniqueAnswers[0] || (mode === "switch" ? englishHint : ""),
     answers: uniqueAnswers,
     imperfect: item.imperfect,
   };
+}
+
+function updateConversionAnswerPrompt() {
+  if (state.switchMode === "switch") {
+    conversionAnswerLabel.textContent = "Type English answer";
+  } else {
+    conversionAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} conversion`;
+  }
+  conversionAnswerInput.placeholder = "Press Enter to submit...";
 }
 
 function renderConversionDeckGrid() {
@@ -9187,8 +10461,10 @@ function renderConversionDeckGrid() {
   conversionDeckCount.textContent = `${state.conversionGroups.length} decks`;
 
   state.conversionGroups.forEach((group, index) => {
-    const best = getConversionBestScore(group);
+    const scoreKey = conversionScoreKey(group.id, state.switchMode);
+    const best = getConversionBestScore(group, state.switchMode);
     const percent = calculatePercent(best, group.count);
+    const staleRatio = getBestScoreStaleRatio("conversion", scoreKey, group.count);
     const unlockInfo = getConversionDeckUnlockInfo(group.id);
 
     const card = document.createElement("button");
@@ -9203,7 +10479,7 @@ function renderConversionDeckGrid() {
       ${unlockInfo.unlocked ? "" : `<span class="tile-lock-text">${unlockInfo.message}</span>`}
       <span class="best deck-best">Best: ${formatScore(best, group.count)}</span>
       <div class="mini-progress-track">
-        <div class="mini-progress-fill" style="width:${percent}%"></div>
+        ${renderMiniProgressFill(percent, staleRatio)}
       </div>
     `;
     card.addEventListener("click", () => openConversionQuiz(group.id));
@@ -9231,9 +10507,10 @@ function updateConversionQuizMeta() {
     return;
   }
   const total = state.currentConversionGroup.count;
-  const best = getConversionBestScore(state.currentConversionGroup);
+  const best = getConversionBestScore(state.currentConversionGroup, state.switchMode);
+  const modeLabel = state.switchMode === "switch" ? "switch mode" : "normal mode";
   const timerMeta = state.conversionQuizEnded ? "" : ` • ${getQuizTimerText()}`;
-  conversionQuizMeta.textContent = `${total} words • Best: ${formatScore(best, total)}${timerMeta}`;
+  conversionQuizMeta.textContent = `${total} words • ${modeLabel} • Best: ${formatScore(best, total)}${timerMeta}`;
 }
 
 function updateConversionProgress() {
@@ -9291,7 +10568,12 @@ function endConversionQuiz(reason) {
   stopQuizTimer();
   const total = state.currentConversionItems.length;
   const score = state.conversionFoundIndexes.size;
-  const changed = recordBestScore("conversion", state.currentConversionGroup.id, score, total);
+  const changed = recordBestScore(
+    "conversion",
+    conversionScoreKey(state.currentConversionGroup.id),
+    score,
+    total,
+  );
   updateConversionQuizMeta();
 
   if (reason === "gave-up") {
@@ -9363,7 +10645,9 @@ function openConversionQuiz(groupId) {
   }
 
   state.currentConversionGroup = group;
-  state.currentConversionItems = group.items.map(makeConversionQuizItem);
+  state.currentConversionItems = group.items.map((item) =>
+    makeConversionQuizItem(item, state.switchMode),
+  );
   state.conversionFoundIndexes = new Set();
   state.conversionAnswerLookup = buildAnswerLookup(
     state.currentConversionItems,
@@ -9372,7 +10656,13 @@ function openConversionQuiz(groupId) {
   state.conversionQuizEnded = false;
 
   conversionQuizTitle.textContent = group.title;
-  conversionRuleDescription.textContent = `${group.description} (* = not a perfect match)`;
+  const modeHelp =
+    state.switchMode === "switch"
+      ? `Switch mode: ${getTargetLanguageAdjective()} clue to English answer.`
+      : `Normal mode: English clue to ${getTargetLanguageAdjective()} answer.`;
+  conversionRuleDescription.textContent = [group.description, modeHelp, "(* = not a perfect match)"]
+    .filter(Boolean)
+    .join(" ");
   startQuizTimer({
     onTick: () => {
       updateConversionQuizMeta();
@@ -9384,8 +10674,7 @@ function openConversionQuiz(groupId) {
     },
   });
   updateConversionQuizMeta();
-  conversionAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} conversion`;
-  conversionAnswerInput.placeholder = "Press Enter to submit...";
+  updateConversionAnswerPrompt();
   conversionFeedback.className = "feedback";
   conversionFeedback.textContent = "";
   conversionAnswerInput.value = "";
@@ -9405,7 +10694,7 @@ function returnToConversionDashboard() {
   if (state.currentConversionGroup && !state.conversionQuizEnded) {
     const changed = recordBestScore(
       "conversion",
-      state.currentConversionGroup.id,
+      conversionScoreKey(state.currentConversionGroup.id),
       state.conversionFoundIndexes.size,
       state.currentConversionItems.length,
     );
@@ -9430,6 +10719,17 @@ function returnToConversionDashboard() {
 function makeGrammarQuizItem(item) {
   const answers = item.answers && item.answers.length ? item.answers : [item.answer];
   const uniqueAnswers = [...new Set(answers)];
+  if (state.switchMode === "switch") {
+    const englishHintFallback = cleanEnglishHintText(item?.hint || "");
+    const englishAnswers = getSwitchEnglishHintAnswers(item);
+    const switchHint = getSwitchHintOverride(item);
+    return {
+      hint: item.imperfect ? `${switchHint || uniqueAnswers[0]} *` : switchHint || uniqueAnswers[0],
+      displayAnswer: englishAnswers[0] || englishHintFallback,
+      answers: englishAnswers.length ? englishAnswers : englishHintFallback ? [englishHintFallback] : [],
+      imperfect: item.imperfect,
+    };
+  }
   return {
     hint: item.imperfect ? `${item.hint} *` : item.hint,
     displayAnswer: uniqueAnswers[0],
@@ -9443,8 +10743,10 @@ function renderGrammarDeckGrid() {
   grammarDeckCount.textContent = `${state.grammarGroups.length} decks`;
 
   state.grammarGroups.forEach((group, index) => {
-    const best = getGrammarBestScore(group);
+    const scoreKey = grammarScoreKey(group.id, state.switchMode);
+    const best = getGrammarBestScore(group, state.switchMode);
     const percent = calculatePercent(best, group.count);
+    const staleRatio = getBestScoreStaleRatio("grammar", scoreKey, group.count);
     const unlockInfo = getGrammarDeckUnlockInfo(group.id);
 
     const card = document.createElement("button");
@@ -9459,7 +10761,7 @@ function renderGrammarDeckGrid() {
       ${unlockInfo.unlocked ? "" : `<span class="tile-lock-text">${unlockInfo.message}</span>`}
       <span class="best deck-best">Best: ${formatScore(best, group.count)}</span>
       <div class="mini-progress-track">
-        <div class="mini-progress-fill" style="width:${percent}%"></div>
+        ${renderMiniProgressFill(percent, staleRatio)}
       </div>
     `;
     card.addEventListener("click", () => openGrammarQuiz(group.id));
@@ -9487,9 +10789,10 @@ function updateGrammarQuizMeta() {
     return;
   }
   const total = state.currentGrammarGroup.count;
-  const best = getGrammarBestScore(state.currentGrammarGroup);
+  const best = getGrammarBestScore(state.currentGrammarGroup, state.switchMode);
+  const directionLabel = state.switchMode === "switch" ? "switch mode" : "normal mode";
   const timerMeta = state.grammarQuizEnded ? "" : ` • ${getQuizTimerText()}`;
-  grammarQuizMeta.textContent = `${total} prompts • Best: ${formatScore(best, total)}${timerMeta}`;
+  grammarQuizMeta.textContent = `${total} prompts • ${directionLabel} • Best: ${formatScore(best, total)}${timerMeta}`;
 }
 
 function updateGrammarProgress() {
@@ -9546,7 +10849,12 @@ function endGrammarQuiz(reason) {
   stopQuizTimer();
   const total = state.currentGrammarItems.length;
   const score = state.grammarFoundIndexes.size;
-  const changed = recordBestScore("grammar", state.currentGrammarGroup.id, score, total);
+  const changed = recordBestScore(
+    "grammar",
+    grammarScoreKey(state.currentGrammarGroup.id, state.switchMode),
+    score,
+    total,
+  );
   updateGrammarQuizMeta();
 
   if (reason === "gave-up") {
@@ -9606,6 +10914,15 @@ function attemptGrammarAnswer(rawValue, strict = false) {
   }
 }
 
+function updateGrammarAnswerPrompt() {
+  if (state.switchMode === "switch") {
+    grammarAnswerLabel.textContent = "Type English answer";
+  } else {
+    grammarAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} answer`;
+  }
+  grammarAnswerInput.placeholder = "Press Enter to submit...";
+}
+
 function openGrammarQuiz(groupId) {
   const group = state.grammarGroups.find((item) => item.id === groupId);
   if (!group) {
@@ -9636,8 +10953,7 @@ function openGrammarQuiz(groupId) {
     },
   });
   updateGrammarQuizMeta();
-  grammarAnswerLabel.textContent = `Type ${getTargetLanguageAdjective()} answer`;
-  grammarAnswerInput.placeholder = "Press Enter to submit...";
+  updateGrammarAnswerPrompt();
   grammarFeedback.className = "feedback";
   grammarFeedback.textContent = "";
   grammarAnswerInput.value = "";
@@ -9657,7 +10973,7 @@ function returnToGrammarDashboard() {
   if (state.currentGrammarGroup && !state.grammarQuizEnded) {
     const changed = recordBestScore(
       "grammar",
-      state.currentGrammarGroup.id,
+      grammarScoreKey(state.currentGrammarGroup.id, state.switchMode),
       state.grammarFoundIndexes.size,
       state.currentGrammarItems.length,
     );
@@ -9682,6 +10998,16 @@ function returnToGrammarDashboard() {
 function makeSlangQuizItem(item) {
   const answers = item.answers && item.answers.length ? item.answers : [item.answer];
   const uniqueAnswers = [...new Set(answers)];
+  if (state.switchMode === "switch") {
+    const englishHintFallback = cleanEnglishHintText(item?.hint || "");
+    const englishAnswers = getSwitchEnglishHintAnswers(item);
+    const switchHint = getSwitchHintOverride(item);
+    return {
+      hint: switchHint || uniqueAnswers[0] || "",
+      displayAnswer: englishAnswers[0] || englishHintFallback,
+      answers: englishAnswers.length ? englishAnswers : englishHintFallback ? [englishHintFallback] : [],
+    };
+  }
   return {
     hint: item.hint,
     displayAnswer: uniqueAnswers[0],
@@ -9694,8 +11020,10 @@ function renderSlangDeckGrid() {
   slangDeckCount.textContent = `${state.slangGroups.length} decks`;
 
   state.slangGroups.forEach((group, index) => {
-    const best = getSlangBestScore(group);
+    const scoreKey = slangScoreKey(group.id, state.switchMode);
+    const best = getSlangBestScore(group, state.switchMode);
     const percent = calculatePercent(best, group.count);
+    const staleRatio = getBestScoreStaleRatio("slang", scoreKey, group.count);
     const unlockInfo = getSlangDeckUnlockInfo(group.id);
 
     const card = document.createElement("button");
@@ -9710,7 +11038,7 @@ function renderSlangDeckGrid() {
       ${unlockInfo.unlocked ? "" : `<span class="tile-lock-text">${unlockInfo.message}</span>`}
       <span class="best deck-best">Best: ${formatScore(best, group.count)}</span>
       <div class="mini-progress-track">
-        <div class="mini-progress-fill" style="width:${percent}%"></div>
+        ${renderMiniProgressFill(percent, staleRatio)}
       </div>
     `;
     card.addEventListener("click", () => openSlangQuiz(group.id));
@@ -9738,9 +11066,10 @@ function updateSlangQuizMeta() {
     return;
   }
   const total = state.currentSlangGroup.count;
-  const best = getSlangBestScore(state.currentSlangGroup);
+  const best = getSlangBestScore(state.currentSlangGroup, state.switchMode);
+  const directionLabel = state.switchMode === "switch" ? "switch mode" : "normal mode";
   const timerMeta = state.slangQuizEnded ? "" : ` • ${getQuizTimerText()}`;
-  slangQuizMeta.textContent = `${total} items • Best: ${formatScore(best, total)}${timerMeta}`;
+  slangQuizMeta.textContent = `${total} items • ${directionLabel} • Best: ${formatScore(best, total)}${timerMeta}`;
 }
 
 function updateSlangProgress() {
@@ -9797,7 +11126,12 @@ function endSlangQuiz(reason) {
   stopQuizTimer();
   const total = state.currentSlangItems.length;
   const score = state.slangFoundIndexes.size;
-  const changed = recordBestScore("slang", state.currentSlangGroup.id, score, total);
+  const changed = recordBestScore(
+    "slang",
+    slangScoreKey(state.currentSlangGroup.id, state.switchMode),
+    score,
+    total,
+  );
   updateSlangQuizMeta();
 
   if (reason === "gave-up") {
@@ -9857,6 +11191,15 @@ function attemptSlangAnswer(rawValue, strict = false) {
   }
 }
 
+function updateSlangAnswerPrompt() {
+  if (state.switchMode === "switch") {
+    slangAnswerLabel.textContent = "Type English meaning";
+  } else {
+    slangAnswerLabel.textContent = `Type regional ${getTargetLanguageAdjective()} slang`;
+  }
+  slangAnswerInput.placeholder = "Press Enter to submit...";
+}
+
 function openSlangQuiz(groupId) {
   const group = state.slangGroups.find((item) => item.id === groupId);
   if (!group) {
@@ -9887,8 +11230,7 @@ function openSlangQuiz(groupId) {
     },
   });
   updateSlangQuizMeta();
-  slangAnswerLabel.textContent = `Type regional ${getTargetLanguageAdjective()} slang`;
-  slangAnswerInput.placeholder = "Press Enter to submit...";
+  updateSlangAnswerPrompt();
   slangFeedback.className = "feedback";
   slangFeedback.textContent = "";
   slangAnswerInput.value = "";
@@ -9908,7 +11250,7 @@ function returnToSlangDashboard() {
   if (state.currentSlangGroup && !state.slangQuizEnded) {
     const changed = recordBestScore(
       "slang",
-      state.currentSlangGroup.id,
+      slangScoreKey(state.currentSlangGroup.id, state.switchMode),
       state.slangFoundIndexes.size,
       state.currentSlangItems.length,
     );
@@ -9937,6 +11279,24 @@ function setNounMode(mode) {
   state.nounMode = mode;
   nounModeToggle.checked = mode === "plural";
   updateNounsAnswerPrompt();
+  refreshProgressViews();
+}
+
+function setSwitchMode(mode) {
+  if (mode !== "normal" && mode !== "switch") {
+    return;
+  }
+  state.switchMode = mode;
+  if (switchModeToggle) {
+    switchModeToggle.checked = mode === "switch";
+  }
+  updateNounsAnswerPrompt();
+  updateBeginnerAnswerPrompt();
+  updateDiscourseAnswerPrompt();
+  updateConversionAnswerPrompt();
+  updateGrammarAnswerPrompt();
+  updateSlangAnswerPrompt();
+  rebuildSrsCatalog();
   refreshProgressViews();
 }
 
@@ -10308,7 +11668,10 @@ async function loadData() {
       state.srsData = loadSrsData();
       state.gamificationData = loadGamificationData();
     }
-    if (migrateLegacyBeginnerBestScoresIfNeeded()) {
+    const persistedBestScoresChanged =
+      migrateLegacyBeginnerBestScoresIfNeeded() ||
+      backfillBestScoreFreshnessTimestamps(state.bestScores);
+    if (persistedBestScoresChanged) {
       saveBestScores();
     }
     rebuildSrsCatalog();
@@ -10328,7 +11691,15 @@ async function loadData() {
     renderAchievementsPanel();
     updateDashboardProgressBars();
     renderTrainingGrid();
+    if (switchModeToggle) {
+      switchModeToggle.checked = state.switchMode === "switch";
+    }
     updateNounsAnswerPrompt();
+    updateBeginnerAnswerPrompt();
+    updateDiscourseAnswerPrompt();
+    updateConversionAnswerPrompt();
+    updateGrammarAnswerPrompt();
+    updateSlangAnswerPrompt();
     clearStatus();
     return true;
   } catch (error) {
@@ -10595,6 +11966,13 @@ nounModeToggle.addEventListener("change", (event) => {
   const mode = event.target.checked ? "plural" : "singular";
   setNounMode(mode);
 });
+
+if (switchModeToggle) {
+  switchModeToggle.addEventListener("change", (event) => {
+    const mode = event.target.checked ? "switch" : "normal";
+    setSwitchMode(mode);
+  });
+}
 
 nounsBackButton.addEventListener("click", returnToNounsDashboard);
 

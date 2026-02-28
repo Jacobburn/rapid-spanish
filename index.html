@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, shrink-to-fit=no"
+    />
     <title>Rapid Spanish | Training Dashboard</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -62,6 +65,17 @@
               <label class="admin-mode-toggle" for="adminModeToggle">
                 <input id="adminModeToggle" type="checkbox" />
                 <span>Admin mode (unlock all)</span>
+              </label>
+              <label class="switch-mode-toggle" for="switchModeToggle">
+                <input id="switchModeToggle" type="checkbox" />
+                <span class="switch-mode-pill">
+                  <span id="switchModeForwardLabel" class="switch-mode-pill-option">
+                    English → Spanish
+                  </span>
+                  <span id="switchModeReverseLabel" class="switch-mode-pill-option">
+                    Spanish → English
+                  </span>
+                </span>
               </label>
               <button id="accountManageButton" class="ghost-button" type="button">
                 Account
