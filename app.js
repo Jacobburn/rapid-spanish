@@ -24,6 +24,7 @@ const SRS_STORAGE_KEY = "rapid-spanish-srs-v1";
 const GAMIFICATION_STORAGE_KEY = "rapid-spanish-gamification-v1";
 const SUPABASE_SESSION_STORAGE_KEY = "rapid-spanish-supabase-session-v1";
 const LANGUAGE_STORAGE_KEY = "rapid-spanish-language-v1";
+const AUDIO_ENABLED_STORAGE_KEY = "rapid-spanish-audio-enabled-v1";
 const STORY_WORD_OVERRIDES_STORAGE_KEY = "rapid-spanish-story-word-overrides-v1";
 const STORY_TRANSLATION_OVERRIDES_STORAGE_KEY = "rapid-spanish-story-translation-overrides-v1";
 const ADMIN_MODE_USERNAME = "jake";
@@ -89,6 +90,20 @@ const SRS_MAX_EASE = 3.3;
 const ATTEMPT_SESSION_BREAK_MS = 10 * 60 * 1000;
 const MIN_ATTEMPT_ACTIVITY_MS = 4 * 1000;
 const MAX_ATTEMPT_ACTIVITY_MS = 2 * 60 * 1000;
+const CORRECT_HAPTIC_PATTERN = [28, 18, 36];
+const CORRECT_AUDIO_MIN_INTERVAL_MS = 80;
+const WRONG_AUDIO_MIN_INTERVAL_MS = 120;
+const PERFECT_QUIZ_CELEBRATION_MIN_INTERVAL_MS = 700;
+const PERFECT_QUIZ_CONFETTI_PIECE_COUNT = 120;
+const PERFECT_QUIZ_CONFETTI_DURATION_MS = 2300;
+const PERFECT_QUIZ_CONFETTI_COLORS = [
+  "#ffd166",
+  "#06d6a0",
+  "#118ab2",
+  "#ef476f",
+  "#f97316",
+  "#10b981",
+];
 
 const SUPABASE_CONFIG = window.RAPID_SPANISH_SUPABASE_CONFIG || {};
 const SUPABASE_ENABLED = Boolean(SUPABASE_CONFIG.url && SUPABASE_CONFIG.anonKey);
@@ -1121,6 +1136,7 @@ const progressMap = document.getElementById("progressMap");
 const trainingHubProgressText = document.getElementById("trainingHubProgressText");
 const trainingHubProgressFill = document.getElementById("trainingHubProgressFill");
 const adminModeToggle = document.getElementById("adminModeToggle");
+const audioEnabledToggle = document.getElementById("audioEnabledToggle");
 const switchModeToggle = document.getElementById("switchModeToggle");
 const switchModeForwardLabel = document.getElementById("switchModeForwardLabel");
 const switchModeReverseLabel = document.getElementById("switchModeReverseLabel");
@@ -1494,6 +1510,7 @@ const state = {
   activeLanguage: loadPreferredLanguage(),
   nounMode: "singular",
   switchMode: "normal",
+  audioEnabled: true,
   activeVerbTrack: "core",
   activeNounTrack: "core",
   bestScores: createEmptyBestScores(),
@@ -1571,6 +1588,12 @@ let storyWordOverrideModalPosInputEl = null;
 let storyWordOverrideModalTranslationInputEl = null;
 let storyWordOverrideModalErrorEl = null;
 let storyWordOverrideModalResolve = null;
+let feedbackAudioContext = null;
+let lastCorrectAudioAt = 0;
+let lastWrongAudioAt = 0;
+let lastPerfectCelebrationAt = 0;
+let activePerfectConfettiContainer = null;
+let activePerfectConfettiCleanupId = 0;
 
 const textEncoder = new TextEncoder();
 
@@ -1593,6 +1616,386 @@ function countWords(value) {
     .trim()
     .split(/\s+/)
     .filter(Boolean).length;
+}
+
+function triggerCorrectHapticFeedback() {
+  if (typeof navigator === "undefined" || typeof navigator.vibrate !== "function") {
+    return;
+  }
+  const didVibrate = navigator.vibrate(CORRECT_HAPTIC_PATTERN);
+  if (!didVibrate) {
+    navigator.vibrate(36);
+  }
+}
+
+function getFeedbackAudioContext() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+  const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextCtor) {
+    return null;
+  }
+  if (!feedbackAudioContext || feedbackAudioContext.state === "closed") {
+    feedbackAudioContext = new AudioContextCtor();
+  }
+  return feedbackAudioContext;
+}
+
+function playCorrectAudioFeedback() {
+  if (!state.audioEnabled) {
+    return;
+  }
+  const nowMs = Date.now();
+  if (nowMs - lastCorrectAudioAt < CORRECT_AUDIO_MIN_INTERVAL_MS) {
+    return;
+  }
+  const context = getFeedbackAudioContext();
+  if (!context) {
+    return;
+  }
+  if (context.state === "suspended") {
+    context
+      .resume()
+      .then(() => {
+        playCorrectAudioFeedback();
+      })
+      .catch(() => {});
+    return;
+  }
+
+  const startTime = context.currentTime + 0.005;
+  const notes = [
+    { frequency: 783.99, delay: 0, duration: 0.075, peak: 0.045, type: "triangle" }, // G5
+    { frequency: 987.77, delay: 0.07, duration: 0.08, peak: 0.05, type: "triangle" }, // B5
+    { frequency: 1174.66, delay: 0.145, duration: 0.13, peak: 0.065, type: "sine" }, // D6
+  ];
+
+  notes.forEach((note) => {
+    const noteStart = startTime + note.delay;
+    const noteEnd = noteStart + note.duration;
+    const attackEnd = noteStart + Math.min(0.02, note.duration * 0.35);
+
+    const oscillator = context.createOscillator();
+    const gainNode = context.createGain();
+    oscillator.type = note.type;
+    oscillator.frequency.setValueAtTime(note.frequency, noteStart);
+    oscillator.detune.setValueAtTime(3, noteStart);
+
+    gainNode.gain.setValueAtTime(0.0001, noteStart);
+    gainNode.gain.exponentialRampToValueAtTime(note.peak, attackEnd);
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, noteEnd);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(context.destination);
+
+    oscillator.start(noteStart);
+    oscillator.stop(noteEnd + 0.015);
+    oscillator.onended = () => {
+      oscillator.disconnect();
+      gainNode.disconnect();
+    };
+  });
+
+  // Soft upper harmonic on the final note for a brighter "correct" chime.
+  const sparkleStart = startTime + 0.155;
+  const sparkleEnd = sparkleStart + 0.1;
+  const sparkleOsc = context.createOscillator();
+  const sparkleGain = context.createGain();
+  sparkleOsc.type = "sine";
+  sparkleOsc.frequency.setValueAtTime(2349.32, sparkleStart); // D7
+  sparkleGain.gain.setValueAtTime(0.0001, sparkleStart);
+  sparkleGain.gain.exponentialRampToValueAtTime(0.018, sparkleStart + 0.018);
+  sparkleGain.gain.exponentialRampToValueAtTime(0.0001, sparkleEnd);
+  sparkleOsc.connect(sparkleGain);
+  sparkleGain.connect(context.destination);
+  sparkleOsc.start(sparkleStart);
+  sparkleOsc.stop(sparkleEnd + 0.01);
+  sparkleOsc.onended = () => {
+    sparkleOsc.disconnect();
+    sparkleGain.disconnect();
+  };
+
+  lastCorrectAudioAt = nowMs;
+}
+
+function triggerCorrectAnswerFeedback() {
+  triggerCorrectHapticFeedback();
+  playCorrectAudioFeedback();
+}
+
+function playWrongAudioFeedback() {
+  if (!state.audioEnabled) {
+    return;
+  }
+  const nowMs = Date.now();
+  if (nowMs - lastWrongAudioAt < WRONG_AUDIO_MIN_INTERVAL_MS) {
+    return;
+  }
+  const context = getFeedbackAudioContext();
+  if (!context) {
+    return;
+  }
+  if (context.state === "suspended") {
+    context
+      .resume()
+      .then(() => {
+        playWrongAudioFeedback();
+      })
+      .catch(() => {});
+    return;
+  }
+
+  const startTime = context.currentTime + 0.004;
+  const endTime = startTime + 0.24;
+
+  const filterNode = context.createBiquadFilter();
+  filterNode.type = "lowpass";
+  filterNode.frequency.setValueAtTime(1200, startTime);
+  filterNode.frequency.exponentialRampToValueAtTime(360, endTime);
+  filterNode.Q.setValueAtTime(0.72, startTime);
+  filterNode.connect(context.destination);
+
+  const bodyOsc = context.createOscillator();
+  const bodyGain = context.createGain();
+  bodyOsc.type = "triangle";
+  bodyOsc.frequency.setValueAtTime(220, startTime);
+  bodyOsc.frequency.exponentialRampToValueAtTime(138, endTime);
+  bodyGain.gain.setValueAtTime(0.0001, startTime);
+  bodyGain.gain.exponentialRampToValueAtTime(0.036, startTime + 0.02);
+  bodyGain.gain.exponentialRampToValueAtTime(0.0001, endTime);
+  bodyOsc.connect(bodyGain);
+  bodyGain.connect(filterNode);
+  bodyOsc.start(startTime);
+  bodyOsc.stop(endTime + 0.01);
+
+  const undertoneOsc = context.createOscillator();
+  const undertoneGain = context.createGain();
+  undertoneOsc.type = "sine";
+  undertoneOsc.frequency.setValueAtTime(146, startTime);
+  undertoneOsc.frequency.exponentialRampToValueAtTime(96, endTime);
+  undertoneGain.gain.setValueAtTime(0.0001, startTime);
+  undertoneGain.gain.exponentialRampToValueAtTime(0.024, startTime + 0.016);
+  undertoneGain.gain.exponentialRampToValueAtTime(0.0001, endTime);
+  undertoneOsc.connect(undertoneGain);
+  undertoneGain.connect(filterNode);
+  undertoneOsc.start(startTime);
+  undertoneOsc.stop(endTime + 0.01);
+
+  const tapEnd = startTime + 0.09;
+  const tapOsc = context.createOscillator();
+  const tapGain = context.createGain();
+  tapOsc.type = "triangle";
+  tapOsc.frequency.setValueAtTime(360, startTime);
+  tapOsc.frequency.exponentialRampToValueAtTime(220, tapEnd);
+  tapGain.gain.setValueAtTime(0.0001, startTime);
+  tapGain.gain.exponentialRampToValueAtTime(0.014, startTime + 0.01);
+  tapGain.gain.exponentialRampToValueAtTime(0.0001, tapEnd);
+  tapOsc.connect(tapGain);
+  tapGain.connect(filterNode);
+  tapOsc.start(startTime);
+  tapOsc.stop(tapEnd + 0.01);
+
+  let endedCount = 0;
+  const cleanup = () => {
+    endedCount += 1;
+    if (endedCount < 3) {
+      return;
+    }
+    bodyOsc.disconnect();
+    bodyGain.disconnect();
+    undertoneOsc.disconnect();
+    undertoneGain.disconnect();
+    tapOsc.disconnect();
+    tapGain.disconnect();
+    filterNode.disconnect();
+  };
+  bodyOsc.onended = cleanup;
+  undertoneOsc.onended = cleanup;
+  tapOsc.onended = cleanup;
+
+  lastWrongAudioAt = nowMs;
+}
+
+function triggerWrongAnswerFeedback() {
+  playWrongAudioFeedback();
+}
+
+function playPerfectScoreAudioFeedback() {
+  if (!state.audioEnabled) {
+    return;
+  }
+  const context = getFeedbackAudioContext();
+  if (!context) {
+    return;
+  }
+  if (context.state === "suspended") {
+    context
+      .resume()
+      .then(() => {
+        playPerfectScoreAudioFeedback();
+      })
+      .catch(() => {});
+    return;
+  }
+
+  const startTime = context.currentTime + 0.01;
+  const notes = [
+    { frequency: 783.99, delay: 0, duration: 0.12, peak: 0.06, type: "triangle" }, // G5
+    { frequency: 987.77, delay: 0.1, duration: 0.12, peak: 0.065, type: "triangle" }, // B5
+    { frequency: 1174.66, delay: 0.2, duration: 0.14, peak: 0.075, type: "triangle" }, // D6
+    { frequency: 1567.98, delay: 0.31, duration: 0.18, peak: 0.085, type: "sine" }, // G6
+  ];
+
+  notes.forEach((note) => {
+    const noteStart = startTime + note.delay;
+    const noteEnd = noteStart + note.duration;
+    const attackEnd = noteStart + Math.min(0.03, note.duration * 0.4);
+
+    const oscillator = context.createOscillator();
+    const gainNode = context.createGain();
+    oscillator.type = note.type;
+    oscillator.frequency.setValueAtTime(note.frequency, noteStart);
+
+    gainNode.gain.setValueAtTime(0.0001, noteStart);
+    gainNode.gain.exponentialRampToValueAtTime(note.peak, attackEnd);
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, noteEnd);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(context.destination);
+
+    oscillator.start(noteStart);
+    oscillator.stop(noteEnd + 0.02);
+    oscillator.onended = () => {
+      oscillator.disconnect();
+      gainNode.disconnect();
+    };
+  });
+
+  const bassStart = startTime;
+  const bassEnd = bassStart + 0.35;
+  const bassOsc = context.createOscillator();
+  const bassGain = context.createGain();
+  bassOsc.type = "sine";
+  bassOsc.frequency.setValueAtTime(196, bassStart); // G3
+  bassGain.gain.setValueAtTime(0.0001, bassStart);
+  bassGain.gain.exponentialRampToValueAtTime(0.03, bassStart + 0.05);
+  bassGain.gain.exponentialRampToValueAtTime(0.0001, bassEnd);
+  bassOsc.connect(bassGain);
+  bassGain.connect(context.destination);
+  bassOsc.start(bassStart);
+  bassOsc.stop(bassEnd + 0.02);
+  bassOsc.onended = () => {
+    bassOsc.disconnect();
+    bassGain.disconnect();
+  };
+}
+
+function clearPerfectQuizConfetti() {
+  if (activePerfectConfettiCleanupId) {
+    window.clearTimeout(activePerfectConfettiCleanupId);
+    activePerfectConfettiCleanupId = 0;
+  }
+  if (activePerfectConfettiContainer?.parentNode) {
+    activePerfectConfettiContainer.parentNode.removeChild(activePerfectConfettiContainer);
+  }
+  activePerfectConfettiContainer = null;
+}
+
+function playPerfectQuizConfetti() {
+  if (typeof document === "undefined" || !document.body) {
+    return;
+  }
+
+  clearPerfectQuizConfetti();
+
+  const viewportWidth = Math.max(window.innerWidth || 0, 320);
+  const viewportHeight = Math.max(window.innerHeight || 0, 480);
+  const prefersReducedMotion =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const pieceCount = prefersReducedMotion
+    ? Math.max(36, Math.round(PERFECT_QUIZ_CONFETTI_PIECE_COUNT * 0.35))
+    : PERFECT_QUIZ_CONFETTI_PIECE_COUNT;
+
+  const container = document.createElement("div");
+  container.setAttribute("aria-hidden", "true");
+  container.style.position = "fixed";
+  container.style.inset = "0";
+  container.style.pointerEvents = "none";
+  container.style.overflow = "hidden";
+  container.style.zIndex = "9999";
+
+  for (let index = 0; index < pieceCount; index += 1) {
+    const piece = document.createElement("span");
+    const startX = Math.random() * viewportWidth;
+    const width = 6 + Math.random() * 8;
+    const height = 8 + Math.random() * 12;
+    const drift = (Math.random() - 0.5) * 220;
+    const sway = (Math.random() - 0.5) * 90;
+    const fallDistance = viewportHeight + 180 + Math.random() * 220;
+    const startRotate = Math.random() * 360;
+    const endRotate = startRotate + (Math.random() > 0.5 ? 1 : -1) * (380 + Math.random() * 620);
+    const duration = PERFECT_QUIZ_CONFETTI_DURATION_MS * (0.75 + Math.random() * 0.55);
+    const delay = Math.random() * 300;
+
+    piece.style.position = "absolute";
+    piece.style.left = `${startX}px`;
+    piece.style.top = "-24px";
+    piece.style.width = `${width}px`;
+    piece.style.height = `${height}px`;
+    piece.style.opacity = `${0.75 + Math.random() * 0.25}`;
+    piece.style.backgroundColor =
+      PERFECT_QUIZ_CONFETTI_COLORS[Math.floor(Math.random() * PERFECT_QUIZ_CONFETTI_COLORS.length)];
+    piece.style.borderRadius = Math.random() > 0.5 ? "2px" : "999px";
+    piece.style.transform = `translate3d(0, 0, 0) rotate(${startRotate}deg)`;
+    container.appendChild(piece);
+
+    piece.animate(
+      [
+        {
+          transform: `translate3d(0, -20px, 0) rotate(${startRotate}deg)`,
+          opacity: 1,
+        },
+        {
+          transform: `translate3d(${drift}px, ${fallDistance * 0.55}px, 0) rotate(${
+            startRotate + (endRotate - startRotate) * 0.55
+          }deg)`,
+          opacity: 0.95,
+          offset: 0.55,
+        },
+        {
+          transform: `translate3d(${drift + sway}px, ${fallDistance}px, 0) rotate(${endRotate}deg)`,
+          opacity: 0,
+        },
+      ],
+      {
+        duration,
+        delay,
+        easing: "cubic-bezier(0.12, 0.84, 0.28, 1)",
+        fill: "forwards",
+      },
+    );
+  }
+
+  document.body.appendChild(container);
+  activePerfectConfettiContainer = container;
+  activePerfectConfettiCleanupId = window.setTimeout(() => {
+    clearPerfectQuizConfetti();
+  }, PERFECT_QUIZ_CONFETTI_DURATION_MS + 1200);
+}
+
+function triggerPerfectQuizCelebration(score, total) {
+  if (!Number.isFinite(score) || !Number.isFinite(total) || total <= 0 || score !== total) {
+    return;
+  }
+  const nowMs = Date.now();
+  if (nowMs - lastPerfectCelebrationAt < PERFECT_QUIZ_CELEBRATION_MIN_INTERVAL_MS) {
+    return;
+  }
+  lastPerfectCelebrationAt = nowMs;
+  playPerfectScoreAudioFeedback();
+  playPerfectQuizConfetti();
 }
 
 function createEmptyAttemptStats() {
@@ -2099,6 +2502,13 @@ function getGamificationStorageKey() {
 
 function getActivityStorageKey() {
   return getLanguageScopedStorageKey(ACTIVITY_STORAGE_KEY);
+}
+
+function getAudioEnabledStorageKey() {
+  if (!state.currentUser?.username) {
+    return `${getLanguageScopedStorageKey(AUDIO_ENABLED_STORAGE_KEY)}::guest`;
+  }
+  return `${getLanguageScopedStorageKey(AUDIO_ENABLED_STORAGE_KEY)}::${state.currentUser.username}`;
 }
 
 function getStoryWordOverridesStorageKey() {
@@ -3027,6 +3437,7 @@ async function setCurrentUser(userOrUsername) {
   state.currentUser = normalizedRecord;
   state.storyWordTypeOverrides = loadStoryWordTypeOverrides();
   state.storyTranslationOverrides = loadStoryTranslationOverrides();
+  setAudioEnabled(loadAudioEnabled(), { persist: false });
   if (!state.currentUser) {
     state.remoteLanguageState = createEmptyRemoteLanguageState();
     state.remoteStateLoadFailed = false;
@@ -3104,6 +3515,7 @@ async function ensureDataLoaded() {
 function reloadLanguageScopedLocalState() {
   state.storyWordTypeOverrides = loadStoryWordTypeOverrides();
   state.storyTranslationOverrides = loadStoryTranslationOverrides();
+  setAudioEnabled(loadAudioEnabled(), { persist: false });
   if (hasSupabaseConfig() && state.currentUser?.user_id) {
     applyRemoteLanguageState(state.currentUser?.username || "", getCurrentLanguage());
   } else {
@@ -3195,6 +3607,38 @@ function saveAdminMode(enabled) {
   }
 }
 
+function loadAudioEnabled() {
+  try {
+    const raw = localStorage.getItem(getAudioEnabledStorageKey());
+    if (raw === null) {
+      return true;
+    }
+    return raw !== "false";
+  } catch (error) {
+    console.warn("Unable to load audio setting:", error);
+    return true;
+  }
+}
+
+function saveAudioEnabled(enabled) {
+  try {
+    localStorage.setItem(getAudioEnabledStorageKey(), String(Boolean(enabled)));
+  } catch (error) {
+    console.warn("Unable to persist audio setting:", error);
+  }
+}
+
+function setAudioEnabled(enabled, options = {}) {
+  const { persist = true } = options;
+  state.audioEnabled = Boolean(enabled);
+  if (audioEnabledToggle) {
+    audioEnabledToggle.checked = state.audioEnabled;
+  }
+  if (persist) {
+    saveAudioEnabled(state.audioEnabled);
+  }
+}
+
 function setAdminMode(enabled) {
   state.adminMode = canUseAdminMode() ? Boolean(enabled) : false;
   if (!state.adminMode) {
@@ -3228,6 +3672,7 @@ state.srsData = loadSrsData();
 state.storyWordTypeOverrides = loadStoryWordTypeOverrides();
 state.storyTranslationOverrides = loadStoryTranslationOverrides();
 state.adminMode = loadAdminMode();
+state.audioEnabled = loadAudioEnabled();
 if (languageToggle) {
   languageToggle.value = state.activeLanguage;
 }
@@ -3238,6 +3683,9 @@ if (adminModeToggle) {
 }
 if (switchModeToggle) {
   switchModeToggle.checked = state.switchMode === "switch";
+}
+if (audioEnabledToggle) {
+  audioEnabledToggle.checked = state.audioEnabled;
 }
 refreshAdminModeAccess();
 
@@ -7467,6 +7915,9 @@ function openAccountManagement() {
   newPasswordConfirmInput.value = "";
   setFeedbackMessage(profileFeedback, "");
   setFeedbackMessage(passwordFeedback, "");
+  if (audioEnabledToggle) {
+    audioEnabledToggle.checked = state.audioEnabled;
+  }
   showView(accountView);
 }
 
@@ -8170,9 +8621,13 @@ function attemptSrsAnswer(rawValue, strict = false) {
   if (wasCorrect) {
     srsFeedback.className = "feedback ok";
     srsFeedback.textContent = "Correct. Choose a grade.";
+    triggerCorrectAnswerFeedback();
   } else {
     srsFeedback.className = "feedback bad";
     srsFeedback.textContent = "Incorrect. Choose a grade.";
+    if (strict) {
+      triggerWrongAnswerFeedback();
+    }
   }
 }
 
@@ -9176,6 +9631,7 @@ function endVerbQuiz(reason) {
     feedback.className = "feedback ok";
     feedback.textContent = `All conjugations completed. Final score: ${formatScore(score, total)}.`;
   }
+  triggerPerfectQuizCelebration(score, total);
 
   answerInput.disabled = true;
   setQuizActionButton(giveUpButton, true);
@@ -9205,6 +9661,7 @@ function attemptVerbAnswer(rawValue, strict = false) {
     if (strict) {
       feedback.className = "feedback bad";
       feedback.textContent = "Not a match yet.";
+      triggerWrongAnswerFeedback();
       recordAttemptStat(statsTrack, false, rawValue);
     }
     return;
@@ -9214,6 +9671,7 @@ function attemptVerbAnswer(rawValue, strict = false) {
   if (added > 0) {
     feedback.className = "feedback ok";
     feedback.textContent = `✓ ${state.currentVerbItems[matches[0]].displayAnswer}`;
+    triggerCorrectAnswerFeedback();
     answerInput.value = "";
     updateVerbProgress();
     if (strict) {
@@ -9730,6 +10188,7 @@ function endNounQuiz(reason) {
     nounsFeedback.className = "feedback ok";
     nounsFeedback.textContent = `Deck completed. Final score: ${formatScore(score, total)}.`;
   }
+  triggerPerfectQuizCelebration(score, total);
 
   nounsAnswerInput.disabled = true;
   setQuizActionButton(nounsGiveUpButton, true);
@@ -9759,6 +10218,7 @@ function attemptNounAnswer(rawValue, strict = false) {
     if (strict) {
       nounsFeedback.className = "feedback bad";
       nounsFeedback.textContent = "Not a match yet.";
+      triggerWrongAnswerFeedback();
       recordAttemptStat(statsTrack, false, rawValue);
     }
     return;
@@ -9768,6 +10228,7 @@ function attemptNounAnswer(rawValue, strict = false) {
   if (added > 0) {
     nounsFeedback.className = "feedback ok";
     nounsFeedback.textContent = `✓ ${state.currentNounItems[matches[0]].displayAnswer}`;
+    triggerCorrectAnswerFeedback();
     nounsAnswerInput.value = "";
     updateNounProgress();
     if (strict) {
@@ -10039,6 +10500,7 @@ function endBeginnerQuiz(reason) {
     beginnerFeedback.className = "feedback ok";
     beginnerFeedback.textContent = `Deck completed. Final score: ${formatScore(score, total)}.`;
   }
+  triggerPerfectQuizCelebration(score, total);
 
   beginnerAnswerInput.disabled = true;
   setQuizActionButton(beginnerGiveUpButton, true);
@@ -10067,6 +10529,7 @@ function attemptBeginnerAnswer(rawValue, strict = false) {
     if (strict) {
       beginnerFeedback.className = "feedback bad";
       beginnerFeedback.textContent = "Not a match yet.";
+      triggerWrongAnswerFeedback();
       recordAttemptStat("beginner", false, rawValue);
     }
     return;
@@ -10076,6 +10539,7 @@ function attemptBeginnerAnswer(rawValue, strict = false) {
   if (added > 0) {
     beginnerFeedback.className = "feedback ok";
     beginnerFeedback.textContent = `✓ ${state.currentBeginnerItems[matches[0]].displayAnswer}`;
+    triggerCorrectAnswerFeedback();
     beginnerAnswerInput.value = "";
     updateBeginnerProgress();
     if (strict) {
@@ -10334,6 +10798,7 @@ function endDiscourseQuiz(reason) {
     discourseFeedback.className = "feedback ok";
     discourseFeedback.textContent = `Deck completed. Final score: ${formatScore(score, total)}.`;
   }
+  triggerPerfectQuizCelebration(score, total);
 
   discourseAnswerInput.disabled = true;
   setQuizActionButton(discourseGiveUpButton, true);
@@ -10362,6 +10827,7 @@ function attemptDiscourseAnswer(rawValue, strict = false) {
     if (strict) {
       discourseFeedback.className = "feedback bad";
       discourseFeedback.textContent = "Not a match yet.";
+      triggerWrongAnswerFeedback();
       recordAttemptStat("discourse", false, rawValue);
     }
     return;
@@ -10371,6 +10837,7 @@ function attemptDiscourseAnswer(rawValue, strict = false) {
   if (added > 0) {
     discourseFeedback.className = "feedback ok";
     discourseFeedback.textContent = `✓ ${state.currentDiscourseItems[matches[0]].displayAnswer}`;
+    triggerCorrectAnswerFeedback();
     discourseAnswerInput.value = "";
     updateDiscourseProgress();
     if (strict) {
@@ -10644,6 +11111,7 @@ function endConversionQuiz(reason) {
     conversionFeedback.className = "feedback ok";
     conversionFeedback.textContent = `Deck completed. Final score: ${formatScore(score, total)}.`;
   }
+  triggerPerfectQuizCelebration(score, total);
 
   conversionAnswerInput.disabled = true;
   setQuizActionButton(conversionGiveUpButton, true);
@@ -10672,6 +11140,7 @@ function attemptConversionAnswer(rawValue, strict = false) {
     if (strict) {
       conversionFeedback.className = "feedback bad";
       conversionFeedback.textContent = "Not a match yet.";
+      triggerWrongAnswerFeedback();
       recordAttemptStat("conversion", false, rawValue);
     }
     return;
@@ -10681,6 +11150,7 @@ function attemptConversionAnswer(rawValue, strict = false) {
   if (added > 0) {
     conversionFeedback.className = "feedback ok";
     conversionFeedback.textContent = `✓ ${state.currentConversionItems[matches[0]].displayAnswer}`;
+    triggerCorrectAnswerFeedback();
     conversionAnswerInput.value = "";
     updateConversionProgress();
     if (strict) {
@@ -10919,6 +11389,7 @@ function endGrammarQuiz(reason) {
     grammarFeedback.className = "feedback ok";
     grammarFeedback.textContent = `Deck completed. Final score: ${formatScore(score, total)}.`;
   }
+  triggerPerfectQuizCelebration(score, total);
 
   grammarAnswerInput.disabled = true;
   setQuizActionButton(grammarGiveUpButton, true);
@@ -10947,6 +11418,7 @@ function attemptGrammarAnswer(rawValue, strict = false) {
     if (strict) {
       grammarFeedback.className = "feedback bad";
       grammarFeedback.textContent = "Not a match yet.";
+      triggerWrongAnswerFeedback();
       recordAttemptStat("grammar", false, rawValue);
     }
     return;
@@ -10956,6 +11428,7 @@ function attemptGrammarAnswer(rawValue, strict = false) {
   if (added > 0) {
     grammarFeedback.className = "feedback ok";
     grammarFeedback.textContent = `✓ ${state.currentGrammarItems[matches[0]].displayAnswer}`;
+    triggerCorrectAnswerFeedback();
     grammarAnswerInput.value = "";
     updateGrammarProgress();
     if (strict) {
@@ -11196,6 +11669,7 @@ function endSlangQuiz(reason) {
     slangFeedback.className = "feedback ok";
     slangFeedback.textContent = `Deck completed. Final score: ${formatScore(score, total)}.`;
   }
+  triggerPerfectQuizCelebration(score, total);
 
   slangAnswerInput.disabled = true;
   setQuizActionButton(slangGiveUpButton, true);
@@ -11224,6 +11698,7 @@ function attemptSlangAnswer(rawValue, strict = false) {
     if (strict) {
       slangFeedback.className = "feedback bad";
       slangFeedback.textContent = "Not a match yet.";
+      triggerWrongAnswerFeedback();
       recordAttemptStat("slang", false, rawValue);
     }
     return;
@@ -11233,6 +11708,7 @@ function attemptSlangAnswer(rawValue, strict = false) {
   if (added > 0) {
     slangFeedback.className = "feedback ok";
     slangFeedback.textContent = `✓ ${state.currentSlangItems[matches[0]].displayAnswer}`;
+    triggerCorrectAnswerFeedback();
     slangAnswerInput.value = "";
     updateSlangProgress();
     if (strict) {
@@ -11758,6 +12234,7 @@ async function logoutCurrentUser() {
   state.remoteLanguageState = createEmptyRemoteLanguageState();
   state.remoteStateLoadFailed = false;
   state.adminMode = false;
+  setAudioEnabled(loadAudioEnabled(), { persist: false });
   refreshCurrentUserLabel();
   refreshAdminModeAccess();
   showAuthScreen();
@@ -11911,6 +12388,12 @@ if (languageToggle) {
 if (adminModeToggle) {
   adminModeToggle.addEventListener("change", (event) => {
     setAdminMode(event.target.checked);
+  });
+}
+
+if (audioEnabledToggle) {
+  audioEnabledToggle.addEventListener("change", (event) => {
+    setAudioEnabled(event.target.checked);
   });
 }
 
